@@ -82,6 +82,7 @@ impl Generator {
         for (path, path_item) in paths_clone {
             // Clean up path for use in type names
             let path_name = self.path_to_name(&path);
+            let (mod_name, path_name) = self.path_to_mod_and_name(&path);
 
             // Check each operation (get, post, put, delete, etc.)
             if let Some(op) = &path_item.get {
@@ -131,7 +132,9 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
+
                                 let name = format!("{}{}Response{}", path_name, method, status);
+                                println!("Extract response schemas : new name : {}, path name: {},  method: {}", &name, path_name, method);
                                 self.extract_schema_from_media(&name, schema);
                             }
                         }
@@ -168,6 +171,25 @@ impl Generator {
             })
             .collect::<Vec<_>>()
             .join("")
+    }
+    fn path_to_mod_and_name(&self, path: &str) -> (String, String) {
+        // Convert /path/{param}/action to PathParamAction
+        let pathandmod = path
+            .split('/')
+            .filter(|s| !s.is_empty())
+            .map(|s| {
+                // Remove parameter braces
+                let cleaned = s.replace('{', "").replace('}', "");
+                to_pascal_case(&cleaned)
+            })
+            .collect::<Vec<_>>();
+        // let modname=pathandmod.first().unwrap();
+        let (modname, name) = pathandmod.split_at(1);
+        let name = name.join("");
+        (
+            String::from(modname.join("").to_lowercase()),
+            String::from(name),
+        )
     }
 
     fn generate_schema_type(

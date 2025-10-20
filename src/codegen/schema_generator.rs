@@ -6,6 +6,7 @@ pub struct SchemaGenerator;
 
 impl SchemaGenerator {
     pub fn generate(name: &str, schema: &ObjectSchema) -> String {
+        println!("generate : name: {}", &name);
         // Handle enums
         if !schema.enum_values.is_empty() {
             return Self::generate_enum(name, schema, &schema.enum_values);
@@ -23,7 +24,7 @@ impl SchemaGenerator {
 
         // Handle object types
         if !schema.properties.is_empty() {
-            return Self::generate_struct(name, schema);
+            // return Self::generate_struct(name, schema);
         }
 
         // For simple type aliases (e.g., type definitions)
@@ -156,7 +157,7 @@ impl SchemaGenerator {
 
     fn generate_struct(name: &str, schema: &ObjectSchema) -> String {
         let mut output = String::new();
-
+        println!("{}", name);
         // Add doc comment
         output.push_str(&generate_doc_comment(&schema.description));
 
@@ -191,7 +192,7 @@ impl SchemaGenerator {
         is_required: bool,
     ) -> String {
         let mut output = String::new();
-
+        println!("gen field. name: {}",&name);
         let schema = match schema_ref {
             ObjectOrReference::Object(s) => s,
             ObjectOrReference::Ref { ref_path, .. } => {
