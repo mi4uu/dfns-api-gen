@@ -244,6 +244,12 @@ impl EndpointGenerator {
                                     example = self.extract_example_from_schema(&content.schema);
                                 }
 
+                                let status_name = status.replace("XX", "").replace("\"", "");
+                                let status_name = match status_name.as_str() {
+                                    "200" => String::new(),
+                                    _ => status_name,
+                                };
+
                                 // Determine the type to use
                                 let full_type = if let Some(schema) = &content.schema {
                                     match schema {
@@ -273,14 +279,14 @@ impl EndpointGenerator {
                                                         "{}{}Response{}",
                                                         to_pascal_case(&module),
                                                         to_pascal_case(method),
-                                                        status.replace("XX", "")
+                                                        status_name
                                                     )
                                                 } else {
                                                     format!(
                                                         "{}{}Response{}",
                                                         path_name,
                                                         to_pascal_case(method),
-                                                        status.replace("XX", "")
+                                                        status_name
                                                     )
                                                 };
                                                 format!("generated::{}::{}", module, type_name)

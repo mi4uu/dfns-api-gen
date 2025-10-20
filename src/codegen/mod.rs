@@ -67,7 +67,8 @@ impl Generator {
             output.push_str("    use super::*;\n\n");
 
             for (type_name, schema) in schemas {
-                let code = self.generate_schema_type(&type_name, &schema);
+                let code = self.generate_schema_type_in_module(&module_name, &type_name, &schema);
+
                 if !code.is_empty() {
                     // Indent the code for the module
                     let indented = code
@@ -158,6 +159,10 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
+                                let status = match status.as_str() {
+                                    "200" => String::new(),
+                                    _ => status,
+                                };
                                 let name = if path_name.is_empty() {
                                     // Use module name when path_name is empty
                                     format!(
@@ -235,5 +240,24 @@ impl Generator {
 
         self.generated_types.insert(name.to_string());
         SchemaGenerator::generate(name, schema)
+    }
+
+    fn generate_schema_type_in_module(
+        &mut self,
+        module_name: &str,
+        type_name: &str,
+        schema: &ObjectSchema,
+    ) -> String {
+        use schema_generator::SchemaGenerator;
+
+        // Use module::type as the key for deduplication to allow same type names in different modules
+        let dedup_key = format!("{}::{}", module_name, type_name);
+
+        if self.generated_types.contains(&dedup_key) {
+            return String::new();
+        }
+
+        self.generated_types.insert(dedup_key);
+        SchemaGenerator::generate(type_name, schema)
     }
 }
