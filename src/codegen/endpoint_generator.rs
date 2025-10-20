@@ -152,10 +152,50 @@ impl EndpointGenerator {
         if let Some(request_body) = &operation.request_body {
             match request_body {
                 ObjectOrReference::Object(body) => {
-                    if body.content.contains_key("application/json") {
-                        let type_name = format!("{}{}Request", path_name, to_pascal_case(method));
-                        let module = self.path_to_mod_and_name(path).0;
-                        return Some(format!("generated::{}::{}", module, type_name));
+                    if let Some(content) = body.content.get("application/json") {
+                        if let Some(schema) = &content.schema {
+                            match schema {
+                                ObjectOrReference::Ref { ref_path, .. } => {
+                                    // Use the referenced component schema directly
+                                    if let Some(schema_name) = ref_path.split('/').last() {
+                                        return Some(format!("generated::{}", schema_name));
+                                    } else {
+                                        return Some("serde_json::Value".to_string());
+                                    }
+                                }
+                                ObjectOrReference::Object(obj_schema) => {
+                                    // Check if this is a simple type or complex type that won't be generated
+                                    if obj_schema.properties.is_empty()
+                                        && obj_schema.enum_values.is_empty()
+                                    {
+                                        // Simple type (string, array, etc.) or complex type (oneOf, allOf)
+                                        // Use serde_json::Value as fallback
+                                        return Some("serde_json::Value".to_string());
+                                    } else {
+                                        // Inline schema with properties - should have a generated type
+                                        let module = self.path_to_mod_and_name(path).0;
+                                        let type_name = if path_name.is_empty() {
+                                            // Use module name when path_name is empty
+                                            format!(
+                                                "{}{}Request",
+                                                to_pascal_case(&module),
+                                                to_pascal_case(method)
+                                            )
+                                        } else {
+                                            format!(
+                                                "{}{}Request",
+                                                path_name,
+                                                to_pascal_case(method)
+                                            )
+                                        };
+                                        return Some(format!(
+                                            "generated::{}::{}",
+                                            module, type_name
+                                        ));
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 ObjectOrReference::Ref { ref_path, .. } => {
@@ -181,17 +221,8 @@ impl EndpointGenerator {
                     match response {
                         ObjectOrReference::Object(resp) => {
                             if let Some(content) = resp.content.get("application/json") {
-                                let type_name = format!(
-                                    "{}{}Response{}",
-                                    path_name,
-                                    to_pascal_case(method),
-                                    status.replace("XX", "")
-                                );
-                                let module = self.path_to_mod_and_name(path).0;
-                                let full_type = format!("generated::{}::{}", module, type_name);
-
-                                // Get example
-                                let example =
+                                // First try to get example from media type examples
+                                let mut example =
                                     content.examples.as_ref().and_then(|media_examples| {
                                         match media_examples {
                                             MediaTypeExamples::Examples { examples } => {
@@ -208,6 +239,59 @@ impl EndpointGenerator {
                                         }
                                     });
 
+                                // If no media type example, try to get example from schema
+                                if example.is_none() {
+                                    example = self.extract_example_from_schema(&content.schema);
+                                }
+
+                                // Determine the type to use
+                                let full_type = if let Some(schema) = &content.schema {
+                                    match schema {
+                                        ObjectOrReference::Ref { ref_path, .. } => {
+                                            // Use the referenced component schema directly
+                                            if let Some(schema_name) = ref_path.split('/').last() {
+                                                format!("generated::{}", schema_name)
+                                            } else {
+                                                // Fallback to serde_json::Value
+                                                "serde_json::Value".to_string()
+                                            }
+                                        }
+                                        ObjectOrReference::Object(obj_schema) => {
+                                            // Check if this is a simple type or complex type that won't be generated
+                                            if obj_schema.properties.is_empty()
+                                                && obj_schema.enum_values.is_empty()
+                                            {
+                                                // Simple type (string, array, etc.) or complex type (oneOf, allOf)
+                                                // Use serde_json::Value as fallback
+                                                "serde_json::Value".to_string()
+                                            } else {
+                                                // Inline schema with properties - should have a generated type
+                                                let module = self.path_to_mod_and_name(path).0;
+                                                let type_name = if path_name.is_empty() {
+                                                    // Use module name when path_name is empty
+                                                    format!(
+                                                        "{}{}Response{}",
+                                                        to_pascal_case(&module),
+                                                        to_pascal_case(method),
+                                                        status.replace("XX", "")
+                                                    )
+                                                } else {
+                                                    format!(
+                                                        "{}{}Response{}",
+                                                        path_name,
+                                                        to_pascal_case(method),
+                                                        status.replace("XX", "")
+                                                    )
+                                                };
+                                                format!("generated::{}::{}", module, type_name)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    // No schema - use serde_json::Value
+                                    "serde_json::Value".to_string()
+                                };
+
                                 return (Some(full_type), status.to_string(), example);
                             }
                         }
@@ -218,6 +302,36 @@ impl EndpointGenerator {
         }
 
         (None, "200".to_string(), None)
+    }
+
+    fn extract_example_from_schema(
+        &self,
+        schema_ref: &Option<ObjectOrReference<oas3::spec::ObjectSchema>>,
+    ) -> Option<serde_json::Value> {
+        if let Some(schema) = schema_ref {
+            match schema {
+                ObjectOrReference::Ref { ref_path, .. } => {
+                    // Extract schema name from ref path like "#/components/schemas/Wallet"
+                    if let Some(schema_name) = ref_path.split('/').last() {
+                        // Look up the schema in components
+                        if let Some(components) = &self.spec.components {
+                            if let Some(schema_obj) = components.schemas.get(schema_name) {
+                                match schema_obj {
+                                    ObjectOrReference::Object(s) => {
+                                        return s.example.clone();
+                                    }
+                                    _ => {}
+                                }
+                            }
+                        }
+                    }
+                }
+                ObjectOrReference::Object(s) => {
+                    return s.example.clone();
+                }
+            }
+        }
+        None
     }
 
     fn generate_handler(&self, endpoint: &Endpoint) -> String {
@@ -253,17 +367,17 @@ impl EndpointGenerator {
             output.push_str("    ),\n");
         }
 
-        // Add request body - use generic Value to avoid missing type errors
-        if endpoint.request_type.is_some() {
-            output.push_str("    request_body = serde_json::Value,\n");
+        // Add request body - use actual type if available
+        if let Some(ref req_type) = endpoint.request_type {
+            output.push_str(&format!("    request_body = {},\n", req_type));
         }
 
-        // Add responses - use generic Value type to avoid missing type errors
+        // Add responses - use actual type if available
         output.push_str("    responses(\n");
-        if endpoint.response_type.is_some() {
+        if let Some(ref resp_type) = endpoint.response_type {
             output.push_str(&format!(
-                "        (status = {}, body = serde_json::Value)\n",
-                endpoint.response_status
+                "        (status = {}, body = {})\n",
+                endpoint.response_status, resp_type
             ));
         } else {
             output.push_str(&format!(
@@ -296,16 +410,16 @@ impl EndpointGenerator {
             output.push_str(">,\n");
         }
 
-        // Add request body parameter - use generic Value
-        if endpoint.request_type.is_some() {
-            output.push_str("    Json(request): Json<serde_json::Value>,\n");
+        // Add request body parameter - use actual type if available
+        if let Some(ref req_type) = endpoint.request_type {
+            output.push_str(&format!("    Json(request): Json<{}>,\n", req_type));
         }
 
         output.push_str(")");
 
-        // Return type - use serde_json::Value to avoid missing type errors
-        if endpoint.response_type.is_some() {
-            output.push_str(" -> Json<serde_json::Value>");
+        // Return type - use actual type if available
+        if let Some(ref resp_type) = endpoint.response_type {
+            output.push_str(&format!(" -> Json<{}>", resp_type));
         } else {
             output.push_str(" -> StatusCode");
         }
@@ -313,23 +427,52 @@ impl EndpointGenerator {
         output.push_str(" {\n");
 
         // Generate mock response body
-        if endpoint.response_type.is_some() {
+        if let Some(ref resp_type) = endpoint.response_type {
             output.push_str("    // TODO: Replace with actual implementation\n");
-            if let Some(ref example) = endpoint.response_example {
-                // Use the example from OpenAPI spec
-                let example_json =
-                    serde_json::to_string_pretty(example).unwrap_or_else(|_| "{}".to_string());
-                output.push_str(&format!(
-                    "    Json(serde_json::json!(\n{}\n    ))\n",
-                    example_json
-                        .lines()
-                        .map(|l| format!("        {}", l))
-                        .collect::<Vec<_>>()
-                        .join("\n")
-                ));
+
+            if resp_type == "serde_json::Value" {
+                // For serde_json::Value, just return the JSON directly
+                if let Some(ref example) = endpoint.response_example {
+                    let example_json =
+                        serde_json::to_string_pretty(example).unwrap_or_else(|_| "{}".to_string());
+                    output.push_str("    Json(serde_json::json!(\n");
+                    output.push_str(
+                        &example_json
+                            .lines()
+                            .map(|l| format!("        {}", l))
+                            .collect::<Vec<_>>()
+                            .join("\n"),
+                    );
+                    output.push_str("\n    ))\n");
+                } else {
+                    output.push_str("    Json(serde_json::json!({}))\n");
+                }
             } else {
-                // Generate empty object
-                output.push_str("    Json(serde_json::json!({}))\n");
+                // For typed responses, deserialize from example or use default
+                if let Some(ref example) = endpoint.response_example {
+                    let example_json =
+                        serde_json::to_string_pretty(example).unwrap_or_else(|_| "{}".to_string());
+                    output.push_str("    let example_json = serde_json::json!(\n");
+                    output.push_str(
+                        &example_json
+                            .lines()
+                            .map(|l| format!("        {}", l))
+                            .collect::<Vec<_>>()
+                            .join("\n"),
+                    );
+                    output.push_str("\n    );\n");
+                    output.push_str(&format!(
+                        "    let response: {} = serde_json::from_value(example_json)\n",
+                        resp_type
+                    ));
+                    output.push_str(
+                        "        .expect(\"Failed to deserialize example into response type\");\n",
+                    );
+                    output.push_str("    Json(response)\n");
+                } else {
+                    // Use Default trait to create an instance
+                    output.push_str(&format!("    Json({}::default())\n", resp_type));
+                }
             }
         } else {
             output.push_str("    // TODO: Replace with actual implementation\n");

@@ -136,7 +136,12 @@ impl Generator {
                 ObjectOrReference::Object(body) => {
                     if let Some(content) = body.content.get("application/json") {
                         if let Some(schema) = &content.schema {
-                            let name = format!("{}{}Request", path_name, method);
+                            let name = if path_name.is_empty() {
+                                // Use module name when path_name is empty
+                                format!("{}{}Request", to_pascal_case(mod_name), method)
+                            } else {
+                                format!("{}{}Request", path_name, method)
+                            };
                             self.extract_schema_to_module(mod_name, &name, schema);
                         }
                     }
@@ -153,7 +158,17 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
-                                let name = format!("{}{}Response{}", path_name, method, status);
+                                let name = if path_name.is_empty() {
+                                    // Use module name when path_name is empty
+                                    format!(
+                                        "{}{}Response{}",
+                                        to_pascal_case(mod_name),
+                                        method,
+                                        status
+                                    )
+                                } else {
+                                    format!("{}{}Response{}", path_name, method, status)
+                                };
                                 self.extract_schema_to_module(mod_name, &name, schema);
                             }
                         }

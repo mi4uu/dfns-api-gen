@@ -2678,7 +2678,7 @@ pub mod exchanges {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
-    pub struct GETResponse200 {
+    pub struct ExchangesGETResponse200 {
         /// Current page items.
         pub items: Vec<serde_json::Value>,
         /// token to use as `paginationToken` to request the next page.
@@ -2688,7 +2688,7 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
-    pub enum POSTRequestKind {
+    pub enum ExchangesPOSTRequestKind {
     #[default]
         Binance,
         Kraken,
@@ -2697,7 +2697,7 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
-    pub struct POSTRequestReadConfiguration {
+    pub struct ExchangesPOSTRequestReadConfiguration {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub otp: Option<String>,
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2709,7 +2709,7 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
-    pub struct POSTRequestWriteConfiguration {
+    pub struct ExchangesPOSTRequestWriteConfiguration {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub otp: Option<String>,
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2721,18 +2721,18 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
-    pub struct POSTRequest {
-        pub kind: POSTRequestKind,
+    pub struct ExchangesPOSTRequest {
+        pub kind: ExchangesPOSTRequestKind,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         #[serde(rename = "readConfiguration")]
-        pub read_configuration: POSTRequestReadConfiguration,
+        pub read_configuration: ExchangesPOSTRequestReadConfiguration,
         #[serde(rename = "writeConfiguration")]
-        pub write_configuration: POSTRequestWriteConfiguration,
+        pub write_configuration: ExchangesPOSTRequestWriteConfiguration,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
-    pub enum POSTResponse200Kind {
+    pub enum ExchangesPOSTResponse200Kind {
     #[default]
         Binance,
         Kraken,
@@ -2741,11 +2741,11 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
-    pub struct POSTResponse200 {
+    pub struct ExchangesPOSTResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
         pub id: String,
-        pub kind: POSTResponse200Kind,
+        pub kind: ExchangesPOSTResponse200Kind,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
     }
@@ -2883,6 +2883,58 @@ pub mod exchanges {
 pub mod feesponsors {
     use super::*;
 
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct FeesponsorsGETResponse200 {
+        pub items: Vec<serde_json::Value>,
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct FeesponsorsPOSTRequest {
+        /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
+        #[serde(rename = "allowEndUser")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub allow_end_user: Option<bool>,
+        /// Nickname for the Fee Sponsor. This will be displayed on the transfer modal in the dashboard.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub name: Option<String>,
+        /// Id of the wallet that will be used to sponsor the fee for other wallets.
+        #[serde(rename = "walletId")]
+        pub wallet_id: String,
+    }
+
+    /// Fee sponsor status.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum FeesponsorsPOSTResponse200Status {
+    #[default]
+        Active,
+        Deactivated,
+        Archived,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct FeesponsorsPOSTResponse200 {
+        /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
+        #[serde(rename = "allowEndUser")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub allow_end_user: Option<bool>,
+        /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date (must be UTC). When the Fee Sponsor was created.
+        #[serde(rename = "dateCreated")]
+        pub date_created: String,
+        /// Fee Sponsor id.
+        pub id: String,
+        /// Nickname for the Fee Sponsor. This is displayed on the transfer modal in the dashboard.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub name: Option<String>,
+        pub network: serde_json::Value,
+        pub status: FeesponsorsPOSTResponse200Status,
+        /// Id of the wallet that is used to sponsor the fee for other wallets
+        #[serde(rename = "walletId")]
+        pub wallet_id: String,
+    }
+
     /// Fee sponsor status.
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
     pub enum FeeSponsorIdGETResponse200Status {
@@ -3015,6 +3067,103 @@ pub mod feesponsors {
 
 pub mod keys {
     use super::*;
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct KeysGETResponse200 {
+        pub items: Vec<serde_json::Value>,
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum KeysPOSTRequestCurve {
+        #[serde(rename = "ed25519")]
+    #[default]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum KeysPOSTRequestScheme {
+    #[default]
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct KeysPOSTRequest {
+        pub curve: KeysPOSTRequestCurve,
+        #[serde(rename = "delayDelegation")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub delay_delegation: Option<bool>,
+        #[serde(rename = "delegateTo")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub delegate_to: Option<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub name: Option<String>,
+        pub scheme: KeysPOSTRequestScheme,
+        #[serde(rename = "storeId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub store_id: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum KeysPOSTResponse200Curve {
+        #[serde(rename = "ed25519")]
+    #[default]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum KeysPOSTResponse200Scheme {
+    #[default]
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum KeysPOSTResponse200Status {
+    #[default]
+        Active,
+        Archived,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct KeysPOSTResponse200 {
+        pub curve: KeysPOSTResponse200Curve,
+        pub custodial: bool,
+        #[serde(rename = "dateCreated")]
+        pub date_created: String,
+        #[serde(rename = "dateDeleted")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub date_deleted: Option<String>,
+        #[serde(rename = "dateExported")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub date_exported: Option<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub exported: Option<bool>,
+        pub id: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub imported: Option<bool>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub name: Option<String>,
+        #[serde(rename = "publicKey")]
+        pub public_key: String,
+        pub scheme: KeysPOSTResponse200Scheme,
+        pub status: KeysPOSTResponse200Status,
+    }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
     pub enum ImportPOSTRequestCurve {
@@ -3507,6 +3656,11 @@ pub mod keys {
 pub mod keystores {
     use super::*;
 
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct KeystoresGETResponse200 {
+        pub items: Vec<serde_json::Value>,
+    }
+
 }
 
 pub mod networks {
@@ -3605,6 +3759,42 @@ pub mod permissions {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct PermissionsGETResponse200 {
+        pub items: Vec<serde_json::Value>,
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct PermissionsPOSTRequest {
+        pub name: String,
+        pub operations: Vec<serde_json::Value>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum PermissionsPOSTResponse200Status {
+    #[default]
+        Active,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct PermissionsPOSTResponse200 {
+        #[serde(rename = "dateCreated")]
+        pub date_created: String,
+        #[serde(rename = "dateUpdated")]
+        pub date_updated: String,
+        pub id: String,
+        #[serde(rename = "isArchived")]
+        pub is_archived: bool,
+        #[serde(rename = "isImmutable")]
+        pub is_immutable: bool,
+        pub name: String,
+        pub operations: Vec<String>,
+        pub status: PermissionsPOSTResponse200Status,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
     pub struct PermissionIdPUTRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
@@ -3696,6 +3886,11 @@ pub mod permissions {
 pub mod signers {
     use super::*;
 
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct SignersGETResponse200 {
+        pub clusters: Vec<serde_json::Value>,
+    }
+
 }
 
 pub mod staking {
@@ -3727,6 +3922,51 @@ pub mod staking {
 
 pub mod swaps {
     use super::*;
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct SwapsGETResponse200 {
+        /// Current page items.
+        pub items: Vec<Swap>,
+        /// token to use as `paginationToken` to request the next page.
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    /// Provided for this swap. Used for attesting that the swap is being created with the same parameters as the quote.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum SwapsPOSTRequestProvider {
+    #[default]
+        UniswapX,
+        UniswapClassic,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct SwapsPOSTRequest {
+        pub provider: SwapsPOSTRequestProvider,
+        /// Quote to use for this swap.
+        #[serde(rename = "quoteId")]
+        pub quote_id: String,
+        /// An optional reference for this Swap.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub reference: Option<String>,
+        /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you are willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%. Used for attesting that the swap is being created with the same parameters as the quote. 
+        #[serde(rename = "slippageBps")]
+        pub slippage_bps: f64,
+        /// The source asset that will be spent on the Swap transaction. Used for attesting that the swap is being created with the same parameters as the quote.
+        #[serde(rename = "sourceAsset")]
+        pub source_asset: serde_json::Value,
+        /// The target asset that will be received with the Swap transaction. Used for attesting that the swap is being created with the same parameters as the quote.
+        #[serde(rename = "targetAsset")]
+        pub target_asset: serde_json::Value,
+        /// Id of the Dfns wallet receiving the target asset. Currently this value must be the same as the `walletId`. Used for attesting that the swap is being created with the same parameters as the quote.
+        #[serde(rename = "targetWalletId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub target_wallet_id: Option<String>,
+        /// Id of the Dfns wallet spending the sourceAsset. Used for attesting that the swap is being created with the same parameters as the quote.
+        #[serde(rename = "walletId")]
+        pub wallet_id: String,
+    }
 
     /// Swap provider.
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
@@ -3860,6 +4100,177 @@ pub mod v2 {
 
 pub mod wallets {
     use super::*;
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WalletsGETResponse200 {
+        pub items: Vec<Wallet>,
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    /// Network used for the wallet.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum WalletsPOSTRequestNetwork {
+    #[default]
+        Algorand,
+        AlgorandTestnet,
+        Aptos,
+        AptosTestnet,
+        ArbitrumOne,
+        ArbitrumSepolia,
+        AvalancheC,
+        AvalancheCFuji,
+        BabylonGenesis,
+        BabylonTestnet5,
+        Base,
+        BaseSepolia,
+        Berachain,
+        BerachainBepolia,
+        Bitcoin,
+        BitcoinSignet,
+        BitcoinTestnet3,
+        BitcoinCash,
+        Bob,
+        BobSepolia,
+        Bsc,
+        BscTestnet,
+        Canton,
+        CantonTestnet,
+        Cardano,
+        CardanoPreprod,
+        Celo,
+        CeloAlfajores,
+        Codex,
+        CodexSepolia,
+        CosmosHub4,
+        CosmosIcsTestnet,
+        Dogecoin,
+        Ethereum,
+        EthereumGoerli,
+        EthereumSepolia,
+        EthereumHolesky,
+        EthereumHoodi,
+        FantomOpera,
+        FantomTestnet,
+        FlareC,
+        FlareCCoston2,
+        Hedera,
+        HederaTestnet,
+        Ink,
+        InkSepolia,
+        InternetComputer,
+        Ion,
+        IonTestnet,
+        Iota,
+        IotaTestnet,
+        KadenaTestnet4,
+        Kadena,
+        Kaspa,
+        Kusama,
+        Litecoin,
+        Near,
+        NearTestnet,
+        Optimism,
+        OptimismSepolia,
+        Origyn,
+        Plume,
+        PlumeSepolia,
+        Polkadot,
+        Polygon,
+        PolygonAmoy,
+        Polymesh,
+        PolymeshTestnet,
+        Race,
+        RaceSepolia,
+        SeiAtlantic2,
+        SeiPacific1,
+        Solana,
+        SolanaDevnet,
+        Stellar,
+        StellarTestnet,
+        Sui,
+        SuiTestnet,
+        Tsc,
+        TscTestnet1,
+        Tezos,
+        TezosGhostnet,
+        Ton,
+        TonTestnet,
+        Tron,
+        TronNile,
+        Westend,
+        XrpLedger,
+        XrpLedgerTestnet,
+    }
+
+    /// Use this to specify the new key curve for networks that support multiple key formats.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum WalletsPOSTRequestSigningKeyCurve {
+        #[serde(rename = "ed25519")]
+    #[default]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    /// Use this to specify the new key scheme for networks that support multiple key formats. ex. use `Schnorr` to create a `Bitcoin Taproot` wallet.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum WalletsPOSTRequestSigningKeyScheme {
+    #[default]
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    /// Options for the wallet's underlying key
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WalletsPOSTRequestSigningKey {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub curve: Option<WalletsPOSTRequestSigningKeyCurve>,
+        /// Use this parameter to create a wallet from an existing key. This enables one key to be used across multiple networks and have the same address if networks share the same address format, ex. `Ethereum` and `Polygon`. If specified, requires the `Keys:Reuse` permission. If the key is delegated to an end user, then the new wallet will be automatically delegated to the same end user.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub id: Option<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub scheme: Option<WalletsPOSTRequestSigningKeyScheme>,
+        /// Use this to specify the key store the key material is saved to.
+        #[serde(rename = "storeId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub store_id: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WalletsPOSTRequest {
+        /// Specify if you want to create the wallet from a service account and later [delegate it](/api-reference/keys/delegate-key) to an end user.
+        #[serde(rename = "delayDelegation")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub delay_delegation: Option<bool>,
+        /// ID of the end user to delegate this wallet to. The wallet will only be usable by the end user. More info [here](https://docs.dfns.co/advanced/delegated-signing).
+        #[serde(rename = "delegateTo")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub delegate_to: Option<String>,
+        /// User-defined value that can be used to correlate the entity with an external system
+        #[serde(rename = "externalId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub external_id: Option<String>,
+        /// Wallet nickname.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub name: Option<String>,
+        pub network: WalletsPOSTRequestNetwork,
+        /// Options for the wallet's underlying key
+        #[serde(rename = "signingKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub signing_key: Option<WalletsPOSTRequestSigningKey>,
+        /// List of tags to be created for this wallet. If specified, requires the `Wallets:Tags:Add` permission, like the [Tag Wallet](https://docs.dfns.co/api-reference/wallets/tag-wallet) endpoint.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub tags: Option<Vec<String>>,
+        /// Id of the validator on which the wallet is created for Canton networks
+        #[serde(rename = "validatorId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub validator_id: Option<String>,
+    }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
     pub struct WalletIdPUTRequest {
@@ -4371,6 +4782,65 @@ pub mod wallets {
 pub mod webhooks {
     use super::*;
 
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WebhooksGETResponse200 {
+        pub items: Vec<serde_json::Value>,
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
+
+    /// Webhook status
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum WebhooksPOSTRequestStatus {
+    #[default]
+        Enabled,
+        Disabled,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WebhooksPOSTRequest {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub description: Option<String>,
+        /// All events this webhook is subscribed to.
+        pub events: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub status: Option<WebhooksPOSTRequestStatus>,
+        /// Webhook url
+        pub url: String,
+    }
+
+    /// Webhook status
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
+    pub enum WebhooksPOSTResponse200Status {
+    #[default]
+        Enabled,
+        Disabled,
+    }
+
+    /// Webhook
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct WebhooksPOSTResponse200 {
+        /// Date when webhook was created
+        #[serde(rename = "dateCreated")]
+        pub date_created: String,
+        /// Date when webhook was last updated
+        #[serde(rename = "dateUpdated")]
+        pub date_updated: String,
+        /// Short description this webhook's purpose
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub description: Option<String>,
+        /// All events this webhook is subscribed to.
+        pub events: Vec<serde_json::Value>,
+        /// Webhook ID
+        pub id: String,
+        /// The secret associated with this webhook, with which webhook requests will be signed.
+        pub secret: String,
+        pub status: WebhooksPOSTResponse200Status,
+        /// Webhook url
+        pub url: String,
+    }
+
     /// Webhook status
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
     pub enum WebhookIdGETResponse200Status {
@@ -4564,6 +5034,16 @@ pub mod webhooks {
 
 pub mod yields {
     use super::*;
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
+    pub struct YieldsGETResponse200 {
+        /// Current page items.
+        pub items: Vec<Yield>,
+        /// token to use as `paginationToken` to request the next page.
+        #[serde(rename = "nextPageToken")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub next_page_token: Option<String>,
+    }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
     pub struct YieldIdActionsGETResponse200 {
