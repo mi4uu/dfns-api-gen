@@ -4,6 +4,7 @@ A Rust code generator that converts OpenAPI 3.1.x schemas into idiomatic Rust st
 
 ## Features
 
+- **Complete Schema Coverage**: Extracts types from both `components/schemas` AND inline schemas in API paths (request/response bodies)
 - **Automatic Type Generation**: Converts OpenAPI schemas into Rust types
 - **Full Serde Support**: Generated types include `Serialize` and `Deserialize` derives
 - **Proper Naming Conventions**: 
@@ -14,6 +15,7 @@ A Rust code generator that converts OpenAPI 3.1.x schemas into idiomatic Rust st
 - **Enum Support**: Handles string enums and `oneOf` patterns
 - **Complex Types**: Supports nested objects, arrays, references, and `allOf` composition
 - **Type Mapping**: Maps OpenAPI types to appropriate Rust types (String, i32, i64, f32, f64, bool, Vec<T>)
+- **Deterministic Output**: Same OpenAPI spec always generates identical Rust code
 
 ## Usage
 
@@ -28,7 +30,7 @@ cargo run
 This will:
 1. Fetch the OpenAPI spec from `https://docs.dfns.co/openapi.yaml`
 2. Save it as `openapi.json`
-3. Generate Rust code in `src/generated.rs`
+3. Generate Rust code in `src/generated.rs` (~2,600 lines, 181 types from 117 API endpoints)
 
 ### Using Generated Types
 
@@ -76,7 +78,7 @@ The generator is built with a modular architecture:
 
 ## Generated Code Features
 
-### Enums
+### Component Schemas (Reusable Types)
 
 ```rust
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -86,11 +88,7 @@ pub enum BlockchainKind {
     Bitcoin,
     // ... more variants
 }
-```
 
-### Structs with Field Attributes
-
-```rust
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct CantonValidator {
     #[serde(rename = "dateCreated")]
@@ -105,6 +103,30 @@ pub struct CantonValidator {
     /// Organization id.
     #[serde(rename = "orgId")]
     pub org_id: String,
+}
+```
+
+### API Path Types (Request/Response Bodies)
+
+```rust
+// Request body for POST /auth/action/init
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct AuthActionInitPostRequest {
+    #[serde(rename = "userActionHttpMethod")]
+    pub user_action_http_method: String,
+    
+    #[serde(rename = "userActionHttpPath")]
+    pub user_action_http_path: String,
+    
+    #[serde(rename = "userActionPayload")]
+    pub user_action_payload: String,
+}
+
+// Response body for GET /agreements/latest-unaccepted (200)
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct AgreementsLatestUnacceptedGetResponse200 {
+    #[serde(rename = "latestAgreement")]
+    pub latest_agreement: serde_json::Value,
 }
 ```
 
