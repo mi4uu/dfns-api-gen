@@ -4,12 +4,14 @@ mod utils;
 
 use crate::codegen::utils::to_pascal_case;
 use oas3::spec::{ObjectOrReference, ObjectSchema, Spec};
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, HashSet};
 
 pub struct Generator {
     spec: Spec,
     generated_types: HashSet<String>,
-    inline_schemas: HashMap<String, ObjectSchema>,
+    // Map: module_name -> [(type_name, schema)]
+    module_schemas: BTreeMap<String, Vec<(String, ObjectSchema)>>,
+    component_schemas: Vec<(String, ObjectSchema)>,
 }
 
 impl Generator {
@@ -17,7 +19,8 @@ impl Generator {
         Self {
             spec,
             generated_types: HashSet::new(),
-            inline_schemas: HashMap::new(),
+            module_schemas: BTreeMap::new(),
+            component_schemas: Vec::new(),
         }
     }
 
@@ -32,40 +35,55 @@ impl Generator {
         // First, extract all inline schemas from paths
         self.extract_schemas_from_paths();
 
-        // Generate types from components/schemas
-        let schemas_to_generate: Vec<(String, ObjectOrReference<ObjectSchema>)> =
-            if let Some(components) = &self.spec.components {
-                let mut items: Vec<_> = components
-                    .schemas
-                    .iter()
-                    .map(|(name, schema_ref)| (name.clone(), schema_ref.clone()))
-                    .collect();
-                items.sort_by(|a, b| a.0.cmp(&b.0));
-                items
-            } else {
-                vec![]
-            };
+        // Collect component schemas
+        if let Some(components) = &self.spec.components {
+            for (name, schema_ref) in &components.schemas {
+                if let ObjectOrReference::Object(obj_schema) = schema_ref {
+                    self.component_schemas
+                        .push((name.clone(), obj_schema.clone()));
+                }
+            }
+            self.component_schemas.sort_by(|a, b| a.0.cmp(&b.0));
+        }
 
-        for (schema_name, schema_ref) in schemas_to_generate {
-            let code = self.generate_schema_type(&schema_name, &schema_ref);
+        // Generate component schemas (top-level, not in modules)
+        let components_to_generate = self.component_schemas.clone();
+        for (schema_name, schema) in components_to_generate {
+            let code = self.generate_schema_type(&schema_name, &schema);
             if !code.is_empty() {
                 output.push_str(&code);
                 output.push_str("\n\n");
             }
         }
 
-        // Generate types from inline schemas found in paths
-        let mut inline_names: Vec<_> = self.inline_schemas.keys().cloned().collect();
-        inline_names.sort();
+        // Generate modules for path-based schemas
+        let modules_to_generate = self.module_schemas.clone();
 
-        for name in inline_names {
-            if let Some(schema) = self.inline_schemas.get(&name).cloned() {
-                let code = self.generate_schema_type(&name, &ObjectOrReference::Object(schema));
+        for (module_name, schemas) in modules_to_generate {
+            output.push_str(&format!("pub mod {} {{\n", module_name));
+            output.push_str("    use super::*;\n\n");
+
+            for (type_name, schema) in schemas {
+                let code = self.generate_schema_type(&type_name, &schema);
                 if !code.is_empty() {
-                    output.push_str(&code);
+                    // Indent the code for the module
+                    let indented = code
+                        .lines()
+                        .map(|line| {
+                            if line.is_empty() {
+                                String::new()
+                            } else {
+                                format!("    {}", line)
+                            }
+                        })
+                        .collect::<Vec<_>>()
+                        .join("\n");
+                    output.push_str(&indented);
                     output.push_str("\n\n");
                 }
             }
+
+            output.push_str("}\n\n");
         }
 
         output
@@ -80,31 +98,31 @@ impl Generator {
         };
 
         for (path, path_item) in paths_clone {
-            // Clean up path for use in type names
-            let path_name = self.path_to_name(&path);
-            let (mod_name, path_name) = self.path_to_mod_and_name(&path);
+            // Get module name and path name
+            let (mod_name, path_name) = Self::path_to_mod_and_name(&path);
 
             // Check each operation (get, post, put, delete, etc.)
             if let Some(op) = &path_item.get {
-                self.extract_schemas_from_operation(&path_name, "Get", op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "Get", &op);
             }
             if let Some(op) = &path_item.post {
-                self.extract_schemas_from_operation(&path_name, "Post", op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "Post", &op);
             }
             if let Some(op) = &path_item.put {
-                self.extract_schemas_from_operation(&path_name, "Put", op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "Put", &op);
             }
             if let Some(op) = &path_item.delete {
-                self.extract_schemas_from_operation(&path_name, "Delete", op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "Delete", &op);
             }
             if let Some(op) = &path_item.patch {
-                self.extract_schemas_from_operation(&path_name, "Patch", op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "Patch", &op);
             }
         }
     }
 
     fn extract_schemas_from_operation(
         &mut self,
+        mod_name: &str,
         path_name: &str,
         method: &str,
         operation: &oas3::spec::Operation,
@@ -116,7 +134,7 @@ impl Generator {
                     if let Some(content) = body.content.get("application/json") {
                         if let Some(schema) = &content.schema {
                             let name = format!("{}{}Request", path_name, method);
-                            self.extract_schema_from_media(&name, schema);
+                            self.extract_schema_to_module(mod_name, &name, schema);
                         }
                     }
                 }
@@ -132,10 +150,8 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
-
                                 let name = format!("{}{}Response{}", path_name, method, status);
-                                println!("Extract response schemas : new name : {}, path name: {},  method: {}", &name, path_name, method);
-                                self.extract_schema_from_media(&name, schema);
+                                self.extract_schema_to_module(mod_name, &name, schema);
                             }
                         }
                     }
@@ -145,13 +161,20 @@ impl Generator {
         }
     }
 
-    fn extract_schema_from_media(&mut self, name: &str, schema: &ObjectOrReference<ObjectSchema>) {
+    fn extract_schema_to_module(
+        &mut self,
+        mod_name: &str,
+        type_name: &str,
+        schema: &ObjectOrReference<ObjectSchema>,
+    ) {
         match schema {
             ObjectOrReference::Object(obj_schema) => {
                 // Only add if it has properties or is an enum
                 if !obj_schema.properties.is_empty() || !obj_schema.enum_values.is_empty() {
-                    self.inline_schemas
-                        .insert(name.to_string(), obj_schema.clone());
+                    self.module_schemas
+                        .entry(mod_name.to_string())
+                        .or_insert_with(Vec::new)
+                        .push((type_name.to_string(), obj_schema.clone()));
                 }
             }
             ObjectOrReference::Ref { .. } => {
@@ -160,21 +183,9 @@ impl Generator {
         }
     }
 
-    fn path_to_name(&self, path: &str) -> String {
-        // Convert /path/{param}/action to PathParamAction
-        path.split('/')
-            .filter(|s| !s.is_empty())
-            .map(|s| {
-                // Remove parameter braces
-                let cleaned = s.replace('{', "").replace('}', "");
-                to_pascal_case(&cleaned)
-            })
-            .collect::<Vec<_>>()
-            .join("")
-    }
-    fn path_to_mod_and_name(&self, path: &str) -> (String, String) {
-        // Convert /path/{param}/action to PathParamAction
-        let pathandmod = path
+    fn path_to_mod_and_name(path: &str) -> (String, String) {
+        // Convert /path/{param}/action to ("path", "ParamAction")
+        let parts: Vec<String> = path
             .split('/')
             .filter(|s| !s.is_empty())
             .map(|s| {
@@ -182,21 +193,22 @@ impl Generator {
                 let cleaned = s.replace('{', "").replace('}', "");
                 to_pascal_case(&cleaned)
             })
-            .collect::<Vec<_>>();
-        // let modname=pathandmod.first().unwrap();
-        let (modname, name) = pathandmod.split_at(1);
-        let name = name.join("");
-        (
-            String::from(modname.join("").to_lowercase()),
-            String::from(name),
-        )
+            .collect();
+
+        if parts.is_empty() {
+            return ("root".to_string(), String::new());
+        }
+
+        // First part becomes the module name (lowercase)
+        let mod_name = parts[0].to_lowercase();
+
+        // Rest becomes the type name prefix
+        let type_name_prefix = parts[1..].join("");
+
+        (mod_name, type_name_prefix)
     }
 
-    fn generate_schema_type(
-        &mut self,
-        name: &str,
-        schema_ref: &ObjectOrReference<ObjectSchema>,
-    ) -> String {
+    fn generate_schema_type(&mut self, name: &str, schema: &ObjectSchema) -> String {
         use schema_generator::SchemaGenerator;
 
         if self.generated_types.contains(name) {
@@ -204,13 +216,6 @@ impl Generator {
         }
 
         self.generated_types.insert(name.to_string());
-
-        match schema_ref {
-            ObjectOrReference::Object(obj_schema) => SchemaGenerator::generate(name, obj_schema),
-            ObjectOrReference::Ref { .. } => {
-                // Handle $ref - for now we'll skip, as they'll be generated when we encounter the actual definition
-                String::new()
-            }
-        }
+        SchemaGenerator::generate(name, schema)
     }
 }

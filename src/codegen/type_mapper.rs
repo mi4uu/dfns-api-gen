@@ -28,6 +28,13 @@ impl TypeMapper {
                 },
                 Schema::Boolean(_) => "serde_json::Value".to_string(),
             };
+            if item_type
+                .clone()
+                .eq_ignore_ascii_case(String::from("serde_json::Value").as_str())
+            {
+                println!("!!!!!!  {}", &item_type);
+                println!("!!!!!!  {:#?}", &schema.items);
+            }
             return format!("Vec<{}>", item_type);
         }
 
