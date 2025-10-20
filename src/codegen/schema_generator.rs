@@ -41,7 +41,9 @@ impl SchemaGenerator {
         output.push_str(&generate_doc_comment(&schema.description));
 
         // Add derives
-        output.push_str("#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]\n");
+        output.push_str(
+            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
+        );
 
         // Start enum
         output.push_str(&format!("pub enum {} {{\n", name));

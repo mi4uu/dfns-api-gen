@@ -1,7 +1,7 @@
 mod codegen;
 
-#[allow(dead_code)]
-pub mod generated;
+// #[allow(dead_code)]
+// pub mod generated;
 
 use codegen::Generator;
 use std::fs;

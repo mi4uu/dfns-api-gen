@@ -68,11 +68,11 @@ where
     }
 }
 
-#[utoipa::path(get, path = "/wallets", responses((status = OK, body = dfns_gen::generated::wallets::WalletIdAssetsGetResponse200)))]
+#[utoipa::path(get, path = "/wallets", responses((status = OK, body = dfns_gen::generated::wallets::WalletIdAssetsGetResponse)))]
 async fn get_wallet(
     Json(params): Json<dfns_gen::generated::wallets::WalletIdDelegatePostRequest>,
-) -> Json<dfns_gen::generated::wallets::WalletIdAssetsGetResponse200> {
-    Json(dfns_gen::generated::wallets::WalletIdAssetsGetResponse200 {
+) -> Json<dfns_gen::generated::wallets::WalletIdAssetsGetResponse> {
+    Json(dfns_gen::generated::wallets::WalletIdAssetsGetResponse {
         wallet_id: String::new(),
         net_worth: None,
         network: dfns_gen::generated::Network::Algorand,

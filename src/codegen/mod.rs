@@ -150,7 +150,7 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
-                                let name = format!("{}{}Response{}", path_name, method, status);
+                                let name = format!("{}{}Response", path_name, method);
                                 self.extract_schema_to_module(mod_name, &name, schema);
                             }
                         }
