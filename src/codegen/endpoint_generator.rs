@@ -109,7 +109,18 @@ impl EndpointGenerator {
 
     fn create_endpoint(&self, path: &str, method: &str, operation: &Operation) -> Endpoint {
         let (module_name, path_name) = self.path_to_mod_and_name(path);
-        let handler_name = format!("{}_{}", method.to_lowercase(), to_snake_case(&path_name));
+
+        // Always include module name to avoid collisions, then add path_name if present
+        let handler_name = if path_name.is_empty() {
+            format!("{}_{}", method.to_lowercase(), module_name)
+        } else {
+            format!(
+                "{}_{}_{}",
+                method.to_lowercase(),
+                module_name,
+                to_snake_case(&path_name)
+            )
+        };
 
         // Get request type
         let request_type = self.get_request_type(path, &path_name, method, operation);
@@ -228,26 +239,31 @@ impl EndpointGenerator {
         // Add path parameters
         if !path_params.is_empty() {
             output.push_str("    params(\n");
-            for param in &path_params {
+            for (i, param) in path_params.iter().enumerate() {
                 output.push_str(&format!(
-                    "        (\"{}\" = String, Path, description = \"{}\")),\n",
+                    "        (\"{}\" = String, Path, description = \"{}\")",
                     param, param
                 ));
+                if i < path_params.len() - 1 {
+                    output.push_str(",\n");
+                } else {
+                    output.push_str("\n");
+                }
             }
             output.push_str("    ),\n");
         }
 
-        // Add request body
-        if let Some(ref req_type) = endpoint.request_type {
-            output.push_str(&format!("    request_body = {},\n", req_type));
+        // Add request body - use generic Value to avoid missing type errors
+        if endpoint.request_type.is_some() {
+            output.push_str("    request_body = serde_json::Value,\n");
         }
 
-        // Add responses
+        // Add responses - use generic Value type to avoid missing type errors
         output.push_str("    responses(\n");
-        if let Some(ref resp_type) = endpoint.response_type {
+        if endpoint.response_type.is_some() {
             output.push_str(&format!(
-                "        (status = {}, body = {})\n",
-                endpoint.response_status, resp_type
+                "        (status = {}, body = serde_json::Value)\n",
+                endpoint.response_status
             ));
         } else {
             output.push_str(&format!(
@@ -280,16 +296,16 @@ impl EndpointGenerator {
             output.push_str(">,\n");
         }
 
-        // Add request body parameter
-        if let Some(ref req_type) = endpoint.request_type {
-            output.push_str(&format!("    Json(request): Json<{}>,\n", req_type));
+        // Add request body parameter - use generic Value
+        if endpoint.request_type.is_some() {
+            output.push_str("    Json(request): Json<serde_json::Value>,\n");
         }
 
         output.push_str(")");
 
-        // Return type
-        if let Some(ref resp_type) = endpoint.response_type {
-            output.push_str(&format!(" -> Json<{}>", resp_type));
+        // Return type - use serde_json::Value to avoid missing type errors
+        if endpoint.response_type.is_some() {
+            output.push_str(" -> Json<serde_json::Value>");
         } else {
             output.push_str(" -> StatusCode");
         }
@@ -297,26 +313,23 @@ impl EndpointGenerator {
         output.push_str(" {\n");
 
         // Generate mock response body
-        if let Some(ref resp_type) = endpoint.response_type {
+        if endpoint.response_type.is_some() {
+            output.push_str("    // TODO: Replace with actual implementation\n");
             if let Some(ref example) = endpoint.response_example {
-                // Try to use the example
+                // Use the example from OpenAPI spec
+                let example_json =
+                    serde_json::to_string_pretty(example).unwrap_or_else(|_| "{}".to_string());
                 output.push_str(&format!(
-                    "    // TODO: Replace with actual implementation\n"
+                    "    Json(serde_json::json!(\n{}\n    ))\n",
+                    example_json
+                        .lines()
+                        .map(|l| format!("        {}", l))
+                        .collect::<Vec<_>>()
+                        .join("\n")
                 ));
-                output.push_str(&format!(
-                    "    let response: {} = serde_json::from_value(serde_json::json!({})).unwrap_or_default();\n",
-                    resp_type,
-                    serde_json::to_string_pretty(example).unwrap_or_else(|_| "{}".to_string())
-                ));
-                output.push_str("    Json(response)\n");
             } else {
-                // No example, generate empty object
-                output.push_str("    // TODO: Replace with actual implementation\n");
-                output.push_str(&format!(
-                    "    let response: {} = serde_json::from_value(serde_json::json!({{}})).unwrap();\n",
-                    resp_type
-                ));
-                output.push_str("    Json(response)\n");
+                // Generate empty object
+                output.push_str("    Json(serde_json::json!({}))\n");
             }
         } else {
             output.push_str("    // TODO: Replace with actual implementation\n");

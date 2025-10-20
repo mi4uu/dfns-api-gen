@@ -106,19 +106,19 @@ impl Generator {
 
             // Check each operation (get, post, put, delete, etc.)
             if let Some(op) = &path_item.get {
-                self.extract_schemas_from_operation(&mod_name, &path_name, "Get", &op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "GET", &op);
             }
             if let Some(op) = &path_item.post {
-                self.extract_schemas_from_operation(&mod_name, &path_name, "Post", &op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "POST", &op);
             }
             if let Some(op) = &path_item.put {
-                self.extract_schemas_from_operation(&mod_name, &path_name, "Put", &op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "PUT", &op);
             }
             if let Some(op) = &path_item.delete {
-                self.extract_schemas_from_operation(&mod_name, &path_name, "Delete", &op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "DELETE", &op);
             }
             if let Some(op) = &path_item.patch {
-                self.extract_schemas_from_operation(&mod_name, &path_name, "Patch", &op);
+                self.extract_schemas_from_operation(&mod_name, &path_name, "PATCH", &op);
             }
         }
     }
@@ -153,7 +153,7 @@ impl Generator {
                         if let Some(content) = resp.content.get("application/json") {
                             if let Some(schema) = &content.schema {
                                 let status = status_code.replace("XX", "").replace("\"", "");
-                                let name = format!("{}{}Response", path_name, method);
+                                let name = format!("{}{}Response{}", path_name, method, status);
                                 self.extract_schema_to_module(mod_name, &name, schema);
                             }
                         }

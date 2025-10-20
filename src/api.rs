@@ -9,20 +9,19 @@ use utoipa_axum::{router::OpenApiRouter, routes, PathItemExt};
 #[derive(OpenApi)]
 #[openapi(info(title = "dfns API client", version = "1.0.0",))]
 pub struct Api;
+pub mod generated;
 pub mod generated_api;
-use generated_api;
 impl Api {
     pub fn get_router() -> OpenApiRouter {
-        let main_router = OpenApiRouter::with_openapi(generated_api::ApiDoc::openapi());
-        //   main_router.routes(routes!(get_wallet))
-        main_router
+        // Use the router from generated_api which includes all routes
+        generated_api::ApiDoc::router()
     }
 }
 #[tokio::main]
 async fn main() {
     let app = app();
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:5555").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
 }
@@ -69,14 +68,15 @@ where
     }
 }
 
-#[utoipa::path(get, path = "/wallets", responses((status = OK, body = dfns_gen::generated::wallets::WalletIdAssetsGetResponse)))]
-async fn get_wallet(
-    Json(params): Json<dfns_gen::generated::wallets::WalletIdDelegatePostRequest>,
-) -> Json<dfns_gen::generated::wallets::WalletIdAssetsGetResponse> {
-    Json(dfns_gen::generated::wallets::WalletIdAssetsGetResponse {
-        wallet_id: String::new(),
-        net_worth: None,
-        network: dfns_gen::generated::Network::Algorand,
-        assets: Vec::new(),
-    })
-}
+// Example endpoint (commented out - use generated_api module instead)
+// #[utoipa::path(get, path = "/wallets", responses((status = OK, body = serde_json::Value)))]
+// async fn get_wallet(
+//     Json(params): Json<serde_json::Value>,
+// ) -> Json<serde_json::Value> {
+//     Json(serde_json::json!({
+//         "wallet_id": "",
+//         "net_worth": null,
+//         "network": "Algorand",
+//         "assets": []
+//     }))
+// }

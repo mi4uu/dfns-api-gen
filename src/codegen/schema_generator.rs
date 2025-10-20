@@ -36,20 +36,20 @@ impl SchemaGenerator {
         enum_values: &[serde_json::Value],
     ) -> String {
         let mut output = String::new();
+        //let mut outputs = Vec::new();
 
         // Add doc comment
         output.push_str(&generate_doc_comment(&schema.description));
 
         // Add derives (no Default for enums without knowing which variant should be default)
         output.push_str(
-            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
-        );
-
-        // Start enum
+        "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]\n",
+    );
         output.push_str(&format!("pub enum {} {{\n", name));
 
+        let mut default_set = false;
         // Add variants
-        for value in enum_values {
+        for (c, value) in enum_values.iter().enumerate() {
             if let Some(variant_str) = value.as_str() {
                 let variant_name = sanitize_variant_name(variant_str);
 
@@ -57,12 +57,19 @@ impl SchemaGenerator {
                 if variant_name != variant_str {
                     output.push_str(&format!("    #[serde(rename = \"{}\")]\n", variant_str));
                 }
+                if default_set == false {
+                    default_set = true;
 
+                    output.push_str("#[default]\n");
+                }
                 output.push_str(&format!("    {},\n", variant_name));
             }
         }
-
-        output.push_str("}");
+        if default_set {
+            output.push_str("}");
+        } else {
+            output.push_str(&format!("#[default]\n{}\n}}", name));
+        }
         output
     }
 
@@ -87,6 +94,9 @@ impl SchemaGenerator {
 
         // Add variants for each oneOf option
         for (i, schema_ref) in one_of.iter().enumerate() {
+            // if  {
+            // output.push_str("#[default]\n");
+            // }
             match schema_ref {
                 ObjectOrReference::Object(variant_schema) => {
                     // Try to get a meaningful name from title or description
@@ -201,7 +211,7 @@ impl SchemaGenerator {
 
         // Add derives
         output.push_str(
-            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
+            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]\n",
         );
 
         // Start struct
