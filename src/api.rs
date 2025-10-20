@@ -2,16 +2,26 @@ use axum::{
     http::StatusCode,
     response::{IntoResponse, Response},
     routing::get,
-    Router,
+    Json, Router,
 };
+use utoipa::OpenApi;
+use utoipa_axum::{router::OpenApiRouter, routes, PathItemExt};
 
+#[derive(OpenApi)]
+#[openapi(info(title = "dfns API client", version = "1.0.0",))]
+pub struct Api;
+
+impl Api {
+    pub fn get_router() -> OpenApiRouter {
+        let main_router = OpenApiRouter::with_openapi(Api::openapi());
+        main_router.routes(routes!(get_wallet))
+    }
+}
 #[tokio::main]
 async fn main() {
     let app = app();
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:5555")
-        .await
-        .unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:5555").await.unwrap();
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
 }
@@ -40,7 +50,11 @@ impl IntoResponse for AppError {
 }
 
 fn app() -> Router {
-    Router::new().route("/", get(handler))
+    let (router, api) = Api::get_router().split_for_parts();
+    Router::new()
+        .route("/", get(handler))
+        .merge(router)
+        .merge(utoipa_swagger_ui::SwaggerUi::new("/swagger").url("/openapi.json", api.clone()))
 }
 
 // This enables using `?` on functions that return `Result<_, anyhow::Error>` to turn them into
@@ -52,4 +66,16 @@ where
     fn from(err: E) -> Self {
         Self(err.into())
     }
+}
+
+#[utoipa::path(get, path = "/wallets", responses((status = OK, body = dfns_gen::generated::wallets::WalletIdAssetsGetResponse200)))]
+async fn get_wallet(
+    Json(params): Json<dfns_gen::generated::wallets::WalletIdDelegatePostRequest>,
+) -> Json<dfns_gen::generated::wallets::WalletIdAssetsGetResponse200> {
+    Json(dfns_gen::generated::wallets::WalletIdAssetsGetResponse200 {
+        wallet_id: String::new(),
+        net_worth: None,
+        network: dfns_gen::generated::Network::Algorand,
+        assets: Vec::new(),
+    })
 }

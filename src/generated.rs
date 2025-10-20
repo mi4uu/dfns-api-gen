@@ -3,7 +3,7 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum BlockchainKind {
     Algorand,
     Aptos,
@@ -30,20 +30,20 @@ pub enum BlockchainKind {
     Xrpl,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum CantonValidatorKind {
     Shared,
     Custom,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum CantonValidatorNetwork {
     Canton,
     CantonDevnet,
     CantonTestnet,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct CantonValidator {
     #[serde(rename = "dateCreated")]
     pub date_created: String,
@@ -59,7 +59,7 @@ pub struct CantonValidator {
     pub party_hint: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum Network {
     Algorand,
     AlgorandTestnet,
@@ -152,7 +152,7 @@ pub enum Network {
     XrpLedgerTestnet,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum OfferKind {
     Native,
     Aip21,
@@ -172,7 +172,7 @@ pub enum OfferKind {
     Trc721,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct OfferMetadataAssetQuotes {
     #[serde(rename = "EUR")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -182,7 +182,7 @@ pub struct OfferMetadataAssetQuotes {
     pub usd: Option<f64>,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct OfferMetadataAsset {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub decimals: Option<i64>,
@@ -194,12 +194,12 @@ pub struct OfferMetadataAsset {
     pub verified: Option<bool>,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct OfferMetadata {
     pub asset: OfferMetadataAsset,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum OfferStatus {
     Pending,
     Accepted,
@@ -207,7 +207,7 @@ pub enum OfferStatus {
     Expired,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct Offer {
     #[serde(rename = "expiresAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -233,13 +233,13 @@ pub struct Offer {
 }
 
 /// Swap provider.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum SwapProvider {
     UniswapX,
     UniswapClassic,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct SwapRequester {
     /// Service Account token or Personal Access token used when requesting the resource.
     #[serde(rename = "tokenId")]
@@ -251,7 +251,7 @@ pub struct SwapRequester {
 }
 
 /// Swap status.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum SwapStatus {
     PendingPolicyApproval,
     InProgress,
@@ -260,7 +260,7 @@ pub enum SwapStatus {
     Rejected,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct Swap {
     /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date (must be UTC). When the swap was initiated.
     #[serde(rename = "dateCreated")]
@@ -296,13 +296,13 @@ pub struct Swap {
 }
 
 /// Swap provider.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum SwapQuoteProvider {
     UniswapX,
     UniswapClassic,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct SwapQuoteRequester {
     /// Service Account token or Personal Access token used when requesting the quote.
     #[serde(rename = "tokenId")]
@@ -313,7 +313,7 @@ pub struct SwapQuoteRequester {
     pub user_id: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct SwapQuote {
     /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date (must be UTC). When the quote was created.
     #[serde(rename = "dateCreated")]
@@ -343,7 +343,7 @@ pub struct SwapQuote {
     pub wallet_id: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct TransferRequestMetadataAssetQuotes {
     #[serde(rename = "EUR")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -353,7 +353,7 @@ pub struct TransferRequestMetadataAssetQuotes {
     pub usd: Option<f64>,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct TransferRequestMetadataAsset {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub decimals: Option<i64>,
@@ -365,12 +365,12 @@ pub struct TransferRequestMetadataAsset {
     pub verified: Option<bool>,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct TransferRequestMetadata {
     pub asset: TransferRequestMetadataAsset,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct TransferRequestRequester {
     #[serde(rename = "tokenId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -379,7 +379,7 @@ pub struct TransferRequestRequester {
     pub user_id: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum TransferRequestStatus {
     Pending,
     Executing,
@@ -389,7 +389,7 @@ pub enum TransferRequestStatus {
     Rejected,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct TransferRequest {
     #[serde(rename = "approvalId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -430,13 +430,13 @@ pub struct TransferRequest {
 }
 
 /// User kind.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum UserKind {
     CustomerEmployee,
     EndUser,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct User {
     #[serde(rename = "credentialUuid")]
     pub credential_uuid: String,
@@ -463,7 +463,7 @@ pub struct User {
 }
 
 /// Network this wallet is bound to.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum WalletNetwork {
     Algorand,
     AlgorandTestnet,
@@ -556,7 +556,7 @@ pub enum WalletNetwork {
     XrpLedgerTestnet,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum WalletSigningKeyCurve {
     #[serde(rename = "ed25519")]
     Ed25519,
@@ -567,7 +567,7 @@ pub enum WalletSigningKeyCurve {
 }
 
 /// Key scheme.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum WalletSigningKeyScheme {
     ECDSA,
     EdDSA,
@@ -575,7 +575,7 @@ pub enum WalletSigningKeyScheme {
 }
 
 /// Details about the key underlying the wallet.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct WalletSigningKey {
     pub curve: WalletSigningKeyCurve,
     /// The end user ID the key (and wallet) is delegated to.
@@ -591,13 +591,13 @@ pub struct WalletSigningKey {
 }
 
 /// Wallet status.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum WalletStatus {
     Active,
     Archived,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct Wallet {
     /// Wallet address on its corresponding network.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -634,14 +634,14 @@ pub struct Wallet {
 }
 
 /// The DeFi protocol used for yield generation. Currently supports OFNS protocol
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum YieldProtocol {
     #[serde(rename = "0fns")]
     _0fns,
 }
 
 /// A yield investment representing funds deposited to earn interest from a DeFi protocol.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct Yield {
     /// The total amount currently invested in this yield.
     pub amount: serde_json::Value,
@@ -659,13 +659,13 @@ pub struct Yield {
 }
 
 /// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum YieldActionKind {
     Deposit,
     Withdraw,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct YieldActionRequester {
     /// Service Account token or Personal Access token used when requesting the resource.
     #[serde(rename = "tokenId")]
@@ -677,7 +677,7 @@ pub struct YieldActionRequester {
 }
 
 /// Status of the yield action. Once initiated, the status will be InProgress, after processing it will be Completed or Failed.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub enum YieldActionStatus {
     PendingPolicyApproval,
     InProgress,
@@ -687,7 +687,7 @@ pub enum YieldActionStatus {
 }
 
 /// A specific action performed on a yield investment, such as depositing or withdrawing funds.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
 pub struct YieldAction {
     /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date (must be UTC). [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date. When the yield action was created.
     #[serde(rename = "dateCreated")]
@@ -712,7 +712,7 @@ pub struct YieldAction {
 pub mod agreements {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum LatestUnacceptedGetResponse200LatestAgreementAgreementType {
         PrivacyPolicy,
         TermsAndConditions,
@@ -720,7 +720,7 @@ pub mod agreements {
         UniswapPrivacyPolicy,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LatestUnacceptedGetResponse200LatestAgreement {
         #[serde(rename = "agreementType")]
         pub agreement_type: LatestUnacceptedGetResponse200LatestAgreementAgreementType,
@@ -731,13 +731,13 @@ pub mod agreements {
         pub id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LatestUnacceptedGetResponse200 {
         #[serde(rename = "latestAgreement")]
         pub latest_agreement: LatestUnacceptedGetResponse200LatestAgreement,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct AgreementIdAcceptPostResponse200 {
         #[serde(rename = "agreementId")]
         pub agreement_id: String,
@@ -746,13 +746,12 @@ pub mod agreements {
         #[serde(rename = "userId")]
         pub user_id: String,
     }
-
 }
 
 pub mod auth {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionPostRequest {
         /// Temporary authentication token returned by the [Create User Action Signature Challenge](https://docs.dfns.co/api-reference/auth/create-user-action-challenge)
         #[serde(rename = "challengeIdentifier")]
@@ -766,19 +765,19 @@ pub mod auth {
         pub second_factor: Option<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionPostResponse200 {
         #[serde(rename = "userAction")]
         pub user_action: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ActionInitPostRequestUserActionServerKind {
         Api,
         Staff,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionInitPostRequest {
         #[serde(rename = "userActionHttpMethod")]
         pub user_action_http_method: String,
@@ -791,7 +790,7 @@ pub mod auth {
         pub user_action_server_kind: Option<ActionInitPostRequestUserActionServerKind>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionInitPostResponse200AllowCredentials {
         pub key: Vec<serde_json::Value>,
         #[serde(rename = "passwordProtectedKey")]
@@ -800,7 +799,7 @@ pub mod auth {
         pub webauthn: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ActionInitPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -812,13 +811,13 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionInitPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ActionInitPostResponse200UserVerification {
         #[serde(rename = "required")]
         Required,
@@ -828,7 +827,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionInitPostResponse200 {
         #[serde(rename = "allowCredentials")]
         pub allow_credentials: ActionInitPostResponse200AllowCredentials,
@@ -846,7 +845,7 @@ pub mod auth {
         pub user_verification: ActionInitPostResponse200UserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionLogsIdGetResponse200FirstFactorCredentialAssertion {
         #[serde(rename = "authenticatorData")]
         pub authenticator_data: String,
@@ -855,7 +854,7 @@ pub mod auth {
         pub signature: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionLogsIdGetResponse200FirstFactorCredential {
         pub assertion: ActionLogsIdGetResponse200FirstFactorCredentialAssertion,
         pub id: String,
@@ -864,7 +863,7 @@ pub mod auth {
         pub public_key: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ActionLogsIdGetResponse200 {
         pub action: String,
         #[serde(rename = "actionToken")]
@@ -879,18 +878,18 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct AppsGetResponse200 {
         pub items: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum AppsAppIdGetResponse200Kind {
         ServerSideApplication,
         ClientSideApplication,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct AppsAppIdGetResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -912,12 +911,12 @@ pub mod auth {
         pub permission_assignments: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsGetResponse200 {
         pub items: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum CredentialsPostResponse200Kind {
         Fido2,
         Key,
@@ -927,7 +926,7 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsPostResponse200 {
         #[serde(rename = "credentialId")]
         pub credential_id: String,
@@ -946,30 +945,30 @@ pub mod auth {
         pub relying_party_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsActivatePutRequest {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsActivatePutResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsCodePostRequest {
         /// Code expiration, as an ISO-8601 datetime string or a unix timestamp
         pub expiration: serde_json::Value,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsCodePostResponse200 {
         pub code: String,
         pub expiration: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum CredentialsCodeInitPostRequestCredentialKind {
         Fido2,
         Key,
@@ -979,14 +978,14 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsCodeInitPostRequest {
         pub code: String,
         #[serde(rename = "credentialKind")]
         pub credential_kind: CredentialsCodeInitPostRequestCredentialKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum CredentialsCodeVerifyPostResponse200Kind {
         Fido2,
         Key,
@@ -996,7 +995,7 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsCodeVerifyPostResponse200 {
         #[serde(rename = "credentialId")]
         pub credential_id: String,
@@ -1015,18 +1014,18 @@ pub mod auth {
         pub relying_party_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsDeactivatePutRequest {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsDeactivatePutResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum CredentialsInitPostRequestKind {
         Fido2,
         Key,
@@ -1034,12 +1033,12 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct CredentialsInitPostRequest {
         pub kind: CredentialsInitPostRequestKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginPostRequest {
         /// Temporary authentication token returned by the [Create User Action Signature Challenge](https://docs.dfns.co/api-reference/auth/create-user-action-challenge)
         #[serde(rename = "challengeIdentifier")]
@@ -1053,29 +1052,29 @@ pub mod auth {
         pub second_factor: Option<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginCodePostRequest {
         #[serde(rename = "orgId")]
         pub org_id: String,
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginCodePostResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginDelegatedPostRequest {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginDelegatedPostResponse200 {
         pub token: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginInitPostRequest {
         #[serde(rename = "loginCode")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1086,7 +1085,7 @@ pub mod auth {
         pub username: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginInitPostResponse200AllowCredentials {
         pub key: Vec<serde_json::Value>,
         #[serde(rename = "passwordProtectedKey")]
@@ -1095,7 +1094,7 @@ pub mod auth {
         pub webauthn: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum LoginInitPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -1107,13 +1106,13 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginInitPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum LoginInitPostResponse200UserVerification {
         #[serde(rename = "required")]
         Required,
@@ -1123,7 +1122,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginInitPostResponse200 {
         #[serde(rename = "allowCredentials")]
         pub allow_credentials: LoginInitPostResponse200AllowCredentials,
@@ -1141,12 +1140,12 @@ pub mod auth {
         pub user_verification: LoginInitPostResponse200UserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum LoginSocialPostRequestSocialLoginProviderKind {
         Oidc,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSocialPostRequest {
         #[serde(rename = "idToken")]
         pub id_token: String,
@@ -1157,12 +1156,12 @@ pub mod auth {
         pub social_login_provider_kind: LoginSocialPostRequestSocialLoginProviderKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSocialPostResponse200 {
         pub token: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSsoPostRequest {
         /// Authorization code obtained from the IdP
         pub code: String,
@@ -1170,12 +1169,12 @@ pub mod auth {
         pub state: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSsoPostResponse200 {
         pub token: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSsoInitPostRequest {
         /// Client Id obtained from the IdP
         #[serde(rename = "clientId")]
@@ -1188,31 +1187,31 @@ pub mod auth {
         pub redirect_uri: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LoginSsoInitPostResponse200 {
         /// The URL to redirect the user to authenticate with the IdP
         #[serde(rename = "ssoRedirectUrl")]
         pub sso_redirect_url: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LogoutPutRequest {
         #[serde(rename = "allSessions")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub all_sessions: Option<bool>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct LogoutPutResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsGetResponse200 {
         pub items: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsPostRequest {
         #[serde(rename = "daysValid")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1231,7 +1230,7 @@ pub mod auth {
         pub seconds_valid: Option<i64>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsPostResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1242,7 +1241,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsPostResponse200 {
         #[serde(rename = "accessToken")]
         pub access_token: String,
@@ -1269,7 +1268,7 @@ pub mod auth {
     }
 
     /// Access token kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsTokenIdGetResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1280,7 +1279,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdGetResponse200 {
         #[serde(rename = "accessToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1307,7 +1306,7 @@ pub mod auth {
         pub token_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdPutRequest {
         #[serde(rename = "externalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1317,7 +1316,7 @@ pub mod auth {
     }
 
     /// Access token kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsTokenIdPutResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1328,7 +1327,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdPutResponse200 {
         #[serde(rename = "accessToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1356,7 +1355,7 @@ pub mod auth {
     }
 
     /// Access token kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsTokenIdDeleteResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1367,7 +1366,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdDeleteResponse200 {
         #[serde(rename = "accessToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1395,7 +1394,7 @@ pub mod auth {
     }
 
     /// Access token kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsTokenIdActivatePutResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1406,7 +1405,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdActivatePutResponse200 {
         #[serde(rename = "accessToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1434,7 +1433,7 @@ pub mod auth {
     }
 
     /// Access token kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PatsTokenIdDeactivatePutResponse200Kind {
         Pat,
         ServiceAccount,
@@ -1445,7 +1444,7 @@ pub mod auth {
         Application,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PatsTokenIdDeactivatePutResponse200 {
         #[serde(rename = "accessToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1472,7 +1471,7 @@ pub mod auth {
         pub token_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialInfo {
         #[serde(rename = "attestationData")]
         pub attestation_data: String,
@@ -1482,13 +1481,13 @@ pub mod auth {
         pub cred_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialKind {
         RecoveryKey,
     }
 
     /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequestNewCredentialsRecoveryCredential {
         #[serde(rename = "credentialInfo")]
         pub credential_info: RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialInfo,
@@ -1502,7 +1501,7 @@ pub mod auth {
         pub encrypted_private_key: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequestNewCredentials {
         #[serde(rename = "firstFactorCredential")]
         pub first_factor_credential: serde_json::Value,
@@ -1515,7 +1514,7 @@ pub mod auth {
         pub second_factor_credential: Option<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequestRecoveryCredentialAssertion {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub algorithm: Option<String>,
@@ -1526,26 +1525,26 @@ pub mod auth {
         pub signature: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserPostRequestRecoveryKind {
         RecoveryKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequestRecovery {
         #[serde(rename = "credentialAssertion")]
         pub credential_assertion: RecoverUserPostRequestRecoveryCredentialAssertion,
         pub kind: RecoverUserPostRequestRecoveryKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostRequest {
         #[serde(rename = "newCredentials")]
         pub new_credentials: RecoverUserPostRequestNewCredentials,
         pub recovery: RecoverUserPostRequestRecovery,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserPostResponse200CredentialKind {
         Fido2,
         Key,
@@ -1555,14 +1554,14 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostResponse200Credential {
         pub kind: RecoverUserPostResponse200CredentialKind,
         pub name: String,
         pub uuid: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostResponse200User {
         pub id: String,
         #[serde(rename = "orgId")]
@@ -1570,32 +1569,32 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserPostResponse200 {
         pub credential: RecoverUserPostResponse200Credential,
         pub user: RecoverUserPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserCodePostRequest {
         #[serde(rename = "orgId")]
         pub org_id: String,
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserCodePostResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostRequest {
         #[serde(rename = "credentialId")]
         pub credential_id: String,
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserDelegatedPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -1607,7 +1606,7 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
         #[serde(rename = "platform")]
         Platform,
@@ -1615,7 +1614,7 @@ pub mod auth {
         CrossPlatform,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionResidentKey {
         #[serde(rename = "required")]
         Required,
@@ -1625,7 +1624,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionUserVerification {
         #[serde(rename = "required")]
         Required,
@@ -1635,26 +1634,29 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostResponse200AuthenticatorSelection {
         #[serde(rename = "authenticatorAttachment")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub authenticator_attachment: Option<RecoverUserDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        pub authenticator_attachment: Option<
+            RecoverUserDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment,
+        >,
         #[serde(rename = "requireResidentKey")]
         pub require_resident_key: bool,
         #[serde(rename = "residentKey")]
         pub resident_key: RecoverUserDelegatedPostResponse200AuthenticatorSelectionResidentKey,
         #[serde(rename = "userVerification")]
-        pub user_verification: RecoverUserDelegatedPostResponse200AuthenticatorSelectionUserVerification,
+        pub user_verification:
+            RecoverUserDelegatedPostResponse200AuthenticatorSelectionUserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostResponse200SupportedCredentialKinds {
         #[serde(rename = "firstFactor")]
         pub first_factor: Vec<String>,
@@ -1662,7 +1664,7 @@ pub mod auth {
         pub second_factor: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostResponse200User {
         #[serde(rename = "displayName")]
         pub display_name: String,
@@ -1670,7 +1672,7 @@ pub mod auth {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserDelegatedPostResponse200 {
         #[serde(rename = "allowedRecoveryCredentials")]
         pub allowed_recovery_credentials: Vec<serde_json::Value>,
@@ -1693,7 +1695,7 @@ pub mod auth {
         pub user: RecoverUserDelegatedPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostRequest {
         #[serde(rename = "credentialId")]
         pub credential_id: String,
@@ -1704,7 +1706,7 @@ pub mod auth {
         pub verification_code: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserInitPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -1716,7 +1718,7 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
         #[serde(rename = "platform")]
         Platform,
@@ -1724,7 +1726,7 @@ pub mod auth {
         CrossPlatform,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserInitPostResponse200AuthenticatorSelectionResidentKey {
         #[serde(rename = "required")]
         Required,
@@ -1734,7 +1736,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RecoverUserInitPostResponse200AuthenticatorSelectionUserVerification {
         #[serde(rename = "required")]
         Required,
@@ -1744,11 +1746,12 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostResponse200AuthenticatorSelection {
         #[serde(rename = "authenticatorAttachment")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub authenticator_attachment: Option<RecoverUserInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        pub authenticator_attachment:
+            Option<RecoverUserInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
         #[serde(rename = "requireResidentKey")]
         pub require_resident_key: bool,
         #[serde(rename = "residentKey")]
@@ -1757,13 +1760,13 @@ pub mod auth {
         pub user_verification: RecoverUserInitPostResponse200AuthenticatorSelectionUserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostResponse200SupportedCredentialKinds {
         #[serde(rename = "firstFactor")]
         pub first_factor: Vec<String>,
@@ -1771,7 +1774,7 @@ pub mod auth {
         pub second_factor: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostResponse200User {
         #[serde(rename = "displayName")]
         pub display_name: String,
@@ -1779,7 +1782,7 @@ pub mod auth {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RecoverUserInitPostResponse200 {
         #[serde(rename = "allowedRecoveryCredentials")]
         pub allowed_recovery_credentials: Vec<serde_json::Value>,
@@ -1802,7 +1805,7 @@ pub mod auth {
         pub user: RecoverUserInitPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostRequestRecoveryCredentialCredentialInfo {
         #[serde(rename = "attestationData")]
         pub attestation_data: String,
@@ -1812,13 +1815,13 @@ pub mod auth {
         pub cred_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationPostRequestRecoveryCredentialCredentialKind {
         RecoveryKey,
     }
 
     /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostRequestRecoveryCredential {
         #[serde(rename = "credentialInfo")]
         pub credential_info: RegistrationPostRequestRecoveryCredentialCredentialInfo,
@@ -1832,7 +1835,7 @@ pub mod auth {
         pub encrypted_private_key: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostRequest {
         #[serde(rename = "firstFactorCredential")]
         pub first_factor_credential: serde_json::Value,
@@ -1845,7 +1848,7 @@ pub mod auth {
         pub second_factor_credential: Option<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationPostResponse200CredentialKind {
         Fido2,
         Key,
@@ -1855,14 +1858,14 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostResponse200Credential {
         pub kind: RegistrationPostResponse200CredentialKind,
         pub name: String,
         pub uuid: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostResponse200User {
         pub id: String,
         #[serde(rename = "orgId")]
@@ -1870,30 +1873,30 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationPostResponse200 {
         pub credential: RegistrationPostResponse200Credential,
         pub user: RegistrationPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationCodePutRequest {
         #[serde(rename = "orgId")]
         pub org_id: String,
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationCodePutResponse200 {
         pub message: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationDelegatedPostRequestKind {
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostRequest {
         pub email: String,
         #[serde(rename = "externalId")]
@@ -1902,7 +1905,7 @@ pub mod auth {
         pub kind: RegistrationDelegatedPostRequestKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationDelegatedPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -1914,7 +1917,7 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
         #[serde(rename = "platform")]
         Platform,
@@ -1922,7 +1925,7 @@ pub mod auth {
         CrossPlatform,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionResidentKey {
         #[serde(rename = "required")]
         Required,
@@ -1932,7 +1935,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionUserVerification {
         #[serde(rename = "required")]
         Required,
@@ -1942,26 +1945,29 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostResponse200AuthenticatorSelection {
         #[serde(rename = "authenticatorAttachment")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub authenticator_attachment: Option<RegistrationDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        pub authenticator_attachment: Option<
+            RegistrationDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment,
+        >,
         #[serde(rename = "requireResidentKey")]
         pub require_resident_key: bool,
         #[serde(rename = "residentKey")]
         pub resident_key: RegistrationDelegatedPostResponse200AuthenticatorSelectionResidentKey,
         #[serde(rename = "userVerification")]
-        pub user_verification: RegistrationDelegatedPostResponse200AuthenticatorSelectionUserVerification,
+        pub user_verification:
+            RegistrationDelegatedPostResponse200AuthenticatorSelectionUserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostResponse200SupportedCredentialKinds {
         #[serde(rename = "firstFactor")]
         pub first_factor: Vec<String>,
@@ -1969,7 +1975,7 @@ pub mod auth {
         pub second_factor: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostResponse200User {
         #[serde(rename = "displayName")]
         pub display_name: String,
@@ -1977,7 +1983,7 @@ pub mod auth {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationDelegatedPostResponse200 {
         pub attestation: RegistrationDelegatedPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
@@ -1992,13 +1998,14 @@ pub mod auth {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub rp: Option<RegistrationDelegatedPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: RegistrationDelegatedPostResponse200SupportedCredentialKinds,
+        pub supported_credential_kinds:
+            RegistrationDelegatedPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
         pub user: RegistrationDelegatedPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostRequestRecoveryCredentialCredentialInfo {
         #[serde(rename = "attestationData")]
         pub attestation_data: String,
@@ -2008,13 +2015,13 @@ pub mod auth {
         pub cred_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationEnduserPostRequestRecoveryCredentialCredentialKind {
         RecoveryKey,
     }
 
     /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostRequestRecoveryCredential {
         #[serde(rename = "credentialInfo")]
         pub credential_info: RegistrationEnduserPostRequestRecoveryCredentialCredentialInfo,
@@ -2028,7 +2035,7 @@ pub mod auth {
         pub encrypted_private_key: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostRequest {
         #[serde(rename = "firstFactorCredential")]
         pub first_factor_credential: serde_json::Value,
@@ -2042,12 +2049,12 @@ pub mod auth {
         pub wallets: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostResponse200Authentication {
         pub token: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationEnduserPostResponse200CredentialKind {
         Fido2,
         Key,
@@ -2057,14 +2064,14 @@ pub mod auth {
         PasswordProtectedKey,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostResponse200Credential {
         pub kind: RegistrationEnduserPostResponse200CredentialKind,
         pub name: String,
         pub uuid: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostResponse200User {
         pub id: String,
         #[serde(rename = "orgId")]
@@ -2072,7 +2079,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationEnduserPostResponse200 {
         pub authentication: RegistrationEnduserPostResponse200Authentication,
         pub credential: RegistrationEnduserPostResponse200Credential,
@@ -2080,7 +2087,7 @@ pub mod auth {
         pub wallets: Vec<Wallet>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostRequest {
         #[serde(rename = "orgId")]
         pub org_id: String,
@@ -2089,7 +2096,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationInitPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -2101,7 +2108,7 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
         #[serde(rename = "platform")]
         Platform,
@@ -2109,7 +2116,7 @@ pub mod auth {
         CrossPlatform,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationInitPostResponse200AuthenticatorSelectionResidentKey {
         #[serde(rename = "required")]
         Required,
@@ -2119,7 +2126,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationInitPostResponse200AuthenticatorSelectionUserVerification {
         #[serde(rename = "required")]
         Required,
@@ -2129,26 +2136,28 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostResponse200AuthenticatorSelection {
         #[serde(rename = "authenticatorAttachment")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub authenticator_attachment: Option<RegistrationInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        pub authenticator_attachment:
+            Option<RegistrationInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
         #[serde(rename = "requireResidentKey")]
         pub require_resident_key: bool,
         #[serde(rename = "residentKey")]
         pub resident_key: RegistrationInitPostResponse200AuthenticatorSelectionResidentKey,
         #[serde(rename = "userVerification")]
-        pub user_verification: RegistrationInitPostResponse200AuthenticatorSelectionUserVerification,
+        pub user_verification:
+            RegistrationInitPostResponse200AuthenticatorSelectionUserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostResponse200SupportedCredentialKinds {
         #[serde(rename = "firstFactor")]
         pub first_factor: Vec<String>,
@@ -2156,7 +2165,7 @@ pub mod auth {
         pub second_factor: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostResponse200User {
         #[serde(rename = "displayName")]
         pub display_name: String,
@@ -2164,7 +2173,7 @@ pub mod auth {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationInitPostResponse200 {
         pub attestation: RegistrationInitPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
@@ -2185,12 +2194,12 @@ pub mod auth {
         pub user: RegistrationInitPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationSocialPostRequestSocialLoginProviderKind {
         Oidc,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostRequest {
         #[serde(rename = "idToken")]
         pub id_token: String,
@@ -2201,7 +2210,7 @@ pub mod auth {
         pub social_login_provider_kind: RegistrationSocialPostRequestSocialLoginProviderKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationSocialPostResponse200Attestation {
         #[serde(rename = "none")]
         None,
@@ -2213,7 +2222,7 @@ pub mod auth {
         Enterprise,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationSocialPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
         #[serde(rename = "platform")]
         Platform,
@@ -2221,7 +2230,7 @@ pub mod auth {
         CrossPlatform,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationSocialPostResponse200AuthenticatorSelectionResidentKey {
         #[serde(rename = "required")]
         Required,
@@ -2231,7 +2240,7 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum RegistrationSocialPostResponse200AuthenticatorSelectionUserVerification {
         #[serde(rename = "required")]
         Required,
@@ -2241,26 +2250,28 @@ pub mod auth {
         Discouraged,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostResponse200AuthenticatorSelection {
         #[serde(rename = "authenticatorAttachment")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub authenticator_attachment: Option<RegistrationSocialPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        pub authenticator_attachment:
+            Option<RegistrationSocialPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
         #[serde(rename = "requireResidentKey")]
         pub require_resident_key: bool,
         #[serde(rename = "residentKey")]
         pub resident_key: RegistrationSocialPostResponse200AuthenticatorSelectionResidentKey,
         #[serde(rename = "userVerification")]
-        pub user_verification: RegistrationSocialPostResponse200AuthenticatorSelectionUserVerification,
+        pub user_verification:
+            RegistrationSocialPostResponse200AuthenticatorSelectionUserVerification,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostResponse200Rp {
         pub id: String,
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostResponse200SupportedCredentialKinds {
         #[serde(rename = "firstFactor")]
         pub first_factor: Vec<String>,
@@ -2268,7 +2279,7 @@ pub mod auth {
         pub second_factor: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostResponse200User {
         #[serde(rename = "displayName")]
         pub display_name: String,
@@ -2276,7 +2287,7 @@ pub mod auth {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct RegistrationSocialPostResponse200 {
         pub attestation: RegistrationSocialPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
@@ -2297,12 +2308,12 @@ pub mod auth {
         pub user: RegistrationSocialPostResponse200User,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsGetResponse200 {
         pub items: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsPostRequest {
         #[serde(rename = "daysValid")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2319,13 +2330,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsPostResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsPostResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2349,7 +2360,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsPostResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2358,13 +2369,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsServiceAccountIdGetResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdGetResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2388,7 +2399,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdGetResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2396,7 +2407,7 @@ pub mod auth {
         pub user_info: ServiceAccountsServiceAccountIdGetResponse200UserInfo,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdPutRequest {
         #[serde(rename = "externalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2406,13 +2417,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsServiceAccountIdPutResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdPutResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2436,7 +2447,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdPutResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2445,13 +2456,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsServiceAccountIdDeleteResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdDeleteResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2475,7 +2486,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdDeleteResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2484,13 +2495,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsServiceAccountIdActivatePutResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdActivatePutResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2514,7 +2525,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdActivatePutResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2523,13 +2534,13 @@ pub mod auth {
     }
 
     /// User kind.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfoKind {
         CustomerEmployee,
         EndUser,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfo {
         #[serde(rename = "credentialUuid")]
         pub credential_uuid: String,
@@ -2553,7 +2564,7 @@ pub mod auth {
         pub username: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ServiceAccountsServiceAccountIdDeactivatePutResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
@@ -2561,7 +2572,7 @@ pub mod auth {
         pub user_info: ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfo,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct UsersGetResponse200 {
         pub items: Vec<User>,
         #[serde(rename = "nextPageToken")]
@@ -2569,14 +2580,14 @@ pub mod auth {
         pub next_page_token: Option<String>,
     }
 
-    /// The kind of user being created. 
+    /// The kind of user being created.
     ///       In this endpoint it can only be "`CustomerEmployee`" (creating an "`EndUser`" is done through the [Delegated Registration](https://docs.dfns.co/api-reference/auth/registration-flows#delegated-users-registration-flow) endpoint)
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum UsersPostRequestKind {
         CustomerEmployee,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct UsersPostRequest {
         /// The email address of the new user.
         pub email: String,
@@ -2594,18 +2605,17 @@ pub mod auth {
         pub public_key: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct UsersUserIdPutRequest {
         #[serde(rename = "isSSORequired")]
         pub is_ssorequired: bool,
     }
-
 }
 
 pub mod exchanges {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct GetResponse200 {
         /// Current page items.
         pub items: Vec<serde_json::Value>,
@@ -2615,7 +2625,7 @@ pub mod exchanges {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PostRequestKind {
         Binance,
         Kraken,
@@ -2623,7 +2633,7 @@ pub mod exchanges {
         CoinbasePrime,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PostRequestReadConfiguration {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub otp: Option<String>,
@@ -2635,7 +2645,7 @@ pub mod exchanges {
         pub public_api_key: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PostRequestWriteConfiguration {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub otp: Option<String>,
@@ -2647,7 +2657,7 @@ pub mod exchanges {
         pub public_api_key: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PostRequest {
         pub kind: PostRequestKind,
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2658,7 +2668,7 @@ pub mod exchanges {
         pub write_configuration: PostRequestWriteConfiguration,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PostResponse200Kind {
         Binance,
         Kraken,
@@ -2666,7 +2676,7 @@ pub mod exchanges {
         CoinbasePrime,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PostResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -2676,7 +2686,7 @@ pub mod exchanges {
         pub name: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ExchangeIdGetResponse200Kind {
         Binance,
         Kraken,
@@ -2684,7 +2694,7 @@ pub mod exchanges {
         CoinbasePrime,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdGetResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -2694,16 +2704,15 @@ pub mod exchanges {
         pub name: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-    pub enum ExchangeIdDeleteResponse200Deleted {
-    }
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
+    pub enum ExchangeIdDeleteResponse200Deleted {}
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdDeleteResponse200 {
         pub deleted: ExchangeIdDeleteResponse200Deleted,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsGetResponse200 {
         /// Current page items.
         pub items: Vec<serde_json::Value>,
@@ -2713,7 +2722,7 @@ pub mod exchanges {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsAccountIdAssetsGetResponse200 {
         /// Current page items.
         pub items: Vec<serde_json::Value>,
@@ -2723,13 +2732,13 @@ pub mod exchanges {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ExchangeIdAccountsAccountIdDepositsPostResponse200Kind {
         Withdrawal,
         Deposit,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsAccountIdDepositsPostResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2738,7 +2747,7 @@ pub mod exchanges {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsAccountIdDepositsPostResponse200 {
         #[serde(rename = "accountId")]
         pub account_id: String,
@@ -2761,13 +2770,13 @@ pub mod exchanges {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Kind {
         Withdrawal,
         Deposit,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2776,7 +2785,7 @@ pub mod exchanges {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ExchangeIdAccountsAccountIdWithdrawalsPostResponse200 {
         #[serde(rename = "accountId")]
         pub account_id: String,
@@ -2798,21 +2807,20 @@ pub mod exchanges {
         #[serde(rename = "walletId")]
         pub wallet_id: String,
     }
-
 }
 
 pub mod feesponsors {
     use super::*;
 
     /// Fee sponsor status.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum FeeSponsorIdGetResponse200Status {
         Active,
         Deactivated,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct FeeSponsorIdGetResponse200 {
         /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
         #[serde(rename = "allowEndUser")]
@@ -2834,14 +2842,14 @@ pub mod feesponsors {
     }
 
     /// Fee sponsor status.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum FeeSponsorIdDeleteResponse200Status {
         Active,
         Deactivated,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct FeeSponsorIdDeleteResponse200 {
         /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
         #[serde(rename = "allowEndUser")]
@@ -2863,14 +2871,14 @@ pub mod feesponsors {
     }
 
     /// Fee sponsor status.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum FeeSponsorIdActivatePutResponse200Status {
         Active,
         Deactivated,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct FeeSponsorIdActivatePutResponse200 {
         /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
         #[serde(rename = "allowEndUser")]
@@ -2892,14 +2900,14 @@ pub mod feesponsors {
     }
 
     /// Fee sponsor status.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum FeeSponsorIdDeactivatePutResponse200Status {
         Active,
         Deactivated,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct FeeSponsorIdDeactivatePutResponse200 {
         /// Defines whether EndUsers and their delegated wallets can use this Fee Sponsor.
         #[serde(rename = "allowEndUser")]
@@ -2920,20 +2928,19 @@ pub mod feesponsors {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct FeeSponsorIdFeesGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub next_page_token: Option<String>,
     }
-
 }
 
 pub mod keys {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ImportPostRequestCurve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -2943,7 +2950,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ImportPostRequest {
         pub curve: ImportPostRequestCurve,
         #[serde(rename = "encryptedKeyShares")]
@@ -2955,7 +2962,7 @@ pub mod keys {
         pub protocol: serde_json::Value,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ImportPostResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -2965,7 +2972,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ImportPostResponse200Scheme {
         DH,
         ECDSA,
@@ -2973,13 +2980,13 @@ pub mod keys {
         Schnorr,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ImportPostResponse200Status {
         Active,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ImportPostResponse200 {
         pub curve: ImportPostResponse200Curve,
         pub custodial: bool,
@@ -3004,7 +3011,7 @@ pub mod keys {
         pub status: ImportPostResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdGetResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -3014,7 +3021,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdGetResponse200Scheme {
         DH,
         ECDSA,
@@ -3022,19 +3029,19 @@ pub mod keys {
         Schnorr,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdGetResponse200Status {
         Active,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdGetResponse200StoreKind {
         Hsm,
         Mpc,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdGetResponse200Store {
         pub id: String,
         #[serde(rename = "keyId")]
@@ -3042,7 +3049,7 @@ pub mod keys {
         pub kind: KeyIdGetResponse200StoreKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdGetResponse200 {
         pub curve: KeyIdGetResponse200Curve,
         pub custodial: bool,
@@ -3069,12 +3076,12 @@ pub mod keys {
         pub wallets: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdPutRequest {
         pub name: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdPutResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -3084,7 +3091,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdPutResponse200Scheme {
         DH,
         ECDSA,
@@ -3092,13 +3099,13 @@ pub mod keys {
         Schnorr,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdPutResponse200Status {
         Active,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdPutResponse200 {
         pub curve: KeyIdPutResponse200Curve,
         pub custodial: bool,
@@ -3123,7 +3130,7 @@ pub mod keys {
         pub status: KeyIdPutResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdDeleteResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -3133,7 +3140,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdDeleteResponse200Scheme {
         DH,
         ECDSA,
@@ -3141,13 +3148,13 @@ pub mod keys {
         Schnorr,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdDeleteResponse200Status {
         Active,
         Archived,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdDeleteResponse200 {
         pub curve: KeyIdDeleteResponse200Curve,
         pub custodial: bool,
@@ -3172,36 +3179,36 @@ pub mod keys {
         pub status: KeyIdDeleteResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdDelegatePostRequest {
         #[serde(rename = "delegateTo")]
         pub delegate_to: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdDelegatePostResponse200Status {
         Delegated,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdDelegatePostResponse200 {
         #[serde(rename = "keyId")]
         pub key_id: String,
         pub status: KeyIdDelegatePostResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdDerivePostRequest {
         pub domain: String,
         pub seed: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdDerivePostResponse200 {
         pub output: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdExportPostRequest {
         #[serde(rename = "encryptionKey")]
         pub encryption_key: String,
@@ -3209,7 +3216,7 @@ pub mod keys {
         pub supported_schemes: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdExportPostResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -3219,7 +3226,7 @@ pub mod keys {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdExportPostResponse200Protocol {
         CGGMP24,
         FROST,
@@ -3230,7 +3237,7 @@ pub mod keys {
         KU23,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdExportPostResponse200 {
         pub curve: KeyIdExportPostResponse200Curve,
         /// Keyshares of the exported wallet. They are encrypted with the provided encryption key. The exported private key is re-constructed from these keyshares.
@@ -3244,7 +3251,7 @@ pub mod keys {
         pub public_key: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "keyId")]
@@ -3254,7 +3261,7 @@ pub mod keys {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesPostResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3263,7 +3270,7 @@ pub mod keys {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesPostResponse200Signature {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub encoded: Option<String>,
@@ -3273,7 +3280,7 @@ pub mod keys {
         pub s: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdSignaturesPostResponse200Status {
         Pending,
         Executing,
@@ -3283,7 +3290,7 @@ pub mod keys {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesPostResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3327,7 +3334,7 @@ pub mod keys {
         pub tx_hash: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesSignatureIdGetResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3336,7 +3343,7 @@ pub mod keys {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesSignatureIdGetResponse200Signature {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub encoded: Option<String>,
@@ -3346,7 +3353,7 @@ pub mod keys {
         pub s: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum KeyIdSignaturesSignatureIdGetResponse200Status {
         Pending,
         Executing,
@@ -3356,7 +3363,7 @@ pub mod keys {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct KeyIdSignaturesSignatureIdGetResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3399,29 +3406,27 @@ pub mod keys {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
     }
-
 }
 
 pub mod keystores {
     use super::*;
-
 }
 
 pub mod networks {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum ReadContractPostResponse200Kind {
         Evm,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct ReadContractPostResponse200 {
         pub data: String,
         pub kind: ReadContractPostResponse200Kind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsGetResponse200 {
         /// Current page items.
         pub items: Vec<CantonValidator>,
@@ -3432,7 +3437,7 @@ pub mod networks {
     }
 
     /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsValidatorIdPutRequestLedgerOauth2 {
         /// the audience your configured on your auth provider. It is suggested to start with `https://canton.network.global`.
         pub audience: String,
@@ -3442,7 +3447,7 @@ pub mod networks {
         /// The client secret from your auth provider for this application.
         #[serde(rename = "clientSecret")]
         pub client_secret: String,
-        /// your OAuth2 tenant domain. Provided by your auth provider. 
+        /// your OAuth2 tenant domain. Provided by your auth provider.
         pub domain: String,
         /// token endpoint from your authorization provider. We will call this endpoint on your tenant domain (i.e.: `<domain>/<token path>`)
         #[serde(rename = "tokenPath")]
@@ -3450,7 +3455,7 @@ pub mod networks {
         pub token_path: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsValidatorIdPutRequestLedger {
         /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
         pub oauth2: NetworkValidatorsValidatorIdPutRequestLedgerOauth2,
@@ -3459,7 +3464,7 @@ pub mod networks {
     }
 
     /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsValidatorIdPutRequestValidatorOauth2 {
         /// the audience your configured on your auth provider. It is suggested to start with `https://canton.network.global`.
         pub audience: String,
@@ -3469,7 +3474,7 @@ pub mod networks {
         /// The client secret from your auth provider for this application.
         #[serde(rename = "clientSecret")]
         pub client_secret: String,
-        /// your OAuth2 tenant domain. Provided by your auth provider. 
+        /// your OAuth2 tenant domain. Provided by your auth provider.
         pub domain: String,
         /// token endpoint from your authorization provider. We will call this endpoint on your tenant domain (i.e.: `<domain>/<token path>`)
         #[serde(rename = "tokenPath")]
@@ -3477,7 +3482,7 @@ pub mod networks {
         pub token_path: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsValidatorIdPutRequestValidator {
         /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
         pub oauth2: NetworkValidatorsValidatorIdPutRequestValidatorOauth2,
@@ -3485,7 +3490,7 @@ pub mod networks {
         pub url: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct NetworkValidatorsValidatorIdPutRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub ledger: Option<NetworkValidatorsValidatorIdPutRequestLedger>,
@@ -3495,13 +3500,12 @@ pub mod networks {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub validator: Option<NetworkValidatorsValidatorIdPutRequestValidator>,
     }
-
 }
 
 pub mod permissions {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdPutRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
@@ -3509,12 +3513,12 @@ pub mod permissions {
         pub operations: Option<Vec<serde_json::Value>>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PermissionIdPutResponse200Status {
         Active,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdPutResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -3530,18 +3534,18 @@ pub mod permissions {
         pub status: PermissionIdPutResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdArchivePutRequest {
         #[serde(rename = "isArchived")]
         pub is_archived: bool,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PermissionIdArchivePutResponse200Status {
         Active,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdArchivePutResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -3557,7 +3561,7 @@ pub mod permissions {
         pub status: PermissionIdArchivePutResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdAssignmentsGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -3565,13 +3569,13 @@ pub mod permissions {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdAssignmentsPostRequest {
         #[serde(rename = "identityId")]
         pub identity_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PermissionIdAssignmentsPostResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -3585,18 +3589,16 @@ pub mod permissions {
         #[serde(rename = "permissionId")]
         pub permission_id: String,
     }
-
 }
 
 pub mod signers {
     use super::*;
-
 }
 
 pub mod staking {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct StakesGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -3604,7 +3606,7 @@ pub mod staking {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct StakesStakeIdActionsGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -3612,25 +3614,24 @@ pub mod staking {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct StakesStakeIdRewardsGetResponse200 {
         pub balance: String,
         pub symbol: String,
     }
-
 }
 
 pub mod swaps {
     use super::*;
 
     /// Swap provider.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum QuotesPostRequestProvider {
         UniswapX,
         UniswapClassic,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct QuotesPostRequest {
         pub provider: QuotesPostRequestProvider,
         /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you're willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%.
@@ -3650,13 +3651,12 @@ pub mod swaps {
         #[serde(rename = "walletId")]
         pub wallet_id: String,
     }
-
 }
 
 pub mod v2 {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PoliciesGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -3664,7 +3664,7 @@ pub mod v2 {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PolicyApprovalsGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -3672,7 +3672,7 @@ pub mod v2 {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PolicyApprovalsApprovalIdGetResponse200Status {
         Pending,
         Approved,
@@ -3680,7 +3680,7 @@ pub mod v2 {
         Expired,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PolicyApprovalsApprovalIdGetResponse200 {
         pub activity: serde_json::Value,
         #[serde(rename = "dateCreated")]
@@ -3703,20 +3703,20 @@ pub mod v2 {
         pub status: PolicyApprovalsApprovalIdGetResponse200Status,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PolicyApprovalsApprovalIdDecisionsPostRequestValue {
         Approved,
         Denied,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PolicyApprovalsApprovalIdDecisionsPostRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub reason: Option<String>,
         pub value: PolicyApprovalsApprovalIdDecisionsPostRequestValue,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum PolicyApprovalsApprovalIdDecisionsPostResponse200Status {
         Pending,
         Approved,
@@ -3724,7 +3724,7 @@ pub mod v2 {
         Expired,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct PolicyApprovalsApprovalIdDecisionsPostResponse200 {
         pub activity: serde_json::Value,
         #[serde(rename = "dateCreated")]
@@ -3746,13 +3746,12 @@ pub mod v2 {
         pub policy_evaluations: Vec<serde_json::Value>,
         pub status: PolicyApprovalsApprovalIdDecisionsPostResponse200Status,
     }
-
 }
 
 pub mod wallets {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdPutRequest {
         #[serde(rename = "externalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3761,14 +3760,14 @@ pub mod wallets {
         pub name: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdAssetsGetResponse200NetWorth {
         #[serde(rename = "USD")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub usd: Option<f64>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdAssetsGetResponse200 {
         pub assets: Vec<serde_json::Value>,
         #[serde(rename = "netWorth")]
@@ -3779,25 +3778,25 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdDelegatePostRequest {
         #[serde(rename = "userId")]
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdDelegatePostResponse200Status {
         Delegated,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdDelegatePostResponse200 {
         pub status: WalletIdDelegatePostResponse200Status,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdExportPostRequest {
         #[serde(rename = "encryptionKey")]
         pub encryption_key: String,
@@ -3805,7 +3804,7 @@ pub mod wallets {
         pub supported_schemes: Vec<serde_json::Value>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdExportPostResponse200Curve {
         #[serde(rename = "ed25519")]
         Ed25519,
@@ -3815,7 +3814,7 @@ pub mod wallets {
         Stark,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdExportPostResponse200Protocol {
         CGGMP24,
         FROST,
@@ -3826,7 +3825,7 @@ pub mod wallets {
         KU23,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdExportPostResponse200 {
         pub curve: WalletIdExportPostResponse200Curve,
         /// Keyshares of the exported wallet. They are encrypted with the provided encryption key. The exported private key is re-constructed from these keyshares.
@@ -3840,7 +3839,7 @@ pub mod wallets {
         pub public_key: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdNftsGetResponse200 {
         pub network: Network,
         pub nfts: Vec<serde_json::Value>,
@@ -3848,7 +3847,7 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdOffersGetResponse200 {
         /// Current page items.
         pub items: Vec<Offer>,
@@ -3858,7 +3857,7 @@ pub mod wallets {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "keyId")]
@@ -3868,7 +3867,7 @@ pub mod wallets {
         pub next_page_token: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdSignaturesPostResponse200Network {
         Algorand,
         AlgorandTestnet,
@@ -3961,7 +3960,7 @@ pub mod wallets {
         XrpLedgerTestnet,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesPostResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -3970,7 +3969,7 @@ pub mod wallets {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesPostResponse200Signature {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub encoded: Option<String>,
@@ -3980,7 +3979,7 @@ pub mod wallets {
         pub s: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdSignaturesPostResponse200Status {
         Pending,
         Executing,
@@ -3990,7 +3989,7 @@ pub mod wallets {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesPostResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4035,7 +4034,7 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesSignatureIdGetResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4044,7 +4043,7 @@ pub mod wallets {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesSignatureIdGetResponse200Signature {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub encoded: Option<String>,
@@ -4054,7 +4053,7 @@ pub mod wallets {
         pub s: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdSignaturesSignatureIdGetResponse200Status {
         Pending,
         Executing,
@@ -4064,7 +4063,7 @@ pub mod wallets {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdSignaturesSignatureIdGetResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4108,18 +4107,18 @@ pub mod wallets {
         pub tx_hash: Option<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTagsPutRequest {
         pub tags: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTagsDeleteRequest {
         /// List of tags.
         pub tags: Vec<String>,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransactionsGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -4129,7 +4128,7 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransactionsPostResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4138,7 +4137,7 @@ pub mod wallets {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdTransactionsPostResponse200Status {
         Pending,
         Executing,
@@ -4148,7 +4147,7 @@ pub mod wallets {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransactionsPostResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4184,7 +4183,7 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransactionsTransactionIdGetResponse200Requester {
         #[serde(rename = "tokenId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4193,7 +4192,7 @@ pub mod wallets {
         pub user_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WalletIdTransactionsTransactionIdGetResponse200Status {
         Pending,
         Executing,
@@ -4203,7 +4202,7 @@ pub mod wallets {
         Rejected,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransactionsTransactionIdGetResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -4239,7 +4238,7 @@ pub mod wallets {
         pub wallet_id: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WalletIdTransfersGetResponse200 {
         pub items: Vec<TransferRequest>,
         #[serde(rename = "nextPageToken")]
@@ -4248,21 +4247,20 @@ pub mod wallets {
         #[serde(rename = "walletId")]
         pub wallet_id: String,
     }
-
 }
 
 pub mod webhooks {
     use super::*;
 
     /// Webhook status
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WebhookIdGetResponse200Status {
         Enabled,
         Disabled,
     }
 
     /// Webhook
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdGetResponse200 {
         /// Date when webhook was created
         #[serde(rename = "dateCreated")]
@@ -4283,13 +4281,13 @@ pub mod webhooks {
     }
 
     /// Webhook status
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WebhookIdPutRequestStatus {
         Enabled,
         Disabled,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdPutRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub description: Option<String>,
@@ -4304,14 +4302,14 @@ pub mod webhooks {
     }
 
     /// Webhook status
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WebhookIdPutResponse200Status {
         Enabled,
         Disabled,
     }
 
     /// Webhook
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdPutResponse200 {
         /// Date when webhook was created
         #[serde(rename = "dateCreated")]
@@ -4331,16 +4329,15 @@ pub mod webhooks {
         pub url: String,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-    pub enum WebhookIdDeleteResponse200Deleted {
-    }
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
+    pub enum WebhookIdDeleteResponse200Deleted {}
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdDeleteResponse200 {
         pub deleted: WebhookIdDeleteResponse200Deleted,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdEventsGetResponse200 {
         pub items: Vec<serde_json::Value>,
         #[serde(rename = "nextPageToken")]
@@ -4349,7 +4346,7 @@ pub mod webhooks {
     }
 
     /// Webhook event
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum WebhookIdEventsWebhookEventIdGetResponse200Kind {
         #[serde(rename = "policy.triggered")]
         PolicyTriggered,
@@ -4412,7 +4409,7 @@ pub mod webhooks {
     }
 
     /// WebhookEvent
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdEventsWebhookEventIdGetResponse200 {
         pub data: serde_json::Value,
         /// ISO date string when event was raised
@@ -4430,19 +4427,18 @@ pub mod webhooks {
         pub timestamp_sent: i64,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct WebhookIdPingPostResponse200 {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub error: Option<String>,
         pub status: String,
     }
-
 }
 
 pub mod yields {
     use super::*;
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct YieldIdActionsGetResponse200 {
         /// Current page items.
         pub items: Vec<YieldAction>,
@@ -4453,30 +4449,30 @@ pub mod yields {
     }
 
     /// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum YieldIdActionsPostRequestKind {
         Deposit,
         Withdraw,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum YieldIdActionsPostRequestSourceAssetKind {
         Erc20,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct YieldIdActionsPostRequestSourceAsset {
         pub amount: String,
         pub contract: String,
         pub kind: YieldIdActionsPostRequestSourceAssetKind,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub enum YieldIdActionsPostRequestTargetAssetKind {
         Erc20,
     }
 
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct YieldIdActionsPostRequestTargetAsset {
         pub amount: String,
         pub contract: String,
@@ -4484,7 +4480,7 @@ pub mod yields {
     }
 
     /// Request body for creating a yield action. Different protocols may have different requirements.
-    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]
     pub struct YieldIdActionsPostRequest {
         /// An optional external identifier provided by the client to ensure idempotency and prevent duplicate operations.
         #[serde(rename = "externalId")]
@@ -4499,6 +4495,4 @@ pub mod yields {
         #[serde(rename = "targetAsset")]
         pub target_asset: YieldIdActionsPostRequestTargetAsset,
     }
-
 }
-
