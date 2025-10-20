@@ -6,15 +6,16 @@ use axum::{
 };
 use utoipa::OpenApi;
 use utoipa_axum::{router::OpenApiRouter, routes, PathItemExt};
-
 #[derive(OpenApi)]
 #[openapi(info(title = "dfns API client", version = "1.0.0",))]
 pub struct Api;
-
+pub mod generated_api;
+use generated_api;
 impl Api {
     pub fn get_router() -> OpenApiRouter {
-        let main_router = OpenApiRouter::with_openapi(Api::openapi());
-        main_router.routes(routes!(get_wallet))
+        let main_router = OpenApiRouter::with_openapi(generated_api::ApiDoc::openapi());
+        //   main_router.routes(routes!(get_wallet))
+        main_router
     }
 }
 #[tokio::main]

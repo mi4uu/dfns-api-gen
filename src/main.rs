@@ -3,7 +3,7 @@ mod codegen;
 // #[allow(dead_code)]
 // pub mod generated;
 
-use codegen::Generator;
+use codegen::{EndpointGenerator, Generator};
 use std::fs;
 
 #[tokio::main]
@@ -24,9 +24,17 @@ async fn main() {
 
     // Generate Rust code
     println!("Generating Rust code from OpenAPI schemas...");
-    let mut generator = Generator::new(openapi);
+    let mut generator = Generator::new(openapi.clone());
     let generated_code = generator.generate();
 
     fs::write("src/generated.rs", generated_code).expect("Failed to write generated.rs");
     println!("Generated Rust code written to src/generated.rs");
+
+    // Generate API endpoints
+    println!("Generating API endpoints...");
+    let endpoint_generator = EndpointGenerator::new(openapi);
+    let api_code = endpoint_generator.generate();
+
+    fs::write("src/generated_api.rs", api_code).expect("Failed to write generated_api.rs");
+    println!("Generated API endpoints written to src/generated_api.rs");
 }

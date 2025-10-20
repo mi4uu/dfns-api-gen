@@ -40,7 +40,7 @@ impl SchemaGenerator {
         // Add doc comment
         output.push_str(&generate_doc_comment(&schema.description));
 
-        // Add derives
+        // Add derives (no Default for enums without knowing which variant should be default)
         output.push_str(
             "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
         );
@@ -78,7 +78,7 @@ impl SchemaGenerator {
 
         // Add derives
         output.push_str(
-            "#[derive(Debug, Clone, PartialEq,  Serialize, Deserialize, utoipa::ToSchema)]\n",
+            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
         );
         output.push_str("#[serde(untagged)]\n");
 
@@ -201,7 +201,7 @@ impl SchemaGenerator {
 
         // Add derives
         output.push_str(
-            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize,   utoipa::ToSchema)]\n",
+            "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema)]\n",
         );
 
         // Start struct

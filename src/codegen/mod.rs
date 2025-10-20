@@ -1,6 +1,9 @@
+mod endpoint_generator;
 mod schema_generator;
 mod type_mapper;
 mod utils;
+
+pub use endpoint_generator::EndpointGenerator;
 
 use crate::codegen::utils::to_pascal_case;
 use oas3::spec::{ObjectOrReference, ObjectSchema, Spec};
