@@ -20,7 +20,14 @@ impl TypeMapper {
             let item_type = match items.as_ref() {
                 Schema::Object(obj_ref) => match obj_ref.as_ref() {
                     ObjectOrReference::Object(item_schema) => {
-                        Self::get_base_type_from_object_schema(item_schema)
+                        let base_type = Self::get_base_type_from_object_schema(item_schema);
+                        // If item is an inline object/enum, use serde_json::Value for now
+                        // TODO: Could generate named types for array items in the future
+                        if base_type == "INLINE_OBJECT" || base_type == "INLINE_ENUM" {
+                            "serde_json::Value".to_string()
+                        } else {
+                            base_type
+                        }
                     }
                     ObjectOrReference::Ref { .. } => {
                         Self::extract_ref_from_obj_ref(obj_ref.as_ref())
@@ -28,21 +35,18 @@ impl TypeMapper {
                 },
                 Schema::Boolean(_) => "serde_json::Value".to_string(),
             };
-            if item_type
-                .clone()
-                .eq_ignore_ascii_case(String::from("serde_json::Value").as_str())
-            {
-                println!("!!!!!!  {}", &item_type);
-                println!("!!!!!!  {:#?}", &schema.items);
-            }
             return format!("Vec<{}>", item_type);
         }
 
-        // Check for enum values
-        if !schema.enum_values.is_empty() {
-            // Enums are generated as separate types
-            // This should only be reached for inline enums
-            return "String".to_string();
+        // Check for enum values - inline enums should be handled by the caller
+        // For now, fall through to determine the base type from the schema type
+        // The enum will be generated separately by generate_field
+
+        // Check if this is an inline object with properties (should be a struct)
+        if !schema.properties.is_empty() {
+            // Return a marker that this is an inline object
+            // The caller should generate a separate struct type for this
+            return "INLINE_OBJECT".to_string();
         }
 
         // Handle schema type - SchemaTypeSet is either Single(SchemaType) or Multiple(Vec<SchemaType>)

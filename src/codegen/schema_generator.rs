@@ -49,9 +49,9 @@ impl SchemaGenerator {
         // Add variants
         for value in enum_values {
             if let Some(variant_str) = value.as_str() {
-                let variant_name = to_pascal_case(variant_str);
+                let variant_name = sanitize_variant_name(variant_str);
 
-                // If the original value is different from PascalCase, add rename
+                // If the original value is different from the sanitized name, add rename
                 if variant_name != variant_str {
                     output.push_str(&format!("    #[serde(rename = \"{}\")]\n", variant_str));
                 }
@@ -156,6 +156,41 @@ impl SchemaGenerator {
 
     fn generate_struct(name: &str, schema: &ObjectSchema) -> String {
         let mut output = String::new();
+        let mut inline_types = Vec::new();
+
+        // Get required fields
+        let required_fields = &schema.required;
+
+        // Collect fields and inline types (enums and structs)
+        let mut field_codes = String::new();
+        let mut prop_names: Vec<_> = schema.properties.keys().collect();
+        prop_names.sort();
+
+        for prop_name in prop_names {
+            if let Some(prop_schema_ref) = schema.properties.get(prop_name) {
+                let is_required = required_fields.contains(prop_name);
+                let (field_code, types) =
+                    Self::generate_field(prop_name, prop_schema_ref, is_required, name);
+
+                field_codes.push_str(&field_code);
+                inline_types.extend(types);
+            }
+        }
+
+        // Generate inline types (enums and structs) first
+        for (type_name, type_schema) in inline_types {
+            // Check if it's an enum or struct
+            if !type_schema.enum_values.is_empty() {
+                output.push_str(&Self::generate_enum(
+                    &type_name,
+                    &type_schema,
+                    &type_schema.enum_values,
+                ));
+            } else if !type_schema.properties.is_empty() {
+                output.push_str(&Self::generate_struct(&type_name, &type_schema));
+            }
+            output.push_str("\n\n");
+        }
 
         // Add doc comment
         output.push_str(&generate_doc_comment(&schema.description));
@@ -166,20 +201,8 @@ impl SchemaGenerator {
         // Start struct
         output.push_str(&format!("pub struct {} {{\n", name));
 
-        // Get required fields
-        let required_fields = &schema.required;
-
         // Add fields
-        let mut prop_names: Vec<_> = schema.properties.keys().collect();
-        prop_names.sort();
-
-        for prop_name in prop_names {
-            if let Some(prop_schema_ref) = schema.properties.get(prop_name) {
-                let is_required = required_fields.contains(prop_name);
-                let field_code = Self::generate_field(prop_name, prop_schema_ref, is_required);
-                output.push_str(&field_code);
-            }
-        }
+        output.push_str(&field_codes);
 
         output.push_str("}");
         output
@@ -189,8 +212,10 @@ impl SchemaGenerator {
         name: &str,
         schema_ref: &ObjectOrReference<ObjectSchema>,
         is_required: bool,
-    ) -> String {
+        parent_type_name: &str,
+    ) -> (String, Vec<(String, ObjectSchema)>) {
         let mut output = String::new();
+        let mut inline_types = Vec::new();
 
         let schema = match schema_ref {
             ObjectOrReference::Object(s) => s,
@@ -215,9 +240,68 @@ impl SchemaGenerator {
                 }
 
                 output.push_str(&format!("    pub {}: {},\n", field_name, final_type));
-                return output;
+                return (output, inline_types);
             }
         };
+
+        // Check if this field is an inline enum
+        if !schema.enum_values.is_empty() {
+            // Generate a separate enum type for this field
+            // Prefix with parent type name to avoid collisions
+            let enum_type_name = format!("{}{}", parent_type_name, to_pascal_case(name));
+            inline_types.push((enum_type_name.clone(), schema.clone()));
+
+            let field_name = sanitize_field_name(&to_snake_case(name));
+            let final_type = if is_required {
+                enum_type_name
+            } else {
+                format!("Option<{}>", enum_type_name)
+            };
+
+            // Check if we need rename
+            if field_name != name {
+                output.push_str(&format!("    #[serde(rename = \"{}\")]\n", name));
+            }
+
+            // Add skip_serializing_if for Option fields
+            if !is_required {
+                output.push_str("    #[serde(skip_serializing_if = \"Option::is_none\")]\n");
+            }
+
+            output.push_str(&format!("    pub {}: {},\n", field_name, final_type));
+            return (output, inline_types);
+        }
+
+        // Check if this field is an inline object (struct with properties)
+        if !schema.properties.is_empty() {
+            // Generate a separate struct type for this field
+            // Prefix with parent type name to avoid collisions
+            let struct_type_name = format!("{}{}", parent_type_name, to_pascal_case(name));
+            inline_types.push((struct_type_name.clone(), schema.clone()));
+
+            let field_name = sanitize_field_name(&to_snake_case(name));
+            let final_type = if is_required {
+                struct_type_name
+            } else {
+                format!("Option<{}>", struct_type_name)
+            };
+
+            // Add doc comment for field
+            output.push_str(&generate_doc_comment(&schema.description).replace("/// ", "    /// "));
+
+            // Check if we need rename
+            if field_name != name {
+                output.push_str(&format!("    #[serde(rename = \"{}\")]\n", name));
+            }
+
+            // Add skip_serializing_if for Option fields
+            if !is_required {
+                output.push_str("    #[serde(skip_serializing_if = \"Option::is_none\")]\n");
+            }
+
+            output.push_str(&format!("    pub {}: {},\n", field_name, final_type));
+            return (output, inline_types);
+        }
 
         // Add doc comment for field
         output.push_str(&generate_doc_comment(&schema.description).replace("/// ", "    /// "));
@@ -236,6 +320,6 @@ impl SchemaGenerator {
         }
 
         output.push_str(&format!("    pub {}: {},\n", field_name, rust_type));
-        output
+        (output, inline_types)
     }
 }

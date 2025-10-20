@@ -51,6 +51,25 @@ pub fn sanitize_field_name(s: &str) -> String {
     }
 }
 
+/// Sanitize enum variant names to be valid Rust identifiers
+/// Similar to sanitize_field_name but for PascalCase enum variants
+pub fn sanitize_variant_name(s: &str) -> String {
+    let pascal = to_pascal_case(s);
+
+    // If it starts with a number or is a Rust keyword, prefix with underscore
+    if pascal
+        .chars()
+        .next()
+        .map(|c| c.is_numeric())
+        .unwrap_or(false)
+        || is_rust_keyword(&pascal)
+    {
+        format!("_{}", pascal)
+    } else {
+        pascal
+    }
+}
+
 /// Check if a string is a Rust keyword
 fn is_rust_keyword(s: &str) -> bool {
     matches!(

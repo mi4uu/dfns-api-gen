@@ -13,6 +13,7 @@ async fn main() {
         .await
         .expect("Failed to fetch OpenAPI spec");
     let yaml_content = r.text().await.expect("Failed to read response");
+    fs::write("openapi.yml", &yaml_content).expect("Failed to write openapi.json");
 
     // Parse and save as JSON
     let openapi = oas3::from_yaml(&yaml_content).expect("Failed to parse OpenAPI YAML");

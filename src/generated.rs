@@ -31,14 +31,27 @@ pub enum BlockchainKind {
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum CantonValidatorKind {
+    Shared,
+    Custom,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum CantonValidatorNetwork {
+    Canton,
+    CantonDevnet,
+    CantonTestnet,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct CantonValidator {
     #[serde(rename = "dateCreated")]
     pub date_created: String,
     pub id: String,
-    pub kind: String,
+    pub kind: CantonValidatorKind,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    pub network: String,
+    pub network: CantonValidatorNetwork,
     /// Organization id.
     #[serde(rename = "orgId")]
     pub org_id: String,
@@ -140,6 +153,61 @@ pub enum Network {
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum OfferKind {
+    Native,
+    Aip21,
+    Asa,
+    Coin,
+    Erc20,
+    Erc721,
+    Asset,
+    Hip17,
+    Hts,
+    Sep41,
+    Spl,
+    Spl2022,
+    Tep74,
+    Trc10,
+    Trc20,
+    Trc721,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct OfferMetadataAssetQuotes {
+    #[serde(rename = "EUR")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eur: Option<f64>,
+    #[serde(rename = "USD")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub usd: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct OfferMetadataAsset {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub decimals: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub quotes: Option<OfferMetadataAssetQuotes>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub symbol: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub verified: Option<bool>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct OfferMetadata {
+    pub asset: OfferMetadataAsset,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum OfferStatus {
+    Pending,
+    Accepted,
+    Rejected,
+    Expired,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Offer {
     #[serde(rename = "expiresAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -147,13 +215,13 @@ pub struct Offer {
     pub from: String,
     /// Offer id.
     pub id: String,
-    pub kind: String,
-    pub metadata: serde_json::Value,
+    pub kind: OfferKind,
+    pub metadata: OfferMetadata,
     pub network: Network,
     /// Organization id.
     #[serde(rename = "orgId")]
     pub org_id: String,
-    pub status: String,
+    pub status: OfferStatus,
     pub timestamp: String,
     pub to: String,
     #[serde(rename = "txHash")]
@@ -164,6 +232,34 @@ pub struct Offer {
     pub wallet_id: String,
 }
 
+/// Swap provider.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum SwapProvider {
+    UniswapX,
+    UniswapClassic,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct SwapRequester {
+    /// Service Account token or Personal Access token used when requesting the resource.
+    #[serde(rename = "tokenId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub token_id: Option<String>,
+    /// User (could be a service account) who requested the resource.
+    #[serde(rename = "userId")]
+    pub user_id: String,
+}
+
+/// Swap status.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum SwapStatus {
+    PendingPolicyApproval,
+    InProgress,
+    Completed,
+    Failed,
+    Rejected,
+}
+
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Swap {
     /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date (must be UTC). When the swap was initiated.
@@ -171,8 +267,7 @@ pub struct Swap {
     pub date_created: String,
     /// Swap id.
     pub id: String,
-    /// Swap provider.
-    pub provider: String,
+    pub provider: SwapProvider,
     /// Id of the quote this swap is based on.
     #[serde(rename = "quoteId")]
     pub quote_id: String,
@@ -187,18 +282,35 @@ pub struct Swap {
     /// The full request used for initiating this swap.
     #[serde(rename = "requestBody")]
     pub request_body: serde_json::Value,
-    pub requester: serde_json::Value,
+    pub requester: SwapRequester,
     /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you are willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%.
     #[serde(rename = "slippageBps")]
     pub slippage_bps: f64,
-    /// Swap status.
-    pub status: String,
+    pub status: SwapStatus,
     /// Id of the Dfns wallet receiving the target asset. Currently this value must be the same as the `walletId`.
     #[serde(rename = "targetWalletId")]
     pub target_wallet_id: String,
     /// Id of the Dfns wallet spending the sourceAsset.
     #[serde(rename = "walletId")]
     pub wallet_id: String,
+}
+
+/// Swap provider.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum SwapQuoteProvider {
+    UniswapX,
+    UniswapClassic,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct SwapQuoteRequester {
+    /// Service Account token or Personal Access token used when requesting the quote.
+    #[serde(rename = "tokenId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub token_id: Option<String>,
+    /// User (could be a service account) who requested the quote.
+    #[serde(rename = "userId")]
+    pub user_id: String,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -208,12 +320,11 @@ pub struct SwapQuote {
     pub date_created: String,
     /// ID of the Swap Quote.
     pub id: String,
-    /// Swap provider.
-    pub provider: String,
+    pub provider: SwapQuoteProvider,
     /// The full request used for obtaining this quote.
     #[serde(rename = "requestBody")]
     pub request_body: serde_json::Value,
-    pub requester: serde_json::Value,
+    pub requester: SwapQuoteRequester,
     /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you're willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%.
     #[serde(rename = "slippageBps")]
     pub slippage_bps: f64,
@@ -230,6 +341,52 @@ pub struct SwapQuote {
     /// Id of the Dfns wallet spending the sourceAsset.
     #[serde(rename = "walletId")]
     pub wallet_id: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct TransferRequestMetadataAssetQuotes {
+    #[serde(rename = "EUR")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eur: Option<f64>,
+    #[serde(rename = "USD")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub usd: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct TransferRequestMetadataAsset {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub decimals: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub quotes: Option<TransferRequestMetadataAssetQuotes>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub symbol: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub verified: Option<bool>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct TransferRequestMetadata {
+    pub asset: TransferRequestMetadataAsset,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct TransferRequestRequester {
+    #[serde(rename = "tokenId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub token_id: Option<String>,
+    #[serde(rename = "userId")]
+    pub user_id: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum TransferRequestStatus {
+    Pending,
+    Executing,
+    Broadcasted,
+    Confirmed,
+    Failed,
+    Rejected,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -257,19 +414,26 @@ pub struct TransferRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fee_sponsor_id: Option<String>,
     pub id: String,
-    pub metadata: serde_json::Value,
+    pub metadata: TransferRequestMetadata,
     pub network: Network,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reason: Option<String>,
     #[serde(rename = "requestBody")]
     pub request_body: serde_json::Value,
-    pub requester: serde_json::Value,
-    pub status: String,
+    pub requester: TransferRequestRequester,
+    pub status: TransferRequestStatus,
     #[serde(rename = "txHash")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tx_hash: Option<String>,
     #[serde(rename = "walletId")]
     pub wallet_id: String,
+}
+
+/// User kind.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum UserKind {
+    CustomerEmployee,
+    EndUser,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -284,8 +448,7 @@ pub struct User {
     pub is_ssorequired: bool,
     #[serde(rename = "isServiceAccount")]
     pub is_service_account: bool,
-    /// User kind.
-    pub kind: String,
+    pub kind: UserKind,
     pub name: String,
     #[serde(rename = "orgId")]
     pub org_id: String,
@@ -297,6 +460,141 @@ pub struct User {
     #[serde(rename = "userId")]
     pub user_id: String,
     pub username: String,
+}
+
+/// Network this wallet is bound to.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum WalletNetwork {
+    Algorand,
+    AlgorandTestnet,
+    Aptos,
+    AptosTestnet,
+    ArbitrumOne,
+    ArbitrumSepolia,
+    AvalancheC,
+    AvalancheCFuji,
+    BabylonGenesis,
+    BabylonTestnet5,
+    Base,
+    BaseSepolia,
+    Berachain,
+    BerachainBepolia,
+    Bitcoin,
+    BitcoinSignet,
+    BitcoinTestnet3,
+    BitcoinCash,
+    Bob,
+    BobSepolia,
+    Bsc,
+    BscTestnet,
+    Canton,
+    CantonTestnet,
+    Cardano,
+    CardanoPreprod,
+    Celo,
+    CeloAlfajores,
+    Codex,
+    CodexSepolia,
+    CosmosHub4,
+    CosmosIcsTestnet,
+    Dogecoin,
+    Ethereum,
+    EthereumGoerli,
+    EthereumSepolia,
+    EthereumHolesky,
+    EthereumHoodi,
+    FantomOpera,
+    FantomTestnet,
+    FlareC,
+    FlareCCoston2,
+    Hedera,
+    HederaTestnet,
+    Ink,
+    InkSepolia,
+    InternetComputer,
+    Ion,
+    IonTestnet,
+    Iota,
+    IotaTestnet,
+    KadenaTestnet4,
+    Kadena,
+    Kaspa,
+    Kusama,
+    Litecoin,
+    Near,
+    NearTestnet,
+    Optimism,
+    OptimismSepolia,
+    Origyn,
+    Plume,
+    PlumeSepolia,
+    Polkadot,
+    Polygon,
+    PolygonAmoy,
+    Polymesh,
+    PolymeshTestnet,
+    Race,
+    RaceSepolia,
+    SeiAtlantic2,
+    SeiPacific1,
+    Solana,
+    SolanaDevnet,
+    Stellar,
+    StellarTestnet,
+    Sui,
+    SuiTestnet,
+    Tsc,
+    TscTestnet1,
+    Tezos,
+    TezosGhostnet,
+    Ton,
+    TonTestnet,
+    Tron,
+    TronNile,
+    Westend,
+    XrpLedger,
+    XrpLedgerTestnet,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum WalletSigningKeyCurve {
+    #[serde(rename = "ed25519")]
+    Ed25519,
+    #[serde(rename = "secp256k1")]
+    Secp256k1,
+    #[serde(rename = "stark")]
+    Stark,
+}
+
+/// Key scheme.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum WalletSigningKeyScheme {
+    ECDSA,
+    EdDSA,
+    Schnorr,
+}
+
+/// Details about the key underlying the wallet.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct WalletSigningKey {
+    pub curve: WalletSigningKeyCurve,
+    /// The end user ID the key (and wallet) is delegated to.
+    #[serde(rename = "delegatedTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub delegated_to: Option<String>,
+    /// Key id.
+    pub id: String,
+    /// Hex-encoded value of the public key.
+    #[serde(rename = "publicKey")]
+    pub public_key: String,
+    pub scheme: WalletSigningKeyScheme,
+}
+
+/// Wallet status.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum WalletStatus {
+    Active,
+    Archived,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -322,19 +620,24 @@ pub struct Wallet {
     /// Wallet nickname.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    /// Network this wallet is bound to.
-    pub network: String,
+    pub network: WalletNetwork,
     /// Details about the key underlying the wallet.
     #[serde(rename = "signingKey")]
-    pub signing_key: serde_json::Value,
-    /// Wallet status.
-    pub status: String,
+    pub signing_key: WalletSigningKey,
+    pub status: WalletStatus,
     /// List of tags.
     pub tags: Vec<String>,
     /// Id of the validator on which the wallet is created for Canton networks
     #[serde(rename = "validatorId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub validator_id: Option<String>,
+}
+
+/// The DeFi protocol used for yield generation. Currently supports OFNS protocol
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum YieldProtocol {
+    #[serde(rename = "0fns")]
+    _0fns,
 }
 
 /// A yield investment representing funds deposited to earn interest from a DeFi protocol.
@@ -347,13 +650,40 @@ pub struct Yield {
     pub date_created: String,
     /// Unique identifier for the yield investment.
     pub id: String,
-    /// The DeFi protocol used for yield generation. Currently supports OFNS protocol
-    pub protocol: String,
+    pub protocol: YieldProtocol,
     /// The total interest earned so far in this yield.
     pub rewards: serde_json::Value,
     /// Wallet id.
     #[serde(rename = "walletId")]
     pub wallet_id: String,
+}
+
+/// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum YieldActionKind {
+    Deposit,
+    Withdraw,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct YieldActionRequester {
+    /// Service Account token or Personal Access token used when requesting the resource.
+    #[serde(rename = "tokenId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub token_id: Option<String>,
+    /// User (could be a service account) who requested the resource.
+    #[serde(rename = "userId")]
+    pub user_id: String,
+}
+
+/// Status of the yield action. Once initiated, the status will be InProgress, after processing it will be Completed or Failed.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum YieldActionStatus {
+    PendingPolicyApproval,
+    InProgress,
+    Completed,
+    Failed,
+    Rejected,
 }
 
 /// A specific action performed on a yield investment, such as depositing or withdrawing funds.
@@ -368,14 +698,12 @@ pub struct YieldAction {
     pub external_id: Option<String>,
     /// Unique identifier for the yield action.
     pub id: String,
-    /// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
-    pub kind: String,
+    pub kind: YieldActionKind,
     /// The full request used for initiating this yield action.
     #[serde(rename = "requestBody")]
     pub request_body: serde_json::Value,
-    pub requester: serde_json::Value,
-    /// Status of the yield action. Once initiated, the status will be InProgress, after processing it will be Completed or Failed.
-    pub status: String,
+    pub requester: YieldActionRequester,
+    pub status: YieldActionStatus,
     /// Unique identifier for the yield investment.
     #[serde(rename = "yieldId")]
     pub yield_id: String,
@@ -385,9 +713,28 @@ pub mod agreements {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum LatestUnacceptedGetResponse200LatestAgreementAgreementType {
+        PrivacyPolicy,
+        TermsAndConditions,
+        UniswapTermsOfService,
+        UniswapPrivacyPolicy,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct LatestUnacceptedGetResponse200LatestAgreement {
+        #[serde(rename = "agreementType")]
+        pub agreement_type: LatestUnacceptedGetResponse200LatestAgreementAgreementType,
+        #[serde(rename = "agreementUrl")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub agreement_url: Option<String>,
+        pub details: String,
+        pub id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct LatestUnacceptedGetResponse200 {
         #[serde(rename = "latestAgreement")]
-        pub latest_agreement: serde_json::Value,
+        pub latest_agreement: LatestUnacceptedGetResponse200LatestAgreement,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -426,6 +773,12 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ActionInitPostRequestUserActionServerKind {
+        Api,
+        Staff,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ActionInitPostRequest {
         #[serde(rename = "userActionHttpMethod")]
         pub user_action_http_method: String,
@@ -435,25 +788,80 @@ pub mod auth {
         pub user_action_payload: String,
         #[serde(rename = "userActionServerKind")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub user_action_server_kind: Option<String>,
+        pub user_action_server_kind: Option<ActionInitPostRequestUserActionServerKind>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ActionInitPostResponse200AllowCredentials {
+        pub key: Vec<serde_json::Value>,
+        #[serde(rename = "passwordProtectedKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub password_protected_key: Option<Vec<serde_json::Value>>,
+        pub webauthn: Vec<serde_json::Value>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ActionInitPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ActionInitPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ActionInitPostResponse200UserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ActionInitPostResponse200 {
         #[serde(rename = "allowCredentials")]
-        pub allow_credentials: serde_json::Value,
-        pub attestation: String,
+        pub allow_credentials: ActionInitPostResponse200AllowCredentials,
+        pub attestation: ActionInitPostResponse200Attestation,
         pub challenge: String,
         #[serde(rename = "challengeIdentifier")]
         pub challenge_identifier: String,
         #[serde(rename = "externalAuthenticationUrl")]
         pub external_authentication_url: String,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<ActionInitPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
         pub supported_credential_kinds: Vec<serde_json::Value>,
         #[serde(rename = "userVerification")]
-        pub user_verification: String,
+        pub user_verification: ActionInitPostResponse200UserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ActionLogsIdGetResponse200FirstFactorCredentialAssertion {
+        #[serde(rename = "authenticatorData")]
+        pub authenticator_data: String,
+        #[serde(rename = "clientData")]
+        pub client_data: String,
+        pub signature: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ActionLogsIdGetResponse200FirstFactorCredential {
+        pub assertion: ActionLogsIdGetResponse200FirstFactorCredentialAssertion,
+        pub id: String,
+        pub kind: String,
+        #[serde(rename = "publicKey")]
+        pub public_key: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -464,7 +872,7 @@ pub mod auth {
         #[serde(rename = "datePerformed")]
         pub date_performed: String,
         #[serde(rename = "firstFactorCredential")]
-        pub first_factor_credential: serde_json::Value,
+        pub first_factor_credential: ActionLogsIdGetResponse200FirstFactorCredential,
         pub id: String,
         #[serde(rename = "userId")]
         pub user_id: String,
@@ -474,6 +882,12 @@ pub mod auth {
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct AppsGetResponse200 {
         pub items: Vec<serde_json::Value>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum AppsAppIdGetResponse200Kind {
+        ServerSideApplication,
+        ClientSideApplication,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -490,7 +904,7 @@ pub mod auth {
         pub expected_rp_id: Option<String>,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        pub kind: String,
+        pub kind: AppsAppIdGetResponse200Kind,
         pub name: String,
         #[serde(rename = "orgId")]
         pub org_id: String,
@@ -504,6 +918,16 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum CredentialsPostResponse200Kind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct CredentialsPostResponse200 {
         #[serde(rename = "credentialId")]
         pub credential_id: String,
@@ -513,7 +937,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        pub kind: String,
+        pub kind: CredentialsPostResponse200Kind,
         pub name: String,
         pub origin: String,
         #[serde(rename = "publicKey")]
@@ -546,10 +970,30 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum CredentialsCodeInitPostRequestCredentialKind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct CredentialsCodeInitPostRequest {
         pub code: String,
         #[serde(rename = "credentialKind")]
-        pub credential_kind: String,
+        pub credential_kind: CredentialsCodeInitPostRequestCredentialKind,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum CredentialsCodeVerifyPostResponse200Kind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -562,7 +1006,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        pub kind: String,
+        pub kind: CredentialsCodeVerifyPostResponse200Kind,
         pub name: String,
         pub origin: String,
         #[serde(rename = "publicKey")]
@@ -583,8 +1027,16 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum CredentialsInitPostRequestKind {
+        Fido2,
+        Key,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct CredentialsInitPostRequest {
-        pub kind: String,
+        pub kind: CredentialsInitPostRequestKind,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -635,21 +1087,63 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct LoginInitPostResponse200AllowCredentials {
+        pub key: Vec<serde_json::Value>,
+        #[serde(rename = "passwordProtectedKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub password_protected_key: Option<Vec<serde_json::Value>>,
+        pub webauthn: Vec<serde_json::Value>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum LoginInitPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct LoginInitPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum LoginInitPostResponse200UserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct LoginInitPostResponse200 {
         #[serde(rename = "allowCredentials")]
-        pub allow_credentials: serde_json::Value,
-        pub attestation: String,
+        pub allow_credentials: LoginInitPostResponse200AllowCredentials,
+        pub attestation: LoginInitPostResponse200Attestation,
         pub challenge: String,
         #[serde(rename = "challengeIdentifier")]
         pub challenge_identifier: String,
         #[serde(rename = "externalAuthenticationUrl")]
         pub external_authentication_url: String,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<LoginInitPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
         pub supported_credential_kinds: Vec<serde_json::Value>,
         #[serde(rename = "userVerification")]
-        pub user_verification: String,
+        pub user_verification: LoginInitPostResponse200UserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum LoginSocialPostRequestSocialLoginProviderKind {
+        Oidc,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -660,7 +1154,7 @@ pub mod auth {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub org_id: Option<String>,
         #[serde(rename = "socialLoginProviderKind")]
-        pub social_login_provider_kind: String,
+        pub social_login_provider_kind: LoginSocialPostRequestSocialLoginProviderKind,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -738,6 +1232,17 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsPostResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PatsPostResponse200 {
         #[serde(rename = "accessToken")]
         pub access_token: String,
@@ -747,7 +1252,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        pub kind: String,
+        pub kind: PatsPostResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -763,6 +1268,18 @@ pub mod auth {
         pub token_id: String,
     }
 
+    /// Access token kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsTokenIdGetResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PatsTokenIdGetResponse200 {
         #[serde(rename = "accessToken")]
@@ -774,8 +1291,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        /// Access token kind.
-        pub kind: String,
+        pub kind: PatsTokenIdGetResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -800,6 +1316,18 @@ pub mod auth {
         pub name: Option<String>,
     }
 
+    /// Access token kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsTokenIdPutResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PatsTokenIdPutResponse200 {
         #[serde(rename = "accessToken")]
@@ -811,8 +1339,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        /// Access token kind.
-        pub kind: String,
+        pub kind: PatsTokenIdPutResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -826,6 +1353,18 @@ pub mod auth {
         pub public_key: String,
         #[serde(rename = "tokenId")]
         pub token_id: String,
+    }
+
+    /// Access token kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsTokenIdDeleteResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -839,8 +1378,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        /// Access token kind.
-        pub kind: String,
+        pub kind: PatsTokenIdDeleteResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -854,6 +1392,18 @@ pub mod auth {
         pub public_key: String,
         #[serde(rename = "tokenId")]
         pub token_id: String,
+    }
+
+    /// Access token kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsTokenIdActivatePutResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -867,8 +1417,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        /// Access token kind.
-        pub kind: String,
+        pub kind: PatsTokenIdActivatePutResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -882,6 +1431,18 @@ pub mod auth {
         pub public_key: String,
         #[serde(rename = "tokenId")]
         pub token_id: String,
+    }
+
+    /// Access token kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PatsTokenIdDeactivatePutResponse200Kind {
+        Pat,
+        ServiceAccount,
+        Token,
+        Code,
+        Recovery,
+        Temp,
+        Application,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -895,8 +1456,7 @@ pub mod auth {
         pub date_created: String,
         #[serde(rename = "isActive")]
         pub is_active: bool,
-        /// Access token kind.
-        pub kind: String,
+        pub kind: PatsTokenIdDeactivatePutResponse200Kind,
         #[serde(rename = "linkedAppId")]
         pub linked_app_id: String,
         #[serde(rename = "linkedUserId")]
@@ -913,16 +1473,107 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialInfo {
+        #[serde(rename = "attestationData")]
+        pub attestation_data: String,
+        #[serde(rename = "clientData")]
+        pub client_data: String,
+        #[serde(rename = "credId")]
+        pub cred_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialKind {
+        RecoveryKey,
+    }
+
+    /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostRequestNewCredentialsRecoveryCredential {
+        #[serde(rename = "credentialInfo")]
+        pub credential_info: RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialInfo,
+        #[serde(rename = "credentialKind")]
+        pub credential_kind: RecoverUserPostRequestNewCredentialsRecoveryCredentialCredentialKind,
+        #[serde(rename = "credentialName")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub credential_name: Option<String>,
+        #[serde(rename = "encryptedPrivateKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encrypted_private_key: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostRequestNewCredentials {
+        #[serde(rename = "firstFactorCredential")]
+        pub first_factor_credential: serde_json::Value,
+        /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
+        #[serde(rename = "recoveryCredential")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub recovery_credential: Option<RecoverUserPostRequestNewCredentialsRecoveryCredential>,
+        #[serde(rename = "secondFactorCredential")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub second_factor_credential: Option<serde_json::Value>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostRequestRecoveryCredentialAssertion {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub algorithm: Option<String>,
+        #[serde(rename = "clientData")]
+        pub client_data: String,
+        #[serde(rename = "credId")]
+        pub cred_id: String,
+        pub signature: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserPostRequestRecoveryKind {
+        RecoveryKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostRequestRecovery {
+        #[serde(rename = "credentialAssertion")]
+        pub credential_assertion: RecoverUserPostRequestRecoveryCredentialAssertion,
+        pub kind: RecoverUserPostRequestRecoveryKind,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RecoverUserPostRequest {
         #[serde(rename = "newCredentials")]
-        pub new_credentials: serde_json::Value,
-        pub recovery: serde_json::Value,
+        pub new_credentials: RecoverUserPostRequestNewCredentials,
+        pub recovery: RecoverUserPostRequestRecovery,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserPostResponse200CredentialKind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostResponse200Credential {
+        pub kind: RecoverUserPostResponse200CredentialKind,
+        pub name: String,
+        pub uuid: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserPostResponse200User {
+        pub id: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        pub username: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RecoverUserPostResponse200 {
-        pub credential: serde_json::Value,
-        pub user: serde_json::Value,
+        pub credential: RecoverUserPostResponse200Credential,
+        pub user: RecoverUserPostResponse200User,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -945,12 +1596,87 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserDelegatedPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
+        #[serde(rename = "platform")]
+        Platform,
+        #[serde(rename = "cross-platform")]
+        CrossPlatform,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionResidentKey {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserDelegatedPostResponse200AuthenticatorSelectionUserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserDelegatedPostResponse200AuthenticatorSelection {
+        #[serde(rename = "authenticatorAttachment")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub authenticator_attachment: Option<RecoverUserDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        #[serde(rename = "requireResidentKey")]
+        pub require_resident_key: bool,
+        #[serde(rename = "residentKey")]
+        pub resident_key: RecoverUserDelegatedPostResponse200AuthenticatorSelectionResidentKey,
+        #[serde(rename = "userVerification")]
+        pub user_verification: RecoverUserDelegatedPostResponse200AuthenticatorSelectionUserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserDelegatedPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserDelegatedPostResponse200SupportedCredentialKinds {
+        #[serde(rename = "firstFactor")]
+        pub first_factor: Vec<String>,
+        #[serde(rename = "secondFactor")]
+        pub second_factor: Vec<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserDelegatedPostResponse200User {
+        #[serde(rename = "displayName")]
+        pub display_name: String,
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RecoverUserDelegatedPostResponse200 {
         #[serde(rename = "allowedRecoveryCredentials")]
         pub allowed_recovery_credentials: Vec<serde_json::Value>,
-        pub attestation: String,
+        pub attestation: RecoverUserDelegatedPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
-        pub authenticator_selection: serde_json::Value,
+        pub authenticator_selection: RecoverUserDelegatedPostResponse200AuthenticatorSelection,
         pub challenge: String,
         #[serde(rename = "excludeCredentials")]
         pub exclude_credentials: Vec<serde_json::Value>,
@@ -959,12 +1685,12 @@ pub mod auth {
         #[serde(rename = "pubKeyCredParams")]
         pub pub_key_cred_params: Vec<serde_json::Value>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<RecoverUserDelegatedPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: serde_json::Value,
+        pub supported_credential_kinds: RecoverUserDelegatedPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
-        pub user: serde_json::Value,
+        pub user: RecoverUserDelegatedPostResponse200User,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -979,12 +1705,87 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserInitPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
+        #[serde(rename = "platform")]
+        Platform,
+        #[serde(rename = "cross-platform")]
+        CrossPlatform,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserInitPostResponse200AuthenticatorSelectionResidentKey {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RecoverUserInitPostResponse200AuthenticatorSelectionUserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserInitPostResponse200AuthenticatorSelection {
+        #[serde(rename = "authenticatorAttachment")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub authenticator_attachment: Option<RecoverUserInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        #[serde(rename = "requireResidentKey")]
+        pub require_resident_key: bool,
+        #[serde(rename = "residentKey")]
+        pub resident_key: RecoverUserInitPostResponse200AuthenticatorSelectionResidentKey,
+        #[serde(rename = "userVerification")]
+        pub user_verification: RecoverUserInitPostResponse200AuthenticatorSelectionUserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserInitPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserInitPostResponse200SupportedCredentialKinds {
+        #[serde(rename = "firstFactor")]
+        pub first_factor: Vec<String>,
+        #[serde(rename = "secondFactor")]
+        pub second_factor: Vec<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RecoverUserInitPostResponse200User {
+        #[serde(rename = "displayName")]
+        pub display_name: String,
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RecoverUserInitPostResponse200 {
         #[serde(rename = "allowedRecoveryCredentials")]
         pub allowed_recovery_credentials: Vec<serde_json::Value>,
-        pub attestation: String,
+        pub attestation: RecoverUserInitPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
-        pub authenticator_selection: serde_json::Value,
+        pub authenticator_selection: RecoverUserInitPostResponse200AuthenticatorSelection,
         pub challenge: String,
         #[serde(rename = "excludeCredentials")]
         pub exclude_credentials: Vec<serde_json::Value>,
@@ -993,12 +1794,42 @@ pub mod auth {
         #[serde(rename = "pubKeyCredParams")]
         pub pub_key_cred_params: Vec<serde_json::Value>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<RecoverUserInitPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: serde_json::Value,
+        pub supported_credential_kinds: RecoverUserInitPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
-        pub user: serde_json::Value,
+        pub user: RecoverUserInitPostResponse200User,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationPostRequestRecoveryCredentialCredentialInfo {
+        #[serde(rename = "attestationData")]
+        pub attestation_data: String,
+        #[serde(rename = "clientData")]
+        pub client_data: String,
+        #[serde(rename = "credId")]
+        pub cred_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationPostRequestRecoveryCredentialCredentialKind {
+        RecoveryKey,
+    }
+
+    /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationPostRequestRecoveryCredential {
+        #[serde(rename = "credentialInfo")]
+        pub credential_info: RegistrationPostRequestRecoveryCredentialCredentialInfo,
+        #[serde(rename = "credentialKind")]
+        pub credential_kind: RegistrationPostRequestRecoveryCredentialCredentialKind,
+        #[serde(rename = "credentialName")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub credential_name: Option<String>,
+        #[serde(rename = "encryptedPrivateKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encrypted_private_key: Option<String>,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1008,16 +1839,41 @@ pub mod auth {
         /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
         #[serde(rename = "recoveryCredential")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub recovery_credential: Option<serde_json::Value>,
+        pub recovery_credential: Option<RegistrationPostRequestRecoveryCredential>,
         #[serde(rename = "secondFactorCredential")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub second_factor_credential: Option<serde_json::Value>,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationPostResponse200CredentialKind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationPostResponse200Credential {
+        pub kind: RegistrationPostResponse200CredentialKind,
+        pub name: String,
+        pub uuid: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationPostResponse200User {
+        pub id: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        pub username: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationPostResponse200 {
-        pub credential: serde_json::Value,
-        pub user: serde_json::Value,
+        pub credential: RegistrationPostResponse200Credential,
+        pub user: RegistrationPostResponse200User,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1033,19 +1889,99 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationDelegatedPostRequestKind {
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationDelegatedPostRequest {
         pub email: String,
         #[serde(rename = "externalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub external_id: Option<String>,
-        pub kind: String,
+        pub kind: RegistrationDelegatedPostRequestKind,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationDelegatedPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
+        #[serde(rename = "platform")]
+        Platform,
+        #[serde(rename = "cross-platform")]
+        CrossPlatform,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionResidentKey {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationDelegatedPostResponse200AuthenticatorSelectionUserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationDelegatedPostResponse200AuthenticatorSelection {
+        #[serde(rename = "authenticatorAttachment")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub authenticator_attachment: Option<RegistrationDelegatedPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        #[serde(rename = "requireResidentKey")]
+        pub require_resident_key: bool,
+        #[serde(rename = "residentKey")]
+        pub resident_key: RegistrationDelegatedPostResponse200AuthenticatorSelectionResidentKey,
+        #[serde(rename = "userVerification")]
+        pub user_verification: RegistrationDelegatedPostResponse200AuthenticatorSelectionUserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationDelegatedPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationDelegatedPostResponse200SupportedCredentialKinds {
+        #[serde(rename = "firstFactor")]
+        pub first_factor: Vec<String>,
+        #[serde(rename = "secondFactor")]
+        pub second_factor: Vec<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationDelegatedPostResponse200User {
+        #[serde(rename = "displayName")]
+        pub display_name: String,
+        pub id: String,
+        pub name: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationDelegatedPostResponse200 {
-        pub attestation: String,
+        pub attestation: RegistrationDelegatedPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
-        pub authenticator_selection: serde_json::Value,
+        pub authenticator_selection: RegistrationDelegatedPostResponse200AuthenticatorSelection,
         pub challenge: String,
         #[serde(rename = "excludeCredentials")]
         pub exclude_credentials: Vec<serde_json::Value>,
@@ -1054,12 +1990,42 @@ pub mod auth {
         #[serde(rename = "pubKeyCredParams")]
         pub pub_key_cred_params: Vec<serde_json::Value>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<RegistrationDelegatedPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: serde_json::Value,
+        pub supported_credential_kinds: RegistrationDelegatedPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
-        pub user: serde_json::Value,
+        pub user: RegistrationDelegatedPostResponse200User,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationEnduserPostRequestRecoveryCredentialCredentialInfo {
+        #[serde(rename = "attestationData")]
+        pub attestation_data: String,
+        #[serde(rename = "clientData")]
+        pub client_data: String,
+        #[serde(rename = "credId")]
+        pub cred_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationEnduserPostRequestRecoveryCredentialCredentialKind {
+        RecoveryKey,
+    }
+
+    /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationEnduserPostRequestRecoveryCredential {
+        #[serde(rename = "credentialInfo")]
+        pub credential_info: RegistrationEnduserPostRequestRecoveryCredentialCredentialInfo,
+        #[serde(rename = "credentialKind")]
+        pub credential_kind: RegistrationEnduserPostRequestRecoveryCredentialCredentialKind,
+        #[serde(rename = "credentialName")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub credential_name: Option<String>,
+        #[serde(rename = "encryptedPrivateKey")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encrypted_private_key: Option<String>,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1069,7 +2035,7 @@ pub mod auth {
         /// Register a recovery key. See [Account Recovery](https://docs.dfns.co/api-reference/auth/account-recovery) for more details.
         #[serde(rename = "recoveryCredential")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub recovery_credential: Option<serde_json::Value>,
+        pub recovery_credential: Option<RegistrationEnduserPostRequestRecoveryCredential>,
         #[serde(rename = "secondFactorCredential")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub second_factor_credential: Option<serde_json::Value>,
@@ -1077,10 +2043,40 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationEnduserPostResponse200Authentication {
+        pub token: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationEnduserPostResponse200CredentialKind {
+        Fido2,
+        Key,
+        Password,
+        Totp,
+        RecoveryKey,
+        PasswordProtectedKey,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationEnduserPostResponse200Credential {
+        pub kind: RegistrationEnduserPostResponse200CredentialKind,
+        pub name: String,
+        pub uuid: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationEnduserPostResponse200User {
+        pub id: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        pub username: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationEnduserPostResponse200 {
-        pub authentication: serde_json::Value,
-        pub credential: serde_json::Value,
-        pub user: serde_json::Value,
+        pub authentication: RegistrationEnduserPostResponse200Authentication,
+        pub credential: RegistrationEnduserPostResponse200Credential,
+        pub user: RegistrationEnduserPostResponse200User,
         pub wallets: Vec<Wallet>,
     }
 
@@ -1094,10 +2090,85 @@ pub mod auth {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationInitPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
+        #[serde(rename = "platform")]
+        Platform,
+        #[serde(rename = "cross-platform")]
+        CrossPlatform,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationInitPostResponse200AuthenticatorSelectionResidentKey {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationInitPostResponse200AuthenticatorSelectionUserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationInitPostResponse200AuthenticatorSelection {
+        #[serde(rename = "authenticatorAttachment")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub authenticator_attachment: Option<RegistrationInitPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        #[serde(rename = "requireResidentKey")]
+        pub require_resident_key: bool,
+        #[serde(rename = "residentKey")]
+        pub resident_key: RegistrationInitPostResponse200AuthenticatorSelectionResidentKey,
+        #[serde(rename = "userVerification")]
+        pub user_verification: RegistrationInitPostResponse200AuthenticatorSelectionUserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationInitPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationInitPostResponse200SupportedCredentialKinds {
+        #[serde(rename = "firstFactor")]
+        pub first_factor: Vec<String>,
+        #[serde(rename = "secondFactor")]
+        pub second_factor: Vec<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationInitPostResponse200User {
+        #[serde(rename = "displayName")]
+        pub display_name: String,
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationInitPostResponse200 {
-        pub attestation: String,
+        pub attestation: RegistrationInitPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
-        pub authenticator_selection: serde_json::Value,
+        pub authenticator_selection: RegistrationInitPostResponse200AuthenticatorSelection,
         pub challenge: String,
         #[serde(rename = "excludeCredentials")]
         pub exclude_credentials: Vec<serde_json::Value>,
@@ -1106,12 +2177,17 @@ pub mod auth {
         #[serde(rename = "pubKeyCredParams")]
         pub pub_key_cred_params: Vec<serde_json::Value>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<RegistrationInitPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: serde_json::Value,
+        pub supported_credential_kinds: RegistrationInitPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
-        pub user: serde_json::Value,
+        pub user: RegistrationInitPostResponse200User,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationSocialPostRequestSocialLoginProviderKind {
+        Oidc,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1122,14 +2198,89 @@ pub mod auth {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub org_id: Option<String>,
         #[serde(rename = "socialLoginProviderKind")]
-        pub social_login_provider_kind: String,
+        pub social_login_provider_kind: RegistrationSocialPostRequestSocialLoginProviderKind,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationSocialPostResponse200Attestation {
+        #[serde(rename = "none")]
+        None,
+        #[serde(rename = "indirect")]
+        Indirect,
+        #[serde(rename = "direct")]
+        Direct,
+        #[serde(rename = "enterprise")]
+        Enterprise,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationSocialPostResponse200AuthenticatorSelectionAuthenticatorAttachment {
+        #[serde(rename = "platform")]
+        Platform,
+        #[serde(rename = "cross-platform")]
+        CrossPlatform,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationSocialPostResponse200AuthenticatorSelectionResidentKey {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum RegistrationSocialPostResponse200AuthenticatorSelectionUserVerification {
+        #[serde(rename = "required")]
+        Required,
+        #[serde(rename = "preferred")]
+        Preferred,
+        #[serde(rename = "discouraged")]
+        Discouraged,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationSocialPostResponse200AuthenticatorSelection {
+        #[serde(rename = "authenticatorAttachment")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub authenticator_attachment: Option<RegistrationSocialPostResponse200AuthenticatorSelectionAuthenticatorAttachment>,
+        #[serde(rename = "requireResidentKey")]
+        pub require_resident_key: bool,
+        #[serde(rename = "residentKey")]
+        pub resident_key: RegistrationSocialPostResponse200AuthenticatorSelectionResidentKey,
+        #[serde(rename = "userVerification")]
+        pub user_verification: RegistrationSocialPostResponse200AuthenticatorSelectionUserVerification,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationSocialPostResponse200Rp {
+        pub id: String,
+        pub name: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationSocialPostResponse200SupportedCredentialKinds {
+        #[serde(rename = "firstFactor")]
+        pub first_factor: Vec<String>,
+        #[serde(rename = "secondFactor")]
+        pub second_factor: Vec<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct RegistrationSocialPostResponse200User {
+        #[serde(rename = "displayName")]
+        pub display_name: String,
+        pub id: String,
+        pub name: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct RegistrationSocialPostResponse200 {
-        pub attestation: String,
+        pub attestation: RegistrationSocialPostResponse200Attestation,
         #[serde(rename = "authenticatorSelection")]
-        pub authenticator_selection: serde_json::Value,
+        pub authenticator_selection: RegistrationSocialPostResponse200AuthenticatorSelection,
         pub challenge: String,
         #[serde(rename = "excludeCredentials")]
         pub exclude_credentials: Vec<serde_json::Value>,
@@ -1138,12 +2289,12 @@ pub mod auth {
         #[serde(rename = "pubKeyCredParams")]
         pub pub_key_cred_params: Vec<serde_json::Value>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub rp: Option<serde_json::Value>,
+        pub rp: Option<RegistrationSocialPostResponse200Rp>,
         #[serde(rename = "supportedCredentialKinds")]
-        pub supported_credential_kinds: serde_json::Value,
+        pub supported_credential_kinds: RegistrationSocialPostResponse200SupportedCredentialKinds,
         #[serde(rename = "temporaryAuthenticationToken")]
         pub temporary_authentication_token: String,
-        pub user: serde_json::Value,
+        pub user: RegistrationSocialPostResponse200User,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1167,12 +2318,74 @@ pub mod auth {
         pub public_key: String,
     }
 
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsPostResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsPostResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsPostResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ServiceAccountsPostResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsPostResponse200UserInfo,
+    }
+
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsServiceAccountIdGetResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsServiceAccountIdGetResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsServiceAccountIdGetResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1180,7 +2393,7 @@ pub mod auth {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsServiceAccountIdGetResponse200UserInfo,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1192,12 +2405,74 @@ pub mod auth {
         pub name: Option<String>,
     }
 
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsServiceAccountIdPutResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsServiceAccountIdPutResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsServiceAccountIdPutResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ServiceAccountsServiceAccountIdPutResponse200 {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsServiceAccountIdPutResponse200UserInfo,
+    }
+
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsServiceAccountIdDeleteResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsServiceAccountIdDeleteResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsServiceAccountIdDeleteResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1205,7 +2480,38 @@ pub mod auth {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsServiceAccountIdDeleteResponse200UserInfo,
+    }
+
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsServiceAccountIdActivatePutResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsServiceAccountIdActivatePutResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsServiceAccountIdActivatePutResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1213,7 +2519,38 @@ pub mod auth {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsServiceAccountIdActivatePutResponse200UserInfo,
+    }
+
+    /// User kind.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfoKind {
+        CustomerEmployee,
+        EndUser,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfo {
+        #[serde(rename = "credentialUuid")]
+        pub credential_uuid: String,
+        #[serde(rename = "isActive")]
+        pub is_active: bool,
+        #[serde(rename = "isRegistered")]
+        pub is_registered: bool,
+        #[serde(rename = "isServiceAccount")]
+        pub is_service_account: bool,
+        pub kind: ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfoKind,
+        pub name: String,
+        #[serde(rename = "orgId")]
+        pub org_id: String,
+        #[serde(rename = "permissionAssignments")]
+        pub permission_assignments: Vec<serde_json::Value>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub permissions: Option<Vec<String>>,
+        /// User id.
+        #[serde(rename = "userId")]
+        pub user_id: String,
+        pub username: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1221,7 +2558,7 @@ pub mod auth {
         #[serde(rename = "accessTokens")]
         pub access_tokens: Vec<serde_json::Value>,
         #[serde(rename = "userInfo")]
-        pub user_info: serde_json::Value,
+        pub user_info: ServiceAccountsServiceAccountIdDeactivatePutResponse200UserInfo,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1230,6 +2567,13 @@ pub mod auth {
         #[serde(rename = "nextPageToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub next_page_token: Option<String>,
+    }
+
+    /// The kind of user being created. 
+    ///       In this endpoint it can only be "`CustomerEmployee`" (creating an "`EndUser`" is done through the [Delegated Registration](https://docs.dfns.co/api-reference/auth/registration-flows#delegated-users-registration-flow) endpoint)
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum UsersPostRequestKind {
+        CustomerEmployee,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1244,9 +2588,7 @@ pub mod auth {
         #[serde(rename = "isSSORequired")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub is_ssorequired: Option<bool>,
-        /// The kind of user being created. 
-        ///       In this endpoint it can only be "`CustomerEmployee`" (creating an "`EndUser`" is done through the [Delegated Registration](https://docs.dfns.co/api-reference/auth/registration-flows#delegated-users-registration-flow) endpoint)
-        pub kind: String,
+        pub kind: UsersPostRequestKind,
         #[serde(rename = "publicKey")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub public_key: Option<String>,
@@ -1274,14 +2616,54 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PostRequestKind {
+        Binance,
+        Kraken,
+        CoinbaseApp,
+        CoinbasePrime,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct PostRequestReadConfiguration {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub otp: Option<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub password: Option<String>,
+        #[serde(rename = "privateApiKey")]
+        pub private_api_key: String,
+        #[serde(rename = "publicApiKey")]
+        pub public_api_key: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct PostRequestWriteConfiguration {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub otp: Option<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub password: Option<String>,
+        #[serde(rename = "privateApiKey")]
+        pub private_api_key: String,
+        #[serde(rename = "publicApiKey")]
+        pub public_api_key: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PostRequest {
-        pub kind: String,
+        pub kind: PostRequestKind,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         #[serde(rename = "readConfiguration")]
-        pub read_configuration: serde_json::Value,
+        pub read_configuration: PostRequestReadConfiguration,
         #[serde(rename = "writeConfiguration")]
-        pub write_configuration: serde_json::Value,
+        pub write_configuration: PostRequestWriteConfiguration,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PostResponse200Kind {
+        Binance,
+        Kraken,
+        CoinbaseApp,
+        CoinbasePrime,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1289,9 +2671,17 @@ pub mod exchanges {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
         pub id: String,
-        pub kind: String,
+        pub kind: PostResponse200Kind,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ExchangeIdGetResponse200Kind {
+        Binance,
+        Kraken,
+        CoinbaseApp,
+        CoinbasePrime,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1299,14 +2689,18 @@ pub mod exchanges {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
         pub id: String,
-        pub kind: String,
+        pub kind: ExchangeIdGetResponse200Kind,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ExchangeIdDeleteResponse200Deleted {
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ExchangeIdDeleteResponse200 {
-        pub deleted: String,
+        pub deleted: ExchangeIdDeleteResponse200Deleted,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1330,6 +2724,21 @@ pub mod exchanges {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ExchangeIdAccountsAccountIdDepositsPostResponse200Kind {
+        Withdrawal,
+        Deposit,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ExchangeIdAccountsAccountIdDepositsPostResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ExchangeIdAccountsAccountIdDepositsPostResponse200 {
         #[serde(rename = "accountId")]
         pub account_id: String,
@@ -1341,15 +2750,30 @@ pub mod exchanges {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub exchange_reference: Option<String>,
         pub id: String,
-        pub kind: String,
+        pub kind: ExchangeIdAccountsAccountIdDepositsPostResponse200Kind,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: ExchangeIdAccountsAccountIdDepositsPostResponse200Requester,
         #[serde(rename = "transferId")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub transfer_id: Option<String>,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Kind {
+        Withdrawal,
+        Deposit,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1364,10 +2788,10 @@ pub mod exchanges {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub exchange_reference: Option<String>,
         pub id: String,
-        pub kind: String,
+        pub kind: ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Kind,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: ExchangeIdAccountsAccountIdWithdrawalsPostResponse200Requester,
         #[serde(rename = "transferId")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub transfer_id: Option<String>,
@@ -1379,6 +2803,14 @@ pub mod exchanges {
 
 pub mod feesponsors {
     use super::*;
+
+    /// Fee sponsor status.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum FeeSponsorIdGetResponse200Status {
+        Active,
+        Deactivated,
+        Archived,
+    }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct FeeSponsorIdGetResponse200 {
@@ -1395,11 +2827,18 @@ pub mod feesponsors {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         pub network: serde_json::Value,
-        /// Fee sponsor status.
-        pub status: String,
+        pub status: FeeSponsorIdGetResponse200Status,
         /// Id of the wallet that is used to sponsor the fee for other wallets
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    /// Fee sponsor status.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum FeeSponsorIdDeleteResponse200Status {
+        Active,
+        Deactivated,
+        Archived,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1417,11 +2856,18 @@ pub mod feesponsors {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         pub network: serde_json::Value,
-        /// Fee sponsor status.
-        pub status: String,
+        pub status: FeeSponsorIdDeleteResponse200Status,
         /// Id of the wallet that is used to sponsor the fee for other wallets
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    /// Fee sponsor status.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum FeeSponsorIdActivatePutResponse200Status {
+        Active,
+        Deactivated,
+        Archived,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1439,11 +2885,18 @@ pub mod feesponsors {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         pub network: serde_json::Value,
-        /// Fee sponsor status.
-        pub status: String,
+        pub status: FeeSponsorIdActivatePutResponse200Status,
         /// Id of the wallet that is used to sponsor the fee for other wallets
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    /// Fee sponsor status.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum FeeSponsorIdDeactivatePutResponse200Status {
+        Active,
+        Deactivated,
+        Archived,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1461,8 +2914,7 @@ pub mod feesponsors {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         pub network: serde_json::Value,
-        /// Fee sponsor status.
-        pub status: String,
+        pub status: FeeSponsorIdDeactivatePutResponse200Status,
         /// Id of the wallet that is used to sponsor the fee for other wallets
         #[serde(rename = "walletId")]
         pub wallet_id: String,
@@ -1482,8 +2934,18 @@ pub mod keys {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ImportPostRequestCurve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ImportPostRequest {
-        pub curve: String,
+        pub curve: ImportPostRequestCurve,
         #[serde(rename = "encryptedKeyShares")]
         pub encrypted_key_shares: Vec<serde_json::Value>,
         #[serde(rename = "minSigners")]
@@ -1494,8 +2956,32 @@ pub mod keys {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ImportPostResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ImportPostResponse200Scheme {
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ImportPostResponse200Status {
+        Active,
+        Archived,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ImportPostResponse200 {
-        pub curve: String,
+        pub curve: ImportPostResponse200Curve,
         pub custodial: bool,
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -1514,13 +3000,51 @@ pub mod keys {
         pub name: Option<String>,
         #[serde(rename = "publicKey")]
         pub public_key: String,
-        pub scheme: String,
-        pub status: String,
+        pub scheme: ImportPostResponse200Scheme,
+        pub status: ImportPostResponse200Status,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdGetResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdGetResponse200Scheme {
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdGetResponse200Status {
+        Active,
+        Archived,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdGetResponse200StoreKind {
+        Hsm,
+        Mpc,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct KeyIdGetResponse200Store {
+        pub id: String,
+        #[serde(rename = "keyId")]
+        pub key_id: String,
+        pub kind: KeyIdGetResponse200StoreKind,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct KeyIdGetResponse200 {
-        pub curve: String,
+        pub curve: KeyIdGetResponse200Curve,
         pub custodial: bool,
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -1539,9 +3063,9 @@ pub mod keys {
         pub name: Option<String>,
         #[serde(rename = "publicKey")]
         pub public_key: String,
-        pub scheme: String,
-        pub status: String,
-        pub store: serde_json::Value,
+        pub scheme: KeyIdGetResponse200Scheme,
+        pub status: KeyIdGetResponse200Status,
+        pub store: KeyIdGetResponse200Store,
         pub wallets: Vec<serde_json::Value>,
     }
 
@@ -1551,8 +3075,32 @@ pub mod keys {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdPutResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdPutResponse200Scheme {
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdPutResponse200Status {
+        Active,
+        Archived,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct KeyIdPutResponse200 {
-        pub curve: String,
+        pub curve: KeyIdPutResponse200Curve,
         pub custodial: bool,
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -1571,13 +3119,37 @@ pub mod keys {
         pub name: Option<String>,
         #[serde(rename = "publicKey")]
         pub public_key: String,
-        pub scheme: String,
-        pub status: String,
+        pub scheme: KeyIdPutResponse200Scheme,
+        pub status: KeyIdPutResponse200Status,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdDeleteResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdDeleteResponse200Scheme {
+        DH,
+        ECDSA,
+        EdDSA,
+        Schnorr,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdDeleteResponse200Status {
+        Active,
+        Archived,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct KeyIdDeleteResponse200 {
-        pub curve: String,
+        pub curve: KeyIdDeleteResponse200Curve,
         pub custodial: bool,
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -1596,8 +3168,8 @@ pub mod keys {
         pub name: Option<String>,
         #[serde(rename = "publicKey")]
         pub public_key: String,
-        pub scheme: String,
-        pub status: String,
+        pub scheme: KeyIdDeleteResponse200Scheme,
+        pub status: KeyIdDeleteResponse200Status,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1607,10 +3179,15 @@ pub mod keys {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdDelegatePostResponse200Status {
+        Delegated,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct KeyIdDelegatePostResponse200 {
         #[serde(rename = "keyId")]
         pub key_id: String,
-        pub status: String,
+        pub status: KeyIdDelegatePostResponse200Status,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1633,15 +3210,36 @@ pub mod keys {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdExportPostResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdExportPostResponse200Protocol {
+        CGGMP24,
+        FROST,
+        #[serde(rename = "FROST_BITCOIN")]
+        FROSTBITCOIN,
+        #[serde(rename = "GLOW20_DH")]
+        GLOW20DH,
+        KU23,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct KeyIdExportPostResponse200 {
-        pub curve: String,
+        pub curve: KeyIdExportPostResponse200Curve,
         /// Keyshares of the exported wallet. They are encrypted with the provided encryption key. The exported private key is re-constructed from these keyshares.
         #[serde(rename = "encryptedKeyShares")]
         pub encrypted_key_shares: Vec<serde_json::Value>,
         /// The TSS threshold of the wallet private signing key shares
         #[serde(rename = "minSigners")]
         pub min_signers: f64,
-        pub protocol: String,
+        pub protocol: KeyIdExportPostResponse200Protocol,
         #[serde(rename = "publicKey")]
         pub public_key: String,
     }
@@ -1654,6 +3252,35 @@ pub mod keys {
         #[serde(rename = "nextPageToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub next_page_token: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct KeyIdSignaturesPostResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct KeyIdSignaturesPostResponse200Signature {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encoded: Option<String>,
+        pub r: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub recid: Option<f64>,
+        pub s: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdSignaturesPostResponse200Status {
+        Pending,
+        Executing,
+        Signed,
+        Confirmed,
+        Failed,
+        Rejected,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1686,18 +3313,47 @@ pub mod keys {
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: KeyIdSignaturesPostResponse200Requester,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub signature: Option<serde_json::Value>,
+        pub signature: Option<KeyIdSignaturesPostResponse200Signature>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signatures: Option<Vec<serde_json::Value>>,
         #[serde(rename = "signedData")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signed_data: Option<String>,
-        pub status: String,
+        pub status: KeyIdSignaturesPostResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct KeyIdSignaturesSignatureIdGetResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct KeyIdSignaturesSignatureIdGetResponse200Signature {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encoded: Option<String>,
+        pub r: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub recid: Option<f64>,
+        pub s: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum KeyIdSignaturesSignatureIdGetResponse200Status {
+        Pending,
+        Executing,
+        Signed,
+        Confirmed,
+        Failed,
+        Rejected,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1730,15 +3386,15 @@ pub mod keys {
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: KeyIdSignaturesSignatureIdGetResponse200Requester,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub signature: Option<serde_json::Value>,
+        pub signature: Option<KeyIdSignaturesSignatureIdGetResponse200Signature>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signatures: Option<Vec<serde_json::Value>>,
         #[serde(rename = "signedData")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signed_data: Option<String>,
-        pub status: String,
+        pub status: KeyIdSignaturesSignatureIdGetResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
@@ -1755,9 +3411,14 @@ pub mod networks {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum ReadContractPostResponse200Kind {
+        Evm,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct ReadContractPostResponse200 {
         pub data: String,
-        pub kind: String,
+        pub kind: ReadContractPostResponse200Kind,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1770,15 +3431,69 @@ pub mod networks {
         pub next_page_token: Option<String>,
     }
 
+    /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct NetworkValidatorsValidatorIdPutRequestLedgerOauth2 {
+        /// the audience your configured on your auth provider. It is suggested to start with `https://canton.network.global`.
+        pub audience: String,
+        /// The client id from your auth provider for this application.
+        #[serde(rename = "clientId")]
+        pub client_id: String,
+        /// The client secret from your auth provider for this application.
+        #[serde(rename = "clientSecret")]
+        pub client_secret: String,
+        /// your OAuth2 tenant domain. Provided by your auth provider. 
+        pub domain: String,
+        /// token endpoint from your authorization provider. We will call this endpoint on your tenant domain (i.e.: `<domain>/<token path>`)
+        #[serde(rename = "tokenPath")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_path: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct NetworkValidatorsValidatorIdPutRequestLedger {
+        /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
+        pub oauth2: NetworkValidatorsValidatorIdPutRequestLedgerOauth2,
+        /// URL to reach the API at this address. The calls will be originating from our IP addresses (see [Dfns Environments](https://docs.dfns.co/api-reference/environments))
+        pub url: String,
+    }
+
+    /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct NetworkValidatorsValidatorIdPutRequestValidatorOauth2 {
+        /// the audience your configured on your auth provider. It is suggested to start with `https://canton.network.global`.
+        pub audience: String,
+        /// The client id from your auth provider for this application.
+        #[serde(rename = "clientId")]
+        pub client_id: String,
+        /// The client secret from your auth provider for this application.
+        #[serde(rename = "clientSecret")]
+        pub client_secret: String,
+        /// your OAuth2 tenant domain. Provided by your auth provider. 
+        pub domain: String,
+        /// token endpoint from your authorization provider. We will call this endpoint on your tenant domain (i.e.: `<domain>/<token path>`)
+        #[serde(rename = "tokenPath")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_path: Option<String>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct NetworkValidatorsValidatorIdPutRequestValidator {
+        /// How Dfns will authenticate into your validator/ledger. You should have setup authentication already (see details [here](https://docs.dev.sync.global/validator_operator/validator_helm.html#helm-validator-auth)), you can reuse the same Application details. See examples in this endpoint payload examples above.
+        pub oauth2: NetworkValidatorsValidatorIdPutRequestValidatorOauth2,
+        /// URL to reach the API at this address. The calls will be originating from our IP addresses (see [Dfns Environments](https://docs.dfns.co/api-reference/environments))
+        pub url: String,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct NetworkValidatorsValidatorIdPutRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub ledger: Option<serde_json::Value>,
+        pub ledger: Option<NetworkValidatorsValidatorIdPutRequestLedger>,
         /// Nickname for this validator.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub name: Option<String>,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub validator: Option<serde_json::Value>,
+        pub validator: Option<NetworkValidatorsValidatorIdPutRequestValidator>,
     }
 
 }
@@ -1795,6 +3510,11 @@ pub mod permissions {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PermissionIdPutResponse200Status {
+        Active,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PermissionIdPutResponse200 {
         #[serde(rename = "dateCreated")]
         pub date_created: String,
@@ -1807,13 +3527,18 @@ pub mod permissions {
         pub is_immutable: bool,
         pub name: String,
         pub operations: Vec<String>,
-        pub status: String,
+        pub status: PermissionIdPutResponse200Status,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PermissionIdArchivePutRequest {
         #[serde(rename = "isArchived")]
         pub is_archived: bool,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PermissionIdArchivePutResponse200Status {
+        Active,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1829,7 +3554,7 @@ pub mod permissions {
         pub is_immutable: bool,
         pub name: String,
         pub operations: Vec<String>,
-        pub status: String,
+        pub status: PermissionIdArchivePutResponse200Status,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1898,10 +3623,16 @@ pub mod staking {
 pub mod swaps {
     use super::*;
 
+    /// Swap provider.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum QuotesPostRequestProvider {
+        UniswapX,
+        UniswapClassic,
+    }
+
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct QuotesPostRequest {
-        /// Swap provider.
-        pub provider: String,
+        pub provider: QuotesPostRequestProvider,
         /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you're willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%.
         #[serde(rename = "slippageBps")]
         pub slippage_bps: f64,
@@ -1942,6 +3673,14 @@ pub mod v2 {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PolicyApprovalsApprovalIdGetResponse200Status {
+        Pending,
+        Approved,
+        Denied,
+        Expired,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PolicyApprovalsApprovalIdGetResponse200 {
         pub activity: serde_json::Value,
         #[serde(rename = "dateCreated")]
@@ -1961,14 +3700,28 @@ pub mod v2 {
         pub initiator_id: String,
         #[serde(rename = "policyEvaluations")]
         pub policy_evaluations: Vec<serde_json::Value>,
-        pub status: String,
+        pub status: PolicyApprovalsApprovalIdGetResponse200Status,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PolicyApprovalsApprovalIdDecisionsPostRequestValue {
+        Approved,
+        Denied,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct PolicyApprovalsApprovalIdDecisionsPostRequest {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub reason: Option<String>,
-        pub value: String,
+        pub value: PolicyApprovalsApprovalIdDecisionsPostRequestValue,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum PolicyApprovalsApprovalIdDecisionsPostResponse200Status {
+        Pending,
+        Approved,
+        Denied,
+        Expired,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -1991,7 +3744,7 @@ pub mod v2 {
         pub initiator_id: String,
         #[serde(rename = "policyEvaluations")]
         pub policy_evaluations: Vec<serde_json::Value>,
-        pub status: String,
+        pub status: PolicyApprovalsApprovalIdDecisionsPostResponse200Status,
     }
 
 }
@@ -2009,11 +3762,18 @@ pub mod wallets {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdAssetsGetResponse200NetWorth {
+        #[serde(rename = "USD")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub usd: Option<f64>,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WalletIdAssetsGetResponse200 {
         pub assets: Vec<serde_json::Value>,
         #[serde(rename = "netWorth")]
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub net_worth: Option<serde_json::Value>,
+        pub net_worth: Option<WalletIdAssetsGetResponse200NetWorth>,
         pub network: Network,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
@@ -2026,8 +3786,13 @@ pub mod wallets {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdDelegatePostResponse200Status {
+        Delegated,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WalletIdDelegatePostResponse200 {
-        pub status: String,
+        pub status: WalletIdDelegatePostResponse200Status,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
     }
@@ -2041,15 +3806,36 @@ pub mod wallets {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdExportPostResponse200Curve {
+        #[serde(rename = "ed25519")]
+        Ed25519,
+        #[serde(rename = "secp256k1")]
+        Secp256k1,
+        #[serde(rename = "stark")]
+        Stark,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdExportPostResponse200Protocol {
+        CGGMP24,
+        FROST,
+        #[serde(rename = "FROST_BITCOIN")]
+        FROSTBITCOIN,
+        #[serde(rename = "GLOW20_DH")]
+        GLOW20DH,
+        KU23,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WalletIdExportPostResponse200 {
-        pub curve: String,
+        pub curve: WalletIdExportPostResponse200Curve,
         /// Keyshares of the exported wallet. They are encrypted with the provided encryption key. The exported private key is re-constructed from these keyshares.
         #[serde(rename = "encryptedKeyShares")]
         pub encrypted_key_shares: Vec<serde_json::Value>,
         /// The TSS threshold of the wallet private signing key shares
         #[serde(rename = "minSigners")]
         pub min_signers: f64,
-        pub protocol: String,
+        pub protocol: WalletIdExportPostResponse200Protocol,
         #[serde(rename = "publicKey")]
         pub public_key: String,
     }
@@ -2083,6 +3869,128 @@ pub mod wallets {
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdSignaturesPostResponse200Network {
+        Algorand,
+        AlgorandTestnet,
+        Aptos,
+        AptosTestnet,
+        ArbitrumOne,
+        ArbitrumSepolia,
+        AvalancheC,
+        AvalancheCFuji,
+        BabylonGenesis,
+        BabylonTestnet5,
+        Base,
+        BaseSepolia,
+        Berachain,
+        BerachainBepolia,
+        Bitcoin,
+        BitcoinSignet,
+        BitcoinTestnet3,
+        BitcoinCash,
+        Bob,
+        BobSepolia,
+        Bsc,
+        BscTestnet,
+        Canton,
+        CantonTestnet,
+        Cardano,
+        CardanoPreprod,
+        Celo,
+        CeloAlfajores,
+        Codex,
+        CodexSepolia,
+        CosmosHub4,
+        CosmosIcsTestnet,
+        Dogecoin,
+        Ethereum,
+        EthereumGoerli,
+        EthereumSepolia,
+        EthereumHolesky,
+        EthereumHoodi,
+        FantomOpera,
+        FantomTestnet,
+        FlareC,
+        FlareCCoston2,
+        Hedera,
+        HederaTestnet,
+        Ink,
+        InkSepolia,
+        InternetComputer,
+        Ion,
+        IonTestnet,
+        Iota,
+        IotaTestnet,
+        KadenaTestnet4,
+        Kadena,
+        Kaspa,
+        Kusama,
+        Litecoin,
+        Near,
+        NearTestnet,
+        Optimism,
+        OptimismSepolia,
+        Origyn,
+        Plume,
+        PlumeSepolia,
+        Polkadot,
+        Polygon,
+        PolygonAmoy,
+        Polymesh,
+        PolymeshTestnet,
+        Race,
+        RaceSepolia,
+        SeiAtlantic2,
+        SeiPacific1,
+        Solana,
+        SolanaDevnet,
+        Stellar,
+        StellarTestnet,
+        Sui,
+        SuiTestnet,
+        Tsc,
+        TscTestnet1,
+        Tezos,
+        TezosGhostnet,
+        Ton,
+        TonTestnet,
+        Tron,
+        TronNile,
+        Westend,
+        XrpLedger,
+        XrpLedgerTestnet,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdSignaturesPostResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdSignaturesPostResponse200Signature {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encoded: Option<String>,
+        pub r: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub recid: Option<f64>,
+        pub s: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdSignaturesPostResponse200Status {
+        Pending,
+        Executing,
+        Signed,
+        Confirmed,
+        Failed,
+        Rejected,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WalletIdSignaturesPostResponse200 {
         #[serde(rename = "approvalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -2106,25 +4014,54 @@ pub mod wallets {
         pub id: String,
         #[serde(rename = "keyId")]
         pub key_id: String,
-        pub network: String,
+        pub network: WalletIdSignaturesPostResponse200Network,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: WalletIdSignaturesPostResponse200Requester,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub signature: Option<serde_json::Value>,
+        pub signature: Option<WalletIdSignaturesPostResponse200Signature>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signatures: Option<Vec<serde_json::Value>>,
         #[serde(rename = "signedData")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signed_data: Option<String>,
-        pub status: String,
+        pub status: WalletIdSignaturesPostResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdSignaturesSignatureIdGetResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdSignaturesSignatureIdGetResponse200Signature {
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub encoded: Option<String>,
+        pub r: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub recid: Option<f64>,
+        pub s: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdSignaturesSignatureIdGetResponse200Status {
+        Pending,
+        Executing,
+        Signed,
+        Confirmed,
+        Failed,
+        Rejected,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -2157,15 +4094,15 @@ pub mod wallets {
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
+        pub requester: WalletIdSignaturesSignatureIdGetResponse200Requester,
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub signature: Option<serde_json::Value>,
+        pub signature: Option<WalletIdSignaturesSignatureIdGetResponse200Signature>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signatures: Option<Vec<serde_json::Value>>,
         #[serde(rename = "signedData")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub signed_data: Option<String>,
-        pub status: String,
+        pub status: WalletIdSignaturesSignatureIdGetResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
@@ -2190,6 +4127,25 @@ pub mod wallets {
         pub next_page_token: Option<String>,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdTransactionsPostResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdTransactionsPostResponse200Status {
+        Pending,
+        Executing,
+        Broadcasted,
+        Confirmed,
+        Failed,
+        Rejected,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -2219,13 +4175,32 @@ pub mod wallets {
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
-        pub status: String,
+        pub requester: WalletIdTransactionsPostResponse200Requester,
+        pub status: WalletIdTransactionsPostResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
         #[serde(rename = "walletId")]
         pub wallet_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct WalletIdTransactionsTransactionIdGetResponse200Requester {
+        #[serde(rename = "tokenId")]
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub token_id: Option<String>,
+        #[serde(rename = "userId")]
+        pub user_id: String,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WalletIdTransactionsTransactionIdGetResponse200Status {
+        Pending,
+        Executing,
+        Broadcasted,
+        Confirmed,
+        Failed,
+        Rejected,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -2255,8 +4230,8 @@ pub mod wallets {
         pub reason: Option<String>,
         #[serde(rename = "requestBody")]
         pub request_body: serde_json::Value,
-        pub requester: serde_json::Value,
-        pub status: String,
+        pub requester: WalletIdTransactionsTransactionIdGetResponse200Requester,
+        pub status: WalletIdTransactionsTransactionIdGetResponse200Status,
         #[serde(rename = "txHash")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub tx_hash: Option<String>,
@@ -2279,6 +4254,13 @@ pub mod wallets {
 pub mod webhooks {
     use super::*;
 
+    /// Webhook status
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WebhookIdGetResponse200Status {
+        Enabled,
+        Disabled,
+    }
+
     /// Webhook
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WebhookIdGetResponse200 {
@@ -2295,10 +4277,16 @@ pub mod webhooks {
         pub events: Vec<serde_json::Value>,
         /// Webhook ID
         pub id: String,
-        /// Webhook status
-        pub status: String,
+        pub status: WebhookIdGetResponse200Status,
         /// Webhook url
         pub url: String,
+    }
+
+    /// Webhook status
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WebhookIdPutRequestStatus {
+        Enabled,
+        Disabled,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -2308,12 +4296,18 @@ pub mod webhooks {
         /// All events this webhook is subscribed to.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub events: Option<Vec<serde_json::Value>>,
-        /// Webhook status
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub status: Option<String>,
+        pub status: Option<WebhookIdPutRequestStatus>,
         /// Webhook url
         #[serde(skip_serializing_if = "Option::is_none")]
         pub url: Option<String>,
+    }
+
+    /// Webhook status
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WebhookIdPutResponse200Status {
+        Enabled,
+        Disabled,
     }
 
     /// Webhook
@@ -2332,15 +4326,18 @@ pub mod webhooks {
         pub events: Vec<serde_json::Value>,
         /// Webhook ID
         pub id: String,
-        /// Webhook status
-        pub status: String,
+        pub status: WebhookIdPutResponse200Status,
         /// Webhook url
         pub url: String,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WebhookIdDeleteResponse200Deleted {
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct WebhookIdDeleteResponse200 {
-        pub deleted: String,
+        pub deleted: WebhookIdDeleteResponse200Deleted,
     }
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -2349,6 +4346,69 @@ pub mod webhooks {
         #[serde(rename = "nextPageToken")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub next_page_token: Option<String>,
+    }
+
+    /// Webhook event
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum WebhookIdEventsWebhookEventIdGetResponse200Kind {
+        #[serde(rename = "policy.triggered")]
+        PolicyTriggered,
+        #[serde(rename = "policy.approval.pending")]
+        PolicyApprovalPending,
+        #[serde(rename = "policy.approval.resolved")]
+        PolicyApprovalResolved,
+        #[serde(rename = "key.created")]
+        KeyCreated,
+        #[serde(rename = "key.deleted")]
+        KeyDeleted,
+        #[serde(rename = "key.delegated")]
+        KeyDelegated,
+        #[serde(rename = "key.exported")]
+        KeyExported,
+        #[serde(rename = "wallet.blockchainevent.detected")]
+        WalletBlockchaineventDetected,
+        #[serde(rename = "wallet.created")]
+        WalletCreated,
+        #[serde(rename = "wallet.delegated")]
+        WalletDelegated,
+        #[serde(rename = "wallet.exported")]
+        WalletExported,
+        #[serde(rename = "wallet.signature.failed")]
+        WalletSignatureFailed,
+        #[serde(rename = "wallet.signature.rejected")]
+        WalletSignatureRejected,
+        #[serde(rename = "wallet.signature.requested")]
+        WalletSignatureRequested,
+        #[serde(rename = "wallet.signature.signed")]
+        WalletSignatureSigned,
+        #[serde(rename = "wallet.transaction.broadcasted")]
+        WalletTransactionBroadcasted,
+        #[serde(rename = "wallet.transaction.confirmed")]
+        WalletTransactionConfirmed,
+        #[serde(rename = "wallet.transaction.failed")]
+        WalletTransactionFailed,
+        #[serde(rename = "wallet.transaction.rejected")]
+        WalletTransactionRejected,
+        #[serde(rename = "wallet.transaction.requested")]
+        WalletTransactionRequested,
+        #[serde(rename = "wallet.transfer.broadcasted")]
+        WalletTransferBroadcasted,
+        #[serde(rename = "wallet.transfer.confirmed")]
+        WalletTransferConfirmed,
+        #[serde(rename = "wallet.transfer.failed")]
+        WalletTransferFailed,
+        #[serde(rename = "wallet.transfer.rejected")]
+        WalletTransferRejected,
+        #[serde(rename = "wallet.transfer.requested")]
+        WalletTransferRequested,
+        #[serde(rename = "wallet.offer.received")]
+        WalletOfferReceived,
+        #[serde(rename = "wallet.offer.accepted")]
+        WalletOfferAccepted,
+        #[serde(rename = "wallet.offer.rejected")]
+        WalletOfferRejected,
+        #[serde(rename = "wallet.tags.modified")]
+        WalletTagsModified,
     }
 
     /// WebhookEvent
@@ -2362,8 +4422,7 @@ pub mod webhooks {
         pub error: Option<String>,
         /// WebhookEvent ID
         pub id: String,
-        /// Webhook event
-        pub kind: String,
+        pub kind: WebhookIdEventsWebhookEventIdGetResponse200Kind,
         /// Status code of the webhook request
         pub status: String,
         /// Unix timestamp when the event was forwarded to the webhook url by our servers.
@@ -2393,6 +4452,37 @@ pub mod yields {
         pub next_page_token: Option<String>,
     }
 
+    /// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum YieldIdActionsPostRequestKind {
+        Deposit,
+        Withdraw,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum YieldIdActionsPostRequestSourceAssetKind {
+        Erc20,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct YieldIdActionsPostRequestSourceAsset {
+        pub amount: String,
+        pub contract: String,
+        pub kind: YieldIdActionsPostRequestSourceAssetKind,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub enum YieldIdActionsPostRequestTargetAssetKind {
+        Erc20,
+    }
+
+    #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+    pub struct YieldIdActionsPostRequestTargetAsset {
+        pub amount: String,
+        pub contract: String,
+        pub kind: YieldIdActionsPostRequestTargetAssetKind,
+    }
+
     /// Request body for creating a yield action. Different protocols may have different requirements.
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
     pub struct YieldIdActionsPostRequest {
@@ -2400,15 +4490,14 @@ pub mod yields {
         #[serde(rename = "externalId")]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub external_id: Option<String>,
-        /// The type of action being performed on the yield investment: Deposit to add funds or Withdraw to remove funds.
-        pub kind: String,
+        pub kind: YieldIdActionsPostRequestKind,
         /// The slippage tolerance for this trade in [basis point](https://en.wikipedia.org/wiki/Basis_point) (BPS). Slippage tolerance defines the maximum price difference you're willing to accept during a trade from the estimated quote, ensuring you still receive at least a minimum number of tokens if the price shifts. One basis point equals one-hundredth of a percentage point, or 0.01%.
         #[serde(rename = "slippageBps")]
         pub slippage_bps: f64,
         #[serde(rename = "sourceAsset")]
-        pub source_asset: serde_json::Value,
+        pub source_asset: YieldIdActionsPostRequestSourceAsset,
         #[serde(rename = "targetAsset")]
-        pub target_asset: serde_json::Value,
+        pub target_asset: YieldIdActionsPostRequestTargetAsset,
     }
 
 }
