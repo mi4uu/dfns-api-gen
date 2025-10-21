@@ -297,13 +297,14 @@ fn ident(name: &str) -> Ident {
     Ident::new(name, Span::call_site())
 }
 
-/// Generate a complete module
+/// Generate a complete module (with nested submodules)
 pub fn generate_module(module: &ModuleDef) -> TokenStream {
     let name = ident(&module.name);
     let doc = generate_doc_comment(&module.doc);
     let vis = visibility_to_tokens(&module.visibility);
 
     let types = module.types.iter().map(generate_type_def);
+    let submodules = module.submodules.iter().map(generate_module);
 
     quote! {
         #doc
@@ -311,6 +312,8 @@ pub fn generate_module(module: &ModuleDef) -> TokenStream {
             use super::*;
 
             #(#types)*
+
+            #(#submodules)*
         }
     }
 }

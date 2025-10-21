@@ -3,10 +3,12 @@ mod schema_generator;
 mod type_mapper;
 mod utils;
 pub mod ir_to_ast;
+pub mod new_generator;
 // TODO: Fix oas3 API compatibility issues
 // pub mod openapi_to_ir;
 
 pub use endpoint_generator::EndpointGenerator;
+pub use new_generator::NewGenerator;
 
 use crate::codegen::utils::to_pascal_case;
 use oas3::spec::{ObjectOrReference, ObjectSchema, Spec};

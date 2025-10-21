@@ -1,5 +1,5 @@
 // Use the library's modules instead of declaring them locally
-use dfns_gen::codegen::{EndpointGenerator, Generator};
+use dfns_gen::codegen::{EndpointGenerator, NewGenerator};
 use std::fs;
 
 #[tokio::main]
@@ -18,13 +18,14 @@ async fn main() {
     fs::write("openapi.json", &openapi_json).expect("Failed to write openapi.json");
     println!("Saved OpenAPI spec to openapi.json");
 
-    // Generate Rust code
-    println!("Generating Rust code from OpenAPI schemas...");
-    let mut generator = Generator::new(openapi.clone());
+    // Generate Rust code with NEW generator (better naming!)
+    println!("Generating Rust code from OpenAPI schemas (with improved naming)...");
+    let mut generator = NewGenerator::new(openapi.clone());
     let generated_code = generator.generate();
 
     fs::write("src/generated.rs", generated_code).expect("Failed to write generated.rs");
-    println!("Generated Rust code written to src/generated.rs");
+    println!("✅ Generated Rust code written to src/generated.rs");
+    println!("   → Using nested modules with clean naming!");
 
     // Generate API endpoints
     println!("Generating API endpoints...");
@@ -32,5 +33,5 @@ async fn main() {
     let api_code = endpoint_generator.generate();
 
     fs::write("src/generated_api.rs", api_code).expect("Failed to write generated_api.rs");
-    println!("Generated API endpoints written to src/generated_api.rs");
+    println!("✅ Generated API endpoints written to src/generated_api.rs");
 }

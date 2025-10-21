@@ -534,6 +534,9 @@ pub struct ModuleDef {
     /// Types defined in this module
     pub types: Vec<TypeDef>,
 
+    /// Nested submodules
+    pub submodules: Vec<ModuleDef>,
+
     /// Visibility
     pub visibility: Visibility,
 }
@@ -544,6 +547,7 @@ impl ModuleDef {
             name: name.into(),
             doc: None,
             types: Vec::new(),
+            submodules: Vec::new(),
             visibility: Visibility::Public,
         }
     }
@@ -563,9 +567,50 @@ impl ModuleDef {
         self
     }
 
+    pub fn with_submodule(mut self, module: ModuleDef) -> Self {
+        self.submodules.push(module);
+        self
+    }
+
+    pub fn with_submodules(mut self, modules: Vec<ModuleDef>) -> Self {
+        self.submodules = modules;
+        self
+    }
+
     pub fn with_visibility(mut self, visibility: Visibility) -> Self {
         self.visibility = visibility;
         self
+    }
+
+    /// Add a type to this module
+    pub fn add_type(&mut self, type_def: TypeDef) {
+        self.types.push(type_def);
+    }
+
+    /// Get or create a submodule by name
+    pub fn get_or_create_submodule(&mut self, name: &str) -> &mut ModuleDef {
+        // Find existing submodule
+        if let Some(pos) = self.submodules.iter().position(|m| m.name == name) {
+            return &mut self.submodules[pos];
+        }
+
+        // Create new submodule
+        self.submodules.push(ModuleDef::new(name));
+        self.submodules.last_mut().unwrap()
+    }
+
+    /// Navigate to a nested module by path, creating modules as needed
+    /// Example: ["service_accounts", "service_account_id", "actions"]
+    pub fn navigate_to_module(&mut self, path: &[String]) -> &mut ModuleDef {
+        if path.is_empty() {
+            return self;
+        }
+
+        let mut current = self;
+        for segment in path {
+            current = current.get_or_create_submodule(segment);
+        }
+        current
     }
 }
 
