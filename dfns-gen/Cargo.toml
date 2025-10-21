@@ -1,0 +1,41 @@
+[package]
+name = "dfns-gen"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "OpenAPI to Rust code generator with nested modules and clean naming"
+
+[[bin]]
+name = "dfns-gen"
+path = "src/main.rs"
+
+[dependencies]
+# OpenAPI parsing
+oas3 = { workspace = true }
+oasert = { workspace = true }
+openapi_type_picker = { workspace = true }
+openapi31to30 = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+reqwest = { workspace = true }
+
+# Code generation
+quote = { workspace = true }
+syn = { workspace = true }
+proc-macro2 = { workspace = true }
+prettyplease = { workspace = true }
+
+# Utilities
+anyhow = { workspace = true }
+smart-default = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# For generated code
+utoipa = { workspace = true }
+axum = { workspace = true }

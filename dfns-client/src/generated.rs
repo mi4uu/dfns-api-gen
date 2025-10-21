@@ -750,7 +750,7 @@ pub mod agreements {
 
     }
 
-    pub mod latest-unaccepted {
+    pub mod latest_unaccepted {
         use super::*;
 
         #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
@@ -1770,7 +1770,7 @@ pub mod auth {
 
     }
 
-    pub mod service-accounts {
+    pub mod service_accounts {
         use super::*;
 
         #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
@@ -2268,7 +2268,7 @@ pub mod exchanges {
 
 }
 
-pub mod fee-sponsors {
+pub mod fee_sponsors {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
@@ -2413,7 +2413,7 @@ pub mod fee-sponsors {
 
 }
 
-pub mod key-stores {
+pub mod key_stores {
     use super::*;
 
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]
@@ -3139,7 +3139,7 @@ pub mod networks {
 
     }
 
-    pub mod read-contract {
+    pub mod read_contract {
         use super::*;
 
         #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema, smart_default::SmartDefault)]
@@ -3458,7 +3458,7 @@ pub mod v2 {
 
     }
 
-    pub mod policy-approvals {
+    pub mod policy_approvals {
         use super::*;
 
         #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, utoipa::ToSchema,smart_default::SmartDefault)]

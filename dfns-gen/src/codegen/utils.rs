@@ -23,7 +23,11 @@ pub fn to_snake_case(s: &str) -> String {
     let mut prev_was_upper = false;
 
     for (i, c) in s.chars().enumerate() {
-        if c.is_uppercase() {
+        if c == '-' || c == '.' || c == ' ' {
+            // Replace invalid characters with underscore
+            result.push('_');
+            prev_was_upper = false;
+        } else if c.is_uppercase() {
             if i > 0 && !prev_was_upper {
                 result.push('_');
             }

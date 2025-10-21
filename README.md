@@ -1,151 +1,134 @@
-# Dfns OpenAPI to Rust Generator
+# DFNS Generator & Client
 
-A Rust code generator that converts OpenAPI 3.1.x schemas into idiomatic Rust structs and enums with full serde support.
+A complete Cargo workspace for generating and using the DFNS API in Rust.
 
-## Features
+## 🏗️ Architecture
 
-- **Complete Schema Coverage**: Extracts types from both `components/schemas` AND inline schemas in API paths (request/response bodies)
-- **Automatic Type Generation**: Converts OpenAPI schemas into Rust types
-- **Full Serde Support**: Generated types include `Serialize` and `Deserialize` derives
-- **Proper Naming Conventions**: 
-  - Snake_case for struct fields
-  - PascalCase for types and enum variants
-  - Automatic `#[serde(rename)]` attributes when needed
-- **Optional Fields**: Generates `Option<T>` for non-required fields with `skip_serializing_if`
-- **Enum Support**: Handles string enums and `oneOf` patterns
-- **Complex Types**: Supports nested objects, arrays, references, and `allOf` composition
-- **Type Mapping**: Maps OpenAPI types to appropriate Rust types (String, i32, i64, f32, f64, bool, Vec<T>)
-- **Deterministic Output**: Same OpenAPI spec always generates identical Rust code
+**Two separate crates in one workspace:**
 
-## Usage
+```
+dfns_gen/                    (workspace root)
+├── Cargo.toml              (workspace manifest)
+├── dfns-gen/               (Generator - creates types)
+│   ├── src/
+│   │   ├── main.rs        → CLI: cargo run -p dfns-gen
+│   │   ├── ir/            → Intermediate Representation
+│   │   └── codegen/       → Code generation logic
+│   └── examples/
+│
+└── dfns-client/            (Client - uses types)
+    ├── src/
+    │   ├── generated.rs   → Generated types (DO NOT EDIT)
+    │   ├── generated_api.rs → Generated API (DO NOT EDIT)
+    │   ├── client/        → HTTP client implementation
+    │   └── api_server.rs  → Mock API server binary
+    └── examples/
+```
 
-### Generating Types
+## 🚀 Quick Start
 
-Run the generator to fetch the Dfns OpenAPI spec and generate Rust types:
+### 1. Generate Types
 
 ```bash
+cd dfns-gen
 cargo run
 ```
 
-This will:
-1. Fetch the OpenAPI spec from `https://docs.dfns.co/openapi.yaml`
-2. Save it as `openapi.json`
-3. Generate Rust code in `src/generated.rs` (~2,600 lines, 181 types from 117 API endpoints)
+This fetches the DFNS OpenAPI spec and generates:
+- Types in `../dfns-client/src/generated.rs`
+- API server in `../dfns-client/src/generated_api.rs`
 
-### Using Generated Types
-
-The generated types are fully compatible with serde for JSON serialization/deserialization:
+### 2. Use the Client
 
 ```rust
-use dfns_gen::generated::*;
+use dfns_client::{DfnsClient, DfnsConfig};
 
-fn main() {
-    // Create and use enums
-    let blockchain = BlockchainKind::Evm;
-    let json = serde_json::to_string(&blockchain).unwrap();
-    println!("Serialized: {}", json); // "Evm"
-    
-    // Create and use structs
-    let validator = CantonValidator {
-        date_created: "2025-10-20T00:00:00Z".to_string(),
-        id: "cv-12345".to_string(),
-        kind: "Validator".to_string(),
-        name: Some("My Validator".to_string()),
-        network: "CantonTestnet".to_string(),
-        org_id: "or-12345-67890-abcdefghijklmnop".to_string(),
-        party_hint: "party::validator::1".to_string(),
-    };
-    
-    let json = serde_json::to_string_pretty(&validator).unwrap();
-    println!("Serialized:\n{}", json);
-}
+let config = DfnsConfig::new(
+    "https://api.dfns.ninja",
+    "service-account-token",
+    "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----"
+);
+
+let client = DfnsClient::new(config)?;
+
+// Service account request
+let wallets = client.service_account().get("/wallets").await?;
+
+// User operations
+let user_client = client.as_user("user@example.com").authenticate().await?;
+let wallet = user_client.get("/wallets/wa-123").await?;
 ```
 
-See `examples/demo.rs` for a complete example:
+## 📦 Commands
 
 ```bash
-cargo run --example demo
+# Generate types from DFNS OpenAPI
+cargo run -p dfns-gen
+
+# Check workspace compiles
+cargo check --workspace
+
+# Build everything
+cargo build --workspace
+
+# Run examples
+cargo run -p dfns-gen --example better_naming_demo
 ```
 
-## Architecture
+## 🎯 Key Features
 
-The generator is built with a modular architecture:
+### Clean Module Structure
 
-- **`codegen/mod.rs`**: Main generator orchestration
-- **`codegen/schema_generator.rs`**: Converts OpenAPI schemas to Rust structs/enums
-- **`codegen/type_mapper.rs`**: Maps OpenAPI types to Rust types
-- **`codegen/utils.rs`**: Naming convention helpers and utilities
+API paths → nested Rust modules:
 
-## Generated Code Features
+| API Path | Generated Module |
+|----------|------------------|
+| `GET /wallets` | `wallets::ListResponse` |
+| `GET /wallets/{id}` | `wallets::wallet_id::GetResponse` |
+| `POST /wallets/{id}/transfers` | `wallets::wallet_id::transfers::CreateRequest` |
 
-### Component Schemas (Reusable Types)
+### Complete HTTP Client
 
-```rust
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum BlockchainKind {
-    Algorand,
-    Aptos,
-    Bitcoin,
-    // ... more variants
-}
+- ✅ Service account authentication
+- ✅ User impersonation (delegated login)
+- ✅ 3-step challenge/signing flow
+- ✅ Ed25519 request signing
+- ✅ Retry middleware
+- ✅ Type-safe builder pattern
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CantonValidator {
-    #[serde(rename = "dateCreated")]
-    pub date_created: String,
-    
-    pub id: String,
-    
-    /// Optional fields with skip_serializing_if
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
-    
-    /// Organization id.
-    #[serde(rename = "orgId")]
-    pub org_id: String,
-}
+## 🔄 Regeneration Workflow
+
+When DFNS updates their API:
+
+```bash
+# 1. Regenerate
+cd dfns-gen && cargo run
+
+# 2. Verify
+cd .. && cargo check -p dfns-client
+
+# 3. Commit
+git add dfns-client/src/generated*.rs
+git commit -m "Update DFNS API types"
 ```
 
-### API Path Types (Request/Response Bodies)
+## ✅ Status
 
-```rust
-// Request body for POST /auth/action/init
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AuthActionInitPostRequest {
-    #[serde(rename = "userActionHttpMethod")]
-    pub user_action_http_method: String,
-    
-    #[serde(rename = "userActionHttpPath")]
-    pub user_action_http_path: String,
-    
-    #[serde(rename = "userActionPayload")]
-    pub user_action_payload: String,
-}
+**Working:**
+- ✅ Generator fetches and parses OpenAPI
+- ✅ Nested modules with clean naming
+- ✅ Hyphens → underscores (`latest-unaccepted` → `latest_unaccepted`)
+- ✅ HTTP client (auth, signing, challenges)
+- ✅ Workspace compiles
 
-// Response body for GET /agreements/latest-unaccepted (200)
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AgreementsLatestUnacceptedGetResponse200 {
-    #[serde(rename = "latestAgreement")]
-    pub latest_agreement: serde_json::Value,
-}
-```
+**TODO:**
+- 🚧 Update endpoint generator for nested modules
+- 🚧 Add more examples
 
-## Comparison to oas3-gen
+## 📚 Documentation
 
-This project was inspired by [oas3-gen](https://github.com/eklipse2k8/oas3-gen) but with key improvements:
-
-- **Working Implementation**: Fully functional code generation without runtime crashes
-- **Library + Binary**: Can be used both as a library and standalone tool
-- **Better Type Handling**: Proper support for OpenAPI 3.1.x `TypeSet` and complex schemas
-- **Modular Design**: Clean separation of concerns for maintainability
-
-## Dependencies
-
-- `oas3`: OpenAPI 3.1.x parser
-- `serde`: Serialization framework
-- `serde_json`: JSON support
-- `reqwest`: HTTP client for fetching OpenAPI specs
-- `tokio`: Async runtime
+- [CLIENT_README.md](CLIENT_README.md) - Detailed client usage
+- [BETTER_NAMING_DESIGN.md](BETTER_NAMING_DESIGN.md) - Design rationale
 
 ## License
 
