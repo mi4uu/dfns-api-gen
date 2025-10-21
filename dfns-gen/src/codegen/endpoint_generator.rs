@@ -1,9 +1,11 @@
 use crate::codegen::utils::{sanitize_field_name, to_pascal_case, to_snake_case};
+use crate::ir::CompleteIR;
 use oas3::spec::{MediaTypeExamples, ObjectOrReference, Operation, Spec};
 use std::collections::BTreeMap;
 
 pub struct EndpointGenerator {
     spec: Spec,
+    ir: Option<CompleteIR>,
 }
 
 #[derive(Debug, Clone)]
@@ -21,7 +23,11 @@ pub struct Endpoint {
 
 impl EndpointGenerator {
     pub fn new(spec: Spec) -> Self {
-        Self { spec }
+        Self { spec, ir: None }
+    }
+
+    pub fn new_with_ir(spec: Spec, ir: CompleteIR) -> Self {
+        Self { spec, ir: Some(ir) }
     }
 
     pub fn generate(&self) -> String {
@@ -149,6 +155,14 @@ impl EndpointGenerator {
         method: &str,
         operation: &Operation,
     ) -> Option<String> {
+        // First, try to get from IR
+        if let Some(ir) = &self.ir {
+            if let Some(type_loc) = ir.get_endpoint_request_type(method, path) {
+                return Some(type_loc.full_path.clone());
+            }
+        }
+
+        // Fall back to legacy logic
         if let Some(request_body) = &operation.request_body {
             match request_body {
                 ObjectOrReference::Object(body) => {
@@ -188,6 +202,20 @@ impl EndpointGenerator {
         method: &str,
         operation: &Operation,
     ) -> (Option<String>, String, Option<serde_json::Value>) {
+        // First, try to get from IR
+        if let Some(ir) = &self.ir {
+            if let Some(type_loc) = ir.get_endpoint_response_type(method, path) {
+                // Get status from IR if available
+                let status = ir.endpoints.iter()
+                    .find(|e| e.method == method.to_uppercase() && e.path == path)
+                    .map(|m| m.response_status.clone())
+                    .unwrap_or_else(|| "200".to_string());
+
+                return (Some(type_loc.full_path.clone()), status, None);
+            }
+        }
+
+        // Fall back to legacy logic
         if let Some(responses) = &operation.responses {
             // Try to find 200, 201, or first success response
             for status in ["200", "201", "204", "2XX"] {

@@ -2111,65 +2111,7 @@ pub async fn post_swaps(
     Json(request): Json<serde_json::Value>,
 ) -> Json<generated::Swap> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "dateCreated": "2025-09-11T10:57:55.758Z",
-          "id": "swap-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "provider": "UniswapClassic",
-          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "quotedSourceAsset": {
-            "amount": "10000000000",
-            "kind": "Native",
-            "metadata": {
-              "decimals": 18,
-              "name": "Ethereum",
-              "network": "EthereumSepolia",
-              "symbol": "SepoliaETH",
-              "tid": "native:eth"
-            }
-          },
-          "quotedTargetAsset": {
-            "amount": "6467571553831928182",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-            "kind": "Erc20",
-            "metadata": {
-              "decimals": 18,
-              "name": "Test",
-              "network": "EthereumSepolia",
-              "symbol": "Test",
-              "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
-            }
-          },
-          "reference": null,
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-            "slippageBps": 100,
-            "sourceAsset": {
-              "amount": "10000000000",
-              "kind": "Native"
-            },
-            "targetAsset": {
-              "amount": "653003161",
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "kind": "Erc20"
-            },
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-          },
-          "requester": {
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
-          },
-          "slippageBps": 100,
-          "status": "PendingPolicyApproval",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-        }
-    );
-    let response: generated::Swap = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::Swap::default())
 }
 
 #[utoipa::path(
@@ -2184,60 +2126,7 @@ pub async fn post_swaps_quotes(
     Json(request): Json<serde_json::Value>,
 ) -> Json<generated::SwapQuote> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "dateCreated": "2025-09-11T10:52:15.039Z",
-          "id": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "provider": "UniswapClassic",
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "slippageBps": 100,
-            "sourceAsset": {
-              "amount": "10000000000",
-              "kind": "Native"
-            },
-            "targetAsset": {
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "kind": "Erc20"
-            },
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-          },
-          "requester": {
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
-          },
-          "slippageBps": 100,
-          "sourceAsset": {
-            "amount": "10000000000",
-            "kind": "Native",
-            "metadata": {
-              "decimals": 18,
-              "name": "Ethereum",
-              "network": "EthereumSepolia",
-              "symbol": "SepoliaETH",
-              "tid": "native:eth"
-            }
-          },
-          "targetAsset": {
-            "amount": "6467571553831928182",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-            "kind": "Erc20",
-            "metadata": {
-              "decimals": 18,
-              "name": "Test",
-              "network": "EthereumSepolia",
-              "symbol": "Test",
-              "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
-            }
-          },
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-        }
-    );
-    let response: generated::SwapQuote = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::SwapQuote::default())
 }
 
 #[utoipa::path(
@@ -2254,60 +2143,7 @@ pub async fn get_swaps_quotes_quote_id(
     AxumPath(quoteId): AxumPath<String>,
 ) -> Json<generated::SwapQuote> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "dateCreated": "2025-09-11T10:52:15.039Z",
-          "id": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "provider": "UniswapClassic",
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "slippageBps": 100,
-            "sourceAsset": {
-              "amount": "10000000000",
-              "kind": "Native"
-            },
-            "targetAsset": {
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "kind": "Erc20"
-            },
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-          },
-          "requester": {
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
-          },
-          "slippageBps": 100,
-          "sourceAsset": {
-            "amount": "10000000000",
-            "kind": "Native",
-            "metadata": {
-              "decimals": 18,
-              "name": "Ethereum",
-              "network": "EthereumSepolia",
-              "symbol": "SepoliaETH",
-              "tid": "native:eth"
-            }
-          },
-          "targetAsset": {
-            "amount": "6467571553831928182",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-            "kind": "Erc20",
-            "metadata": {
-              "decimals": 18,
-              "name": "Test",
-              "network": "EthereumSepolia",
-              "symbol": "Test",
-              "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
-            }
-          },
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-        }
-    );
-    let response: generated::SwapQuote = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::SwapQuote::default())
 }
 
 #[utoipa::path(
@@ -2324,65 +2160,7 @@ pub async fn get_swaps_swap_id(
     AxumPath(swapId): AxumPath<String>,
 ) -> Json<generated::Swap> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "dateCreated": "2025-09-11T10:57:55.758Z",
-          "id": "swap-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "provider": "UniswapClassic",
-          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "quotedSourceAsset": {
-            "amount": "10000000000",
-            "kind": "Native",
-            "metadata": {
-              "decimals": 18,
-              "name": "Ethereum",
-              "network": "EthereumSepolia",
-              "symbol": "SepoliaETH",
-              "tid": "native:eth"
-            }
-          },
-          "quotedTargetAsset": {
-            "amount": "6467571553831928182",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-            "kind": "Erc20",
-            "metadata": {
-              "decimals": 18,
-              "name": "Test",
-              "network": "EthereumSepolia",
-              "symbol": "Test",
-              "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
-            }
-          },
-          "reference": null,
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-            "slippageBps": 100,
-            "sourceAsset": {
-              "amount": "10000000000",
-              "kind": "Native"
-            },
-            "targetAsset": {
-              "amount": "653003161",
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "kind": "Erc20"
-            },
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-          },
-          "requester": {
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
-          },
-          "slippageBps": 100,
-          "status": "PendingPolicyApproval",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
-        }
-    );
-    let response: generated::Swap = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::Swap::default())
 }
 
 #[utoipa::path(
@@ -2568,27 +2346,7 @@ pub async fn post_wallets_import(
     Json(request): Json<serde_json::Value>,
 ) -> Json<generated::Wallet> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "address": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47",
-          "custodial": true,
-          "dateCreated": "2023-04-14T20:41:28.715Z",
-          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "name": "trading hot wallet",
-          "network": "Ethereum",
-          "signingKey": {
-            "curve": "secp256k1",
-            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
-            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d",
-            "scheme": "ECDSA"
-          },
-          "status": "Active",
-          "tags": []
-        }
-    );
-    let response: generated::Wallet = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::Wallet::default())
 }
 
 #[utoipa::path(
@@ -2605,27 +2363,7 @@ pub async fn get_wallets_wallet_id(
     AxumPath(walletId): AxumPath<String>,
 ) -> Json<generated::Wallet> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
-        {
-          "address": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47",
-          "custodial": true,
-          "dateCreated": "2023-04-14T20:41:28.715Z",
-          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "name": "trading hot wallet",
-          "network": "Ethereum",
-          "signingKey": {
-            "curve": "secp256k1",
-            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
-            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d",
-            "scheme": "ECDSA"
-          },
-          "status": "Active",
-          "tags": []
-        }
-    );
-    let response: generated::Wallet = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    Json(generated::Wallet::default())
 }
 
 #[utoipa::path(

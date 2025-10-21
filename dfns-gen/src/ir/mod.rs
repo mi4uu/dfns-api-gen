@@ -10,5 +10,7 @@
 // 4. Type safety: Structured data instead of string concatenation
 
 pub mod types;
+pub mod endpoints;
 
 pub use types::*;
+pub use endpoints::*;

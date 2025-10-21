@@ -40,9 +40,16 @@ async fn main() {
     println!("✅ Generated Rust types written to {}", generated_path.display());
     println!("   → Using nested modules with clean naming!");
 
-    // Generate API endpoints
+    // Save IR for endpoint generator
+    let ir = generator.into_ir();
+    let ir_path = output_dir.join("dfns_gen_ir.json");
+    ir.save_to_file(&ir_path).expect("Failed to write IR");
+    println!("✅ IR saved to {}", ir_path.display());
+    println!("   → {} schemas, {} endpoints", ir.schema_locations.len(), ir.endpoints.len());
+
+    // Generate API endpoints (now using IR)
     println!("\nGenerating API endpoints...");
-    let endpoint_generator = EndpointGenerator::new(openapi);
+    let endpoint_generator = EndpointGenerator::new_with_ir(openapi, ir);
     let api_code = endpoint_generator.generate();
 
     let api_path = output_dir.join("generated_api.rs");

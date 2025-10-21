@@ -1,0 +1,3653 @@
+{
+  "schema_locations": {
+    "auth::credentials::activate::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "activate"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::credentials::activate::UpdateRequest"
+    },
+    "webhooks::webhook_id::events::GetResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id",
+        "events"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::webhooks::webhook_id::events::GetResponse"
+    },
+    "webhooks::webhook_id::events::webhook_event_id::GetResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id",
+        "events",
+        "webhook_event_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::webhooks::webhook_id::events::webhook_event_id::GetResponse"
+    },
+    "auth::pats::token_id::GetResponse": {
+      "module_path": [
+        "auth",
+        "pats",
+        "token_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::pats::token_id::GetResponse"
+    },
+    "auth::users::ListResponse": {
+      "module_path": [
+        "auth",
+        "users"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::users::ListResponse"
+    },
+    "keys::key_id::UpdateResponse": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::keys::key_id::UpdateResponse"
+    },
+    "wallets::wallet_id::transactions::CreateResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transactions"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::wallets::wallet_id::transactions::CreateResponse"
+    },
+    "auth::registration::enduser::CreateRequest": {
+      "module_path": [
+        "auth",
+        "registration",
+        "enduser"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::registration::enduser::CreateRequest"
+    },
+    "exchanges::exchange_id::DeleteResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::exchanges::exchange_id::DeleteResponse"
+    },
+    "keys::key_id::DeleteResponse": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::keys::key_id::DeleteResponse"
+    },
+    "staking::stakes::stake_id::actions::GetResponse": {
+      "module_path": [
+        "staking",
+        "stakes",
+        "stake_id",
+        "actions"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::staking::stakes::stake_id::actions::GetResponse"
+    },
+    "v2::policies::ListResponse": {
+      "module_path": [
+        "v2",
+        "policies"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::v2::policies::ListResponse"
+    },
+    "keys::key_id::UpdateRequest": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::keys::key_id::UpdateRequest"
+    },
+    "CantonValidator": {
+      "module_path": [],
+      "type_name": "CantonValidator",
+      "full_path": "generated::CantonValidator"
+    },
+    "auth::pats::token_id::DeleteResponse": {
+      "module_path": [
+        "auth",
+        "pats",
+        "token_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::auth::pats::token_id::DeleteResponse"
+    },
+    "signers::ListResponse": {
+      "module_path": [
+        "signers"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::signers::ListResponse"
+    },
+    "exchanges::exchange_id::accounts::GetResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id",
+        "accounts"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::exchanges::exchange_id::accounts::GetResponse"
+    },
+    "auth::login::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::CreateRequest"
+    },
+    "YieldAction": {
+      "module_path": [],
+      "type_name": "YieldAction",
+      "full_path": "generated::YieldAction"
+    },
+    "webhooks::CreateResponse": {
+      "module_path": [
+        "webhooks"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::webhooks::CreateResponse"
+    },
+    "exchanges::exchange_id::accounts::account_id::withdrawals::CreateResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id",
+        "accounts",
+        "account_id",
+        "withdrawals"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::exchanges::exchange_id::accounts::account_id::withdrawals::CreateResponse"
+    },
+    "wallets::ListResponse": {
+      "module_path": [
+        "wallets"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::wallets::ListResponse"
+    },
+    "auth::service_accounts::service_account_id::GetResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::service_accounts::service_account_id::GetResponse"
+    },
+    "auth::apps::app_id::GetResponse": {
+      "module_path": [
+        "auth",
+        "apps",
+        "app_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::apps::app_id::GetResponse"
+    },
+    "permissions::permission_id::assignments::GetResponse": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "assignments"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::permissions::permission_id::assignments::GetResponse"
+    },
+    "SwapQuote": {
+      "module_path": [],
+      "type_name": "SwapQuote",
+      "full_path": "generated::SwapQuote"
+    },
+    "auth::credentials::code::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::code::CreateResponse"
+    },
+    "networks::network::validators::GetResponse": {
+      "module_path": [
+        "networks",
+        "network",
+        "validators"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::networks::network::validators::GetResponse"
+    },
+    "v2::policy_approvals::ListResponse": {
+      "module_path": [
+        "v2",
+        "policy_approvals"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::v2::policy_approvals::ListResponse"
+    },
+    "webhooks::ListResponse": {
+      "module_path": [
+        "webhooks"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::webhooks::ListResponse"
+    },
+    "auth::pats::CreateResponse": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::pats::CreateResponse"
+    },
+    "auth::service_accounts::service_account_id::DeleteResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::auth::service_accounts::service_account_id::DeleteResponse"
+    },
+    "permissions::permission_id::UpdateRequest": {
+      "module_path": [
+        "permissions",
+        "permission_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::permissions::permission_id::UpdateRequest"
+    },
+    "auth::login::sso::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login",
+        "sso"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::sso::CreateRequest"
+    },
+    "exchanges::exchange_id::accounts::account_id::deposits::CreateResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id",
+        "accounts",
+        "account_id",
+        "deposits"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::exchanges::exchange_id::accounts::account_id::deposits::CreateResponse"
+    },
+    "permissions::CreateResponse": {
+      "module_path": [
+        "permissions"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::permissions::CreateResponse"
+    },
+    "permissions::permission_id::assignments::CreateRequest": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "assignments"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::permissions::permission_id::assignments::CreateRequest"
+    },
+    "wallets::wallet_id::UpdateRequest": {
+      "module_path": [
+        "wallets",
+        "wallet_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::wallets::wallet_id::UpdateRequest"
+    },
+    "Offer": {
+      "module_path": [],
+      "type_name": "Offer",
+      "full_path": "generated::Offer"
+    },
+    "auth::recover::user::CreateRequest": {
+      "module_path": [
+        "auth",
+        "recover",
+        "user"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::recover::user::CreateRequest"
+    },
+    "auth::pats::CreateRequest": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::pats::CreateRequest"
+    },
+    "auth::credentials::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::CreateResponse"
+    },
+    "agreements::latest_unaccepted::ListResponse": {
+      "module_path": [
+        "agreements",
+        "latest_unaccepted"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::agreements::latest_unaccepted::ListResponse"
+    },
+    "auth::registration::code::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "registration",
+        "code"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::registration::code::UpdateResponse"
+    },
+    "auth::registration::CreateResponse": {
+      "module_path": [
+        "auth",
+        "registration"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::registration::CreateResponse"
+    },
+    "auth::users::CreateRequest": {
+      "module_path": [
+        "auth",
+        "users"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::users::CreateRequest"
+    },
+    "exchanges::CreateResponse": {
+      "module_path": [
+        "exchanges"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::exchanges::CreateResponse"
+    },
+    "auth::pats::token_id::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "pats",
+        "token_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::pats::token_id::UpdateResponse"
+    },
+    "keys::key_id::derive::CreateResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "derive"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::key_id::derive::CreateResponse"
+    },
+    "staking::stakes::ListResponse": {
+      "module_path": [
+        "staking",
+        "stakes"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::staking::stakes::ListResponse"
+    },
+    "swaps::ListResponse": {
+      "module_path": [
+        "swaps"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::swaps::ListResponse"
+    },
+    "auth::credentials::code::verify::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code",
+        "verify"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::code::verify::CreateResponse"
+    },
+    "wallets::wallet_id::tags::UpdateRequest": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "tags"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::wallets::wallet_id::tags::UpdateRequest"
+    },
+    "auth::apps::ListResponse": {
+      "module_path": [
+        "auth",
+        "apps"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::apps::ListResponse"
+    },
+    "permissions::permission_id::assignments::CreateResponse": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "assignments"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::permissions::permission_id::assignments::CreateResponse"
+    },
+    "auth::credentials::activate::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "activate"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::credentials::activate::UpdateResponse"
+    },
+    "wallets::wallet_id::transactions::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transactions"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::transactions::GetResponse"
+    },
+    "yields::yield_id::actions::CreateRequest": {
+      "module_path": [
+        "yields",
+        "yield_id",
+        "actions"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::yields::yield_id::actions::CreateRequest"
+    },
+    "Yield": {
+      "module_path": [],
+      "type_name": "Yield",
+      "full_path": "generated::Yield"
+    },
+    "fee_sponsors::CreateResponse": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::fee_sponsors::CreateResponse"
+    },
+    "permissions::ListResponse": {
+      "module_path": [
+        "permissions"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::permissions::ListResponse"
+    },
+    "fee_sponsors::fee_sponsor_id::fees::GetResponse": {
+      "module_path": [
+        "fee_sponsors",
+        "fee_sponsor_id",
+        "fees"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::fee_sponsors::fee_sponsor_id::fees::GetResponse"
+    },
+    "wallets::wallet_id::transfers::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transfers"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::transfers::GetResponse"
+    },
+    "auth::registration::code::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "registration",
+        "code"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::registration::code::UpdateRequest"
+    },
+    "webhooks::webhook_id::UpdateRequest": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::webhooks::webhook_id::UpdateRequest"
+    },
+    "auth::pats::token_id::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "pats",
+        "token_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::pats::token_id::UpdateRequest"
+    },
+    "keys::key_id::signatures::signature_id::GetResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "signatures",
+        "signature_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::keys::key_id::signatures::signature_id::GetResponse"
+    },
+    "auth::service_accounts::CreateResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::service_accounts::CreateResponse"
+    },
+    "auth::logout::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "logout"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::logout::UpdateResponse"
+    },
+    "auth::action::init::CreateResponse": {
+      "module_path": [
+        "auth",
+        "action",
+        "init"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::action::init::CreateResponse"
+    },
+    "auth::pats::ListResponse": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::pats::ListResponse"
+    },
+    "exchanges::exchange_id::accounts::account_id::assets::GetResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id",
+        "accounts",
+        "account_id",
+        "assets"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::exchanges::exchange_id::accounts::account_id::assets::GetResponse"
+    },
+    "wallets::wallet_id::transactions::transaction_id::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transactions",
+        "transaction_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::transactions::transaction_id::GetResponse"
+    },
+    "fee_sponsors::ListResponse": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::fee_sponsors::ListResponse"
+    },
+    "fee_sponsors::fee_sponsor_id::DeleteResponse": {
+      "module_path": [
+        "fee_sponsors",
+        "fee_sponsor_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::fee_sponsors::fee_sponsor_id::DeleteResponse"
+    },
+    "wallets::CreateRequest": {
+      "module_path": [
+        "wallets"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::wallets::CreateRequest"
+    },
+    "webhooks::webhook_id::UpdateResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::webhooks::webhook_id::UpdateResponse"
+    },
+    "permissions::permission_id::archive::UpdateRequest": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "archive"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::permissions::permission_id::archive::UpdateRequest"
+    },
+    "User": {
+      "module_path": [],
+      "type_name": "User",
+      "full_path": "generated::User"
+    },
+    "auth::service_accounts::service_account_id::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::service_accounts::service_account_id::UpdateRequest"
+    },
+    "wallets::wallet_id::nfts::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "nfts"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::nfts::GetResponse"
+    },
+    "fee_sponsors::fee_sponsor_id::GetResponse": {
+      "module_path": [
+        "fee_sponsors",
+        "fee_sponsor_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::fee_sponsors::fee_sponsor_id::GetResponse"
+    },
+    "yields::ListResponse": {
+      "module_path": [
+        "yields"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::yields::ListResponse"
+    },
+    "permissions::permission_id::UpdateResponse": {
+      "module_path": [
+        "permissions",
+        "permission_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::permissions::permission_id::UpdateResponse"
+    },
+    "fee_sponsors::CreateRequest": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::fee_sponsors::CreateRequest"
+    },
+    "auth::credentials::ListResponse": {
+      "module_path": [
+        "auth",
+        "credentials"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::credentials::ListResponse"
+    },
+    "BlockchainKind": {
+      "module_path": [],
+      "type_name": "BlockchainKind",
+      "full_path": "generated::BlockchainKind"
+    },
+    "auth::credentials::deactivate::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "deactivate"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::credentials::deactivate::UpdateRequest"
+    },
+    "keys::key_id::export::CreateResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "export"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::key_id::export::CreateResponse"
+    },
+    "swaps::CreateRequest": {
+      "module_path": [
+        "swaps"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::swaps::CreateRequest"
+    },
+    "swaps::quotes::CreateRequest": {
+      "module_path": [
+        "swaps",
+        "quotes"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::swaps::quotes::CreateRequest"
+    },
+    "keys::ListResponse": {
+      "module_path": [
+        "keys"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::keys::ListResponse"
+    },
+    "Network": {
+      "module_path": [],
+      "type_name": "Network",
+      "full_path": "generated::Network"
+    },
+    "Swap": {
+      "module_path": [],
+      "type_name": "Swap",
+      "full_path": "generated::Swap"
+    },
+    "auth::registration::enduser::CreateResponse": {
+      "module_path": [
+        "auth",
+        "registration",
+        "enduser"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::registration::enduser::CreateResponse"
+    },
+    "permissions::CreateRequest": {
+      "module_path": [
+        "permissions"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::permissions::CreateRequest"
+    },
+    "permissions::permission_id::archive::UpdateResponse": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "archive"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::permissions::permission_id::archive::UpdateResponse"
+    },
+    "v2::policy_approvals::approval_id::decisions::CreateRequest": {
+      "module_path": [
+        "v2",
+        "policy_approvals",
+        "approval_id",
+        "decisions"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateRequest"
+    },
+    "keys::key_id::signatures::GetResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "signatures"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::keys::key_id::signatures::GetResponse"
+    },
+    "auth::credentials::deactivate::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "deactivate"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::credentials::deactivate::UpdateResponse"
+    },
+    "keys::CreateResponse": {
+      "module_path": [
+        "keys"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::CreateResponse"
+    },
+    "key_stores::ListResponse": {
+      "module_path": [
+        "key_stores"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::key_stores::ListResponse"
+    },
+    "keys::key_id::delegate::CreateRequest": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "delegate"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::key_id::delegate::CreateRequest"
+    },
+    "keys::key_id::delegate::CreateResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "delegate"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::key_id::delegate::CreateResponse"
+    },
+    "auth::service_accounts::ListResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::service_accounts::ListResponse"
+    },
+    "auth::login::delegated::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login",
+        "delegated"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::delegated::CreateRequest"
+    },
+    "exchanges::exchange_id::GetResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::exchanges::exchange_id::GetResponse"
+    },
+    "auth::login::delegated::CreateResponse": {
+      "module_path": [
+        "auth",
+        "login",
+        "delegated"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::login::delegated::CreateResponse"
+    },
+    "webhooks::webhook_id::ping::CreateResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id",
+        "ping"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::webhooks::webhook_id::ping::CreateResponse"
+    },
+    "auth::action::CreateRequest": {
+      "module_path": [
+        "auth",
+        "action"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::action::CreateRequest"
+    },
+    "keys::key_id::GetResponse": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::keys::key_id::GetResponse"
+    },
+    "auth::action::logs::id::GetResponse": {
+      "module_path": [
+        "auth",
+        "action",
+        "logs",
+        "id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::action::logs::id::GetResponse"
+    },
+    "webhooks::webhook_id::DeleteResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::webhooks::webhook_id::DeleteResponse"
+    },
+    "auth::service_accounts::CreateRequest": {
+      "module_path": [
+        "auth",
+        "service_accounts"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::service_accounts::CreateRequest"
+    },
+    "keys::key_id::derive::CreateRequest": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "derive"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::key_id::derive::CreateRequest"
+    },
+    "networks::network::validators::validator_id::UpdateRequest": {
+      "module_path": [
+        "networks",
+        "network",
+        "validators",
+        "validator_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::networks::network::validators::validator_id::UpdateRequest"
+    },
+    "auth::logout::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "logout"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::logout::UpdateRequest"
+    },
+    "exchanges::ListResponse": {
+      "module_path": [
+        "exchanges"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::exchanges::ListResponse"
+    },
+    "agreements::agreement_id::accept::CreateResponse": {
+      "module_path": [
+        "agreements",
+        "agreement_id",
+        "accept"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::agreements::agreement_id::accept::CreateResponse"
+    },
+    "auth::users::user_id::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "users",
+        "user_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::users::user_id::UpdateRequest"
+    },
+    "v2::policy_approvals::approval_id::GetResponse": {
+      "module_path": [
+        "v2",
+        "policy_approvals",
+        "approval_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::v2::policy_approvals::approval_id::GetResponse"
+    },
+    "webhooks::CreateRequest": {
+      "module_path": [
+        "webhooks"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::webhooks::CreateRequest"
+    },
+    "keys::import::CreateResponse": {
+      "module_path": [
+        "keys",
+        "import"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::import::CreateResponse"
+    },
+    "Wallet": {
+      "module_path": [],
+      "type_name": "Wallet",
+      "full_path": "generated::Wallet"
+    },
+    "keys::key_id::export::CreateRequest": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "export"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::key_id::export::CreateRequest"
+    },
+    "wallets::wallet_id::tags::DeleteRequest": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "tags"
+      ],
+      "type_name": "DeleteRequest",
+      "full_path": "generated::wallets::wallet_id::tags::DeleteRequest"
+    },
+    "auth::action::init::CreateRequest": {
+      "module_path": [
+        "auth",
+        "action",
+        "init"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::action::init::CreateRequest"
+    },
+    "auth::service_accounts::service_account_id::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::service_accounts::service_account_id::UpdateResponse"
+    },
+    "staking::stakes::stake_id::rewards::GetResponse": {
+      "module_path": [
+        "staking",
+        "stakes",
+        "stake_id",
+        "rewards"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::staking::stakes::stake_id::rewards::GetResponse"
+    },
+    "wallets::wallet_id::offers::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "offers"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::offers::GetResponse"
+    },
+    "TransferRequest": {
+      "module_path": [],
+      "type_name": "TransferRequest",
+      "full_path": "generated::TransferRequest"
+    },
+    "webhooks::webhook_id::GetResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::webhooks::webhook_id::GetResponse"
+    },
+    "networks::read_contract::CreateResponse": {
+      "module_path": [
+        "networks",
+        "read_contract"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::networks::read_contract::CreateResponse"
+    },
+    "auth::login::social::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login",
+        "social"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::social::CreateRequest"
+    },
+    "auth::credentials::code::CreateRequest": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::credentials::code::CreateRequest"
+    },
+    "auth::login::sso::CreateResponse": {
+      "module_path": [
+        "auth",
+        "login",
+        "sso"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::login::sso::CreateResponse"
+    },
+    "auth::registration::CreateRequest": {
+      "module_path": [
+        "auth",
+        "registration"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::registration::CreateRequest"
+    },
+    "auth::action::CreateResponse": {
+      "module_path": [
+        "auth",
+        "action"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::action::CreateResponse"
+    },
+    "exchanges::CreateRequest": {
+      "module_path": [
+        "exchanges"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::exchanges::CreateRequest"
+    },
+    "auth::login::social::CreateResponse": {
+      "module_path": [
+        "auth",
+        "login",
+        "social"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::login::social::CreateResponse"
+    },
+    "keys::CreateRequest": {
+      "module_path": [
+        "keys"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::CreateRequest"
+    },
+    "keys::import::CreateRequest": {
+      "module_path": [
+        "keys",
+        "import"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::import::CreateRequest"
+    },
+    "keys::key_id::signatures::CreateResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "signatures"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::key_id::signatures::CreateResponse"
+    },
+    "auth::recover::user::CreateResponse": {
+      "module_path": [
+        "auth",
+        "recover",
+        "user"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::recover::user::CreateResponse"
+    },
+    "v2::policy_approvals::approval_id::decisions::CreateResponse": {
+      "module_path": [
+        "v2",
+        "policy_approvals",
+        "approval_id",
+        "decisions"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateResponse"
+    }
+  },
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/agreements/latest-unaccepted",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Latest Unaccepted Agreement",
+      "description": "Get the latest unaccepted agreement for a specific agreement type",
+      "tags": [
+        "Agreements"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/agreements/{agreementId}/accept",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Record Agreement Acceptance",
+      "description": "Record the acceptance of a specific agreement by its ID",
+      "tags": [
+        "Agreements"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/action",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create User Action Signature",
+      "description": "Completes the user action signing process and provides a signing token that can be used to verify the user intended to perform the action.\n\nThe type of credentials used to sign the action is determined by the `kind` field in the nested objects (`firstFactor` and `secondFactor`). Supported credential kinds are:\n* `Fido2`: User action is signed by a user's signing device using `WebAuthn`.\n* `Key`: User action is signed by a user's, or token's, private key.\n* `PasswordProtectedKey`: Login challenge is signed by the decrypted user's private key that was sent during [Create User Action Signature Challenge](https://docs.dfns.co/api-reference/auth/create-user-action-challenge) step.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/action/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create User Action Challenge",
+      "description": "Starts a user action signing session, returning a challenge that will be used to verify the user's intent to perform an action.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/action/logs",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Audit Logs",
+      "description": "\n  Gets all signature events which have occurred in the over the timeframe.  The max range the API supports is 7 days.\n\nStartTime and EndTime are URL-encoded UTC ISO timestamps:    \n`startTime=2025-08-29T02%3A46%3A40Z`   \n`endTime=2025-09-01T02%3A46%3A40Z`   \n\nAn additional optional query parameter, `userId` can be specified to filter down events to a particular user. The API will return results found in CSV format.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/action/logs/{id}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Audit Log",
+      "description": "\n  Gets detailed information for a particular audit log. Specifically, the API returns:\n\n| Name              | Value                                                                       |\n| ----------------- | --------------------------------------------------------------------------- |\n| publicKey         | Public Key which can be used to verify signature                            |\n| signature         | Signature of the clientData and authenticatorData                           |\n| clientData        | Information, including challenge, which you can use to verify the signature |\n| authenticatorData | Used to verify the signature                                                |\n\nDfns maintains a script in this repository which can be used for audit log signature validation.[https://github.com/dfns/example-scripts](https://github.com/dfns/example-scripts)\n  ",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/apps",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Applications",
+      "description": "<Warning>\n  Applications are deprecated and will be removed in a future release. See details [here](https://docs.dfns.co/developers/guides/applications-deprecation).\n  </Warning>",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/apps/{appId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Application",
+      "description": "<Warning>\n  Applications are deprecated and will be removed in a future release. See details [here](https://docs.dfns.co/developers/guides/applications-deprecation).\n  </Warning>",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/credentials",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Credentials",
+      "description": "List all credentials for a user.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/credentials",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Credential",
+      "description": "Part of the flow [Create Credential Regular flow](https://docs.dfns.co/api-reference/auth/credentials#regular-flow).\n\nAdds a new credential to a user's account. See [Credential Kinds](https://docs.dfns.co/api-reference/auth/credentials#credential-kinds) for all supported credential types.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/credentials/activate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Activate Credential",
+      "description": "Activates a credential that was previously deactivated. If the credential is already activated no action is taken.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/credentials/code",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Credential Code",
+      "description": "Part of the [Create Credential With Code flow](https://docs.dfns.co/api-reference/auth/credentials#create-credential-with-code-flow).\n\nCreates a one-time-code that can then be used to create a new credential from a place you don't have access to one of your existing credential.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/credentials/code/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Credential Challenge With Code",
+      "description": "Part of the flow [Create Credential With Code](https://docs.dfns.co/api-reference/auth/credentials#create-credential-with-code-flow).\n\nCreates a credential challenge using a one time code-time-code. This challenge must then be signed by the new credential, before finalizing the flow.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/credentials/code/verify",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Credential With Code",
+      "description": "Finalizes the flow [Create Credential With Code](https://docs.dfns.co/api-reference/auth/credentials#create-credential-with-code-flow).\n  \nAdds a new credential to a user's account. This endpoint is similar to the [Create Credential](https://docs.dfns.co/api-reference/auth/create-credential) endpoint, except:\n* it does not need the user to be authenticated\n* it does not need user action signing\n* it will only work with the challenge gotten from the [Create Credential Challenge With Code](https://docs.dfns.co/api-reference/auth/create-credential-challenge-with-code) endpoint\n\n  ",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/credentials/deactivate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Deactivate Credential",
+      "description": "Deactivates a credential that was previously active. If the credential is already deactivated no action is taken.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/credentials/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Credential Challenge",
+      "description": "Part of the flow [Create Credential Regular flow](https://docs.dfns.co/api-reference/auth/credentials#regular-flow).\n  \n  Starts a create user credential session, returning a challenge that will be used to verify the user's identity.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Complete User Login",
+      "description": "Completes the login process and provides the authenticated user with their authentication token.\n\nThe type of credentials used to login is determined by the `kind` field in the nested objects (`firstFactor` and `secondFactor`). Supported credential kinds are:\n* `Fido2`: Login challenge is signed by a user's signing device using `WebAuthn`.\n* `Key`: Login challenge is signed by a user's private key.\n* `PasswordProtectedKey`: Login challenge is signed by the decrypted user's private key that was sent during [Create User Login Challenge](../registration/inituserregistration) step.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/code",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Send Login Code",
+      "description": "\n  Sends a temporary one time code to the user that can be used during login flow.\n\nIf the user has a credential of kind `PasswordProtectedKey` a temporary one time code needs to be passed in the `loginCode` field. That's because the [Create Login Challenge](https://docs.dfns.co/api-reference/auth/create-login-challenge) is unauthenticated and returns the encrypted private key of the user. So we need a first step to verify the identity of the user to prevent anybody from fetching the encrypted private key and trying to brute force it offline.\n\n  ",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/delegated",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delegated Login",
+      "description": "\n  <Warning>\nOnly a [Service Account](https://docs.dfns.co/api-reference/auth/service-accounts) can use this endpoint.\n</Warning>\n\nLogs a user into an organization without the user's credentials.\n\nIf you want to use your own authentication system, while still using `Delegated Signing`, you can use this endpoint to authenticate a user without needing the user's credentials.\n\nThe user authentication token can be used for read operations within the Dfns API, however, write operations will still require the user to sign the action.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Login Challenge",
+      "description": "Start a user login session, returning a challenge that will be used to verify the user's identity.\n\nIf the user has a credential of kind `PasswordProtectedKey` a temporary one time code needs to be passed in the `loginCode` field.\n\nIf the user has at least one discoverable webauthn credential, `username` is optional (usernamless flow).",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/social",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Social Login",
+      "description": "Completes the login process and provides the authenticated user with their authentication token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/sso",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Complete SSO Login",
+      "description": "Completes the login process and provides the authenticated user with their authentication token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login/sso/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Initiate SSO Login",
+      "description": "Initialize the login process with SSO by returning the IdP Url to call.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/logout",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Logout",
+      "description": "Completes the user logout process.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/pats",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Personal Access Tokens",
+      "description": "Retrieve the list of your Personal Access Tokens.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/pats",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Personal Access Token",
+      "description": "Create a new Personal Access Token for the caller.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/pats/{tokenId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Personal Access Token",
+      "description": "Retrieve a specific Personal Access Token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/pats/{tokenId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Personal Access Token",
+      "description": "Update a specific Personal Access Token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/pats/{tokenId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Personal Access Token",
+      "description": "Delete a specific Personal Access Token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/pats/{tokenId}/activate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Activate Personal Access Token",
+      "description": "Activate a specific Personal Access Token.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/pats/{tokenId}/deactivate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Deactivate Personal Access Token",
+      "description": "Deactivates a credential that was previously active. If the credential is already deactivated no action is taken.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/recover/user",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Recover User",
+      "description": "Recovers a user, using a recovery credential. After successfully recovering the user, all of the user's previous credentials and personal access tokens will be invalidated.\n\nThis flow requires cryptographic validation of newly created credential(s) using a recovery credential. The `recovery.credentialAssertion.clientData` field's challenge must be the _base64url-encoded_ representation of the `newCredential` object.\n\nThe process is as follows:\n\n1. Construct the `newCredential` object, using the challenge obtained from either the [Create Recovery Challenge](https://docs.dfns.co/api-reference/auth/create-recovery-challenge) or [Create Delegated Recovery Challenge](https://docs.dfns.co/api-reference/auth/create-delegated-recovery-challenge) endpoints.\n2. Serialize the `newCredential` object to JSON and then base64url-encode the resulting JSON string. This _base64url-encoded_ string will serve as the challenge for the `recovery.credentialAssertion` object.\n3. Construct the `recovery.credentialAssertion` object, using the _base64url-encoded_ string generated in step 2 as its challenge.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/recover/user/code",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Send Recovery Code Email",
+      "description": "Send the user a recovery verification code. This code is used as a second factor to verify the user initiated the recovery request.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/recover/user/delegated",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Delegated Recovery Challenge",
+      "description": "\n<Warning>\nOnly a [Service Account](https://docs.dfns.co/api-reference/auth/service-accounts) can use this endpoint.\n</Warning>\n\nThis endpoint enables setting up a recovery workflow for Delegated Signing. Via this configuration, the end user will not receive an email from Dfns but instead can establish recovery credentials that leverage the customer's brand for the recovery workflow.\n\nOnce the user has been verified by your auth system and this API has been called, you can call [Recover User](https://docs.dfns.co/api-reference/auth/recover) to complete the recovery process.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/recover/user/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Recovery Challenge",
+      "description": "Starts a user recovery session, returning a challenge that will be used to verify the user's identity.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/registration",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Complete User Registration",
+      "description": "Completes the user registration process and creates the user's initial credentials.\n\nThe type of credentials being registered is determined by the `credentialKind` field in the nested objects (`firstFactorCredential` , `secondFactorCredential` and `RecoveryCredential`). Supported credential kinds are:\n* `Fido2`: User action is signed by a user's signing device using `WebAuthn`.\n* `Key`: User action is signed by a user's, or token's, private key.\n* `PasswordProtectedKey`: User action is signed by a user's, or token's, private key. The encrypted version of the private key is stored by Dfns and returns during the signing flow for the user to decrypt it.\n* `RecoveryKey` : Similar to `PasswordProtectedKey`, but this credential can only be used to recover an account not to sign an action or login. Once this credential is used all the other user's credentials are invalidated.\n",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/registration/code",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Resend Registration Code",
+      "description": "Sends the user a new registration code. The previous registration code will be marked invalid. If the user has already completed their registration no action will be taken.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/registration/delegated",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Delegated Registration Challenge",
+      "description": "<Warning>\nOnly a [Service Account](https://docs.dfns.co/api-reference/auth/service-accounts) can use this endpoint.\n</Warning>\n\nIf you want to use your own authentication system, while still using `Delegated Signing`, you can use this endpoint to register a new End User in your organization, without your user needing to receive an email from Dfns.\n\nThis endpoint will:\n1. Create a new User attached to your organization\n2. Initiates a User Registration Challenge and returns the registration challenge.\n\nOn successful creation, the user's registration challenge will be returned. You will then need to call [Complete User Registration](https://docs.dfns.co/api-reference/auth/register) or [Complete End User Registration with Wallets](https://docs.dfns.co/api-reference/auth/register-end-user) to complete the user's registration.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/registration/enduser",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Complete End User Registration with Wallets",
+      "description": "Completes the end user registration process and creates the user's initial credentials along with delegated wallets for the new end user.\n\nThe type of credentials being registered is determined by the `credentialKind` field in the nested objects (`firstFactorCredential` , `secondFactorCredential` and `RecoveryCredential`). Supported credential kinds are:\n* `Fido2`: User action is signed by a user's signing device using `WebAuthn`.\n* `Key`: User action is signed by a user's, or token's, private key.\n* `PasswordProtectedKey`: User action is signed by a user's, or token's, private key. The encrypted version of the private key is stored by Dfns and returns during the signing flow for the user to decrypt it.\n\nThe number of delegated wallets created and the wallet types are determined by the `wallets` specifications. The end user is automatically assigned `DfnsDefaultEndUserAccess` managed permission that grants the end user full access to the wallets.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/registration/init",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Registration Challenge",
+      "description": "Starts a user registration session. It returns a challenge that will need to be signed by a passkey and used to perform the step [Complete User Registration](/api-reference/auth/register)",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/registration/social",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Social Registration Challenge",
+      "description": "Starts an end-user registration session by passing a JWT obtained by an IdP. It returns a challenge that will need to be signed by a passkey and used to perform [Complete End User Registration with Wallets](/api-reference/auth/register-end-user).",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/service-accounts",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Service Accounts",
+      "description": "List all Service Accounts in your organization.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/service-accounts",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Service Account",
+      "description": "Create a new Service Account for your organization.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/service-accounts/{serviceAccountId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Service Account",
+      "description": "Get information about a specific Service Account.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/service-accounts/{serviceAccountId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Service Account",
+      "description": "Update a specific Service Account.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/service-accounts/{serviceAccountId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Service Account",
+      "description": "Delete a specific Service Account.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/service-accounts/{serviceAccountId}/activate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Activate Service Account",
+      "description": "Activate a specific Service Account.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/service-accounts/{serviceAccountId}/deactivate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Deactivate Service Account",
+      "description": "Deactivate a specific Service Account.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/users",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Users",
+      "description": "List all Users in your organization.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/users",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create User",
+      "description": "Invite a new user in the caller's org. This will create the user and send a registration email to the created User's email, with a registration code, and pointing him to complete his registration on Dfns Dashboard. The user is created without any permissions.\n  \n  <Note>If you want the created User to not know about about Dfns, and don't want him to \n  receive the registration email from Dfns, you should rather use the Delegated Registration \n  endpoint.</Note>\n  ",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/users/{userId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get User",
+      "description": "Retrieve information about a specific User.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/users/{userId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update User",
+      "description": "Update a specific User.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/users/{userId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete User",
+      "description": "Delete a specific User.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/users/{userId}/activate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Activate User",
+      "description": "Activate a specific User.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/users/{userId}/deactivate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "User",
+        "full_path": "generated::User"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Deactivate User",
+      "description": "Deactivate a specific User.",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/exchanges",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Exchanges",
+      "description": "List all configured exchange integrations.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/exchanges",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Exchange",
+      "description": "Link your organization with a cryptocurrency exchange.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/exchanges/{exchangeId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Exchange",
+      "description": "Retrieve the details of a specific exchange integration configuration.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/exchanges/{exchangeId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Exchange",
+      "description": "Delete the exchange configuration from your organization.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/exchanges/{exchangeId}/accounts",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Accounts",
+      "description": "Get a list of accounts for a specific exchange.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/exchanges/{exchangeId}/accounts/{accountId}/assets",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Account Assets",
+      "description": "Retrieve the list of assets for a specific account on a specific exchange.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/exchanges/{exchangeId}/accounts/{accountId}/assets/{asset}/withdrawal-networks",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Asset Withdrawal Networks",
+      "description": null,
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/exchanges/{exchangeId}/accounts/{accountId}/deposits",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Exchange Deposit",
+      "description": "Creates a new exchange deposit transaction.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/exchanges/{exchangeId}/accounts/{accountId}/withdrawals",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Exchange Withdrawal",
+      "description": "Creates a new exchange withdrawal transaction.",
+      "tags": [
+        "Exchanges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/fee-sponsors",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Fee Sponsors",
+      "description": "Retrieves all Fee Sponsors configured in your organization.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/fee-sponsors",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Fee Sponsor",
+      "description": "Creates a new `FeeSponsor` associated with a sponsor wallet. Returns a new fee sponsor entity with the `id` to be used when making a transfer.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/fee-sponsors/{feeSponsorId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Fee Sponsor",
+      "description": "Retrieve a Fee Sponsor information by ID.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/fee-sponsors/{feeSponsorId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Fee Sponsor",
+      "description": "Delete a Fee Sponsor. This action is irreversible. The fee sponsor won't be able to be used anymore when making a transfer.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/fee-sponsors/{feeSponsorId}/activate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Activate Fee Sponsor",
+      "description": "Activate a Fee Sponsor: The fee sponsor can be used when making a transfer.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/fee-sponsors/{feeSponsorId}/deactivate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Deactivate Fee Sponsor",
+      "description": "Deactivate a Fee Sponsor: The fee sponsor won't be able to be used anymore when making a transfer.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/fee-sponsors/{feeSponsorId}/fees",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Sponsored Fees",
+      "description": "Retrieves all fees paid by the specific Fee Sponsor.",
+      "tags": [
+        "Fee Sponsors"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/key-stores",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Key Stores",
+      "description": null,
+      "tags": [
+        "Signers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/keys",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Keys",
+      "description": "Retrieve all keys registered for your organization.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Key",
+      "description": "Creates a key for the given scheme and curve. Returns the new key entity. ",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys/import",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Import Key",
+      "description": "Dfns secures private keys by generating them as MPC key shares in our decentralized key management network.  This happens by default when you create a [key](https://docs.dfns.co/api-reference/keys/create-key) or [wallet](https://docs.dfns.co/api-reference/wallets/create-wallet).\n\nIn some circumstances, however, you may need to import an existing private key into Dfns infrastructure, instead of creating a brand new wallet with Dfns and transfer funds to it. As an example, you might want to keep an existing wallet if its address is tied to a smart contract which you don't want to re-deploy.\n\nIn such a case, Dfns exposes this key import API endpoint, which can be used in conjunction with our [import SDK](https://github.com/dfns/dfns-sdk-ts/tree/m/examples/sdk/import-wallet).   Note this is intended to be used only to migrate wallets when first onboarding onto the Dfns platform.\n\n<Danger>\nDfns can not guarantee the security of imported wallets, as we have no way to control who had access to the private key prior to import.  For this reason, this feature is restricted to Enterprise customers who have signed a contractual addendum limiting our liability for imported keys.  Please contact your sales representative for more information.\n</Danger>\n",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/keys/{keyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Key",
+      "description": "Retrieves a key information by its ID.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/keys/{keyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Key",
+      "description": "Updates the name of an existing key.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/keys/{keyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Key",
+      "description": "Deletes the key and all wallets using this key. Once deleted, keys (and wallets) are not usable anymore, and won't count in your overall organisation wallet count.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys/{keyId}/delegate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delegate Key",
+      "description": "<Warning>\nOnly keys created with \"`delayDelegation: true`\" can then be delegated to an end-user. It means you need to know ahead of time that you're creating a wallet meant to be delegated to an end-user later. This is a safety to prevent, for example, a treasury wallet from being unintentionally delegated to an end-user.\n</Warning>\n\n<Note>\nWhen a key is delegated to an end user, all wallets using this key as the signing key are also automatically delegated to the same end user. Key and wallet ownerships are guaranteed to be always consistent.\n</Note>\n\n<Danger>\nThis operation is irreversible. The key ownership will be transferred to the end-user\n</Danger>\n\nIn most cases, when you want to implement [Wallet Delegation](https://docs.dfns.co/developers/guides/wallet-delegation), simply create the wallet by directly delegating it to an end user, in which case it will the non-custodial from the start.  There are some rare cases, however, where the key or wallet must be created before the user has accessed to the system.  To accommodate this, we've added the ability to create a key or wallet in delay delegation mode, and then later delegate it (ie. transfer ownership of it) to an end user via this endpoint.\n",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys/{keyId}/derive",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Derive Key",
+      "description": "Dfns decentralized key management network supports threshold Diffie-Hellman protocol based on [GLOW20 paper](https://eprint.iacr.org/2020/096). You can use the DH protocol to derive output from a domain separation tag and a seed value. The derivation process is deterministic, i.e. the same Diffie-Hellman key and seed will lead to the same derived output. To ensure reproducibility, we use hash to curve [RFC9380](https://www.rfc-editor.org/rfc/rfc9380.html) and standard ciphersuite `secp256k1_XMD:SHA-256_SSWU_RO_`.\n\n<Tip>\nThe seed doesn’t need to be secret. Without access to the DH key, it is not possible to do the derivation, even if the seed is known. Moreover, if both seed and derived output are known, it’s also not possible to do the derivation for another seed without having access to the DH key.\n</Tip>\n\nThis endpoint only supports Diffie-Hellman keys. Regular threshold signature keys, like `ECDSA` or `EdDSA`, will not work. You can create a Diffie-Hellman key with the [Create Key](https://docs.dfns.co/api-reference/keys/create-key) endpoint using `scheme=DH` and `curve=secp256k1`.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys/{keyId}/export",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Export Key",
+      "description": "Dfns secures private keys by generating them as MPC key shares in our decentralized key management network.  Our goal is to eliminate all single points of failure (SPOFs) associated with blockchain private keys.\n\nIn certain circumstances, however, customers require Dfns to export a private key. In this case, Dfns exposes the following endpoint which can be used in conjunction with our [export SDK](https://github.com/dfns/dfns-sdk-ts/tree/m/examples/sdk/export-wallet).\n\n<Danger>\nDfns can not guarantee the security of exported keys as we have no way to control blockchain transactions once the single point of failure has been reconstituted.  For this reason, this feature is restricted to customers who have signed a contractual addendum limiting our liability for exported keys.  Additionally, by default exported keys can no longer be used to sign within the Dfns platform. Please contact your sales representative for more information.\n</Danger>",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/keys/{keyId}/signatures",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Signatures",
+      "description": "List all signature requests for a key.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/keys/{keyId}/signatures",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Generate Signature",
+      "description": "Request to generate a signature with the key. **This process does not broadcast anything on-chain**, this is just an off-chain signature request.\n\nDfns is compatible with any blockchain that uses a supported [key format](https://docs.dfns.co/networks/supported-key-formats). If Dfns doesn't officially integrate with a blockchain, you can use hash signing to generate the signatures to interact with the chain.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/keys/{keyId}/signatures/{signatureId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Signature",
+      "description": "Retrieve a signature request details.",
+      "tags": [
+        "Keys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/networks/fees",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Estimate Fees",
+      "description": "Gets real-time fee details for a given network, allowing users to make decisions based on their preferences for transaction speed/priority. Three levels of priority will be displayed: `slow`, `standard`, `fast`.\n\n<Note>\nNote: Get Fee only works on EVM chains currently.  We will add support for additional L1s incrementally.\n</Note>",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/networks/read-contract",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Read Contract",
+      "description": "Call a read-only function on a smart contract. In Solidity, this use the `view` keyword.\n\n  <Note>\n  Currently only works on EVM compatible chains.\n  </Note>",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{network}/validators",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Canton Validators",
+      "description": "Retrieve the list of configured Canton Validators in your organization.",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/networks/{network}/validators",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "CantonValidator",
+        "full_path": "generated::CantonValidator"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Canton Validator",
+      "description": "Link a Canton Validator to your organization. This is required in order to create wallets or interact with the Canton network.\n\n  The `Shared` option allows you to use a shared validator hosted by DFNS and get started in seconds, while the `Custom` option allows you to connect your own validator and ledger nodes using OAuth2 authentication.\n\n  Read details about the process [here](https://docs.dfns.co/networks/canton-validators). ",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{network}/validators/{validatorId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "CantonValidator",
+        "full_path": "generated::CantonValidator"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Canton Validator",
+      "description": "Return a configured Canton Validator in your organization.",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/networks/{network}/validators/{validatorId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "CantonValidator",
+        "full_path": "generated::CantonValidator"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Canton Validator",
+      "description": "Update an existing Canton Validator configuration.\n  \n  Read details about the process [here](https://docs.dfns.co/networks/canton-validators). ",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/networks/{network}/validators/{validatorId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "CantonValidator",
+        "full_path": "generated::CantonValidator"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Canton Validator",
+      "description": "Delete a specific Canton Validator configuration.",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/permissions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Permissions",
+      "description": "Retrieves a list of permissions (success) or gives a reason why it's not possible (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/permissions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Permission",
+      "description": "Creates a permission that allows certain specified operations to be executed.",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/permissions/{permissionId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Permission",
+      "description": "Retrieves a specific permission (success) or gives a reason why it's not possible (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/permissions/{permissionId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Permission",
+      "description": "Updates an existing permission. Response either returns the updated permission (success) or the reason why it was not possible to update (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/permissions/{permissionId}/archive",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Permission",
+      "description": "Delete a specific Permission.",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/permissions/{permissionId}/assignments",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Permission Assignments",
+      "description": "Retrieves a list of permission assignments (success) or gives a reason why it's not possible (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/permissions/{permissionId}/assignments",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Assign Permission",
+      "description": "Creates a permission that allows certain specified operations to be executed. \n  \n  Response is either the permission object itself (success) or a reason why it was not possible to create the permission (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/permissions/{permissionId}/assignments/{assignmentId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Revoke Permission",
+      "description": "Revokes a permission assignment (success) or gives reason why it’s not possible (failure).",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/signers",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Signers",
+      "description": null,
+      "tags": [
+        "Signers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/staking/stakes",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Stakes",
+      "description": "Retrieve the list of stakes.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/staking/stakes",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Stake",
+      "description": "Create a new stake.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/staking/stakes/{stakeId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Stakes",
+      "description": "Retrieve the details of a specific stake.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/staking/stakes/{stakeId}/actions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Stake Actions",
+      "description": "Retrieve the list of actions for a specific stake.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/staking/stakes/{stakeId}/actions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Stake Action",
+      "description": "Create a new action for an existing stake.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/staking/stakes/{stakeId}/rewards",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Stake Rewards",
+      "description": "Retrieves the rewards linked to a specific stake.",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/swaps",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Swaps",
+      "description": "List all swaps with pagination",
+      "tags": [
+        "Swaps"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/swaps",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Swap",
+        "full_path": "generated::Swap"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Swap",
+      "description": "Create a new swap based on an existing quote. This is the second step of the [Swap flow](https://docs.dfns.co/api-reference/swaps#flow-overview).",
+      "tags": [
+        "Swaps"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/swaps/quotes",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "SwapQuote",
+        "full_path": "generated::SwapQuote"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Request Swap Quote",
+      "description": "Request a quote from a given provider for swapping assets. This is the first step of the [Swap flow](https://docs.dfns.co/api-reference/swaps#flow-overview).",
+      "tags": [
+        "Swaps"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/swaps/quotes/{quoteId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "SwapQuote",
+        "full_path": "generated::SwapQuote"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Swap Quote",
+      "description": "Get details of a specific swap quote by its ID",
+      "tags": [
+        "Swaps"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/swaps/{swapId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Swap",
+        "full_path": "generated::Swap"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Swap",
+      "description": "Get details of a specific swap by its ID",
+      "tags": [
+        "Swaps"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/policies",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Policies",
+      "description": "Retrieve the list of policies on your organization.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/policies",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Policy",
+      "description": "Setup a new Policy for your organization.\n  \n  Every policy requires a rule to be specified. Upon policy evaluation, the configuration specified in the rule will be used to determine whether the policy should trigger or not for a given activity.\n  \n  By exposing controls on permissions and policies, Dfns enables the specification of an admin quorum to approve sensitive actions which could change system governance.   Note Dfns does not expose a separate \"admin quorum\" concept like some of our competitors - we simply enable this use case as another configuration of the policy engine itself.   This was chosen to promote flexibility as not every customer will have the same requirements around creating and managing admin quorums.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/policies/{policyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Policy",
+      "description": "Retrieve information about a specific policy.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v2/policies/{policyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Policy",
+      "description": "Update an existing policy.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v2/policies/{policyId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Policy",
+      "description": "Delete an existing policy.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/policy-approvals",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Approvals",
+      "description": "Retrieve the list of pending approval requests.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/policy-approvals/{approvalId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Approval",
+      "description": "Retrieve information about a specific approval request.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/policy-approvals/{approvalId}/decisions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Approval Decision",
+      "description": "Approve or Reject an Approval request.",
+      "tags": [
+        "Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Wallets",
+      "description": "Retrieves the list of Wallets in your organization. You can filter the results by owner (either by owner id or owner username). Pagination is supported via limit and paginationToken parameters.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Wallet",
+      "description": "Creates a new Wallet associated with the given chain (such as Bitcoin or Ethereum ). Returns a new wallet entity.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/all/history",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Org Wallet History",
+      "description": "Retrieve the transaction history across all wallets within a specified timeframe.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/import",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Wallet",
+        "full_path": "generated::Wallet"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Import Wallet",
+      "description": "<Warning>\nThis endpoint is not enabled by default. [Contact Dfns](https://support.dfns.co) to have it activated.\n</Warning>\n\nDfns secures private keys by generating them as MPC key shares in our decentralized key management network.  This happens by default when you [create a wallet](https://docs.dfns.co/api-reference/wallets/create-wallet).\n\nIn some circumstances, however, you may need to import an existing wallet (an existing private key) into Dfns infrastructure, instead of creating a brand new wallet with Dfns and transfer funds to it. As an example, you might want to keep an existing wallet if its address is tied to a smart contract which you don't want to re-deploy.\n\nIn such a case, Dfns exposes this wallet import API endpoint, which can be used in conjunction with our [import SDK](https://github.com/dfns/dfns-sdk-ts/tree/m/examples/sdk/import-wallet).   Note this is intended to be used only to migrate wallets when first onboarding onto the Dfns platform.\n\n<Danger>\nDfns can not guarantee the security of imported wallets, as we have no way to control who had access to the private key prior to import.  For this reason, this feature is restricted to Enterprise customers who have signed a contractual addendum limiting our liability for imported keys.  Please contact your sales representative for more information.\n</Danger>\n",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Wallet",
+        "full_path": "generated::Wallet"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Wallet",
+      "description": "Retrieves a Wallet information by its ID.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/wallets/{walletId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Wallet",
+      "description": "Updates the name of an existing wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/assets",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Wallet Assets",
+      "description": "Retrieves a list of assets owned by the specified wallet.  Return values vary by chain as shown below.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/{walletId}/delegate",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delegate Wallet",
+      "description": "<Danger>\n  Delegate Wallet is deprecated. Please use [Delegate Key](https://docs.dfns.co/api-reference/keys/delegate-key) instead.\n  </Danger>\n\nIn most cases, when you want to implement Delegated Signing, simply have the end-user create the wallet, in which case it will the non-custodial from the start.  There are some rare cases, however, where the wallet must be created before the user has accessed the system.  To accommodate this, we've added the ability to create a wallet from a service account, and then later delegate it (ie. transfer ownership of it) to an end user via this endpoint.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/{walletId}/export",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Export Wallet",
+      "description": "<Danger>\nExport Wallet is deprecated. Please use [Export Key](https://docs.dfns.co/api-reference/keys/export-key) instead.\n</Danger>",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/history",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Wallet History",
+      "description": "Retrieves a list of historical on chain activities for the specified wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/nfts",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Wallet Nfts",
+      "description": "Retrieves a list of NFTs owned by the specified Wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/offers",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Offers",
+      "description": "List all offers received on a specific wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/offers/{offerId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Offer",
+        "full_path": "generated::Offer"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Offer",
+      "description": "Retrieve information about a specific offer received on your wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/wallets/{walletId}/offers/{offerId}/accept",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Offer",
+        "full_path": "generated::Offer"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Accept Offer",
+      "description": "Accept an offer received on your wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/wallets/{walletId}/offers/{offerId}/reject",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "Offer",
+        "full_path": "generated::Offer"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Reject Offer",
+      "description": "Reject an offer received on your wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/signatures",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Signatures",
+      "description": "List all signature requests for a specific wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/{walletId}/signatures",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Generate Signature",
+      "description": "\n<Danger>\nGenerating Signatures from a Wallet is deprecated. Please use the Key's [Generate Signature](https://docs.dfns.co/api-reference/keys/generate-signature) endpoint instead.\n</Danger>\n",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/signatures/{signatureId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Signature",
+      "description": "Retrieves a Transaction Request information by its ID.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/wallets/{walletId}/tags",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Tag Wallet",
+      "description": "Add a [Tag](https://docs.dfns.co/api-reference/wallets/tags) to a wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/wallets/{walletId}/tags",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Untag Wallet",
+      "description": "Removes the specified tags from a wallet. ",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/transactions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Transactions",
+      "description": "Retrieves a list of transactions requests for the specified wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/{walletId}/transactions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Sign and Broadcast Transaction",
+      "description": "Sign & Broadcast transaction enables communication with any arbitrary smart contract of the target blockchain. You can construct a transaction that performs a complex task and this endpoint will sign the transaction, add the signature and broadcast it to chain. It can be used to call smart contract functions like mint tokens and even deploy new smart contracts.\n  \n| Status      | Definition                                                                                                                                      |\n|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|\n| Pending     | The request is pending approval due to a policy applied to the wallet.                                                                          |\n| Executing   | The request is approved and is in the process of being executed. note this status is only set for a short time between pending and broadcasted. |\n| Broadcasted | The transaction has been successfully written to the mempool.                                                                                   |\n| Confirmed   | The transaction has been confirmed on-chain by our indexing pipeline.                                                                           |\n| Failed      | Indicates either a system failure to complete the request or the transaction failed on chain.                                                   |\n| Rejected    | The request has been rejected by a policy approval action.                                                                                      |\n\n\n  <Info>\n  for reading from a \"view\" function on EVM chains, please use [Read Contract](https://docs.dfns.co/api-reference/networks/read-contract) endpoint.\n  </Info>",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/transactions/{transactionId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Transaction",
+      "description": "Retrieve information about a specific transaction.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/transfers",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Transfers",
+      "description": "Retrieves a list of transfer requests for the specified wallet.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/wallets/{walletId}/transfers",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "TransferRequest",
+        "full_path": "generated::TransferRequest"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Transfer Asset",
+      "description": "\n    Transfer an asset out of the specified wallet to a destination address. \n    For all fungible token transfers, the transfer amount must be specified in the minimum denomination of that token. \n    For example, use the amount in Satoshi for a Bitcoin transfer, or the amount in Wei for an Ethereum transfer etc.\n    \n    See the different options in the Body description below. You can also select your kind of transfers in the payload examples in the different languages. \n    ",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/wallets/{walletId}/transfers/{transferId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": {
+        "module_path": [],
+        "type_name": "TransferRequest",
+        "full_path": "generated::TransferRequest"
+      },
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Transfer",
+      "description": "Retrieves a Wallet Transfer Request by its ID.",
+      "tags": [
+        "Wallets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Webhooks",
+      "description": "List all webhooks for the authenticated user's organization. The results are paginated.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Webhook",
+      "description": "Register a new webhook.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/{webhookId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Webhook",
+      "description": "Retrieve information about a specific webhook.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/webhooks/{webhookId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Update Webhook",
+      "description": "Update the definition of an existing webhook.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/webhooks/{webhookId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Delete Webhook",
+      "description": "Deletes an existing webhook registration.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/{webhookId}/events",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Webhook Events",
+      "description": "Lists all events for a given webhook. \n\n\n<Warning>\nWe only keep a trace of those Webhook Events in our system for a **retention period of 31 days**. Past that, they are discarded, so you cannot see them using [List Webhook Events](https://docs.dfns.co/api-reference/webhooks/list-webhook-events) or [Get Webhook Event](https://docs.dfns.co/api-reference/webhooks/get-webhook-event) endpoints.\n</Warning>",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/{webhookId}/events/{webhookEventId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Webhook Event",
+      "description": "Retrieve a specific webhook event details by its ID.\n  \n<Warning>\nWe only keep a trace of those Webhook Events in our system for a **retention period of 31 days**. Past that, they are discarded, so you cannot see them using [List Webhook Events](https://docs.dfns.co/api-reference/webhooks/list-webhook-events) or [Get Webhook Event](https://docs.dfns.co/api-reference/webhooks/get-webhook-event) endpoints.\n</Warning>",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks/{webhookId}/ping",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Ping Webhook",
+      "description": "This endpoint is meant for webhook setup and troubleshooting. Calling the endpoint will trigger a fake test event that will be pushed to the webhook url. The fake event will not be saved and not appear in further requests to Webhook Events.",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/yields",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Yields",
+      "description": null,
+      "tags": [
+        "Yields"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/yields",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Yield",
+      "description": "Create a new yield.",
+      "tags": [
+        "Yields"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/yields/{yieldId}",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Get Yield",
+      "description": "Retrieve the details of a specific yield.",
+      "tags": [
+        "Yields"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/yields/{yieldId}/actions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "List Yield Actions",
+      "description": "Retrieve the list of actions for a specific yield.",
+      "tags": [
+        "Yields"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/yields/{yieldId}/actions",
+      "operation_id": null,
+      "request_type": null,
+      "response_type": null,
+      "response_status": "200",
+      "path_params": [],
+      "query_params": [],
+      "summary": "Create Yield Action",
+      "description": "Create a new action for an existing yield.",
+      "tags": [
+        "Yields"
+      ]
+    }
+  ],
+  "type_modules": []
+}
