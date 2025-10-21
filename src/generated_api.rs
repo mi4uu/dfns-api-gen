@@ -1372,11 +1372,11 @@ pub async fn post_feesponsors(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "network": "Solana",
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z"
+          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
     );
     let response: generated::feesponsors::FeesponsorsPOSTResponse = serde_json::from_value(example_json)
@@ -1400,11 +1400,11 @@ pub async fn get_feesponsors_fee_sponsor_id(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "network": "Solana",
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z"
+          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
     );
     let response: generated::feesponsors::FeeSponsorIdGETResponse = serde_json::from_value(example_json)
@@ -1428,11 +1428,11 @@ pub async fn delete_feesponsors_fee_sponsor_id(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "network": "Solana",
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z"
+          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
     );
     let response: generated::feesponsors::FeeSponsorIdDELETEResponse = serde_json::from_value(example_json)
@@ -1456,11 +1456,11 @@ pub async fn put_feesponsors_fee_sponsor_id_activate(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "network": "Solana",
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z"
+          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
     );
     let response: generated::feesponsors::FeeSponsorIdActivatePUTResponse = serde_json::from_value(example_json)
@@ -1484,11 +1484,11 @@ pub async fn put_feesponsors_fee_sponsor_id_deactivate(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "network": "Solana",
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z"
+          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
     );
     let response: generated::feesponsors::FeeSponsorIdDeactivatePUTResponse = serde_json::from_value(example_json)
@@ -2128,58 +2128,58 @@ pub async fn post_swaps(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2025-09-11T10:57:55.758Z",
           "id": "swap-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "reference": null,
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "status": "PendingPolicyApproval",
           "provider": "UniswapClassic",
+          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
           "quotedSourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "quotedTargetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:57:55.758Z",
+          "reference": null,
           "requestBody": {
-            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
             "provider": "UniswapClassic",
+            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
             "slippageBps": 100,
             "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
+              "amount": "10000000000",
+              "kind": "Native"
             },
             "targetAsset": {
-              "kind": "Erc20",
+              "amount": "653003161",
               "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "amount": "653003161"
-            }
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
           },
           "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
+          "status": "PendingPolicyApproval",
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
     );
     let response: generated::Swap = serde_json::from_value(example_json)
@@ -2201,53 +2201,53 @@ pub async fn post_swaps_quotes(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2025-09-11T10:52:15.039Z",
           "id": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
           "provider": "UniswapClassic",
+          "requestBody": {
+            "provider": "UniswapClassic",
+            "slippageBps": 100,
+            "sourceAsset": {
+              "amount": "10000000000",
+              "kind": "Native"
+            },
+            "targetAsset": {
+              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
+          },
+          "requester": {
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
           "sourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "targetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:52:15.039Z",
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
-            },
-            "targetAsset": {
-              "kind": "Erc20",
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27"
-            },
-            "slippageBps": 100
-          },
-          "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
     );
     let response: generated::SwapQuote = serde_json::from_value(example_json)
@@ -2271,53 +2271,53 @@ pub async fn get_swaps_quotes_quote_id(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2025-09-11T10:52:15.039Z",
           "id": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
           "provider": "UniswapClassic",
+          "requestBody": {
+            "provider": "UniswapClassic",
+            "slippageBps": 100,
+            "sourceAsset": {
+              "amount": "10000000000",
+              "kind": "Native"
+            },
+            "targetAsset": {
+              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
+          },
+          "requester": {
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
           "sourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "targetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:52:15.039Z",
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
-            },
-            "targetAsset": {
-              "kind": "Erc20",
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27"
-            },
-            "slippageBps": 100
-          },
-          "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
     );
     let response: generated::SwapQuote = serde_json::from_value(example_json)
@@ -2341,58 +2341,58 @@ pub async fn get_swaps_swap_id(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
+          "dateCreated": "2025-09-11T10:57:55.758Z",
           "id": "swap-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "reference": null,
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "status": "PendingPolicyApproval",
           "provider": "UniswapClassic",
+          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
           "quotedSourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "quotedTargetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:57:55.758Z",
+          "reference": null,
           "requestBody": {
-            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
             "provider": "UniswapClassic",
+            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
             "slippageBps": 100,
             "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
+              "amount": "10000000000",
+              "kind": "Native"
             },
             "targetAsset": {
-              "kind": "Erc20",
+              "amount": "653003161",
               "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "amount": "653003161"
-            }
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
           },
           "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
+          "status": "PendingPolicyApproval",
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
     );
     let response: generated::Swap = serde_json::from_value(example_json)
@@ -2585,19 +2585,19 @@ pub async fn post_wallets_import(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
-          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "network": "Ethereum",
           "address": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47",
+          "custodial": true,
+          "dateCreated": "2023-04-14T20:41:28.715Z",
+          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "name": "trading hot wallet",
+          "network": "Ethereum",
           "signingKey": {
-            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
-            "scheme": "ECDSA",
             "curve": "secp256k1",
-            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d"
+            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
+            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d",
+            "scheme": "ECDSA"
           },
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z",
-          "custodial": true,
           "tags": []
         }
     );
@@ -2622,19 +2622,19 @@ pub async fn get_wallets_wallet_id(
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
         {
-          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "network": "Ethereum",
           "address": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47",
+          "custodial": true,
+          "dateCreated": "2023-04-14T20:41:28.715Z",
+          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "name": "trading hot wallet",
+          "network": "Ethereum",
           "signingKey": {
-            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
-            "scheme": "ECDSA",
             "curve": "secp256k1",
-            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d"
+            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
+            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d",
+            "scheme": "ECDSA"
           },
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z",
-          "custodial": true,
           "tags": []
         }
     );

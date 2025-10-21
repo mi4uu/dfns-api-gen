@@ -2,6 +2,9 @@ mod endpoint_generator;
 mod schema_generator;
 mod type_mapper;
 mod utils;
+pub mod ir_to_ast;
+// TODO: Fix oas3 API compatibility issues
+// pub mod openapi_to_ir;
 
 pub use endpoint_generator::EndpointGenerator;
 

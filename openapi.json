@@ -14669,11 +14669,11 @@
                           "dateCreated"
                         ],
                         "example": {
+                          "dateCreated": "2023-04-14T20:41:28.715Z",
                           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                           "network": "Solana",
                           "status": "Active",
-                          "dateCreated": "2023-04-14T20:41:28.715Z"
+                          "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                         }
                       },
                       "type": "array"
@@ -14806,11 +14806,11 @@
                     "dateCreated"
                   ],
                   "example": {
+                    "dateCreated": "2023-04-14T20:41:28.715Z",
                     "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                     "network": "Solana",
                     "status": "Active",
-                    "dateCreated": "2023-04-14T20:41:28.715Z"
+                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                   }
                 }
               }
@@ -14915,11 +14915,11 @@
                     "dateCreated"
                   ],
                   "example": {
+                    "dateCreated": "2023-04-14T20:41:28.715Z",
                     "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                     "network": "Solana",
                     "status": "Active",
-                    "dateCreated": "2023-04-14T20:41:28.715Z"
+                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                   }
                 }
               }
@@ -15021,11 +15021,11 @@
                     "dateCreated"
                   ],
                   "example": {
+                    "dateCreated": "2023-04-14T20:41:28.715Z",
                     "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                     "network": "Solana",
                     "status": "Active",
-                    "dateCreated": "2023-04-14T20:41:28.715Z"
+                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                   }
                 }
               }
@@ -15130,11 +15130,11 @@
                     "dateCreated"
                   ],
                   "example": {
+                    "dateCreated": "2023-04-14T20:41:28.715Z",
                     "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                     "network": "Solana",
                     "status": "Active",
-                    "dateCreated": "2023-04-14T20:41:28.715Z"
+                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                   }
                 }
               }
@@ -15239,11 +15239,11 @@
                     "dateCreated"
                   ],
                   "example": {
+                    "dateCreated": "2023-04-14T20:41:28.715Z",
                     "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
                     "network": "Solana",
                     "status": "Active",
-                    "dateCreated": "2023-04-14T20:41:28.715Z"
+                    "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
                   }
                 }
               }
@@ -15625,20 +15625,20 @@
               "examples": {
                 "EdDSA": {
                   "value": {
-                    "scheme": "EdDSA",
-                    "curve": "ed25519"
+                    "curve": "ed25519",
+                    "scheme": "EdDSA"
                   }
                 },
                 "Schnorr": {
                   "value": {
-                    "scheme": "Schnorr",
-                    "curve": "secp256k1"
+                    "curve": "secp256k1",
+                    "scheme": "Schnorr"
                   }
                 },
                 "Stark": {
                   "value": {
-                    "scheme": "ECDSA",
-                    "curve": "stark"
+                    "curve": "stark",
+                    "scheme": "ECDSA"
                   }
                 }
               }
@@ -17953,35 +17953,43 @@
               "examples": {
                 "Bip322": {
                   "value": {
-                    "network": "BitcoinSignet",
                     "kind": "Bip322",
-                    "message": "0x49206c6f76652044666e73"
+                    "message": "0x49206c6f76652044666e73",
+                    "network": "BitcoinSignet"
                   }
                 },
                 "Cip8": {
                   "value": {
-                    "network": "CardanoPreprod",
-                    "kind": "Cip8",
-                    "payload": "0x49206c6f76652044666e73",
+                    "context": "Signature1",
                     "externalAad": "0x616464697469706e616c5f64617461",
-                    "context": "Signature1"
+                    "kind": "Cip8",
+                    "network": "CardanoPreprod",
+                    "payload": "0x49206c6f76652044666e73"
                   }
                 },
                 "Eip712": {
                   "value": {
                     "blockchainKind": "Evm",
+                    "domain": {
+                      "chainId": 1,
+                      "name": "Ether Mail",
+                      "salt": "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558",
+                      "verifyingContract": "0x1b352de7a926ebd1bf52194dab487c2cb0793a9b",
+                      "version": "1"
+                    },
                     "kind": "Eip712",
+                    "message": {
+                      "contents": "Hello, Bob!",
+                      "from": {
+                        "name": "Chris",
+                        "wallet": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47"
+                      },
+                      "to": {
+                        "name": "Bob",
+                        "wallet": "0xcc0ee1a1c5e788b61916c8f1c96c960f9a9d3db7"
+                      }
+                    },
                     "types": {
-                      "Person": [
-                        {
-                          "name": "name",
-                          "type": "string"
-                        },
-                        {
-                          "name": "wallet",
-                          "type": "address"
-                        }
-                      ],
                       "Mail": [
                         {
                           "name": "from",
@@ -17995,41 +18003,33 @@
                           "name": "contents",
                           "type": "string"
                         }
+                      ],
+                      "Person": [
+                        {
+                          "name": "name",
+                          "type": "string"
+                        },
+                        {
+                          "name": "wallet",
+                          "type": "address"
+                        }
                       ]
-                    },
-                    "domain": {
-                      "name": "Ether Mail",
-                      "version": "1",
-                      "chainId": 1,
-                      "verifyingContract": "0x1b352de7a926ebd1bf52194dab487c2cb0793a9b",
-                      "salt": "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558"
-                    },
-                    "message": {
-                      "from": {
-                        "name": "Chris",
-                        "wallet": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47"
-                      },
-                      "to": {
-                        "name": "Bob",
-                        "wallet": "0xcc0ee1a1c5e788b61916c8f1c96c960f9a9d3db7"
-                      },
-                      "contents": "Hello, Bob!"
                     }
                   }
                 },
                 "Eip7702": {
                   "value": {
-                    "blockchainKind": "Evm",
-                    "kind": "Eip7702",
-                    "chainId": 1,
                     "address": "0xcea43594f38316f0e01c161d8dabde0a07a1f512",
+                    "blockchainKind": "Evm",
+                    "chainId": 1,
+                    "kind": "Eip7702",
                     "nonce": 0
                   }
                 },
                 "Hash": {
                   "value": {
-                    "kind": "Hash",
-                    "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556"
+                    "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556",
+                    "kind": "Hash"
                   }
                 },
                 "Message": {
@@ -18048,15 +18048,15 @@
                 },
                 "Schnorr Hash": {
                   "value": {
-                    "kind": "Hash",
                     "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556",
+                    "kind": "Hash",
                     "taprootMerkleRoot": ""
                   }
                 },
                 "SignerPayload": {
                   "value": {
-                    "network": "PolymeshTestnet",
                     "kind": "SignerPayload",
+                    "network": "PolymeshTestnet",
                     "payload": {
                       "address": "5ELwJvCPKBxLm3rve77JGDmHv2FNNE2nUW17FXhBs7Tws4Cr",
                       "blockHash": "0x2ace05e703aa50b48c0ccccfc8b424f7aab9a1e2c424ed12e45d20b1e8ffd0d6",
@@ -18066,11 +18066,11 @@
                       "method": "0x07141f3da32e72ac6eb6cb40d9e757594363a617b2c3964a2b6ec6895c6648f48d500000",
                       "mode": 0,
                       "nonce": "0x00000000",
-                      "tip": "0x00000000000000000000000000000000",
+                      "signedExtensions": [],
                       "specVersion": "0x006adb7a",
+                      "tip": "0x00000000000000000000000000000000",
                       "transactionVersion": "0x00000007",
-                      "version": 4,
-                      "signedExtensions": []
+                      "version": 4
                     }
                   }
                 },
@@ -20173,76 +20173,76 @@
                 "Custom Validator | Auth0": {
                   "value": {
                     "kind": "Custom",
+                    "ledger": {
+                      "oauth2": {
+                        "audience": "https://canton.network.global",
+                        "clientId": "xxxxxx",
+                        "clientSecret": "xxxxxxx",
+                        "domain": "https://xxxxxx.us.auth0.com"
+                      },
+                      "url": "https://ledger.testnet.mydomain.com/"
+                    },
                     "name": "My validator with auth0 credentials",
                     "validator": {
-                      "url": "https://validator.testnet.mydomain.com/",
                       "oauth2": {
-                        "domain": "https://xxxxxx.us.auth0.com",
+                        "audience": "https://canton.network.global",
                         "clientId": "xxxxxx",
                         "clientSecret": "xxxxxxx",
-                        "audience": "https://canton.network.global"
-                      }
-                    },
-                    "ledger": {
-                      "url": "https://ledger.testnet.mydomain.com/",
-                      "oauth2": {
-                        "domain": "https://xxxxxx.us.auth0.com",
-                        "clientId": "xxxxxx",
-                        "clientSecret": "xxxxxxx",
-                        "audience": "https://canton.network.global"
-                      }
+                        "domain": "https://xxxxxx.us.auth0.com"
+                      },
+                      "url": "https://validator.testnet.mydomain.com/"
                     }
                   }
                 },
                 "Custom Validator | Keycloak": {
                   "value": {
                     "kind": "Custom",
+                    "ledger": {
+                      "oauth2": {
+                        "audience": "https://ledger.testnet.mydomain.com/",
+                        "clientId": "xxxxxx",
+                        "clientSecret": "xxxxxxx",
+                        "domain": "https://my-own-server.running-keycloak.com",
+                        "tokenPath": "/auth/realms/xxxxx/protocol/openid-connect/token"
+                      },
+                      "url": "https://ledger.testnet.mydomain.com/"
+                    },
                     "name": "My validator with auth0 credentials",
                     "validator": {
-                      "url": "https://validator.testnet.mydomain.com/",
                       "oauth2": {
-                        "domain": "https://my-own-server.running-keycloak.com",
-                        "tokenPath": "/auth/realms/xxxxx/protocol/openid-connect/token",
+                        "audience": "https://validator.testnet.mydomain.com/",
                         "clientId": "xxxxxx",
                         "clientSecret": "xxxxxxx",
-                        "audience": "https://validator.testnet.mydomain.com/"
-                      }
-                    },
-                    "ledger": {
-                      "url": "https://ledger.testnet.mydomain.com/",
-                      "oauth2": {
                         "domain": "https://my-own-server.running-keycloak.com",
-                        "tokenPath": "/auth/realms/xxxxx/protocol/openid-connect/token",
-                        "clientId": "xxxxxx",
-                        "clientSecret": "xxxxxxx",
-                        "audience": "https://ledger.testnet.mydomain.com/"
-                      }
+                        "tokenPath": "/auth/realms/xxxxx/protocol/openid-connect/token"
+                      },
+                      "url": "https://validator.testnet.mydomain.com/"
                     }
                   }
                 },
                 "Custom Validator | Okta": {
                   "value": {
                     "kind": "Custom",
+                    "ledger": {
+                      "oauth2": {
+                        "audience": "https://ledger.testnet.mydomain.com/",
+                        "clientId": "xxxxxx",
+                        "clientSecret": "xxxxxxx",
+                        "domain": "https://xxxxxx.okta.com",
+                        "tokenPath": "oauth2/xxxxxx/v1/token"
+                      },
+                      "url": "https://ledger.testnet.mydomain.com/"
+                    },
                     "name": "My validator with auth0 credentials",
                     "validator": {
-                      "url": "https://validator.testnet.mydomain.com/",
                       "oauth2": {
-                        "domain": "https://xxxxxx.okta.com",
-                        "tokenPath": "oauth2/xxxxxx/v1/token",
+                        "audience": "https://validator.testnet.mydomain.com/",
                         "clientId": "xxxxxx",
                         "clientSecret": "xxxxxxx",
-                        "audience": "https://validator.testnet.mydomain.com/"
-                      }
-                    },
-                    "ledger": {
-                      "url": "https://ledger.testnet.mydomain.com/",
-                      "oauth2": {
                         "domain": "https://xxxxxx.okta.com",
-                        "tokenPath": "oauth2/xxxxxx/v1/token",
-                        "clientId": "xxxxxx",
-                        "clientSecret": "xxxxxxx",
-                        "audience": "https://ledger.testnet.mydomain.com/"
-                      }
+                        "tokenPath": "oauth2/xxxxxx/v1/token"
+                      },
+                      "url": "https://validator.testnet.mydomain.com/"
                     }
                   }
                 },
@@ -22814,11 +22814,11 @@
               "examples": {
                 "Ethereum": {
                   "value": {
+                    "amount": "32000000000000000000",
                     "externalId": "ext-123",
-                    "walletId": "wa-4g991-s29to-9hrq4nbuto6ih33b",
                     "protocol": "Ethereum",
                     "provider": "Figment",
-                    "amount": "32000000000000000000"
+                    "walletId": "wa-4g991-s29to-9hrq4nbuto6ih33b"
                   }
                 }
               }
@@ -26839,21 +26839,21 @@
               "examples": {
                 "confirmingAnExistingQuote": {
                   "value": {
+                    "provider": "UniswapClassic",
                     "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
                     "reference": "optional reference for record keeping",
-                    "provider": "UniswapClassic",
-                    "walletId": "wa-123456-12345678",
-                    "targetWalletId": "wa-123456-87654321",
                     "slippageBps": 50,
                     "sourceAsset": {
-                      "kind": "Native",
-                      "amount": "1000000000000000000"
+                      "amount": "1000000000000000000",
+                      "kind": "Native"
                     },
                     "targetAsset": {
-                      "kind": "Erc20",
+                      "amount": "5600000",
                       "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                      "amount": "5600000"
-                    }
+                      "kind": "Erc20"
+                    },
+                    "targetWalletId": "wa-123456-87654321",
+                    "walletId": "wa-123456-12345678"
                   }
                 }
               }
@@ -27026,35 +27026,35 @@
               "examples": {
                 "UniswapClassic": {
                   "value": {
-                    "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-                    "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
                     "provider": "UniswapClassic",
+                    "slippageBps": 50,
                     "sourceAsset": {
-                      "kind": "Native",
-                      "amount": "1000000000000000000"
+                      "amount": "1000000000000000000",
+                      "kind": "Native"
                     },
                     "targetAsset": {
-                      "kind": "Erc20",
-                      "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+                      "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                      "kind": "Erc20"
                     },
-                    "slippageBps": 50
+                    "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+                    "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
                   }
                 },
                 "UniswapX": {
                   "value": {
-                    "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-                    "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
                     "provider": "UniswapX",
+                    "slippageBps": 50,
                     "sourceAsset": {
-                      "kind": "Erc20",
+                      "amount": "1000000000000000000",
                       "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                      "amount": "1000000000000000000"
+                      "kind": "Erc20"
                     },
                     "targetAsset": {
-                      "kind": "Native",
-                      "amount": "1000000000000000000"
+                      "amount": "1000000000000000000",
+                      "kind": "Native"
                     },
-                    "slippageBps": 50
+                    "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+                    "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
                   }
                 }
               }
@@ -31564,11 +31564,25 @@
               "examples": {
                 "Chainalysis Transaction Prescreening": {
                   "value": {
-                    "name": "chainalysis prescreening policy",
+                    "action": {
+                      "kind": "Block"
+                    },
                     "activityKind": "Wallets:Sign",
+                    "filters": {
+                      "walletId": {
+                        "in": [
+                          "wa-4sql3-a6ct4-8j2q8ih86d853rgg",
+                          "wa-j9btt-5s9o8-i3r8373ddg0usn3"
+                        ]
+                      }
+                    },
+                    "name": "chainalysis prescreening policy",
                     "rule": {
-                      "kind": "ChainalysisTransactionPrescreening",
                       "configuration": {
+                        "addresses": {
+                          "alertLevel": "LOW",
+                          "categoryIds": []
+                        },
                         "alerts": {
                           "alertLevel": "LOW",
                           "categoryIds": []
@@ -31578,28 +31592,14 @@
                             "categoryIds": []
                           }
                         },
-                        "addresses": {
-                          "alertLevel": "LOW",
-                          "categoryIds": []
-                        },
                         "fallbackBehaviours": {
+                          "skipChainalysisFailure": false,
                           "skipUnscreenableTransaction": false,
-                          "skipUnsupportedNetwork": false,
                           "skipUnsupportedAsset": false,
-                          "skipChainalysisFailure": false
+                          "skipUnsupportedNetwork": false
                         }
-                      }
-                    },
-                    "action": {
-                      "kind": "Block"
-                    },
-                    "filters": {
-                      "walletId": {
-                        "in": [
-                          "wa-4sql3-a6ct4-8j2q8ih86d853rgg",
-                          "wa-j9btt-5s9o8-i3r8373ddg0usn3"
-                        ]
-                      }
+                      },
+                      "kind": "ChainalysisTransactionPrescreening"
                     }
                   }
                 }
@@ -57694,8 +57694,8 @@
                 },
                 "Ethereum": {
                   "value": {
-                    "network": "Ethereum",
-                    "name": "trading hot wallet"
+                    "name": "trading hot wallet",
+                    "network": "Ethereum"
                   }
                 },
                 "Multi chain": {
@@ -62919,35 +62919,43 @@
               "examples": {
                 "Bip322": {
                   "value": {
-                    "network": "BitcoinSignet",
                     "kind": "Bip322",
-                    "message": "0x49206c6f76652044666e73"
+                    "message": "0x49206c6f76652044666e73",
+                    "network": "BitcoinSignet"
                   }
                 },
                 "Cip8": {
                   "value": {
-                    "network": "CardanoPreprod",
-                    "kind": "Cip8",
-                    "payload": "0x48656c6c6f20436172646146616e6f21",
+                    "context": "Signature1",
                     "externalAad": "0x616464697469706e616c5f64617461",
-                    "context": "Signature1"
+                    "kind": "Cip8",
+                    "network": "CardanoPreprod",
+                    "payload": "0x48656c6c6f20436172646146616e6f21"
                   }
                 },
                 "Eip712": {
                   "value": {
                     "blockchainKind": "Evm",
+                    "domain": {
+                      "chainId": 1,
+                      "name": "Ether Mail",
+                      "salt": "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558",
+                      "verifyingContract": "0x1b352de7a926ebd1bf52194dab487c2cb0793a9b",
+                      "version": "1"
+                    },
                     "kind": "Eip712",
+                    "message": {
+                      "contents": "Hello, Bob!",
+                      "from": {
+                        "name": "Chris",
+                        "wallet": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47"
+                      },
+                      "to": {
+                        "name": "Bob",
+                        "wallet": "0xcc0ee1a1c5e788b61916c8f1c96c960f9a9d3db7"
+                      }
+                    },
                     "types": {
-                      "Person": [
-                        {
-                          "name": "name",
-                          "type": "string"
-                        },
-                        {
-                          "name": "wallet",
-                          "type": "address"
-                        }
-                      ],
                       "Mail": [
                         {
                           "name": "from",
@@ -62961,32 +62969,24 @@
                           "name": "contents",
                           "type": "string"
                         }
+                      ],
+                      "Person": [
+                        {
+                          "name": "name",
+                          "type": "string"
+                        },
+                        {
+                          "name": "wallet",
+                          "type": "address"
+                        }
                       ]
-                    },
-                    "domain": {
-                      "name": "Ether Mail",
-                      "version": "1",
-                      "chainId": 1,
-                      "verifyingContract": "0x1b352de7a926ebd1bf52194dab487c2cb0793a9b",
-                      "salt": "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558"
-                    },
-                    "message": {
-                      "from": {
-                        "name": "Chris",
-                        "wallet": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47"
-                      },
-                      "to": {
-                        "name": "Bob",
-                        "wallet": "0xcc0ee1a1c5e788b61916c8f1c96c960f9a9d3db7"
-                      },
-                      "contents": "Hello, Bob!"
                     }
                   }
                 },
                 "Hash": {
                   "value": {
-                    "kind": "Hash",
-                    "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556"
+                    "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556",
+                    "kind": "Hash"
                   }
                 },
                 "Message": {
@@ -63005,15 +63005,15 @@
                 },
                 "Schnorr Hash": {
                   "value": {
-                    "kind": "Hash",
                     "hash": "0xd356339fa071e88335fdfab167cb600430522b71839d8556fa351fe1b4cd7556",
+                    "kind": "Hash",
                     "taprootMerkleRoot": ""
                   }
                 },
                 "SignerPayload": {
                   "value": {
-                    "network": "PolymeshTestnet",
                     "kind": "SignerPayload",
+                    "network": "PolymeshTestnet",
                     "payload": {
                       "address": "5ELwJvCPKBxLm3rve77JGDmHv2FNNE2nUW17FXhBs7Tws4Cr",
                       "blockHash": "0x2ace05e703aa50b48c0ccccfc8b424f7aab9a1e2c424ed12e45d20b1e8ffd0d6",
@@ -63023,11 +63023,11 @@
                       "method": "0x07141f3da32e72ac6eb6cb40d9e757594363a617b2c3964a2b6ec6895c6648f48d500000",
                       "mode": 0,
                       "nonce": "0x00000000",
-                      "tip": "0x00000000000000000000000000000000",
+                      "signedExtensions": [],
                       "specVersion": "0x006adb7a",
+                      "tip": "0x00000000000000000000000000000000",
                       "transactionVersion": "0x00000007",
-                      "version": 4,
-                      "signedExtensions": []
+                      "version": 4
                     }
                   }
                 },
@@ -65645,10 +65645,10 @@
                 "Eip1559": {
                   "value": {
                     "kind": "Eip1559",
-                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffc",
-                    "value": "1",
                     "maxFeePerGas": "1000000000",
-                    "maxPriorityFeePerGas": "1000000"
+                    "maxPriorityFeePerGas": "1000000",
+                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffc",
+                    "value": "1"
                   }
                 },
                 "Psbt": {
@@ -65659,8 +65659,8 @@
                 },
                 "Settle Offer": {
                   "value": {
-                    "kind": "SettleOffer",
                     "decision": "Accept",
+                    "kind": "SettleOffer",
                     "txHash": "1220314ced784ce9da574c84eef4cf29aa86e4318c615e1fe7c7663a72c783d1913e"
                   }
                 },
@@ -65678,18 +65678,18 @@
                 },
                 "User Operations": {
                   "value": {
+                    "feeSponsorId": "fs-5ercu-e9r9u-8fpqi8bvu2eah0e2",
                     "kind": "UserOperations",
                     "userOperations": [
                       {
-                        "to": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
-                        "data": "a9059cbb000000000000000000000000d964d741998edc275f3800eed113378a391951d90000000000000000000000000000000000000000000000000000000000000001"
+                        "data": "a9059cbb000000000000000000000000d964d741998edc275f3800eed113378a391951d90000000000000000000000000000000000000000000000000000000000000001",
+                        "to": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238"
                       },
                       {
-                        "to": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
-                        "data": "a9059cbb000000000000000000000000e5a2ebc128e262ab1e3bd02bffbe16911adfbffb0000000000000000000000000000000000000000000000000000000000000001"
+                        "data": "a9059cbb000000000000000000000000e5a2ebc128e262ab1e3bd02bffbe16911adfbffb0000000000000000000000000000000000000000000000000000000000000001",
+                        "to": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238"
                       }
-                    ],
-                    "feeSponsorId": "fs-5ercu-e9r9u-8fpqi8bvu2eah0e2"
+                    ]
                   }
                 }
               }
@@ -68147,125 +68147,125 @@
               "examples": {
                 "Asa": {
                   "value": {
-                    "kind": "Asa",
+                    "amount": "1",
                     "assetId": "10458941",
-                    "to": "CJLKQWNTSQU64F4OBJSQK35THVI4KE4QIT3KEYB4CRBHQAIMO2CD6JWBCY",
-                    "amount": "1"
+                    "kind": "Asa",
+                    "to": "CJLKQWNTSQU64F4OBJSQK35THVI4KE4QIT3KEYB4CRBHQAIMO2CD6JWBCY"
                   }
                 },
                 "Cardano Asset": {
                   "description": "Transfer Cardano assets following [Mary update](https://docs.cardano.org/about-cardano/evolution/upgrades/mary)",
                   "value": {
-                    "kind": "Asset",
+                    "amount": "1",
                     "assetId": "c003c63129289a15b2d87216ce7366ea1832cfb9fc967f524ff1a8b564666e73636f696e",
-                    "to": "addr_test1vqucg65d0c2fmjexgeenwz4acajyfxj8qqewu9xl5vmq32casygkx",
-                    "amount": "1"
+                    "kind": "Asset",
+                    "to": "addr_test1vqucg65d0c2fmjexgeenwz4acajyfxj8qqewu9xl5vmq32casygkx"
                   }
                 },
                 "Coin": {
                   "value": {
-                    "kind": "Coin",
+                    "amount": "1",
                     "coin": "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
-                    "to": "0x1d9c96adb0eda0b3beca44ed89143444b4147b30f06eef7bfc39cbbff848f6e5",
-                    "amount": "1"
+                    "kind": "Coin",
+                    "to": "0x1d9c96adb0eda0b3beca44ed89143444b4147b30f06eef7bfc39cbbff848f6e5"
                   }
                 },
                 "Erc20": {
                   "value": {
-                    "kind": "Erc20",
+                    "amount": "1",
                     "contract": "0x6f14c02fc1f78322cfd7d707ab90f18bad3b54f5",
-                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb",
-                    "amount": "1"
+                    "kind": "Erc20",
+                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb"
                   }
                 },
                 "Erc20 Fee Sponsor": {
                   "value": {
-                    "kind": "Erc20",
-                    "contract": "0xF56636F7eD43068BEbe9D5Dc7486e70D10bCa5ac",
-                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb",
                     "amount": "1000000000000000000",
-                    "feeSponsorId": "fs-5c47l-bp7f9-82n9raruj5n3spbe"
+                    "contract": "0xF56636F7eD43068BEbe9D5Dc7486e70D10bCa5ac",
+                    "feeSponsorId": "fs-5c47l-bp7f9-82n9raruj5n3spbe",
+                    "kind": "Erc20",
+                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb"
                   }
                 },
                 "Erc721": {
                   "value": {
-                    "kind": "Erc721",
                     "contract": "0xc98f6a0670de5029faf44db6c35d935d534708cf",
+                    "kind": "Erc721",
                     "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb",
                     "tokenId": "1"
                   }
                 },
                 "Native": {
                   "value": {
+                    "amount": "1",
                     "kind": "Native",
-                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb",
-                    "amount": "1"
+                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb"
                   }
                 },
                 "Native Fee Sponsor": {
                   "value": {
-                    "kind": "Native",
-                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb",
                     "amount": "1",
-                    "feeSponsorId": "fs-5c47l-bp7f9-82n9raruj5n3spbe"
+                    "feeSponsorId": "fs-5c47l-bp7f9-82n9raruj5n3spbe",
+                    "kind": "Native",
+                    "to": "0xe5a2ebc128e262ab1e3bd02bffbe16911adfbffb"
                   }
                 },
                 "Native Offer": {
                   "description": "Set `offer` field to `true` to create a transfer offer. Currently only supported on Canton.",
                   "value": {
-                    "kind": "Native",
-                    "to": "dfns1::122035ead564c650e3051c6bad8e01f319b9db0acbfd2e0acf1c05baebcef16cb468",
                     "amount": "100000000000",
-                    "offer": true
+                    "kind": "Native",
+                    "offer": true,
+                    "to": "dfns1::122035ead564c650e3051c6bad8e01f319b9db0acbfd2e0acf1c05baebcef16cb468"
                   }
                 },
                 "Sep41": {
                   "value": {
-                    "kind": "Sep41",
-                    "issuer": "GCIQLRAXSY4FDEMCEPOGQICBZKJZBRZURKSD75BFKASMFUKYMFAUQVQ5",
+                    "amount": "1",
                     "assetCode": "Dfns",
-                    "to": "GCVGVFCH2ECV2KIHJ46Q5NPFMTO5RAD3KGRJ3ZBHAZ37EMMAL7DOXXRS",
-                    "amount": "1"
+                    "issuer": "GCIQLRAXSY4FDEMCEPOGQICBZKJZBRZURKSD75BFKASMFUKYMFAUQVQ5",
+                    "kind": "Sep41",
+                    "to": "GCVGVFCH2ECV2KIHJ46Q5NPFMTO5RAD3KGRJ3ZBHAZ37EMMAL7DOXXRS"
                   }
                 },
                 "Sep41 Fee Sponsor": {
                   "value": {
-                    "kind": "Sep41",
-                    "issuer": "GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5",
-                    "assetCode": "USDC",
-                    "to": "GC32HQJNYDEMOSFLA5JFW4AREK4IXV4PMAGHMNBNE7ZF4X4SIRGN5ACC",
                     "amount": "1",
-                    "feeSponsorId": "fs-43hcm-1pa06-99i97tj9srfnnlla"
+                    "assetCode": "USDC",
+                    "feeSponsorId": "fs-43hcm-1pa06-99i97tj9srfnnlla",
+                    "issuer": "GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5",
+                    "kind": "Sep41",
+                    "to": "GC32HQJNYDEMOSFLA5JFW4AREK4IXV4PMAGHMNBNE7ZF4X4SIRGN5ACC"
                   }
                 },
                 "Spl": {
                   "value": {
+                    "amount": "1",
                     "kind": "Spl",
                     "mint": "BhkGzPPoadnw1sAymCj2zNH3JuBe6Lk68hNAcFNhMGeH",
-                    "to": "3U6stgsD1FmA7o3omUguritCU8iWmUM7Rs6KqAHHxHVZ",
-                    "amount": "1"
+                    "to": "3U6stgsD1FmA7o3omUguritCU8iWmUM7Rs6KqAHHxHVZ"
                   }
                 },
                 "Tep74": {
                   "value": {
+                    "amount": "1",
                     "kind": "Tep74",
                     "master": "kQBFAGo2Af6omLixtgsqqte_QXpZfjbEe8VfsqW_cWLyFz-h",
-                    "to": "0QAWf1Hx6ZFX6-IQ2zsZTthHWOMNQHmoKFbuhQRvV3F_b3yd",
-                    "amount": "1"
+                    "to": "0QAWf1Hx6ZFX6-IQ2zsZTthHWOMNQHmoKFbuhQRvV3F_b3yd"
                   }
                 },
                 "Trc10": {
                   "value": {
+                    "amount": "1",
                     "kind": "Trc10",
-                    "tokenId": "1005273",
                     "to": "TADDx31pdCFfp3XrYxp6fQGbRxriYFLTrx",
-                    "amount": "1"
+                    "tokenId": "1005273"
                   }
                 },
                 "Trc721": {
                   "value": {
-                    "kind": "Trc721",
                     "contract": "TKgnDMWHYmwH24REe9XnrnwcNCvtb53n8Q",
+                    "kind": "Trc721",
                     "to": "TADDx31pdCFfp3XrYxp6fQGbRxriYFLTrx",
                     "tokenId": "0"
                   }
@@ -69639,19 +69639,19 @@
                 "Ofns": {
                   "value": {
                     "externalId": "ext-123",
+                    "protocol": "0fns",
+                    "slippageBps": 50,
                     "sourceAsset": {
-                      "kind": "Erc20",
+                      "amount": "1000000000000000000",
                       "contract": "0x6b175474e89094c44da98b954eedeac495271d0f",
-                      "amount": "1000000000000000000"
+                      "kind": "Erc20"
                     },
                     "targetAsset": {
-                      "kind": "Erc20",
+                      "amount": "32000000000000000000",
                       "contract": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
-                      "amount": "32000000000000000000"
+                      "kind": "Erc20"
                     },
-                    "slippageBps": 50,
-                    "walletId": "wa-4g991-s29to-9hrq4nbuto6ih33b",
-                    "protocol": "0fns"
+                    "walletId": "wa-4g991-s29to-9hrq4nbuto6ih33b"
                   }
                 }
               }
@@ -70750,58 +70750,58 @@
           "requester"
         ],
         "example": {
+          "dateCreated": "2025-09-11T10:57:55.758Z",
           "id": "swap-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "reference": null,
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "status": "PendingPolicyApproval",
           "provider": "UniswapClassic",
+          "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
           "quotedSourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "quotedTargetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:57:55.758Z",
+          "reference": null,
           "requestBody": {
-            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
             "provider": "UniswapClassic",
+            "quoteId": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
             "slippageBps": 100,
             "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
+              "amount": "10000000000",
+              "kind": "Native"
             },
             "targetAsset": {
-              "kind": "Erc20",
+              "amount": "653003161",
               "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
-              "amount": "653003161"
-            }
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
           },
           "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
+          "status": "PendingPolicyApproval",
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
       },
       "SwapQuote": {
@@ -71192,53 +71192,53 @@
           "requester"
         ],
         "example": {
+          "dateCreated": "2025-09-11T10:52:15.039Z",
           "id": "swapQuote-3hgv4-q8tbf-8v2ajmrbmg6m4i9t",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
           "provider": "UniswapClassic",
+          "requestBody": {
+            "provider": "UniswapClassic",
+            "slippageBps": 100,
+            "sourceAsset": {
+              "amount": "10000000000",
+              "kind": "Native"
+            },
+            "targetAsset": {
+              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+              "kind": "Erc20"
+            },
+            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
+          },
+          "requester": {
+            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5",
+            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i"
+          },
+          "slippageBps": 100,
           "sourceAsset": {
-            "kind": "Native",
             "amount": "10000000000",
+            "kind": "Native",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Ethereum",
-              "symbol": "SepoliaETH",
               "decimals": 18,
+              "name": "Ethereum",
+              "network": "EthereumSepolia",
+              "symbol": "SepoliaETH",
               "tid": "native:eth"
             }
           },
           "targetAsset": {
-            "kind": "Erc20",
-            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
             "amount": "6467571553831928182",
+            "contract": "0xda0be7efd234295395d4204d0df4358339b57b27",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "Test",
-              "symbol": "Test",
               "decimals": 18,
+              "name": "Test",
+              "network": "EthereumSepolia",
+              "symbol": "Test",
               "tid": "erc20:0xda0be7efd234295395d4204d0df4358339b57b27"
             }
           },
-          "slippageBps": 100,
-          "dateCreated": "2025-09-11T10:52:15.039Z",
-          "requestBody": {
-            "provider": "UniswapClassic",
-            "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-            "sourceAsset": {
-              "kind": "Native",
-              "amount": "10000000000"
-            },
-            "targetAsset": {
-              "kind": "Erc20",
-              "contract": "0xda0be7efd234295395d4204d0df4358339b57b27"
-            },
-            "slippageBps": 100
-          },
-          "requester": {
-            "userId": "us-48r5q-eshfg-9pmr2lo6bmpr4i4i",
-            "tokenId": "to-4etah-smoal-9n3rmhul4dpaueg5"
-          }
+          "targetWalletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
       },
       "TransferRequest": {
@@ -72980,19 +72980,19 @@
           "tags"
         ],
         "example": {
-          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
-          "network": "Ethereum",
           "address": "0x00e3495cf6af59008f22ffaf32d4c92ac33dac47",
+          "custodial": true,
+          "dateCreated": "2023-04-14T20:41:28.715Z",
+          "id": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
           "name": "trading hot wallet",
+          "network": "Ethereum",
           "signingKey": {
-            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
-            "scheme": "ECDSA",
             "curve": "secp256k1",
-            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d"
+            "id": "key-6ece3-9l565-xxxxxxxxxxxxxxxx",
+            "publicKey": "e2375c8c9e87bfcd0be8f29d76c818cabacd51584f72cb2222d49a13b036d84d3d",
+            "scheme": "ECDSA"
           },
           "status": "Active",
-          "dateCreated": "2023-04-14T20:41:28.715Z",
-          "custodial": true,
           "tags": []
         }
       },
@@ -73213,34 +73213,34 @@
         ],
         "description": "A yield investment representing funds deposited to earn interest from a DeFi protocol.",
         "example": {
-          "id": "yld-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv",
-          "protocol": "0fns",
           "amount": {
-            "kind": "Erc20",
-            "contract": "0x0A7660979A67E4bC51E750C628C8479ff9F458aE",
             "amount": "1000000000",
-            "metadata": {
-              "network": "EthereumSepolia",
-              "name": "0fns",
-              "symbol": "0fnsSepolia",
-              "decimals": 6,
-              "tid": "erc20:0x0A7660979A67E4bC51E750C628C8479ff9F458aE"
-            }
-          },
-          "rewards": {
-            "kind": "Erc20",
             "contract": "0x0A7660979A67E4bC51E750C628C8479ff9F458aE",
-            "amount": "5000000",
+            "kind": "Erc20",
             "metadata": {
-              "network": "EthereumSepolia",
-              "name": "0fns",
-              "symbol": "0fnsSepolia",
               "decimals": 6,
+              "name": "0fns",
+              "network": "EthereumSepolia",
+              "symbol": "0fnsSepolia",
               "tid": "erc20:0x0A7660979A67E4bC51E750C628C8479ff9F458aE"
             }
           },
-          "dateCreated": "2025-10-09T10:57:55.758Z"
+          "dateCreated": "2025-10-09T10:57:55.758Z",
+          "id": "yld-6a3ku-bn8d7-8u5rs1oukojms7k8",
+          "protocol": "0fns",
+          "rewards": {
+            "amount": "5000000",
+            "contract": "0x0A7660979A67E4bC51E750C628C8479ff9F458aE",
+            "kind": "Erc20",
+            "metadata": {
+              "decimals": 6,
+              "name": "0fns",
+              "network": "EthereumSepolia",
+              "symbol": "0fnsSepolia",
+              "tid": "erc20:0x0A7660979A67E4bC51E750C628C8479ff9F458aE"
+            }
+          },
+          "walletId": "wa-3l3cj-l8mq7-8q78f9nopq7f1qjv"
         }
       },
       "YieldAction": {
@@ -73493,30 +73493,30 @@
         ],
         "description": "A specific action performed on a yield investment, such as depositing or withdrawing funds.",
         "example": {
-          "id": "ylda-6a3ku-bn8d7-8u5rs1oukojms7k8",
-          "yieldId": "yld-6a3ku-bn8d7-8u5rs1oukojms7k8",
+          "dateCreated": "2025-10-09T11:15:33.421Z",
           "externalId": "external-action-123",
+          "id": "ylda-6a3ku-bn8d7-8u5rs1oukojms7k8",
           "kind": "Deposit",
-          "status": "InProgress",
-          "requester": {
-            "userId": "us-3v1ag-v6b36-afhm4zy59kjrn1fds",
-            "tokenId": "ut-341e5-12nj6-9a82ld2hjxqzkpji"
-          },
           "requestBody": {
             "kind": "Deposit",
+            "slippageBps": 100,
             "sourceAsset": {
-              "kind": "Erc20",
+              "amount": "500000000",
               "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "amount": "500000000"
+              "kind": "Erc20"
             },
             "targetAsset": {
-              "kind": "Erc20",
+              "amount": "500000000",
               "contract": "0x0A7660979A67E4bC51E750C628C8479ff9F458aE",
-              "amount": "500000000"
-            },
-            "slippageBps": 100
+              "kind": "Erc20"
+            }
           },
-          "dateCreated": "2025-10-09T11:15:33.421Z"
+          "requester": {
+            "tokenId": "ut-341e5-12nj6-9a82ld2hjxqzkpji",
+            "userId": "us-3v1ag-v6b36-afhm4zy59kjrn1fds"
+          },
+          "status": "InProgress",
+          "yieldId": "yld-6a3ku-bn8d7-8u5rs1oukojms7k8"
         }
       }
     },
