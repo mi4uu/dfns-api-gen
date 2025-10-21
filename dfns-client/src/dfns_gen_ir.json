@@ -1,32 +1,20 @@
 {
   "schema_locations": {
-    "auth::credentials::activate::UpdateRequest": {
+    "auth::pats::token_id::UpdateRequest": {
       "module_path": [
         "auth",
-        "credentials",
-        "activate"
+        "pats",
+        "token_id"
       ],
       "type_name": "UpdateRequest",
-      "full_path": "generated::auth::credentials::activate::UpdateRequest"
+      "full_path": "generated::auth::pats::token_id::UpdateRequest"
     },
-    "webhooks::webhook_id::events::GetResponse": {
+    "keys::CreateRequest": {
       "module_path": [
-        "webhooks",
-        "webhook_id",
-        "events"
+        "keys"
       ],
-      "type_name": "GetResponse",
-      "full_path": "generated::webhooks::webhook_id::events::GetResponse"
-    },
-    "webhooks::webhook_id::events::webhook_event_id::GetResponse": {
-      "module_path": [
-        "webhooks",
-        "webhook_id",
-        "events",
-        "webhook_event_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::webhooks::webhook_id::events::webhook_event_id::GetResponse"
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::CreateRequest"
     },
     "auth::pats::token_id::GetResponse": {
       "module_path": [
@@ -37,131 +25,154 @@
       "type_name": "GetResponse",
       "full_path": "generated::auth::pats::token_id::GetResponse"
     },
-    "auth::users::ListResponse": {
-      "module_path": [
-        "auth",
-        "users"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::auth::users::ListResponse"
-    },
-    "keys::key_id::UpdateResponse": {
-      "module_path": [
-        "keys",
-        "key_id"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::keys::key_id::UpdateResponse"
-    },
-    "wallets::wallet_id::transactions::CreateResponse": {
+    "wallets::wallet_id::tags::UpdateRequest": {
       "module_path": [
         "wallets",
         "wallet_id",
-        "transactions"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::wallets::wallet_id::transactions::CreateResponse"
-    },
-    "auth::registration::enduser::CreateRequest": {
-      "module_path": [
-        "auth",
-        "registration",
-        "enduser"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::registration::enduser::CreateRequest"
-    },
-    "exchanges::exchange_id::DeleteResponse": {
-      "module_path": [
-        "exchanges",
-        "exchange_id"
-      ],
-      "type_name": "DeleteResponse",
-      "full_path": "generated::exchanges::exchange_id::DeleteResponse"
-    },
-    "keys::key_id::DeleteResponse": {
-      "module_path": [
-        "keys",
-        "key_id"
-      ],
-      "type_name": "DeleteResponse",
-      "full_path": "generated::keys::key_id::DeleteResponse"
-    },
-    "staking::stakes::stake_id::actions::GetResponse": {
-      "module_path": [
-        "staking",
-        "stakes",
-        "stake_id",
-        "actions"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::staking::stakes::stake_id::actions::GetResponse"
-    },
-    "v2::policies::ListResponse": {
-      "module_path": [
-        "v2",
-        "policies"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::v2::policies::ListResponse"
-    },
-    "keys::key_id::UpdateRequest": {
-      "module_path": [
-        "keys",
-        "key_id"
+        "tags"
       ],
       "type_name": "UpdateRequest",
-      "full_path": "generated::keys::key_id::UpdateRequest"
+      "full_path": "generated::wallets::wallet_id::tags::UpdateRequest"
     },
-    "CantonValidator": {
-      "module_path": [],
-      "type_name": "CantonValidator",
-      "full_path": "generated::CantonValidator"
-    },
-    "auth::pats::token_id::DeleteResponse": {
+    "wallets::wallet_id::nfts::GetResponse": {
       "module_path": [
-        "auth",
-        "pats",
-        "token_id"
-      ],
-      "type_name": "DeleteResponse",
-      "full_path": "generated::auth::pats::token_id::DeleteResponse"
-    },
-    "signers::ListResponse": {
-      "module_path": [
-        "signers"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::signers::ListResponse"
-    },
-    "exchanges::exchange_id::accounts::GetResponse": {
-      "module_path": [
-        "exchanges",
-        "exchange_id",
-        "accounts"
+        "wallets",
+        "wallet_id",
+        "nfts"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::exchanges::exchange_id::accounts::GetResponse"
+      "full_path": "generated::wallets::wallet_id::nfts::GetResponse"
     },
-    "auth::login::CreateRequest": {
+    "keys::key_id::derive::CreateResponse": {
       "module_path": [
-        "auth",
-        "login"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::login::CreateRequest"
-    },
-    "YieldAction": {
-      "module_path": [],
-      "type_name": "YieldAction",
-      "full_path": "generated::YieldAction"
-    },
-    "webhooks::CreateResponse": {
-      "module_path": [
-        "webhooks"
+        "keys",
+        "key_id",
+        "derive"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::webhooks::CreateResponse"
+      "full_path": "generated::keys::key_id::derive::CreateResponse"
+    },
+    "auth::recover::user::CreateRequest": {
+      "module_path": [
+        "auth",
+        "recover",
+        "user"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::recover::user::CreateRequest"
+    },
+    "networks::network::validators::validator_id::UpdateRequest": {
+      "module_path": [
+        "networks",
+        "network",
+        "validators",
+        "validator_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::networks::network::validators::validator_id::UpdateRequest"
+    },
+    "auth::recover::user::CreateResponse": {
+      "module_path": [
+        "auth",
+        "recover",
+        "user"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::recover::user::CreateResponse"
+    },
+    "auth::credentials::code::CreateRequest": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::credentials::code::CreateRequest"
+    },
+    "SwapQuote": {
+      "module_path": [],
+      "type_name": "SwapQuote",
+      "full_path": "generated::SwapQuote"
+    },
+    "Offer": {
+      "module_path": [],
+      "type_name": "Offer",
+      "full_path": "generated::Offer"
+    },
+    "yields::ListResponse": {
+      "module_path": [
+        "yields"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::yields::ListResponse"
+    },
+    "auth::action::init::CreateRequest": {
+      "module_path": [
+        "auth",
+        "action",
+        "init"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::action::init::CreateRequest"
+    },
+    "v2::policy_approvals::approval_id::decisions::CreateResponse": {
+      "module_path": [
+        "v2",
+        "policy_approvals",
+        "approval_id",
+        "decisions"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateResponse"
+    },
+    "webhooks::webhook_id::DeleteResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::webhooks::webhook_id::DeleteResponse"
+    },
+    "permissions::CreateResponse": {
+      "module_path": [
+        "permissions"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::permissions::CreateResponse"
+    },
+    "auth::pats::ListResponse": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::pats::ListResponse"
+    },
+    "wallets::wallet_id::UpdateRequest": {
+      "module_path": [
+        "wallets",
+        "wallet_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::wallets::wallet_id::UpdateRequest"
+    },
+    "wallets::wallet_id::tags::DeleteRequest": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "tags"
+      ],
+      "type_name": "DeleteRequest",
+      "full_path": "generated::wallets::wallet_id::tags::DeleteRequest"
+    },
+    "auth::users::user_id::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "users",
+        "user_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::users::user_id::UpdateRequest"
     },
     "exchanges::exchange_id::accounts::account_id::withdrawals::CreateResponse": {
       "module_path": [
@@ -174,30 +185,59 @@
       "type_name": "CreateResponse",
       "full_path": "generated::exchanges::exchange_id::accounts::account_id::withdrawals::CreateResponse"
     },
-    "wallets::ListResponse": {
-      "module_path": [
-        "wallets"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::wallets::ListResponse"
+    "User": {
+      "module_path": [],
+      "type_name": "User",
+      "full_path": "generated::User"
     },
-    "auth::service_accounts::service_account_id::GetResponse": {
+    "auth::service_accounts::service_account_id::UpdateResponse": {
       "module_path": [
         "auth",
         "service_accounts",
         "service_account_id"
       ],
-      "type_name": "GetResponse",
-      "full_path": "generated::auth::service_accounts::service_account_id::GetResponse"
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::service_accounts::service_account_id::UpdateResponse"
     },
-    "auth::apps::app_id::GetResponse": {
+    "webhooks::webhook_id::UpdateResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::webhooks::webhook_id::UpdateResponse"
+    },
+    "keys::ListResponse": {
+      "module_path": [
+        "keys"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::keys::ListResponse"
+    },
+    "wallets::CreateRequest": {
+      "module_path": [
+        "wallets"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::wallets::CreateRequest"
+    },
+    "auth::credentials::deactivate::UpdateRequest": {
       "module_path": [
         "auth",
-        "apps",
-        "app_id"
+        "credentials",
+        "deactivate"
       ],
-      "type_name": "GetResponse",
-      "full_path": "generated::auth::apps::app_id::GetResponse"
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::credentials::deactivate::UpdateRequest"
+    },
+    "auth::login::social::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login",
+        "social"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::social::CreateRequest"
     },
     "permissions::permission_id::assignments::GetResponse": {
       "module_path": [
@@ -208,77 +248,37 @@
       "type_name": "GetResponse",
       "full_path": "generated::permissions::permission_id::assignments::GetResponse"
     },
-    "SwapQuote": {
-      "module_path": [],
-      "type_name": "SwapQuote",
-      "full_path": "generated::SwapQuote"
-    },
-    "auth::credentials::code::CreateResponse": {
+    "auth::action::CreateResponse": {
       "module_path": [
         "auth",
-        "credentials",
-        "code"
+        "action"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::credentials::code::CreateResponse"
+      "full_path": "generated::auth::action::CreateResponse"
     },
-    "networks::network::validators::GetResponse": {
-      "module_path": [
-        "networks",
-        "network",
-        "validators"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::networks::network::validators::GetResponse"
+    "Network": {
+      "module_path": [],
+      "type_name": "Network",
+      "full_path": "generated::Network"
     },
-    "v2::policy_approvals::ListResponse": {
+    "v2::policy_approvals::approval_id::GetResponse": {
       "module_path": [
         "v2",
-        "policy_approvals"
+        "policy_approvals",
+        "approval_id"
       ],
-      "type_name": "ListResponse",
-      "full_path": "generated::v2::policy_approvals::ListResponse"
+      "type_name": "GetResponse",
+      "full_path": "generated::v2::policy_approvals::approval_id::GetResponse"
     },
-    "webhooks::ListResponse": {
+    "v2::policy_approvals::approval_id::decisions::CreateRequest": {
       "module_path": [
-        "webhooks"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::webhooks::ListResponse"
-    },
-    "auth::pats::CreateResponse": {
-      "module_path": [
-        "auth",
-        "pats"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::auth::pats::CreateResponse"
-    },
-    "auth::service_accounts::service_account_id::DeleteResponse": {
-      "module_path": [
-        "auth",
-        "service_accounts",
-        "service_account_id"
-      ],
-      "type_name": "DeleteResponse",
-      "full_path": "generated::auth::service_accounts::service_account_id::DeleteResponse"
-    },
-    "permissions::permission_id::UpdateRequest": {
-      "module_path": [
-        "permissions",
-        "permission_id"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::permissions::permission_id::UpdateRequest"
-    },
-    "auth::login::sso::CreateRequest": {
-      "module_path": [
-        "auth",
-        "login",
-        "sso"
+        "v2",
+        "policy_approvals",
+        "approval_id",
+        "decisions"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::auth::login::sso::CreateRequest"
+      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateRequest"
     },
     "exchanges::exchange_id::accounts::account_id::deposits::CreateResponse": {
       "module_path": [
@@ -291,159 +291,13 @@
       "type_name": "CreateResponse",
       "full_path": "generated::exchanges::exchange_id::accounts::account_id::deposits::CreateResponse"
     },
-    "permissions::CreateResponse": {
-      "module_path": [
-        "permissions"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::permissions::CreateResponse"
-    },
-    "permissions::permission_id::assignments::CreateRequest": {
-      "module_path": [
-        "permissions",
-        "permission_id",
-        "assignments"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::permissions::permission_id::assignments::CreateRequest"
-    },
-    "wallets::wallet_id::UpdateRequest": {
-      "module_path": [
-        "wallets",
-        "wallet_id"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::wallets::wallet_id::UpdateRequest"
-    },
-    "Offer": {
-      "module_path": [],
-      "type_name": "Offer",
-      "full_path": "generated::Offer"
-    },
-    "auth::recover::user::CreateRequest": {
-      "module_path": [
-        "auth",
-        "recover",
-        "user"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::recover::user::CreateRequest"
-    },
-    "auth::pats::CreateRequest": {
-      "module_path": [
-        "auth",
-        "pats"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::pats::CreateRequest"
-    },
-    "auth::credentials::CreateResponse": {
-      "module_path": [
-        "auth",
-        "credentials"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::auth::credentials::CreateResponse"
-    },
-    "agreements::latest_unaccepted::ListResponse": {
-      "module_path": [
-        "agreements",
-        "latest_unaccepted"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::agreements::latest_unaccepted::ListResponse"
-    },
-    "auth::registration::code::UpdateResponse": {
-      "module_path": [
-        "auth",
-        "registration",
-        "code"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::registration::code::UpdateResponse"
-    },
-    "auth::registration::CreateResponse": {
-      "module_path": [
-        "auth",
-        "registration"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::auth::registration::CreateResponse"
-    },
-    "auth::users::CreateRequest": {
-      "module_path": [
-        "auth",
-        "users"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::users::CreateRequest"
-    },
-    "exchanges::CreateResponse": {
-      "module_path": [
-        "exchanges"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::exchanges::CreateResponse"
-    },
-    "auth::pats::token_id::UpdateResponse": {
-      "module_path": [
-        "auth",
-        "pats",
-        "token_id"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::pats::token_id::UpdateResponse"
-    },
-    "keys::key_id::derive::CreateResponse": {
+    "keys::key_id::DeleteResponse": {
       "module_path": [
         "keys",
-        "key_id",
-        "derive"
+        "key_id"
       ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::keys::key_id::derive::CreateResponse"
-    },
-    "staking::stakes::ListResponse": {
-      "module_path": [
-        "staking",
-        "stakes"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::staking::stakes::ListResponse"
-    },
-    "swaps::ListResponse": {
-      "module_path": [
-        "swaps"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::swaps::ListResponse"
-    },
-    "auth::credentials::code::verify::CreateResponse": {
-      "module_path": [
-        "auth",
-        "credentials",
-        "code",
-        "verify"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::auth::credentials::code::verify::CreateResponse"
-    },
-    "wallets::wallet_id::tags::UpdateRequest": {
-      "module_path": [
-        "wallets",
-        "wallet_id",
-        "tags"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::wallets::wallet_id::tags::UpdateRequest"
-    },
-    "auth::apps::ListResponse": {
-      "module_path": [
-        "auth",
-        "apps"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::auth::apps::ListResponse"
+      "type_name": "DeleteResponse",
+      "full_path": "generated::keys::key_id::DeleteResponse"
     },
     "permissions::permission_id::assignments::CreateResponse": {
       "module_path": [
@@ -454,51 +308,74 @@
       "type_name": "CreateResponse",
       "full_path": "generated::permissions::permission_id::assignments::CreateResponse"
     },
-    "auth::credentials::activate::UpdateResponse": {
+    "webhooks::webhook_id::events::GetResponse": {
       "module_path": [
-        "auth",
-        "credentials",
-        "activate"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::credentials::activate::UpdateResponse"
-    },
-    "wallets::wallet_id::transactions::GetResponse": {
-      "module_path": [
-        "wallets",
-        "wallet_id",
-        "transactions"
+        "webhooks",
+        "webhook_id",
+        "events"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::wallets::wallet_id::transactions::GetResponse"
+      "full_path": "generated::webhooks::webhook_id::events::GetResponse"
     },
-    "yields::yield_id::actions::CreateRequest": {
+    "auth::pats::token_id::DeleteResponse": {
       "module_path": [
-        "yields",
-        "yield_id",
-        "actions"
+        "auth",
+        "pats",
+        "token_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::auth::pats::token_id::DeleteResponse"
+    },
+    "auth::service_accounts::service_account_id::GetResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::service_accounts::service_account_id::GetResponse"
+    },
+    "keys::import::CreateRequest": {
+      "module_path": [
+        "keys",
+        "import"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::yields::yield_id::actions::CreateRequest"
+      "full_path": "generated::keys::import::CreateRequest"
     },
-    "Yield": {
-      "module_path": [],
-      "type_name": "Yield",
-      "full_path": "generated::Yield"
-    },
-    "fee_sponsors::CreateResponse": {
+    "permissions::permission_id::UpdateResponse": {
       "module_path": [
-        "fee_sponsors"
+        "permissions",
+        "permission_id"
       ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::fee_sponsors::CreateResponse"
+      "type_name": "UpdateResponse",
+      "full_path": "generated::permissions::permission_id::UpdateResponse"
     },
-    "permissions::ListResponse": {
+    "auth::action::logs::id::GetResponse": {
       "module_path": [
-        "permissions"
+        "auth",
+        "action",
+        "logs",
+        "id"
       ],
-      "type_name": "ListResponse",
-      "full_path": "generated::permissions::ListResponse"
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::action::logs::id::GetResponse"
+    },
+    "webhooks::webhook_id::GetResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::webhooks::webhook_id::GetResponse"
+    },
+    "swaps::quotes::CreateRequest": {
+      "module_path": [
+        "swaps",
+        "quotes"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::swaps::quotes::CreateRequest"
     },
     "fee_sponsors::fee_sponsor_id::fees::GetResponse": {
       "module_path": [
@@ -509,14 +386,225 @@
       "type_name": "GetResponse",
       "full_path": "generated::fee_sponsors::fee_sponsor_id::fees::GetResponse"
     },
-    "wallets::wallet_id::transfers::GetResponse": {
+    "yields::yield_id::actions::CreateRequest": {
+      "module_path": [
+        "yields",
+        "yield_id",
+        "actions"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::yields::yield_id::actions::CreateRequest"
+    },
+    "auth::logout::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "logout"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::logout::UpdateResponse"
+    },
+    "auth::registration::enduser::CreateRequest": {
+      "module_path": [
+        "auth",
+        "registration",
+        "enduser"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::registration::enduser::CreateRequest"
+    },
+    "Swap": {
+      "module_path": [],
+      "type_name": "Swap",
+      "full_path": "generated::Swap"
+    },
+    "fee_sponsors::fee_sponsor_id::GetResponse": {
+      "module_path": [
+        "fee_sponsors",
+        "fee_sponsor_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::fee_sponsors::fee_sponsor_id::GetResponse"
+    },
+    "fee_sponsors::fee_sponsor_id::DeleteResponse": {
+      "module_path": [
+        "fee_sponsors",
+        "fee_sponsor_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::fee_sponsors::fee_sponsor_id::DeleteResponse"
+    },
+    "auth::apps::app_id::GetResponse": {
+      "module_path": [
+        "auth",
+        "apps",
+        "app_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::auth::apps::app_id::GetResponse"
+    },
+    "wallets::wallet_id::transactions::transaction_id::GetResponse": {
       "module_path": [
         "wallets",
         "wallet_id",
-        "transfers"
+        "transactions",
+        "transaction_id"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::wallets::wallet_id::transfers::GetResponse"
+      "full_path": "generated::wallets::wallet_id::transactions::transaction_id::GetResponse"
+    },
+    "webhooks::ListResponse": {
+      "module_path": [
+        "webhooks"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::webhooks::ListResponse"
+    },
+    "exchanges::exchange_id::GetResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::exchanges::exchange_id::GetResponse"
+    },
+    "TransferRequest": {
+      "module_path": [],
+      "type_name": "TransferRequest",
+      "full_path": "generated::TransferRequest"
+    },
+    "wallets::wallet_id::offers::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "offers"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::offers::GetResponse"
+    },
+    "auth::service_accounts::ListResponse": {
+      "module_path": [
+        "auth",
+        "service_accounts"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::service_accounts::ListResponse"
+    },
+    "exchanges::CreateResponse": {
+      "module_path": [
+        "exchanges"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::exchanges::CreateResponse"
+    },
+    "auth::credentials::code::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::code::CreateResponse"
+    },
+    "keys::key_id::signatures::GetResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "signatures"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::keys::key_id::signatures::GetResponse"
+    },
+    "auth::service_accounts::service_account_id::UpdateRequest": {
+      "module_path": [
+        "auth",
+        "service_accounts",
+        "service_account_id"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::service_accounts::service_account_id::UpdateRequest"
+    },
+    "keys::import::CreateResponse": {
+      "module_path": [
+        "keys",
+        "import"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::import::CreateResponse"
+    },
+    "auth::pats::CreateRequest": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::pats::CreateRequest"
+    },
+    "auth::registration::code::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "registration",
+        "code"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::registration::code::UpdateResponse"
+    },
+    "keys::CreateResponse": {
+      "module_path": [
+        "keys"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::CreateResponse"
+    },
+    "auth::users::CreateRequest": {
+      "module_path": [
+        "auth",
+        "users"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::users::CreateRequest"
+    },
+    "webhooks::webhook_id::events::webhook_event_id::GetResponse": {
+      "module_path": [
+        "webhooks",
+        "webhook_id",
+        "events",
+        "webhook_event_id"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::webhooks::webhook_id::events::webhook_event_id::GetResponse"
+    },
+    "auth::action::init::CreateResponse": {
+      "module_path": [
+        "auth",
+        "action",
+        "init"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::action::init::CreateResponse"
+    },
+    "auth::apps::ListResponse": {
+      "module_path": [
+        "auth",
+        "apps"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::apps::ListResponse"
+    },
+    "v2::policies::ListResponse": {
+      "module_path": [
+        "v2",
+        "policies"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::v2::policies::ListResponse"
+    },
+    "networks::read_contract::CreateResponse": {
+      "module_path": [
+        "networks",
+        "read_contract"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::networks::read_contract::CreateResponse"
     },
     "auth::registration::code::UpdateRequest": {
       "module_path": [
@@ -527,22 +615,118 @@
       "type_name": "UpdateRequest",
       "full_path": "generated::auth::registration::code::UpdateRequest"
     },
-    "webhooks::webhook_id::UpdateRequest": {
+    "webhooks::CreateRequest": {
       "module_path": [
-        "webhooks",
-        "webhook_id"
+        "webhooks"
       ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::webhooks::webhook_id::UpdateRequest"
+      "type_name": "CreateRequest",
+      "full_path": "generated::webhooks::CreateRequest"
     },
-    "auth::pats::token_id::UpdateRequest": {
+    "auth::registration::CreateResponse": {
+      "module_path": [
+        "auth",
+        "registration"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::registration::CreateResponse"
+    },
+    "staking::stakes::stake_id::rewards::GetResponse": {
+      "module_path": [
+        "staking",
+        "stakes",
+        "stake_id",
+        "rewards"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::staking::stakes::stake_id::rewards::GetResponse"
+    },
+    "fee_sponsors::CreateResponse": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::fee_sponsors::CreateResponse"
+    },
+    "CantonValidator": {
+      "module_path": [],
+      "type_name": "CantonValidator",
+      "full_path": "generated::CantonValidator"
+    },
+    "exchanges::CreateRequest": {
+      "module_path": [
+        "exchanges"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::exchanges::CreateRequest"
+    },
+    "Wallet": {
+      "module_path": [],
+      "type_name": "Wallet",
+      "full_path": "generated::Wallet"
+    },
+    "auth::credentials::ListResponse": {
+      "module_path": [
+        "auth",
+        "credentials"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::credentials::ListResponse"
+    },
+    "auth::pats::token_id::UpdateResponse": {
       "module_path": [
         "auth",
         "pats",
         "token_id"
       ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::pats::token_id::UpdateResponse"
+    },
+    "keys::key_id::UpdateRequest": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
       "type_name": "UpdateRequest",
-      "full_path": "generated::auth::pats::token_id::UpdateRequest"
+      "full_path": "generated::keys::key_id::UpdateRequest"
+    },
+    "fee_sponsors::CreateRequest": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::fee_sponsors::CreateRequest"
+    },
+    "signers::ListResponse": {
+      "module_path": [
+        "signers"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::signers::ListResponse"
+    },
+    "agreements::latest_unaccepted::ListResponse": {
+      "module_path": [
+        "agreements",
+        "latest_unaccepted"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::agreements::latest_unaccepted::ListResponse"
+    },
+    "auth::credentials::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::CreateResponse"
+    },
+    "auth::login::delegated::CreateRequest": {
+      "module_path": [
+        "auth",
+        "login",
+        "delegated"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::delegated::CreateRequest"
     },
     "keys::key_id::signatures::signature_id::GetResponse": {
       "module_path": [
@@ -554,38 +738,145 @@
       "type_name": "GetResponse",
       "full_path": "generated::keys::key_id::signatures::signature_id::GetResponse"
     },
-    "auth::service_accounts::CreateResponse": {
+    "BlockchainKind": {
+      "module_path": [],
+      "type_name": "BlockchainKind",
+      "full_path": "generated::BlockchainKind"
+    },
+    "auth::credentials::activate::UpdateRequest": {
       "module_path": [
         "auth",
-        "service_accounts"
+        "credentials",
+        "activate"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::credentials::activate::UpdateRequest"
+    },
+    "exchanges::exchange_id::accounts::GetResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id",
+        "accounts"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::exchanges::exchange_id::accounts::GetResponse"
+    },
+    "keys::key_id::delegate::CreateResponse": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "delegate"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::service_accounts::CreateResponse"
+      "full_path": "generated::keys::key_id::delegate::CreateResponse"
     },
-    "auth::logout::UpdateResponse": {
+    "auth::login::CreateRequest": {
       "module_path": [
         "auth",
-        "logout"
+        "login"
       ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::logout::UpdateResponse"
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::CreateRequest"
     },
-    "auth::action::init::CreateResponse": {
+    "keys::key_id::export::CreateRequest": {
       "module_path": [
-        "auth",
-        "action",
-        "init"
+        "keys",
+        "key_id",
+        "export"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::key_id::export::CreateRequest"
+    },
+    "wallets::wallet_id::transfers::GetResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transfers"
+      ],
+      "type_name": "GetResponse",
+      "full_path": "generated::wallets::wallet_id::transfers::GetResponse"
+    },
+    "webhooks::CreateResponse": {
+      "module_path": [
+        "webhooks"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::action::init::CreateResponse"
+      "full_path": "generated::webhooks::CreateResponse"
     },
-    "auth::pats::ListResponse": {
+    "exchanges::ListResponse": {
       "module_path": [
-        "auth",
-        "pats"
+        "exchanges"
       ],
       "type_name": "ListResponse",
-      "full_path": "generated::auth::pats::ListResponse"
+      "full_path": "generated::exchanges::ListResponse"
+    },
+    "auth::credentials::code::verify::CreateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "code",
+        "verify"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::credentials::code::verify::CreateResponse"
+    },
+    "keys::key_id::UpdateResponse": {
+      "module_path": [
+        "keys",
+        "key_id"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::keys::key_id::UpdateResponse"
+    },
+    "auth::login::social::CreateResponse": {
+      "module_path": [
+        "auth",
+        "login",
+        "social"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::login::social::CreateResponse"
+    },
+    "key_stores::ListResponse": {
+      "module_path": [
+        "key_stores"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::key_stores::ListResponse"
+    },
+    "permissions::permission_id::archive::UpdateRequest": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "archive"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::permissions::permission_id::archive::UpdateRequest"
+    },
+    "auth::users::ListResponse": {
+      "module_path": [
+        "auth",
+        "users"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::auth::users::ListResponse"
+    },
+    "auth::action::CreateRequest": {
+      "module_path": [
+        "auth",
+        "action"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::action::CreateRequest"
+    },
+    "auth::login::delegated::CreateResponse": {
+      "module_path": [
+        "auth",
+        "login",
+        "delegated"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::login::delegated::CreateResponse"
     },
     "exchanges::exchange_id::accounts::account_id::assets::GetResponse": {
       "module_path": [
@@ -598,170 +889,12 @@
       "type_name": "GetResponse",
       "full_path": "generated::exchanges::exchange_id::accounts::account_id::assets::GetResponse"
     },
-    "wallets::wallet_id::transactions::transaction_id::GetResponse": {
-      "module_path": [
-        "wallets",
-        "wallet_id",
-        "transactions",
-        "transaction_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::wallets::wallet_id::transactions::transaction_id::GetResponse"
-    },
-    "fee_sponsors::ListResponse": {
-      "module_path": [
-        "fee_sponsors"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::fee_sponsors::ListResponse"
-    },
-    "fee_sponsors::fee_sponsor_id::DeleteResponse": {
-      "module_path": [
-        "fee_sponsors",
-        "fee_sponsor_id"
-      ],
-      "type_name": "DeleteResponse",
-      "full_path": "generated::fee_sponsors::fee_sponsor_id::DeleteResponse"
-    },
-    "wallets::CreateRequest": {
-      "module_path": [
-        "wallets"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::wallets::CreateRequest"
-    },
-    "webhooks::webhook_id::UpdateResponse": {
-      "module_path": [
-        "webhooks",
-        "webhook_id"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::webhooks::webhook_id::UpdateResponse"
-    },
-    "permissions::permission_id::archive::UpdateRequest": {
-      "module_path": [
-        "permissions",
-        "permission_id",
-        "archive"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::permissions::permission_id::archive::UpdateRequest"
-    },
-    "User": {
-      "module_path": [],
-      "type_name": "User",
-      "full_path": "generated::User"
-    },
-    "auth::service_accounts::service_account_id::UpdateRequest": {
-      "module_path": [
-        "auth",
-        "service_accounts",
-        "service_account_id"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::auth::service_accounts::service_account_id::UpdateRequest"
-    },
-    "wallets::wallet_id::nfts::GetResponse": {
-      "module_path": [
-        "wallets",
-        "wallet_id",
-        "nfts"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::wallets::wallet_id::nfts::GetResponse"
-    },
-    "fee_sponsors::fee_sponsor_id::GetResponse": {
-      "module_path": [
-        "fee_sponsors",
-        "fee_sponsor_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::fee_sponsors::fee_sponsor_id::GetResponse"
-    },
-    "yields::ListResponse": {
-      "module_path": [
-        "yields"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::yields::ListResponse"
-    },
-    "permissions::permission_id::UpdateResponse": {
-      "module_path": [
-        "permissions",
-        "permission_id"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::permissions::permission_id::UpdateResponse"
-    },
-    "fee_sponsors::CreateRequest": {
-      "module_path": [
-        "fee_sponsors"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::fee_sponsors::CreateRequest"
-    },
-    "auth::credentials::ListResponse": {
-      "module_path": [
-        "auth",
-        "credentials"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::auth::credentials::ListResponse"
-    },
-    "BlockchainKind": {
-      "module_path": [],
-      "type_name": "BlockchainKind",
-      "full_path": "generated::BlockchainKind"
-    },
-    "auth::credentials::deactivate::UpdateRequest": {
-      "module_path": [
-        "auth",
-        "credentials",
-        "deactivate"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::auth::credentials::deactivate::UpdateRequest"
-    },
-    "keys::key_id::export::CreateResponse": {
-      "module_path": [
-        "keys",
-        "key_id",
-        "export"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::keys::key_id::export::CreateResponse"
-    },
-    "swaps::CreateRequest": {
+    "swaps::ListResponse": {
       "module_path": [
         "swaps"
       ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::swaps::CreateRequest"
-    },
-    "swaps::quotes::CreateRequest": {
-      "module_path": [
-        "swaps",
-        "quotes"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::swaps::quotes::CreateRequest"
-    },
-    "keys::ListResponse": {
-      "module_path": [
-        "keys"
-      ],
       "type_name": "ListResponse",
-      "full_path": "generated::keys::ListResponse"
-    },
-    "Network": {
-      "module_path": [],
-      "type_name": "Network",
-      "full_path": "generated::Network"
-    },
-    "Swap": {
-      "module_path": [],
-      "type_name": "Swap",
-      "full_path": "generated::Swap"
+      "full_path": "generated::swaps::ListResponse"
     },
     "auth::registration::enduser::CreateResponse": {
       "module_path": [
@@ -772,200 +905,39 @@
       "type_name": "CreateResponse",
       "full_path": "generated::auth::registration::enduser::CreateResponse"
     },
-    "permissions::CreateRequest": {
-      "module_path": [
-        "permissions"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::permissions::CreateRequest"
-    },
-    "permissions::permission_id::archive::UpdateResponse": {
-      "module_path": [
-        "permissions",
-        "permission_id",
-        "archive"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::permissions::permission_id::archive::UpdateResponse"
-    },
-    "v2::policy_approvals::approval_id::decisions::CreateRequest": {
-      "module_path": [
-        "v2",
-        "policy_approvals",
-        "approval_id",
-        "decisions"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateRequest"
-    },
-    "keys::key_id::signatures::GetResponse": {
-      "module_path": [
-        "keys",
-        "key_id",
-        "signatures"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::keys::key_id::signatures::GetResponse"
-    },
-    "auth::credentials::deactivate::UpdateResponse": {
-      "module_path": [
-        "auth",
-        "credentials",
-        "deactivate"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::credentials::deactivate::UpdateResponse"
-    },
-    "keys::CreateResponse": {
-      "module_path": [
-        "keys"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::keys::CreateResponse"
-    },
-    "key_stores::ListResponse": {
-      "module_path": [
-        "key_stores"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::key_stores::ListResponse"
-    },
-    "keys::key_id::delegate::CreateRequest": {
-      "module_path": [
-        "keys",
-        "key_id",
-        "delegate"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::keys::key_id::delegate::CreateRequest"
-    },
-    "keys::key_id::delegate::CreateResponse": {
-      "module_path": [
-        "keys",
-        "key_id",
-        "delegate"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::keys::key_id::delegate::CreateResponse"
-    },
-    "auth::service_accounts::ListResponse": {
+    "auth::service_accounts::CreateResponse": {
       "module_path": [
         "auth",
         "service_accounts"
       ],
-      "type_name": "ListResponse",
-      "full_path": "generated::auth::service_accounts::ListResponse"
-    },
-    "auth::login::delegated::CreateRequest": {
-      "module_path": [
-        "auth",
-        "login",
-        "delegated"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::login::delegated::CreateRequest"
-    },
-    "exchanges::exchange_id::GetResponse": {
-      "module_path": [
-        "exchanges",
-        "exchange_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::exchanges::exchange_id::GetResponse"
-    },
-    "auth::login::delegated::CreateResponse": {
-      "module_path": [
-        "auth",
-        "login",
-        "delegated"
-      ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::login::delegated::CreateResponse"
+      "full_path": "generated::auth::service_accounts::CreateResponse"
     },
-    "webhooks::webhook_id::ping::CreateResponse": {
-      "module_path": [
-        "webhooks",
-        "webhook_id",
-        "ping"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::webhooks::webhook_id::ping::CreateResponse"
-    },
-    "auth::action::CreateRequest": {
+    "auth::service_accounts::service_account_id::DeleteResponse": {
       "module_path": [
         "auth",
-        "action"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::action::CreateRequest"
-    },
-    "keys::key_id::GetResponse": {
-      "module_path": [
-        "keys",
-        "key_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::keys::key_id::GetResponse"
-    },
-    "auth::action::logs::id::GetResponse": {
-      "module_path": [
-        "auth",
-        "action",
-        "logs",
-        "id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::auth::action::logs::id::GetResponse"
-    },
-    "webhooks::webhook_id::DeleteResponse": {
-      "module_path": [
-        "webhooks",
-        "webhook_id"
+        "service_accounts",
+        "service_account_id"
       ],
       "type_name": "DeleteResponse",
-      "full_path": "generated::webhooks::webhook_id::DeleteResponse"
+      "full_path": "generated::auth::service_accounts::service_account_id::DeleteResponse"
     },
-    "auth::service_accounts::CreateRequest": {
-      "module_path": [
-        "auth",
-        "service_accounts"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::service_accounts::CreateRequest"
-    },
-    "keys::key_id::derive::CreateRequest": {
+    "keys::key_id::export::CreateResponse": {
       "module_path": [
         "keys",
         "key_id",
-        "derive"
+        "export"
       ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::keys::key_id::derive::CreateRequest"
+      "type_name": "CreateResponse",
+      "full_path": "generated::keys::key_id::export::CreateResponse"
     },
-    "networks::network::validators::validator_id::UpdateRequest": {
+    "permissions::permission_id::UpdateRequest": {
       "module_path": [
-        "networks",
-        "network",
-        "validators",
-        "validator_id"
+        "permissions",
+        "permission_id"
       ],
       "type_name": "UpdateRequest",
-      "full_path": "generated::networks::network::validators::validator_id::UpdateRequest"
-    },
-    "auth::logout::UpdateRequest": {
-      "module_path": [
-        "auth",
-        "logout"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::auth::logout::UpdateRequest"
-    },
-    "exchanges::ListResponse": {
-      "module_path": [
-        "exchanges"
-      ],
-      "type_name": "ListResponse",
-      "full_path": "generated::exchanges::ListResponse"
+      "full_path": "generated::permissions::permission_id::UpdateRequest"
     },
     "agreements::agreement_id::accept::CreateResponse": {
       "module_path": [
@@ -976,137 +948,107 @@
       "type_name": "CreateResponse",
       "full_path": "generated::agreements::agreement_id::accept::CreateResponse"
     },
-    "auth::users::user_id::UpdateRequest": {
+    "auth::registration::CreateRequest": {
       "module_path": [
         "auth",
-        "users",
-        "user_id"
-      ],
-      "type_name": "UpdateRequest",
-      "full_path": "generated::auth::users::user_id::UpdateRequest"
-    },
-    "v2::policy_approvals::approval_id::GetResponse": {
-      "module_path": [
-        "v2",
-        "policy_approvals",
-        "approval_id"
-      ],
-      "type_name": "GetResponse",
-      "full_path": "generated::v2::policy_approvals::approval_id::GetResponse"
-    },
-    "webhooks::CreateRequest": {
-      "module_path": [
-        "webhooks"
+        "registration"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::webhooks::CreateRequest"
+      "full_path": "generated::auth::registration::CreateRequest"
     },
-    "keys::import::CreateResponse": {
-      "module_path": [
-        "keys",
-        "import"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::keys::import::CreateResponse"
-    },
-    "Wallet": {
-      "module_path": [],
-      "type_name": "Wallet",
-      "full_path": "generated::Wallet"
-    },
-    "keys::key_id::export::CreateRequest": {
-      "module_path": [
-        "keys",
-        "key_id",
-        "export"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::keys::key_id::export::CreateRequest"
-    },
-    "wallets::wallet_id::tags::DeleteRequest": {
-      "module_path": [
-        "wallets",
-        "wallet_id",
-        "tags"
-      ],
-      "type_name": "DeleteRequest",
-      "full_path": "generated::wallets::wallet_id::tags::DeleteRequest"
-    },
-    "auth::action::init::CreateRequest": {
+    "auth::service_accounts::CreateRequest": {
       "module_path": [
         "auth",
-        "action",
-        "init"
+        "service_accounts"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::auth::action::init::CreateRequest"
+      "full_path": "generated::auth::service_accounts::CreateRequest"
     },
-    "auth::service_accounts::service_account_id::UpdateResponse": {
-      "module_path": [
-        "auth",
-        "service_accounts",
-        "service_account_id"
-      ],
-      "type_name": "UpdateResponse",
-      "full_path": "generated::auth::service_accounts::service_account_id::UpdateResponse"
-    },
-    "staking::stakes::stake_id::rewards::GetResponse": {
+    "staking::stakes::stake_id::actions::GetResponse": {
       "module_path": [
         "staking",
         "stakes",
         "stake_id",
-        "rewards"
+        "actions"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::staking::stakes::stake_id::rewards::GetResponse"
+      "full_path": "generated::staking::stakes::stake_id::actions::GetResponse"
     },
-    "wallets::wallet_id::offers::GetResponse": {
+    "v2::policy_approvals::ListResponse": {
+      "module_path": [
+        "v2",
+        "policy_approvals"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::v2::policy_approvals::ListResponse"
+    },
+    "keys::key_id::derive::CreateRequest": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "derive"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::keys::key_id::derive::CreateRequest"
+    },
+    "wallets::wallet_id::transactions::GetResponse": {
       "module_path": [
         "wallets",
         "wallet_id",
-        "offers"
+        "transactions"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::wallets::wallet_id::offers::GetResponse"
+      "full_path": "generated::wallets::wallet_id::transactions::GetResponse"
     },
-    "TransferRequest": {
+    "exchanges::exchange_id::DeleteResponse": {
+      "module_path": [
+        "exchanges",
+        "exchange_id"
+      ],
+      "type_name": "DeleteResponse",
+      "full_path": "generated::exchanges::exchange_id::DeleteResponse"
+    },
+    "Yield": {
       "module_path": [],
-      "type_name": "TransferRequest",
-      "full_path": "generated::TransferRequest"
+      "type_name": "Yield",
+      "full_path": "generated::Yield"
     },
-    "webhooks::webhook_id::GetResponse": {
+    "keys::key_id::GetResponse": {
       "module_path": [
-        "webhooks",
-        "webhook_id"
+        "keys",
+        "key_id"
       ],
       "type_name": "GetResponse",
-      "full_path": "generated::webhooks::webhook_id::GetResponse"
+      "full_path": "generated::keys::key_id::GetResponse"
     },
-    "networks::read_contract::CreateResponse": {
+    "swaps::CreateRequest": {
       "module_path": [
-        "networks",
-        "read_contract"
-      ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::networks::read_contract::CreateResponse"
-    },
-    "auth::login::social::CreateRequest": {
-      "module_path": [
-        "auth",
-        "login",
-        "social"
+        "swaps"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::auth::login::social::CreateRequest"
+      "full_path": "generated::swaps::CreateRequest"
     },
-    "auth::credentials::code::CreateRequest": {
+    "auth::pats::CreateResponse": {
+      "module_path": [
+        "auth",
+        "pats"
+      ],
+      "type_name": "CreateResponse",
+      "full_path": "generated::auth::pats::CreateResponse"
+    },
+    "YieldAction": {
+      "module_path": [],
+      "type_name": "YieldAction",
+      "full_path": "generated::YieldAction"
+    },
+    "auth::credentials::deactivate::UpdateResponse": {
       "module_path": [
         "auth",
         "credentials",
-        "code"
+        "deactivate"
       ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::auth::credentials::code::CreateRequest"
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::credentials::deactivate::UpdateResponse"
     },
     "auth::login::sso::CreateResponse": {
       "module_path": [
@@ -1117,52 +1059,113 @@
       "type_name": "CreateResponse",
       "full_path": "generated::auth::login::sso::CreateResponse"
     },
-    "auth::registration::CreateRequest": {
+    "auth::logout::UpdateRequest": {
       "module_path": [
         "auth",
-        "registration"
+        "logout"
+      ],
+      "type_name": "UpdateRequest",
+      "full_path": "generated::auth::logout::UpdateRequest"
+    },
+    "keys::key_id::delegate::CreateRequest": {
+      "module_path": [
+        "keys",
+        "key_id",
+        "delegate"
       ],
       "type_name": "CreateRequest",
-      "full_path": "generated::auth::registration::CreateRequest"
+      "full_path": "generated::keys::key_id::delegate::CreateRequest"
     },
-    "auth::action::CreateResponse": {
+    "networks::network::validators::GetResponse": {
       "module_path": [
-        "auth",
-        "action"
+        "networks",
+        "network",
+        "validators"
       ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::auth::action::CreateResponse"
+      "type_name": "GetResponse",
+      "full_path": "generated::networks::network::validators::GetResponse"
     },
-    "exchanges::CreateRequest": {
+    "permissions::permission_id::archive::UpdateResponse": {
       "module_path": [
-        "exchanges"
+        "permissions",
+        "permission_id",
+        "archive"
       ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::exchanges::CreateRequest"
+      "type_name": "UpdateResponse",
+      "full_path": "generated::permissions::permission_id::archive::UpdateResponse"
     },
-    "auth::login::social::CreateResponse": {
+    "auth::login::sso::CreateRequest": {
       "module_path": [
         "auth",
         "login",
-        "social"
+        "sso"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::auth::login::sso::CreateRequest"
+    },
+    "permissions::permission_id::assignments::CreateRequest": {
+      "module_path": [
+        "permissions",
+        "permission_id",
+        "assignments"
+      ],
+      "type_name": "CreateRequest",
+      "full_path": "generated::permissions::permission_id::assignments::CreateRequest"
+    },
+    "staking::stakes::ListResponse": {
+      "module_path": [
+        "staking",
+        "stakes"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::staking::stakes::ListResponse"
+    },
+    "wallets::ListResponse": {
+      "module_path": [
+        "wallets"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::wallets::ListResponse"
+    },
+    "fee_sponsors::ListResponse": {
+      "module_path": [
+        "fee_sponsors"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::fee_sponsors::ListResponse"
+    },
+    "auth::credentials::activate::UpdateResponse": {
+      "module_path": [
+        "auth",
+        "credentials",
+        "activate"
+      ],
+      "type_name": "UpdateResponse",
+      "full_path": "generated::auth::credentials::activate::UpdateResponse"
+    },
+    "permissions::ListResponse": {
+      "module_path": [
+        "permissions"
+      ],
+      "type_name": "ListResponse",
+      "full_path": "generated::permissions::ListResponse"
+    },
+    "wallets::wallet_id::transactions::CreateResponse": {
+      "module_path": [
+        "wallets",
+        "wallet_id",
+        "transactions"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::login::social::CreateResponse"
+      "full_path": "generated::wallets::wallet_id::transactions::CreateResponse"
     },
-    "keys::CreateRequest": {
+    "webhooks::webhook_id::UpdateRequest": {
       "module_path": [
-        "keys"
+        "webhooks",
+        "webhook_id"
       ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::keys::CreateRequest"
-    },
-    "keys::import::CreateRequest": {
-      "module_path": [
-        "keys",
-        "import"
-      ],
-      "type_name": "CreateRequest",
-      "full_path": "generated::keys::import::CreateRequest"
+      "type_name": "UpdateRequest",
+      "full_path": "generated::webhooks::webhook_id::UpdateRequest"
     },
     "keys::key_id::signatures::CreateResponse": {
       "module_path": [
@@ -1173,24 +1176,21 @@
       "type_name": "CreateResponse",
       "full_path": "generated::keys::key_id::signatures::CreateResponse"
     },
-    "auth::recover::user::CreateResponse": {
+    "webhooks::webhook_id::ping::CreateResponse": {
       "module_path": [
-        "auth",
-        "recover",
-        "user"
+        "webhooks",
+        "webhook_id",
+        "ping"
       ],
       "type_name": "CreateResponse",
-      "full_path": "generated::auth::recover::user::CreateResponse"
+      "full_path": "generated::webhooks::webhook_id::ping::CreateResponse"
     },
-    "v2::policy_approvals::approval_id::decisions::CreateResponse": {
+    "permissions::CreateRequest": {
       "module_path": [
-        "v2",
-        "policy_approvals",
-        "approval_id",
-        "decisions"
+        "permissions"
       ],
-      "type_name": "CreateResponse",
-      "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateResponse"
+      "type_name": "CreateRequest",
+      "full_path": "generated::permissions::CreateRequest"
     }
   },
   "endpoints": [
@@ -1199,7 +1199,14 @@
       "path": "/agreements/latest-unaccepted",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "agreements",
+          "latest_unaccepted"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::agreements::latest_unaccepted::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1214,7 +1221,15 @@
       "path": "/agreements/{agreementId}/accept",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "agreements",
+          "agreement_id",
+          "accept"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::agreements::agreement_id::accept::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1228,8 +1243,22 @@
       "method": "POST",
       "path": "/auth/action",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "action"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::action::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "action"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::action::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1243,8 +1272,24 @@
       "method": "POST",
       "path": "/auth/action/init",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "action",
+          "init"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::action::init::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "action",
+          "init"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::action::init::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1274,7 +1319,16 @@
       "path": "/auth/action/logs/{id}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "action",
+          "logs",
+          "id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::auth::action::logs::id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1289,7 +1343,14 @@
       "path": "/auth/apps",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "apps"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::auth::apps::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1304,7 +1365,15 @@
       "path": "/auth/apps/{appId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "apps",
+          "app_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::auth::apps::app_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1319,7 +1388,14 @@
       "path": "/auth/credentials",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::auth::credentials::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1334,7 +1410,14 @@
       "path": "/auth/credentials",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::credentials::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1348,8 +1431,24 @@
       "method": "PUT",
       "path": "/auth/credentials/activate",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "activate"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::credentials::activate::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "activate"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::credentials::activate::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1363,8 +1462,24 @@
       "method": "POST",
       "path": "/auth/credentials/code",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "code"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::credentials::code::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "code"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::credentials::code::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1394,7 +1509,16 @@
       "path": "/auth/credentials/code/verify",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "code",
+          "verify"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::credentials::code::verify::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1408,8 +1532,24 @@
       "method": "PUT",
       "path": "/auth/credentials/deactivate",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "deactivate"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::credentials::deactivate::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "credentials",
+          "deactivate"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::credentials::deactivate::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1438,7 +1578,14 @@
       "method": "POST",
       "path": "/auth/login",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "login"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::login::CreateRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],
@@ -1468,8 +1615,24 @@
       "method": "POST",
       "path": "/auth/login/delegated",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "delegated"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::login::delegated::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "delegated"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::login::delegated::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1498,8 +1661,24 @@
       "method": "POST",
       "path": "/auth/login/social",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "social"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::login::social::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "social"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::login::social::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1513,8 +1692,24 @@
       "method": "POST",
       "path": "/auth/login/sso",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "sso"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::login::sso::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "login",
+          "sso"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::login::sso::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1543,8 +1738,22 @@
       "method": "PUT",
       "path": "/auth/logout",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "logout"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::logout::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "logout"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::logout::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1559,7 +1768,14 @@
       "path": "/auth/pats",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "pats"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::auth::pats::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1573,8 +1789,22 @@
       "method": "POST",
       "path": "/auth/pats",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "pats"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::pats::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "pats"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::pats::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1589,7 +1819,15 @@
       "path": "/auth/pats/{tokenId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "pats",
+          "token_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::auth::pats::token_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1603,8 +1841,24 @@
       "method": "PUT",
       "path": "/auth/pats/{tokenId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "pats",
+          "token_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::pats::token_id::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "pats",
+          "token_id"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::pats::token_id::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1619,7 +1873,15 @@
       "path": "/auth/pats/{tokenId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "pats",
+          "token_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::auth::pats::token_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1663,8 +1925,24 @@
       "method": "POST",
       "path": "/auth/recover/user",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "recover",
+          "user"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::recover::user::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "recover",
+          "user"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::recover::user::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1723,8 +2001,22 @@
       "method": "POST",
       "path": "/auth/registration",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "registration"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::registration::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "registration"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::registration::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1738,8 +2030,24 @@
       "method": "PUT",
       "path": "/auth/registration/code",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "registration",
+          "code"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::registration::code::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "registration",
+          "code"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::registration::code::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1768,8 +2076,24 @@
       "method": "POST",
       "path": "/auth/registration/enduser",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "registration",
+          "enduser"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::registration::enduser::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "registration",
+          "enduser"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::registration::enduser::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1814,7 +2138,14 @@
       "path": "/auth/service-accounts",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "service_accounts"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::auth::service_accounts::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1828,8 +2159,22 @@
       "method": "POST",
       "path": "/auth/service-accounts",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "service_accounts"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::service_accounts::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "service_accounts"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::auth::service_accounts::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1844,7 +2189,15 @@
       "path": "/auth/service-accounts/{serviceAccountId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "service_accounts",
+          "service_account_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::auth::service_accounts::service_account_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1858,8 +2211,24 @@
       "method": "PUT",
       "path": "/auth/service-accounts/{serviceAccountId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "auth",
+          "service_accounts",
+          "service_account_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::service_accounts::service_account_id::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "auth",
+          "service_accounts",
+          "service_account_id"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::auth::service_accounts::service_account_id::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1874,7 +2243,15 @@
       "path": "/auth/service-accounts/{serviceAccountId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "service_accounts",
+          "service_account_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::auth::service_accounts::service_account_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1919,7 +2296,14 @@
       "path": "/auth/users",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "auth",
+          "users"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::auth::users::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1933,12 +2317,15 @@
       "method": "POST",
       "path": "/auth/users",
       "operation_id": null,
-      "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
+      "request_type": {
+        "module_path": [
+          "auth",
+          "users"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::auth::users::CreateRequest"
       },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1953,11 +2340,7 @@
       "path": "/auth/users/{userId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1971,12 +2354,16 @@
       "method": "PUT",
       "path": "/auth/users/{userId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
+      "request_type": {
+        "module_path": [
+          "auth",
+          "users",
+          "user_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::auth::users::user_id::UpdateRequest"
       },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -1991,11 +2378,7 @@
       "path": "/auth/users/{userId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2010,11 +2393,7 @@
       "path": "/auth/users/{userId}/activate",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2029,11 +2408,7 @@
       "path": "/auth/users/{userId}/deactivate",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "User",
-        "full_path": "generated::User"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2048,7 +2423,13 @@
       "path": "/exchanges",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::exchanges::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2062,8 +2443,20 @@
       "method": "POST",
       "path": "/exchanges",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "exchanges"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::exchanges::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "exchanges"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::exchanges::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2078,7 +2471,14 @@
       "path": "/exchanges/{exchangeId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::exchanges::exchange_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2093,7 +2493,14 @@
       "path": "/exchanges/{exchangeId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::exchanges::exchange_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2108,7 +2515,15 @@
       "path": "/exchanges/{exchangeId}/accounts",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id",
+          "accounts"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::exchanges::exchange_id::accounts::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2123,7 +2538,17 @@
       "path": "/exchanges/{exchangeId}/accounts/{accountId}/assets",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id",
+          "accounts",
+          "account_id",
+          "assets"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::exchanges::exchange_id::accounts::account_id::assets::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2153,7 +2578,17 @@
       "path": "/exchanges/{exchangeId}/accounts/{accountId}/deposits",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id",
+          "accounts",
+          "account_id",
+          "deposits"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::exchanges::exchange_id::accounts::account_id::deposits::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2168,7 +2603,17 @@
       "path": "/exchanges/{exchangeId}/accounts/{accountId}/withdrawals",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "exchanges",
+          "exchange_id",
+          "accounts",
+          "account_id",
+          "withdrawals"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::exchanges::exchange_id::accounts::account_id::withdrawals::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2183,7 +2628,13 @@
       "path": "/fee-sponsors",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "fee_sponsors"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::fee_sponsors::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2197,8 +2648,20 @@
       "method": "POST",
       "path": "/fee-sponsors",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "fee_sponsors"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::fee_sponsors::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "fee_sponsors"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::fee_sponsors::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2213,7 +2676,14 @@
       "path": "/fee-sponsors/{feeSponsorId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "fee_sponsors",
+          "fee_sponsor_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::fee_sponsors::fee_sponsor_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2228,7 +2698,14 @@
       "path": "/fee-sponsors/{feeSponsorId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "fee_sponsors",
+          "fee_sponsor_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::fee_sponsors::fee_sponsor_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2273,7 +2750,15 @@
       "path": "/fee-sponsors/{feeSponsorId}/fees",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "fee_sponsors",
+          "fee_sponsor_id",
+          "fees"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::fee_sponsors::fee_sponsor_id::fees::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2288,7 +2773,13 @@
       "path": "/key-stores",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "key_stores"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::key_stores::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2303,7 +2794,13 @@
       "path": "/keys",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::keys::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2317,8 +2814,20 @@
       "method": "POST",
       "path": "/keys",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::keys::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2332,8 +2841,22 @@
       "method": "POST",
       "path": "/keys/import",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys",
+          "import"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::keys::import::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys",
+          "import"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::import::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2348,7 +2871,14 @@
       "path": "/keys/{keyId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::keys::key_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2362,8 +2892,22 @@
       "method": "PUT",
       "path": "/keys/{keyId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys",
+          "key_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::keys::key_id::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::keys::key_id::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2378,7 +2922,14 @@
       "path": "/keys/{keyId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::keys::key_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2392,8 +2943,24 @@
       "method": "POST",
       "path": "/keys/{keyId}/delegate",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "delegate"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::keys::key_id::delegate::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "delegate"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::key_id::delegate::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2407,8 +2974,24 @@
       "method": "POST",
       "path": "/keys/{keyId}/derive",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "derive"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::keys::key_id::derive::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "derive"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::key_id::derive::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2422,8 +3005,24 @@
       "method": "POST",
       "path": "/keys/{keyId}/export",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "export"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::keys::key_id::export::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "export"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::key_id::export::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2438,7 +3037,15 @@
       "path": "/keys/{keyId}/signatures",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "signatures"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::keys::key_id::signatures::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2453,7 +3060,15 @@
       "path": "/keys/{keyId}/signatures",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "signatures"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::keys::key_id::signatures::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2468,7 +3083,16 @@
       "path": "/keys/{keyId}/signatures/{signatureId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "keys",
+          "key_id",
+          "signatures",
+          "signature_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::keys::key_id::signatures::signature_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2498,7 +3122,14 @@
       "path": "/networks/read-contract",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "networks",
+          "read_contract"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::networks::read_contract::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2513,7 +3144,15 @@
       "path": "/networks/{network}/validators",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "networks",
+          "network",
+          "validators"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::networks::network::validators::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2528,11 +3167,7 @@
       "path": "/networks/{network}/validators",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "CantonValidator",
-        "full_path": "generated::CantonValidator"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2547,11 +3182,7 @@
       "path": "/networks/{network}/validators/{validatorId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "CantonValidator",
-        "full_path": "generated::CantonValidator"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2565,12 +3196,17 @@
       "method": "PUT",
       "path": "/networks/{network}/validators/{validatorId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "CantonValidator",
-        "full_path": "generated::CantonValidator"
+      "request_type": {
+        "module_path": [
+          "networks",
+          "network",
+          "validators",
+          "validator_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::networks::network::validators::validator_id::UpdateRequest"
       },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2585,11 +3221,7 @@
       "path": "/networks/{network}/validators/{validatorId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "CantonValidator",
-        "full_path": "generated::CantonValidator"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2604,7 +3236,13 @@
       "path": "/permissions",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "permissions"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::permissions::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2618,8 +3256,20 @@
       "method": "POST",
       "path": "/permissions",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "permissions"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::permissions::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "permissions"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::permissions::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2648,8 +3298,22 @@
       "method": "PUT",
       "path": "/permissions/{permissionId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "permissions",
+          "permission_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::permissions::permission_id::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "permissions",
+          "permission_id"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::permissions::permission_id::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2663,8 +3327,24 @@
       "method": "PUT",
       "path": "/permissions/{permissionId}/archive",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "permissions",
+          "permission_id",
+          "archive"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::permissions::permission_id::archive::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "permissions",
+          "permission_id",
+          "archive"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::permissions::permission_id::archive::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2679,7 +3359,15 @@
       "path": "/permissions/{permissionId}/assignments",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "permissions",
+          "permission_id",
+          "assignments"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::permissions::permission_id::assignments::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2693,8 +3381,24 @@
       "method": "POST",
       "path": "/permissions/{permissionId}/assignments",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "permissions",
+          "permission_id",
+          "assignments"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::permissions::permission_id::assignments::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "permissions",
+          "permission_id",
+          "assignments"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::permissions::permission_id::assignments::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2724,7 +3428,13 @@
       "path": "/signers",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "signers"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::signers::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2739,7 +3449,14 @@
       "path": "/staking/stakes",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "staking",
+          "stakes"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::staking::stakes::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2784,7 +3501,16 @@
       "path": "/staking/stakes/{stakeId}/actions",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "staking",
+          "stakes",
+          "stake_id",
+          "actions"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::staking::stakes::stake_id::actions::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2814,7 +3540,16 @@
       "path": "/staking/stakes/{stakeId}/rewards",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "staking",
+          "stakes",
+          "stake_id",
+          "rewards"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::staking::stakes::stake_id::rewards::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2829,7 +3564,13 @@
       "path": "/swaps",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "swaps"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::swaps::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2843,12 +3584,14 @@
       "method": "POST",
       "path": "/swaps",
       "operation_id": null,
-      "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Swap",
-        "full_path": "generated::Swap"
+      "request_type": {
+        "module_path": [
+          "swaps"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::swaps::CreateRequest"
       },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2862,12 +3605,15 @@
       "method": "POST",
       "path": "/swaps/quotes",
       "operation_id": null,
-      "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "SwapQuote",
-        "full_path": "generated::SwapQuote"
+      "request_type": {
+        "module_path": [
+          "swaps",
+          "quotes"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::swaps::quotes::CreateRequest"
       },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2882,11 +3628,7 @@
       "path": "/swaps/quotes/{quoteId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "SwapQuote",
-        "full_path": "generated::SwapQuote"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2901,11 +3643,7 @@
       "path": "/swaps/{swapId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Swap",
-        "full_path": "generated::Swap"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2920,7 +3658,14 @@
       "path": "/v2/policies",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "v2",
+          "policies"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::v2::policies::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -2995,7 +3740,14 @@
       "path": "/v2/policy-approvals",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "v2",
+          "policy_approvals"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::v2::policy_approvals::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3010,7 +3762,15 @@
       "path": "/v2/policy-approvals/{approvalId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "v2",
+          "policy_approvals",
+          "approval_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::v2::policy_approvals::approval_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3024,8 +3784,26 @@
       "method": "POST",
       "path": "/v2/policy-approvals/{approvalId}/decisions",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "v2",
+          "policy_approvals",
+          "approval_id",
+          "decisions"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "v2",
+          "policy_approvals",
+          "approval_id",
+          "decisions"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::v2::policy_approvals::approval_id::decisions::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3040,7 +3818,13 @@
       "path": "/wallets",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::wallets::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3054,7 +3838,13 @@
       "method": "POST",
       "path": "/wallets",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "wallets"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::wallets::CreateRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],
@@ -3085,11 +3875,7 @@
       "path": "/wallets/import",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Wallet",
-        "full_path": "generated::Wallet"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3104,11 +3890,7 @@
       "path": "/wallets/{walletId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Wallet",
-        "full_path": "generated::Wallet"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3122,7 +3904,14 @@
       "method": "PUT",
       "path": "/wallets/{walletId}",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::wallets::wallet_id::UpdateRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],
@@ -3198,7 +3987,15 @@
       "path": "/wallets/{walletId}/nfts",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "nfts"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::wallets::wallet_id::nfts::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3213,7 +4010,15 @@
       "path": "/wallets/{walletId}/offers",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "offers"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::wallets::wallet_id::offers::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3228,11 +4033,7 @@
       "path": "/wallets/{walletId}/offers/{offerId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Offer",
-        "full_path": "generated::Offer"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3247,11 +4048,7 @@
       "path": "/wallets/{walletId}/offers/{offerId}/accept",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Offer",
-        "full_path": "generated::Offer"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3266,11 +4063,7 @@
       "path": "/wallets/{walletId}/offers/{offerId}/reject",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "Offer",
-        "full_path": "generated::Offer"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3329,7 +4122,15 @@
       "method": "PUT",
       "path": "/wallets/{walletId}/tags",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "tags"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::wallets::wallet_id::tags::UpdateRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],
@@ -3344,7 +4145,15 @@
       "method": "DELETE",
       "path": "/wallets/{walletId}/tags",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "tags"
+        ],
+        "type_name": "DeleteRequest",
+        "full_path": "generated::wallets::wallet_id::tags::DeleteRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],
@@ -3360,7 +4169,15 @@
       "path": "/wallets/{walletId}/transactions",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "transactions"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::wallets::wallet_id::transactions::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3375,7 +4192,15 @@
       "path": "/wallets/{walletId}/transactions",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "transactions"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::wallets::wallet_id::transactions::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3390,7 +4215,16 @@
       "path": "/wallets/{walletId}/transactions/{transactionId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "transactions",
+          "transaction_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::wallets::wallet_id::transactions::transaction_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3405,7 +4239,15 @@
       "path": "/wallets/{walletId}/transfers",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "wallets",
+          "wallet_id",
+          "transfers"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::wallets::wallet_id::transfers::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3420,11 +4262,7 @@
       "path": "/wallets/{walletId}/transfers",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "TransferRequest",
-        "full_path": "generated::TransferRequest"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3439,11 +4277,7 @@
       "path": "/wallets/{walletId}/transfers/{transferId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": {
-        "module_path": [],
-        "type_name": "TransferRequest",
-        "full_path": "generated::TransferRequest"
-      },
+      "response_type": null,
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3458,7 +4292,13 @@
       "path": "/webhooks",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::webhooks::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3472,8 +4312,20 @@
       "method": "POST",
       "path": "/webhooks",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "webhooks"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::webhooks::CreateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "webhooks"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::webhooks::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3488,7 +4340,14 @@
       "path": "/webhooks/{webhookId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::webhooks::webhook_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3502,8 +4361,22 @@
       "method": "PUT",
       "path": "/webhooks/{webhookId}",
       "operation_id": null,
-      "request_type": null,
-      "response_type": null,
+      "request_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id"
+        ],
+        "type_name": "UpdateRequest",
+        "full_path": "generated::webhooks::webhook_id::UpdateRequest"
+      },
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id"
+        ],
+        "type_name": "UpdateResponse",
+        "full_path": "generated::webhooks::webhook_id::UpdateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3518,7 +4391,14 @@
       "path": "/webhooks/{webhookId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id"
+        ],
+        "type_name": "DeleteResponse",
+        "full_path": "generated::webhooks::webhook_id::DeleteResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3533,7 +4413,15 @@
       "path": "/webhooks/{webhookId}/events",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id",
+          "events"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::webhooks::webhook_id::events::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3548,7 +4436,16 @@
       "path": "/webhooks/{webhookId}/events/{webhookEventId}",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id",
+          "events",
+          "webhook_event_id"
+        ],
+        "type_name": "GetResponse",
+        "full_path": "generated::webhooks::webhook_id::events::webhook_event_id::GetResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3563,7 +4460,15 @@
       "path": "/webhooks/{webhookId}/ping",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "webhooks",
+          "webhook_id",
+          "ping"
+        ],
+        "type_name": "CreateResponse",
+        "full_path": "generated::webhooks::webhook_id::ping::CreateResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3578,7 +4483,13 @@
       "path": "/yields",
       "operation_id": null,
       "request_type": null,
-      "response_type": null,
+      "response_type": {
+        "module_path": [
+          "yields"
+        ],
+        "type_name": "ListResponse",
+        "full_path": "generated::yields::ListResponse"
+      },
       "response_status": "200",
       "path_params": [],
       "query_params": [],
@@ -3637,7 +4548,15 @@
       "method": "POST",
       "path": "/yields/{yieldId}/actions",
       "operation_id": null,
-      "request_type": null,
+      "request_type": {
+        "module_path": [
+          "yields",
+          "yield_id",
+          "actions"
+        ],
+        "type_name": "CreateRequest",
+        "full_path": "generated::yields::yield_id::actions::CreateRequest"
+      },
       "response_type": null,
       "response_status": "200",
       "path_params": [],

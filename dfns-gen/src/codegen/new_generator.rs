@@ -5,6 +5,20 @@ use crate::ir::{CompleteIR, EndpointMetadata, TypeLocation};
 use oas3::spec::{ObjectOrReference, ObjectSchema, Operation, Spec};
 use std::collections::{BTreeMap, HashMap, HashSet};
 
+/// Temporary storage for endpoint information before metadata is created
+#[derive(Debug, Clone)]
+struct PendingEndpoint {
+    method: String,
+    path: String,
+    operation_id: Option<String>,
+    expected_request_type: Option<(Vec<String>, String)>,  // (module_path, type_name)
+    expected_response_type: Option<(Vec<String>, String)>,  // (module_path, type_name)
+    response_status: String,
+    summary: Option<String>,
+    description: Option<String>,
+    tags: Option<Vec<String>>,
+}
+
 pub struct NewGenerator {
     spec: Spec,
     generated_types: HashSet<String>,
@@ -158,12 +172,14 @@ impl NewGenerator {
             }
         }
 
-        // Process all endpoints
+        // Process all endpoints - collect pending endpoint info
+        let mut pending_endpoints = Vec::new();
         for (path, method, operation, module_path) in endpoints_to_process {
-            self.process_endpoint(&path, &method, &operation, &mut root_modules, &module_path);
+            let pending = self.process_endpoint(&path, &method, &operation, &mut root_modules, &module_path);
+            pending_endpoints.push(pending);
         }
 
-        // Generate all root modules - now IR registration happens during generation
+        // Generate all root modules - IR registration happens during generation
         for (_, module) in root_modules {
             output.push_str(&format!("pub mod {} {{\n", module.name));
             output.push_str("    use super::*;\n\n");
@@ -174,22 +190,37 @@ impl NewGenerator {
             output.push_str("}\n\n");
         }
 
-        // Clean up endpoint metadata: set request_type/response_type to None if type doesn't exist in IR
-        // (IR now only contains types that were actually generated)
-        let mut cleaned_endpoints = 0;
-        for endpoint in &mut self.ir.endpoints {
-            if let Some(ref req_type) = endpoint.request_type {
-                if !self.ir.schema_locations.values().any(|loc| loc.full_path == req_type.full_path) {
-                    endpoint.request_type = None;
-                    cleaned_endpoints += 1;
-                }
-            }
-            if let Some(ref resp_type) = endpoint.response_type {
-                if !self.ir.schema_locations.values().any(|loc| loc.full_path == resp_type.full_path) {
-                    endpoint.response_type = None;
-                    cleaned_endpoints += 1;
-                }
-            }
+        // Now that code is generated and IR is populated, create endpoint metadata
+        for pending in pending_endpoints {
+            let request_type = if let Some((module_path, type_name)) = pending.expected_request_type {
+                let full_name = format!("{}::{}", module_path.join("::"), type_name);
+                self.ir.schema_locations.get(&full_name).cloned()
+            } else {
+                None
+            };
+
+            let response_type = if let Some((module_path, type_name)) = pending.expected_response_type {
+                let full_name = format!("{}::{}", module_path.join("::"), type_name);
+                self.ir.schema_locations.get(&full_name).cloned()
+            } else {
+                None
+            };
+
+            let endpoint_metadata = EndpointMetadata {
+                method: pending.method,
+                path: pending.path,
+                operation_id: pending.operation_id,
+                request_type,
+                response_type,
+                response_status: pending.response_status,
+                path_params: vec![],
+                query_params: vec![],
+                summary: pending.summary,
+                description: pending.description,
+                tags: pending.tags,
+            };
+
+            self.ir.register_endpoint(endpoint_metadata);
         }
 
         output
@@ -250,10 +281,10 @@ impl NewGenerator {
         operation: &Operation,
         root_modules: &mut BTreeMap<String, NestedModule>,
         module_path: &[String],
-    ) {
+    ) -> PendingEndpoint {
         let type_name = self.method_to_type_name(method, path);
-        let mut request_type: Option<TypeLocation> = None;
-        let mut response_type: Option<TypeLocation> = None;
+        let mut expected_request_type: Option<(Vec<String>, String)> = None;
+        let mut expected_response_type: Option<(Vec<String>, String)> = None;
 
         // Extract request schema
         if let Some(request_body) = &operation.request_body {
@@ -261,24 +292,18 @@ impl NewGenerator {
                 if let Some(content) = body.content.get("application/json") {
                     match &content.schema {
                         Some(ObjectOrReference::Ref { ref_path, .. }) => {
-                            // Referenced schema - look it up in IR
+                            // Referenced schema - note the expected type name
                             if let Some(schema_name) = ref_path.split('/').last() {
-                                if let Some(loc) = self.ir.schema_locations.get(schema_name) {
-                                    request_type = Some(loc.clone());
-                                }
+                                // For top-level refs, the module_path is empty
+                                expected_request_type = Some((vec![], schema_name.to_string()));
                             }
                         }
                         Some(ObjectOrReference::Object(schema)) => {
                             if !schema.properties.is_empty() || !schema.enum_values.is_empty() {
                                 let request_name = format!("{}Request", type_name);
                                 self.add_to_module_tree(root_modules, module_path, request_name.clone(), schema.clone());
-
-                                // Only set request_type if the type was actually registered in IR
-                                // (add_to_module_tree only registers if will_generate_code returns true)
-                                let full_name = format!("{}::{}", module_path.join("::"), request_name);
-                                if self.ir.schema_locations.contains_key(&full_name) {
-                                    request_type = Some(TypeLocation::new(module_path.to_vec(), request_name));
-                                }
+                                // Remember we expect this type - we'll check if it was generated later
+                                expected_request_type = Some((module_path.to_vec(), request_name));
                             }
                         }
                         None => {}
@@ -295,13 +320,11 @@ impl NewGenerator {
                     if let Some(content) = resp.content.get("application/json") {
                         match &content.schema {
                             Some(ObjectOrReference::Ref { ref_path, .. }) => {
-                                // Referenced schema - look it up in IR
+                                // Referenced schema - note the expected type name
                                 if let Some(schema_name) = ref_path.split('/').last() {
-                                    if let Some(loc) = self.ir.schema_locations.get(schema_name) {
-                                        response_type = Some(loc.clone());
-                                        response_status = status_code.clone();
-                                        break;
-                                    }
+                                    expected_response_type = Some((vec![], schema_name.to_string()));
+                                    response_status = status_code.clone();
+                                    break;
                                 }
                             }
                             Some(ObjectOrReference::Object(schema)) => {
@@ -313,13 +336,9 @@ impl NewGenerator {
                                     };
                                     let response_name = format!("{}Response{}", type_name, status_suffix);
                                     self.add_to_module_tree(root_modules, module_path, response_name.clone(), schema.clone());
-
-                                    // Only set response_type if the type was actually registered in IR
-                                    let full_name = format!("{}::{}", module_path.join("::"), response_name);
-                                    if self.ir.schema_locations.contains_key(&full_name) {
-                                        response_type = Some(TypeLocation::new(module_path.to_vec(), response_name));
-                                        response_status = status_code.clone();
-                                    }
+                                    // Remember we expect this type - we'll check if it was generated later
+                                    expected_response_type = Some((module_path.to_vec(), response_name));
+                                    response_status = status_code.clone();
                                     break;
                                 }
                             }
@@ -330,22 +349,18 @@ impl NewGenerator {
             }
         }
 
-        // Register endpoint in IR
-        let endpoint_metadata = EndpointMetadata {
+        // Return pending endpoint info - will be registered in IR after code generation
+        PendingEndpoint {
             method: method.to_uppercase(),
             path: path.to_string(),
             operation_id: operation.operation_id.clone(),
-            request_type,
-            response_type,
+            expected_request_type,
+            expected_response_type,
             response_status,
-            path_params: vec![],  // TODO: extract from path
-            query_params: vec![],  // TODO: extract from operation.parameters
             summary: operation.summary.clone(),
             description: operation.description.clone(),
             tags: if operation.tags.is_empty() { None } else { Some(operation.tags.clone()) },
-        };
-
-        self.ir.register_endpoint(endpoint_metadata);
+        }
     }
 
     /// Get the built IR
