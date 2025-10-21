@@ -1,9 +1,5 @@
-mod codegen;
-
-// #[allow(dead_code)]
-// pub mod generated;
-
-use codegen::{EndpointGenerator, Generator};
+// Use the library's modules instead of declaring them locally
+use dfns_gen::codegen::{EndpointGenerator, Generator};
 use std::fs;
 
 #[tokio::main]

@@ -1,5 +1,3 @@
-mod codegen;
-
 use std::fs;
 
 #[tokio::main]
