@@ -13,34 +13,36 @@ use utoipa_swagger_ui::SwaggerUi;
 #[tokio::main]
 async fn main() {
     // Initialize tracing
-    tracing_subscriber::fmt::init();
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::INFO)
+        .init();
 
-    // Build the API router
+    let addr: SocketAddr = "0.0.0.0:5555".parse().unwrap();
+
+    // Print to stdout immediately
+    println!("🚀 DFNS API Mock Server starting...");
+    println!("📍 Address: {}", addr);
+    println!("📚 Swagger UI: http://{}/swagger-ui", addr);
+    println!();
+
+    // Build the API router with generated endpoints
+    let api_router = dfns_client::generated_api::ApiDoc::router();
+
     let app = Router::new()
-        .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()));
+        .merge(api_router)
+        .merge(SwaggerUi::new("/swagger-ui")
+            .url("/api-docs/openapi.json", dfns_client::generated_api::ApiDoc::openapi()));
 
-    // TODO: Merge generated API routes when they're properly generated
-    // .merge(dfns_client::generated_api::routes());
-
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    tracing::info!("🚀 DFNS API Mock Server listening on {}", addr);
-    tracing::info!("📚 Swagger UI available at http://{}/swagger-ui", addr);
-
+    println!("🔧 Binding to {}...", addr);
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+
+    println!("✅ Server is running!");
+    println!("   → Swagger UI: http://localhost:5555/swagger-ui");
+    println!("   → OpenAPI JSON: http://localhost:5555/api-docs/openapi.json");
+    println!("   → All API endpoints are now available!");
+    println!();
+
+    tracing::info!("Server started successfully on {}", addr);
+
     axum::serve(listener, app).await.unwrap();
 }
-
-#[derive(OpenApi)]
-#[openapi(
-    info(
-        title = "DFNS API",
-        version = "1.0.0",
-        description = "Generated DFNS API with types and endpoints"
-    ),
-    tags(
-        (name = "wallets", description = "Wallet operations"),
-        (name = "auth", description = "Authentication"),
-        (name = "users", description = "User management")
-    )
-)]
-struct ApiDoc;

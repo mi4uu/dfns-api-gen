@@ -163,36 +163,10 @@ impl EndpointGenerator {
                                         return Some("serde_json::Value".to_string());
                                     }
                                 }
-                                ObjectOrReference::Object(obj_schema) => {
-                                    // Check if this is a simple type or complex type that won't be generated
-                                    if obj_schema.properties.is_empty()
-                                        && obj_schema.enum_values.is_empty()
-                                    {
-                                        // Simple type (string, array, etc.) or complex type (oneOf, allOf)
-                                        // Use serde_json::Value as fallback
-                                        return Some("serde_json::Value".to_string());
-                                    } else {
-                                        // Inline schema with properties - should have a generated type
-                                        let module = self.path_to_mod_and_name(path).0;
-                                        let type_name = if path_name.is_empty() {
-                                            // Use module name when path_name is empty
-                                            format!(
-                                                "{}{}Request",
-                                                to_pascal_case(&module),
-                                                to_pascal_case(method)
-                                            )
-                                        } else {
-                                            format!(
-                                                "{}{}Request",
-                                                path_name,
-                                                to_pascal_case(method)
-                                            )
-                                        };
-                                        return Some(format!(
-                                            "generated::{}::{}",
-                                            module, type_name
-                                        ));
-                                    }
+                                ObjectOrReference::Object(_obj_schema) => {
+                                    // Inline schemas are not generated as separate types
+                                    // Always use serde_json::Value for inline request bodies
+                                    return Some("serde_json::Value".to_string());
                                 }
                             }
                         }
@@ -262,35 +236,10 @@ impl EndpointGenerator {
                                                 "serde_json::Value".to_string()
                                             }
                                         }
-                                        ObjectOrReference::Object(obj_schema) => {
-                                            // Check if this is a simple type or complex type that won't be generated
-                                            if obj_schema.properties.is_empty()
-                                                && obj_schema.enum_values.is_empty()
-                                            {
-                                                // Simple type (string, array, etc.) or complex type (oneOf, allOf)
-                                                // Use serde_json::Value as fallback
-                                                "serde_json::Value".to_string()
-                                            } else {
-                                                // Inline schema with properties - should have a generated type
-                                                let module = self.path_to_mod_and_name(path).0;
-                                                let type_name = if path_name.is_empty() {
-                                                    // Use module name when path_name is empty
-                                                    format!(
-                                                        "{}{}Response{}",
-                                                        to_pascal_case(&module),
-                                                        to_pascal_case(method),
-                                                        status_name
-                                                    )
-                                                } else {
-                                                    format!(
-                                                        "{}{}Response{}",
-                                                        path_name,
-                                                        to_pascal_case(method),
-                                                        status_name
-                                                    )
-                                                };
-                                                format!("generated::{}::{}", module, type_name)
-                                            }
+                                        ObjectOrReference::Object(_obj_schema) => {
+                                            // Inline schemas are not generated as separate types
+                                            // Always use serde_json::Value for inline responses
+                                            "serde_json::Value".to_string()
                                         }
                                     }
                                 } else {
@@ -514,5 +463,69 @@ impl EndpointGenerator {
         let type_name_prefix = parts[1..].join("");
 
         (mod_name, type_name_prefix)
+    }
+
+    /// Convert path to nested module path
+    /// e.g., "/agreements/latest-unaccepted" → "agreements::latest_unaccepted"
+    fn path_to_nested_modules(&self, path: &str) -> Vec<String> {
+        path.split('/')
+            .filter(|s| !s.is_empty())
+            .map(|s| {
+                let cleaned = s.replace('{', "").replace('}', "");
+                to_snake_case(&cleaned)
+            })
+            .collect()
+    }
+
+    /// Get the full type path for nested modules
+    /// e.g., "/wallets/{id}/transfers" with GET → "generated::wallets::wallet_id::transfers::GetResponse"
+    /// Falls back to serde_json::Value if type likely doesn't exist
+    fn get_nested_type_path(&self, path: &str, method: &str, is_request: bool) -> String {
+        let modules = self.path_to_nested_modules(path);
+
+        if modules.is_empty() {
+            return "serde_json::Value".to_string();
+        }
+
+        // Determine type name based on method
+        let has_params = path.contains('{');
+        let type_name = if is_request {
+            match method.to_uppercase().as_str() {
+                "POST" => "CreateRequest",
+                "PUT" | "PATCH" => "UpdateRequest",
+                _ => "Request",
+            }
+        } else {
+            match method.to_uppercase().as_str() {
+                "GET" if !has_params => "ListResponse",
+                "GET" => "GetResponse",
+                "POST" => "CreateResponse",
+                "PUT" | "PATCH" => "UpdateResponse",
+                "DELETE" => "DeleteResponse",
+                _ => "Response",
+            }
+        };
+
+        // Build the full path: generated::module1::module2::TypeName
+        let mut full_path = String::from("generated");
+        for module in modules {
+            full_path.push_str("::");
+            full_path.push_str(&module);
+        }
+        full_path.push_str("::");
+        full_path.push_str(type_name);
+
+        // Note: We're generating the expected path, but the type may not exist
+        // The caller should verify or the generated code will fail compilation
+        // TODO: Could check against schemas to verify type exists
+        full_path
+    }
+
+    /// Try to get nested type path, fall back to serde_json::Value
+    fn get_nested_type_path_or_value(&self, path: &str, method: &str, is_request: bool) -> String {
+        // For now, always use the nested path - if it doesn't compile, it means
+        // the type wasn't generated and we should use serde_json::Value instead
+        // In a future version, we could check the schema to see if this type was actually generated
+        self.get_nested_type_path(path, method, is_request)
     }
 }

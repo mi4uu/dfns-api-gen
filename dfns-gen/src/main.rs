@@ -19,8 +19,16 @@ async fn main() {
     fs::write("openapi.json", &openapi_json).expect("Failed to write openapi.json");
     println!("Saved OpenAPI spec to openapi.json");
 
-    // Output directory is dfns-client crate
-    let output_dir = Path::new("../dfns-client/src");
+    // Output directory - works from both workspace root and dfns-gen directory
+    let output_dir = if Path::new("dfns-client/src").exists() {
+        // Running from workspace root
+        Path::new("dfns-client/src")
+    } else if Path::new("../dfns-client/src").exists() {
+        // Running from dfns-gen directory
+        Path::new("../dfns-client/src")
+    } else {
+        panic!("Cannot find dfns-client/src directory. Run from workspace root or dfns-gen directory.");
+    };
 
     // Generate Rust code with NEW generator (better naming!)
     println!("\nGenerating Rust code from OpenAPI schemas (with improved naming)...");

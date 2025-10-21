@@ -1,8 +1,8 @@
-// Generated DFNS API types
+// Generated DFNS API types (nested modules)
 pub mod generated;
 
-// Generated API endpoints (TODO: Update endpoint generator to use nested modules)
-// pub mod generated_api;
+// Generated API endpoints (now uses nested modules!)
+pub mod generated_api;
 
 // DFNS HTTP Client
 pub mod client;

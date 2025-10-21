@@ -340,13 +340,13 @@ impl ApiDoc {
     get,
     path = "/agreements/latest-unaccepted",
     responses(
-        (status = 200, body = generated::agreements::LatestUnacceptedGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_agreements_latest_unaccepted(
-) -> Json<generated::agreements::LatestUnacceptedGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::agreements::LatestUnacceptedGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -356,44 +356,44 @@ pub async fn get_agreements_latest_unaccepted(
         ("agreementId" = String, Path, description = "agreementId")
     ),
     responses(
-        (status = 200, body = generated::agreements::AgreementIdAcceptPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_agreements_agreement_id_accept(
     AxumPath(agreementId): AxumPath<String>,
-) -> Json<generated::agreements::AgreementIdAcceptPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::agreements::AgreementIdAcceptPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/action",
-    request_body = generated::auth::ActionPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::ActionPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_action(
-    Json(request): Json<generated::auth::ActionPOSTRequest>,
-) -> Json<generated::auth::ActionPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ActionPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/action/init",
-    request_body = generated::auth::ActionInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::ActionInitPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_action_init(
-    Json(request): Json<generated::auth::ActionInitPOSTRequest>,
-) -> Json<generated::auth::ActionInitPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ActionInitPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -416,27 +416,27 @@ pub async fn get_auth_action_logs(
         ("id" = String, Path, description = "id")
     ),
     responses(
-        (status = 200, body = generated::auth::ActionLogsIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_action_logs_id(
     AxumPath(id): AxumPath<String>,
-) -> Json<generated::auth::ActionLogsIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ActionLogsIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/auth/apps",
     responses(
-        (status = 200, body = generated::auth::AppsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_apps(
-) -> Json<generated::auth::AppsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::AppsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -446,27 +446,27 @@ pub async fn get_auth_apps(
         ("appId" = String, Path, description = "appId")
     ),
     responses(
-        (status = 200, body = generated::auth::AppsAppIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_apps_app_id(
     AxumPath(appId): AxumPath<String>,
-) -> Json<generated::auth::AppsAppIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::AppsAppIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/auth/credentials",
     responses(
-        (status = 200, body = generated::auth::CredentialsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_credentials(
-) -> Json<generated::auth::CredentialsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -474,56 +474,56 @@ pub async fn get_auth_credentials(
     path = "/auth/credentials",
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::CredentialsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_credentials(
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::auth::CredentialsPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     put,
     path = "/auth/credentials/activate",
-    request_body = generated::auth::CredentialsActivatePUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::CredentialsActivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_credentials_activate(
-    Json(request): Json<generated::auth::CredentialsActivatePUTRequest>,
-) -> Json<generated::auth::CredentialsActivatePUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsActivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/credentials/code",
-    request_body = generated::auth::CredentialsCodePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::CredentialsCodePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_credentials_code(
-    Json(request): Json<generated::auth::CredentialsCodePOSTRequest>,
-) -> Json<generated::auth::CredentialsCodePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsCodePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/credentials/code/init",
-    request_body = generated::auth::CredentialsCodeInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_credentials_code_init(
-    Json(request): Json<generated::auth::CredentialsCodeInitPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -534,41 +534,41 @@ pub async fn post_auth_credentials_code_init(
     path = "/auth/credentials/code/verify",
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::CredentialsCodeVerifyPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_credentials_code_verify(
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::auth::CredentialsCodeVerifyPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsCodeVerifyPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     put,
     path = "/auth/credentials/deactivate",
-    request_body = generated::auth::CredentialsDeactivatePUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::CredentialsDeactivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_credentials_deactivate(
-    Json(request): Json<generated::auth::CredentialsDeactivatePUTRequest>,
-) -> Json<generated::auth::CredentialsDeactivatePUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::CredentialsDeactivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/credentials/init",
-    request_body = generated::auth::CredentialsInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_credentials_init(
-    Json(request): Json<generated::auth::CredentialsInitPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -577,13 +577,13 @@ pub async fn post_auth_credentials_init(
 #[utoipa::path(
     post,
     path = "/auth/login",
-    request_body = generated::auth::LoginPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login(
-    Json(request): Json<generated::auth::LoginPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -592,134 +592,134 @@ pub async fn post_auth_login(
 #[utoipa::path(
     post,
     path = "/auth/login/code",
-    request_body = generated::auth::LoginCodePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginCodePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_code(
-    Json(request): Json<generated::auth::LoginCodePOSTRequest>,
-) -> Json<generated::auth::LoginCodePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginCodePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/login/delegated",
-    request_body = generated::auth::LoginDelegatedPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginDelegatedPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_delegated(
-    Json(request): Json<generated::auth::LoginDelegatedPOSTRequest>,
-) -> Json<generated::auth::LoginDelegatedPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginDelegatedPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/login/init",
-    request_body = generated::auth::LoginInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginInitPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_init(
-    Json(request): Json<generated::auth::LoginInitPOSTRequest>,
-) -> Json<generated::auth::LoginInitPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginInitPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/login/social",
-    request_body = generated::auth::LoginSocialPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginSocialPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_social(
-    Json(request): Json<generated::auth::LoginSocialPOSTRequest>,
-) -> Json<generated::auth::LoginSocialPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginSocialPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/login/sso",
-    request_body = generated::auth::LoginSsoPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginSsoPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_sso(
-    Json(request): Json<generated::auth::LoginSsoPOSTRequest>,
-) -> Json<generated::auth::LoginSsoPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginSsoPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/login/sso/init",
-    request_body = generated::auth::LoginSsoInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LoginSsoInitPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_login_sso_init(
-    Json(request): Json<generated::auth::LoginSsoInitPOSTRequest>,
-) -> Json<generated::auth::LoginSsoInitPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LoginSsoInitPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     put,
     path = "/auth/logout",
-    request_body = generated::auth::LogoutPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::LogoutPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_logout(
-    Json(request): Json<generated::auth::LogoutPUTRequest>,
-) -> Json<generated::auth::LogoutPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::LogoutPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/auth/pats",
     responses(
-        (status = 200, body = generated::auth::PatsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_pats(
-) -> Json<generated::auth::PatsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/pats",
-    request_body = generated::auth::PatsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::PatsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_pats(
-    Json(request): Json<generated::auth::PatsPOSTRequest>,
-) -> Json<generated::auth::PatsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -729,14 +729,14 @@ pub async fn post_auth_pats(
         ("tokenId" = String, Path, description = "tokenId")
     ),
     responses(
-        (status = 200, body = generated::auth::PatsTokenIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_pats_token_id(
     AxumPath(tokenId): AxumPath<String>,
-) -> Json<generated::auth::PatsTokenIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsTokenIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -745,17 +745,17 @@ pub async fn get_auth_pats_token_id(
     params(
         ("tokenId" = String, Path, description = "tokenId")
     ),
-    request_body = generated::auth::PatsTokenIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::PatsTokenIdPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_pats_token_id(
     AxumPath(tokenId): AxumPath<String>,
-    Json(request): Json<generated::auth::PatsTokenIdPUTRequest>,
-) -> Json<generated::auth::PatsTokenIdPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsTokenIdPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -765,14 +765,14 @@ pub async fn put_auth_pats_token_id(
         ("tokenId" = String, Path, description = "tokenId")
     ),
     responses(
-        (status = 200, body = generated::auth::PatsTokenIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_auth_pats_token_id(
     AxumPath(tokenId): AxumPath<String>,
-) -> Json<generated::auth::PatsTokenIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsTokenIdDELETEResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -782,14 +782,14 @@ pub async fn delete_auth_pats_token_id(
         ("tokenId" = String, Path, description = "tokenId")
     ),
     responses(
-        (status = 200, body = generated::auth::PatsTokenIdActivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_pats_token_id_activate(
     AxumPath(tokenId): AxumPath<String>,
-) -> Json<generated::auth::PatsTokenIdActivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsTokenIdActivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -799,192 +799,192 @@ pub async fn put_auth_pats_token_id_activate(
         ("tokenId" = String, Path, description = "tokenId")
     ),
     responses(
-        (status = 200, body = generated::auth::PatsTokenIdDeactivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_pats_token_id_deactivate(
     AxumPath(tokenId): AxumPath<String>,
-) -> Json<generated::auth::PatsTokenIdDeactivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::PatsTokenIdDeactivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/recover/user",
-    request_body = generated::auth::RecoverUserPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RecoverUserPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_recover_user(
-    Json(request): Json<generated::auth::RecoverUserPOSTRequest>,
-) -> Json<generated::auth::RecoverUserPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RecoverUserPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/recover/user/code",
-    request_body = generated::auth::RecoverUserCodePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RecoverUserCodePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_recover_user_code(
-    Json(request): Json<generated::auth::RecoverUserCodePOSTRequest>,
-) -> Json<generated::auth::RecoverUserCodePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RecoverUserCodePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/recover/user/delegated",
-    request_body = generated::auth::RecoverUserDelegatedPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RecoverUserDelegatedPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_recover_user_delegated(
-    Json(request): Json<generated::auth::RecoverUserDelegatedPOSTRequest>,
-) -> Json<generated::auth::RecoverUserDelegatedPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RecoverUserDelegatedPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/recover/user/init",
-    request_body = generated::auth::RecoverUserInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RecoverUserInitPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_recover_user_init(
-    Json(request): Json<generated::auth::RecoverUserInitPOSTRequest>,
-) -> Json<generated::auth::RecoverUserInitPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RecoverUserInitPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/registration",
-    request_body = generated::auth::RegistrationPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_registration(
-    Json(request): Json<generated::auth::RegistrationPOSTRequest>,
-) -> Json<generated::auth::RegistrationPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     put,
     path = "/auth/registration/code",
-    request_body = generated::auth::RegistrationCodePUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationCodePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_registration_code(
-    Json(request): Json<generated::auth::RegistrationCodePUTRequest>,
-) -> Json<generated::auth::RegistrationCodePUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationCodePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/registration/delegated",
-    request_body = generated::auth::RegistrationDelegatedPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationDelegatedPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_registration_delegated(
-    Json(request): Json<generated::auth::RegistrationDelegatedPOSTRequest>,
-) -> Json<generated::auth::RegistrationDelegatedPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationDelegatedPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/registration/enduser",
-    request_body = generated::auth::RegistrationEnduserPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationEnduserPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_registration_enduser(
-    Json(request): Json<generated::auth::RegistrationEnduserPOSTRequest>,
-) -> Json<generated::auth::RegistrationEnduserPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationEnduserPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/registration/init",
-    request_body = generated::auth::RegistrationInitPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationInitPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_registration_init(
-    Json(request): Json<generated::auth::RegistrationInitPOSTRequest>,
-) -> Json<generated::auth::RegistrationInitPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationInitPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/registration/social",
-    request_body = generated::auth::RegistrationSocialPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::RegistrationSocialPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_registration_social(
-    Json(request): Json<generated::auth::RegistrationSocialPOSTRequest>,
-) -> Json<generated::auth::RegistrationSocialPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::RegistrationSocialPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/auth/service-accounts",
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_service_accounts(
-) -> Json<generated::auth::ServiceAccountsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/service-accounts",
-    request_body = generated::auth::ServiceAccountsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_auth_service_accounts(
-    Json(request): Json<generated::auth::ServiceAccountsPOSTRequest>,
-) -> Json<generated::auth::ServiceAccountsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -994,14 +994,14 @@ pub async fn post_auth_service_accounts(
         ("serviceAccountId" = String, Path, description = "serviceAccountId")
     ),
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsServiceAccountIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_service_accounts_service_account_id(
     AxumPath(serviceAccountId): AxumPath<String>,
-) -> Json<generated::auth::ServiceAccountsServiceAccountIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsServiceAccountIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1010,17 +1010,17 @@ pub async fn get_auth_service_accounts_service_account_id(
     params(
         ("serviceAccountId" = String, Path, description = "serviceAccountId")
     ),
-    request_body = generated::auth::ServiceAccountsServiceAccountIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsServiceAccountIdPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_service_accounts_service_account_id(
     AxumPath(serviceAccountId): AxumPath<String>,
-    Json(request): Json<generated::auth::ServiceAccountsServiceAccountIdPUTRequest>,
-) -> Json<generated::auth::ServiceAccountsServiceAccountIdPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsServiceAccountIdPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1030,14 +1030,14 @@ pub async fn put_auth_service_accounts_service_account_id(
         ("serviceAccountId" = String, Path, description = "serviceAccountId")
     ),
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsServiceAccountIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_auth_service_accounts_service_account_id(
     AxumPath(serviceAccountId): AxumPath<String>,
-) -> Json<generated::auth::ServiceAccountsServiceAccountIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsServiceAccountIdDELETEResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1047,14 +1047,14 @@ pub async fn delete_auth_service_accounts_service_account_id(
         ("serviceAccountId" = String, Path, description = "serviceAccountId")
     ),
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsServiceAccountIdActivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_service_accounts_service_account_id_activate(
     AxumPath(serviceAccountId): AxumPath<String>,
-) -> Json<generated::auth::ServiceAccountsServiceAccountIdActivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsServiceAccountIdActivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1064,39 +1064,39 @@ pub async fn put_auth_service_accounts_service_account_id_activate(
         ("serviceAccountId" = String, Path, description = "serviceAccountId")
     ),
     responses(
-        (status = 200, body = generated::auth::ServiceAccountsServiceAccountIdDeactivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_auth_service_accounts_service_account_id_deactivate(
     AxumPath(serviceAccountId): AxumPath<String>,
-) -> Json<generated::auth::ServiceAccountsServiceAccountIdDeactivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::ServiceAccountsServiceAccountIdDeactivatePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/auth/users",
     responses(
-        (status = 200, body = generated::auth::UsersGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_auth_users(
-) -> Json<generated::auth::UsersGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::auth::UsersGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/auth/users",
-    request_body = generated::auth::UsersPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::User)
     )
 )]
 pub async fn post_auth_users(
-    Json(request): Json<generated::auth::UsersPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::User> {
     // TODO: Replace with actual implementation
     Json(generated::User::default())
@@ -1125,14 +1125,14 @@ pub async fn get_auth_users_user_id(
     params(
         ("userId" = String, Path, description = "userId")
     ),
-    request_body = generated::auth::UsersUserIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::User)
     )
 )]
 pub async fn put_auth_users_user_id(
     AxumPath(userId): AxumPath<String>,
-    Json(request): Json<generated::auth::UsersUserIdPUTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::User> {
     // TODO: Replace with actual implementation
     Json(generated::User::default())
@@ -1193,28 +1193,28 @@ pub async fn put_auth_users_user_id_deactivate(
     get,
     path = "/exchanges",
     responses(
-        (status = 200, body = generated::exchanges::ExchangesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_exchanges(
-) -> Json<generated::exchanges::ExchangesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/exchanges",
-    request_body = generated::exchanges::ExchangesPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::exchanges::ExchangesPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_exchanges(
-    Json(request): Json<generated::exchanges::ExchangesPOSTRequest>,
-) -> Json<generated::exchanges::ExchangesPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangesPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1224,14 +1224,14 @@ pub async fn post_exchanges(
         ("exchangeId" = String, Path, description = "exchangeId")
     ),
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_exchanges_exchange_id(
     AxumPath(exchangeId): AxumPath<String>,
-) -> Json<generated::exchanges::ExchangeIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1241,14 +1241,14 @@ pub async fn get_exchanges_exchange_id(
         ("exchangeId" = String, Path, description = "exchangeId")
     ),
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_exchanges_exchange_id(
     AxumPath(exchangeId): AxumPath<String>,
-) -> Json<generated::exchanges::ExchangeIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdDELETEResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1258,14 +1258,14 @@ pub async fn delete_exchanges_exchange_id(
         ("exchangeId" = String, Path, description = "exchangeId")
     ),
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdAccountsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_exchanges_exchange_id_accounts(
     AxumPath(exchangeId): AxumPath<String>,
-) -> Json<generated::exchanges::ExchangeIdAccountsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdAccountsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1276,14 +1276,14 @@ pub async fn get_exchanges_exchange_id_accounts(
         ("accountId" = String, Path, description = "accountId")
     ),
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdAccountsAccountIdAssetsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_exchanges_exchange_id_accounts_account_id_assets(
     AxumPath((exchangeId, accountId)): AxumPath<(String, String)>,
-) -> Json<generated::exchanges::ExchangeIdAccountsAccountIdAssetsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdAccountsAccountIdAssetsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1314,15 +1314,15 @@ pub async fn get_exchanges_exchange_id_accounts_account_id_assets_asset_withdraw
     ),
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdAccountsAccountIdDepositsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_exchanges_exchange_id_accounts_account_id_deposits(
     AxumPath((exchangeId, accountId)): AxumPath<(String, String)>,
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::exchanges::ExchangeIdAccountsAccountIdDepositsPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdAccountsAccountIdDepositsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1334,43 +1334,43 @@ pub async fn post_exchanges_exchange_id_accounts_account_id_deposits(
     ),
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::exchanges::ExchangeIdAccountsAccountIdWithdrawalsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_exchanges_exchange_id_accounts_account_id_withdrawals(
     AxumPath((exchangeId, accountId)): AxumPath<(String, String)>,
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::exchanges::ExchangeIdAccountsAccountIdWithdrawalsPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::exchanges::ExchangeIdAccountsAccountIdWithdrawalsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/fee-sponsors",
     responses(
-        (status = 200, body = generated::feesponsors::FeesponsorsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_feesponsors(
-) -> Json<generated::feesponsors::FeesponsorsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::feesponsors::FeesponsorsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/fee-sponsors",
-    request_body = generated::feesponsors::FeesponsorsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::feesponsors::FeesponsorsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_feesponsors(
-    Json(request): Json<generated::feesponsors::FeesponsorsPOSTRequest>,
-) -> Json<generated::feesponsors::FeesponsorsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
+    Json(serde_json::json!(
         {
           "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
@@ -1378,10 +1378,7 @@ pub async fn post_feesponsors(
           "status": "Active",
           "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
-    );
-    let response: generated::feesponsors::FeesponsorsPOSTResponse = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    ))
 }
 
 #[utoipa::path(
@@ -1391,14 +1388,14 @@ pub async fn post_feesponsors(
         ("feeSponsorId" = String, Path, description = "feeSponsorId")
     ),
     responses(
-        (status = 200, body = generated::feesponsors::FeeSponsorIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_feesponsors_fee_sponsor_id(
     AxumPath(feeSponsorId): AxumPath<String>,
-) -> Json<generated::feesponsors::FeeSponsorIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
+    Json(serde_json::json!(
         {
           "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
@@ -1406,10 +1403,7 @@ pub async fn get_feesponsors_fee_sponsor_id(
           "status": "Active",
           "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
-    );
-    let response: generated::feesponsors::FeeSponsorIdGETResponse = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    ))
 }
 
 #[utoipa::path(
@@ -1419,14 +1413,14 @@ pub async fn get_feesponsors_fee_sponsor_id(
         ("feeSponsorId" = String, Path, description = "feeSponsorId")
     ),
     responses(
-        (status = 200, body = generated::feesponsors::FeeSponsorIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_feesponsors_fee_sponsor_id(
     AxumPath(feeSponsorId): AxumPath<String>,
-) -> Json<generated::feesponsors::FeeSponsorIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
+    Json(serde_json::json!(
         {
           "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
@@ -1434,10 +1428,7 @@ pub async fn delete_feesponsors_fee_sponsor_id(
           "status": "Active",
           "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
-    );
-    let response: generated::feesponsors::FeeSponsorIdDELETEResponse = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    ))
 }
 
 #[utoipa::path(
@@ -1447,14 +1438,14 @@ pub async fn delete_feesponsors_fee_sponsor_id(
         ("feeSponsorId" = String, Path, description = "feeSponsorId")
     ),
     responses(
-        (status = 200, body = generated::feesponsors::FeeSponsorIdActivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_feesponsors_fee_sponsor_id_activate(
     AxumPath(feeSponsorId): AxumPath<String>,
-) -> Json<generated::feesponsors::FeeSponsorIdActivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
+    Json(serde_json::json!(
         {
           "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
@@ -1462,10 +1453,7 @@ pub async fn put_feesponsors_fee_sponsor_id_activate(
           "status": "Active",
           "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
-    );
-    let response: generated::feesponsors::FeeSponsorIdActivatePUTResponse = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    ))
 }
 
 #[utoipa::path(
@@ -1475,14 +1463,14 @@ pub async fn put_feesponsors_fee_sponsor_id_activate(
         ("feeSponsorId" = String, Path, description = "feeSponsorId")
     ),
     responses(
-        (status = 200, body = generated::feesponsors::FeeSponsorIdDeactivatePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_feesponsors_fee_sponsor_id_deactivate(
     AxumPath(feeSponsorId): AxumPath<String>,
-) -> Json<generated::feesponsors::FeeSponsorIdDeactivatePUTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    let example_json = serde_json::json!(
+    Json(serde_json::json!(
         {
           "dateCreated": "2023-04-14T20:41:28.715Z",
           "id": "fs-1f04s-lqc9q-xxxxxxxxxxxxxxxx",
@@ -1490,10 +1478,7 @@ pub async fn put_feesponsors_fee_sponsor_id_deactivate(
           "status": "Active",
           "walletId": "wa-1f04s-lqc9q-xxxxxxxxxxxxxxxx"
         }
-    );
-    let response: generated::feesponsors::FeeSponsorIdDeactivatePUTResponse = serde_json::from_value(example_json)
-        .expect("Failed to deserialize example into response type");
-    Json(response)
+    ))
 }
 
 #[utoipa::path(
@@ -1503,70 +1488,70 @@ pub async fn put_feesponsors_fee_sponsor_id_deactivate(
         ("feeSponsorId" = String, Path, description = "feeSponsorId")
     ),
     responses(
-        (status = 200, body = generated::feesponsors::FeeSponsorIdFeesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_feesponsors_fee_sponsor_id_fees(
     AxumPath(feeSponsorId): AxumPath<String>,
-) -> Json<generated::feesponsors::FeeSponsorIdFeesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::feesponsors::FeeSponsorIdFeesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/key-stores",
     responses(
-        (status = 200, body = generated::keystores::KeystoresGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_keystores(
-) -> Json<generated::keystores::KeystoresGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keystores::KeystoresGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/keys",
     responses(
-        (status = 200, body = generated::keys::KeysGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_keys(
-) -> Json<generated::keys::KeysGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeysGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/keys",
-    request_body = generated::keys::KeysPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeysPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys(
-    Json(request): Json<generated::keys::KeysPOSTRequest>,
-) -> Json<generated::keys::KeysPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeysPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/keys/import",
-    request_body = generated::keys::ImportPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::ImportPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys_import(
-    Json(request): Json<generated::keys::ImportPOSTRequest>,
-) -> Json<generated::keys::ImportPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::ImportPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1576,14 +1561,14 @@ pub async fn post_keys_import(
         ("keyId" = String, Path, description = "keyId")
     ),
     responses(
-        (status = 200, body = generated::keys::KeyIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_keys_key_id(
     AxumPath(keyId): AxumPath<String>,
-) -> Json<generated::keys::KeyIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1592,17 +1577,17 @@ pub async fn get_keys_key_id(
     params(
         ("keyId" = String, Path, description = "keyId")
     ),
-    request_body = generated::keys::KeyIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeyIdPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_keys_key_id(
     AxumPath(keyId): AxumPath<String>,
-    Json(request): Json<generated::keys::KeyIdPUTRequest>,
-) -> Json<generated::keys::KeyIdPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1612,14 +1597,14 @@ pub async fn put_keys_key_id(
         ("keyId" = String, Path, description = "keyId")
     ),
     responses(
-        (status = 200, body = generated::keys::KeyIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_keys_key_id(
     AxumPath(keyId): AxumPath<String>,
-) -> Json<generated::keys::KeyIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdDELETEResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1628,17 +1613,17 @@ pub async fn delete_keys_key_id(
     params(
         ("keyId" = String, Path, description = "keyId")
     ),
-    request_body = generated::keys::KeyIdDelegatePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeyIdDelegatePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys_key_id_delegate(
     AxumPath(keyId): AxumPath<String>,
-    Json(request): Json<generated::keys::KeyIdDelegatePOSTRequest>,
-) -> Json<generated::keys::KeyIdDelegatePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdDelegatePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1647,17 +1632,17 @@ pub async fn post_keys_key_id_delegate(
     params(
         ("keyId" = String, Path, description = "keyId")
     ),
-    request_body = generated::keys::KeyIdDerivePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeyIdDerivePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys_key_id_derive(
     AxumPath(keyId): AxumPath<String>,
-    Json(request): Json<generated::keys::KeyIdDerivePOSTRequest>,
-) -> Json<generated::keys::KeyIdDerivePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdDerivePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1666,17 +1651,17 @@ pub async fn post_keys_key_id_derive(
     params(
         ("keyId" = String, Path, description = "keyId")
     ),
-    request_body = generated::keys::KeyIdExportPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeyIdExportPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys_key_id_export(
     AxumPath(keyId): AxumPath<String>,
-    Json(request): Json<generated::keys::KeyIdExportPOSTRequest>,
-) -> Json<generated::keys::KeyIdExportPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdExportPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1686,14 +1671,14 @@ pub async fn post_keys_key_id_export(
         ("keyId" = String, Path, description = "keyId")
     ),
     responses(
-        (status = 200, body = generated::keys::KeyIdSignaturesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_keys_key_id_signatures(
     AxumPath(keyId): AxumPath<String>,
-) -> Json<generated::keys::KeyIdSignaturesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdSignaturesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1704,15 +1689,15 @@ pub async fn get_keys_key_id_signatures(
     ),
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::keys::KeyIdSignaturesPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_keys_key_id_signatures(
     AxumPath(keyId): AxumPath<String>,
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::keys::KeyIdSignaturesPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdSignaturesPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1723,14 +1708,14 @@ pub async fn post_keys_key_id_signatures(
         ("signatureId" = String, Path, description = "signatureId")
     ),
     responses(
-        (status = 200, body = generated::keys::KeyIdSignaturesSignatureIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_keys_key_id_signatures_signature_id(
     AxumPath((keyId, signatureId)): AxumPath<(String, String)>,
-) -> Json<generated::keys::KeyIdSignaturesSignatureIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::keys::KeyIdSignaturesSignatureIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1751,14 +1736,14 @@ pub async fn get_networks_fees(
     path = "/networks/read-contract",
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::networks::ReadContractPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_networks_read_contract(
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::networks::ReadContractPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::networks::ReadContractPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1768,14 +1753,14 @@ pub async fn post_networks_read_contract(
         ("network" = String, Path, description = "network")
     ),
     responses(
-        (status = 200, body = generated::networks::NetworkValidatorsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_networks_network_validators(
     AxumPath(network): AxumPath<String>,
-) -> Json<generated::networks::NetworkValidatorsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::networks::NetworkValidatorsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1822,14 +1807,14 @@ pub async fn get_networks_network_validators_validator_id(
         ("network" = String, Path, description = "network"),
         ("validatorId" = String, Path, description = "validatorId")
     ),
-    request_body = generated::networks::NetworkValidatorsValidatorIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::CantonValidator)
     )
 )]
 pub async fn put_networks_network_validators_validator_id(
     AxumPath((network, validatorId)): AxumPath<(String, String)>,
-    Json(request): Json<generated::networks::NetworkValidatorsValidatorIdPUTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::CantonValidator> {
     // TODO: Replace with actual implementation
     Json(generated::CantonValidator::default())
@@ -1857,28 +1842,28 @@ pub async fn delete_networks_network_validators_validator_id(
     get,
     path = "/permissions",
     responses(
-        (status = 200, body = generated::permissions::PermissionsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_permissions(
-) -> Json<generated::permissions::PermissionsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/permissions",
-    request_body = generated::permissions::PermissionsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::permissions::PermissionsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_permissions(
-    Json(request): Json<generated::permissions::PermissionsPOSTRequest>,
-) -> Json<generated::permissions::PermissionsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1904,17 +1889,17 @@ pub async fn get_permissions_permission_id(
     params(
         ("permissionId" = String, Path, description = "permissionId")
     ),
-    request_body = generated::permissions::PermissionIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::permissions::PermissionIdPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_permissions_permission_id(
     AxumPath(permissionId): AxumPath<String>,
-    Json(request): Json<generated::permissions::PermissionIdPUTRequest>,
-) -> Json<generated::permissions::PermissionIdPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionIdPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1923,17 +1908,17 @@ pub async fn put_permissions_permission_id(
     params(
         ("permissionId" = String, Path, description = "permissionId")
     ),
-    request_body = generated::permissions::PermissionIdArchivePUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::permissions::PermissionIdArchivePUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_permissions_permission_id_archive(
     AxumPath(permissionId): AxumPath<String>,
-    Json(request): Json<generated::permissions::PermissionIdArchivePUTRequest>,
-) -> Json<generated::permissions::PermissionIdArchivePUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionIdArchivePUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1943,14 +1928,14 @@ pub async fn put_permissions_permission_id_archive(
         ("permissionId" = String, Path, description = "permissionId")
     ),
     responses(
-        (status = 200, body = generated::permissions::PermissionIdAssignmentsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_permissions_permission_id_assignments(
     AxumPath(permissionId): AxumPath<String>,
-) -> Json<generated::permissions::PermissionIdAssignmentsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionIdAssignmentsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1959,17 +1944,17 @@ pub async fn get_permissions_permission_id_assignments(
     params(
         ("permissionId" = String, Path, description = "permissionId")
     ),
-    request_body = generated::permissions::PermissionIdAssignmentsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::permissions::PermissionIdAssignmentsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_permissions_permission_id_assignments(
     AxumPath(permissionId): AxumPath<String>,
-    Json(request): Json<generated::permissions::PermissionIdAssignmentsPOSTRequest>,
-) -> Json<generated::permissions::PermissionIdAssignmentsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::permissions::PermissionIdAssignmentsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -1994,26 +1979,26 @@ pub async fn delete_permissions_permission_id_assignments_assignment_id(
     get,
     path = "/signers",
     responses(
-        (status = 200, body = generated::signers::SignersGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_signers(
-) -> Json<generated::signers::SignersGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::signers::SignersGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/staking/stakes",
     responses(
-        (status = 200, body = generated::staking::StakesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_staking_stakes(
-) -> Json<generated::staking::StakesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::staking::StakesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2055,14 +2040,14 @@ pub async fn get_staking_stakes_stake_id(
         ("stakeId" = String, Path, description = "stakeId")
     ),
     responses(
-        (status = 200, body = generated::staking::StakesStakeIdActionsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_staking_stakes_stake_id_actions(
     AxumPath(stakeId): AxumPath<String>,
-) -> Json<generated::staking::StakesStakeIdActionsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::staking::StakesStakeIdActionsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2091,39 +2076,39 @@ pub async fn post_staking_stakes_stake_id_actions(
         ("stakeId" = String, Path, description = "stakeId")
     ),
     responses(
-        (status = 200, body = generated::staking::StakesStakeIdRewardsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_staking_stakes_stake_id_rewards(
     AxumPath(stakeId): AxumPath<String>,
-) -> Json<generated::staking::StakesStakeIdRewardsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::staking::StakesStakeIdRewardsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/swaps",
     responses(
-        (status = 200, body = generated::swaps::SwapsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_swaps(
-) -> Json<generated::swaps::SwapsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::swaps::SwapsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/swaps",
-    request_body = generated::swaps::SwapsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::Swap)
     )
 )]
 pub async fn post_swaps(
-    Json(request): Json<generated::swaps::SwapsPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::Swap> {
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
@@ -2190,13 +2175,13 @@ pub async fn post_swaps(
 #[utoipa::path(
     post,
     path = "/swaps/quotes",
-    request_body = generated::swaps::QuotesPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::SwapQuote)
     )
 )]
 pub async fn post_swaps_quotes(
-    Json(request): Json<generated::swaps::QuotesPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::SwapQuote> {
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
@@ -2404,13 +2389,13 @@ pub async fn get_swaps_swap_id(
     get,
     path = "/v2/policies",
     responses(
-        (status = 200, body = generated::v2::PoliciesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_v2_policies(
-) -> Json<generated::v2::PoliciesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::v2::PoliciesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2485,13 +2470,13 @@ pub async fn delete_v2_policies_policy_id(
     get,
     path = "/v2/policy-approvals",
     responses(
-        (status = 200, body = generated::v2::PolicyApprovalsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_v2_policy_approvals(
-) -> Json<generated::v2::PolicyApprovalsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::v2::PolicyApprovalsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2501,14 +2486,14 @@ pub async fn get_v2_policy_approvals(
         ("approvalId" = String, Path, description = "approvalId")
     ),
     responses(
-        (status = 200, body = generated::v2::PolicyApprovalsApprovalIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_v2_policy_approvals_approval_id(
     AxumPath(approvalId): AxumPath<String>,
-) -> Json<generated::v2::PolicyApprovalsApprovalIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::v2::PolicyApprovalsApprovalIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2517,42 +2502,42 @@ pub async fn get_v2_policy_approvals_approval_id(
     params(
         ("approvalId" = String, Path, description = "approvalId")
     ),
-    request_body = generated::v2::PolicyApprovalsApprovalIdDecisionsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::v2::PolicyApprovalsApprovalIdDecisionsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_v2_policy_approvals_approval_id_decisions(
     AxumPath(approvalId): AxumPath<String>,
-    Json(request): Json<generated::v2::PolicyApprovalsApprovalIdDecisionsPOSTRequest>,
-) -> Json<generated::v2::PolicyApprovalsApprovalIdDecisionsPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::v2::PolicyApprovalsApprovalIdDecisionsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/wallets",
     responses(
-        (status = 200, body = generated::wallets::WalletsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets(
-) -> Json<generated::wallets::WalletsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/wallets",
-    request_body = generated::wallets::WalletsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_wallets(
-    Json(request): Json<generated::wallets::WalletsPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -2574,13 +2559,13 @@ pub async fn get_wallets_all_history(
 #[utoipa::path(
     post,
     path = "/wallets/import",
-    request_body = generated::wallets::ImportPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = generated::Wallet)
     )
 )]
 pub async fn post_wallets_import(
-    Json(request): Json<generated::wallets::ImportPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<generated::Wallet> {
     // TODO: Replace with actual implementation
     let example_json = serde_json::json!(
@@ -2649,14 +2634,14 @@ pub async fn get_wallets_wallet_id(
     params(
         ("walletId" = String, Path, description = "walletId")
     ),
-    request_body = generated::wallets::WalletIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_wallets_wallet_id(
     AxumPath(walletId): AxumPath<String>,
-    Json(request): Json<generated::wallets::WalletIdPUTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -2669,14 +2654,14 @@ pub async fn put_wallets_wallet_id(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdAssetsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_assets(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdAssetsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdAssetsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2685,17 +2670,17 @@ pub async fn get_wallets_wallet_id_assets(
     params(
         ("walletId" = String, Path, description = "walletId")
     ),
-    request_body = generated::wallets::WalletIdDelegatePOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::wallets::WalletIdDelegatePOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_wallets_wallet_id_delegate(
     AxumPath(walletId): AxumPath<String>,
-    Json(request): Json<generated::wallets::WalletIdDelegatePOSTRequest>,
-) -> Json<generated::wallets::WalletIdDelegatePOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdDelegatePOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2704,17 +2689,17 @@ pub async fn post_wallets_wallet_id_delegate(
     params(
         ("walletId" = String, Path, description = "walletId")
     ),
-    request_body = generated::wallets::WalletIdExportPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::wallets::WalletIdExportPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_wallets_wallet_id_export(
     AxumPath(walletId): AxumPath<String>,
-    Json(request): Json<generated::wallets::WalletIdExportPOSTRequest>,
-) -> Json<generated::wallets::WalletIdExportPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdExportPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2741,14 +2726,14 @@ pub async fn get_wallets_wallet_id_history(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdNftsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_nfts(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdNftsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdNftsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2758,14 +2743,14 @@ pub async fn get_wallets_wallet_id_nfts(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdOffersGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_offers(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdOffersGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdOffersGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2829,14 +2814,14 @@ pub async fn put_wallets_wallet_id_offers_offer_id_reject(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdSignaturesGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_signatures(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdSignaturesGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdSignaturesGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2847,15 +2832,15 @@ pub async fn get_wallets_wallet_id_signatures(
     ),
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::wallets::WalletIdSignaturesPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_wallets_wallet_id_signatures(
     AxumPath(walletId): AxumPath<String>,
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::wallets::WalletIdSignaturesPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdSignaturesPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2866,14 +2851,14 @@ pub async fn post_wallets_wallet_id_signatures(
         ("signatureId" = String, Path, description = "signatureId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdSignaturesSignatureIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_signatures_signature_id(
     AxumPath((walletId, signatureId)): AxumPath<(String, String)>,
-) -> Json<generated::wallets::WalletIdSignaturesSignatureIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdSignaturesSignatureIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2882,14 +2867,14 @@ pub async fn get_wallets_wallet_id_signatures_signature_id(
     params(
         ("walletId" = String, Path, description = "walletId")
     ),
-    request_body = generated::wallets::WalletIdTagsPUTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_wallets_wallet_id_tags(
     AxumPath(walletId): AxumPath<String>,
-    Json(request): Json<generated::wallets::WalletIdTagsPUTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -2901,14 +2886,14 @@ pub async fn put_wallets_wallet_id_tags(
     params(
         ("walletId" = String, Path, description = "walletId")
     ),
-    request_body = generated::wallets::WalletIdTagsDELETERequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_wallets_wallet_id_tags(
     AxumPath(walletId): AxumPath<String>,
-    Json(request): Json<generated::wallets::WalletIdTagsDELETERequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))
@@ -2921,14 +2906,14 @@ pub async fn delete_wallets_wallet_id_tags(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdTransactionsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_transactions(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdTransactionsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdTransactionsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2939,15 +2924,15 @@ pub async fn get_wallets_wallet_id_transactions(
     ),
     request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::wallets::WalletIdTransactionsPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_wallets_wallet_id_transactions(
     AxumPath(walletId): AxumPath<String>,
     Json(request): Json<serde_json::Value>,
-) -> Json<generated::wallets::WalletIdTransactionsPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdTransactionsPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2958,14 +2943,14 @@ pub async fn post_wallets_wallet_id_transactions(
         ("transactionId" = String, Path, description = "transactionId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdTransactionsTransactionIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_transactions_transaction_id(
     AxumPath((walletId, transactionId)): AxumPath<(String, String)>,
-) -> Json<generated::wallets::WalletIdTransactionsTransactionIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdTransactionsTransactionIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -2975,14 +2960,14 @@ pub async fn get_wallets_wallet_id_transactions_transaction_id(
         ("walletId" = String, Path, description = "walletId")
     ),
     responses(
-        (status = 200, body = generated::wallets::WalletIdTransfersGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_wallets_wallet_id_transfers(
     AxumPath(walletId): AxumPath<String>,
-) -> Json<generated::wallets::WalletIdTransfersGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::wallets::WalletIdTransfersGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3026,28 +3011,28 @@ pub async fn get_wallets_wallet_id_transfers_transfer_id(
     get,
     path = "/webhooks",
     responses(
-        (status = 200, body = generated::webhooks::WebhooksGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_webhooks(
-) -> Json<generated::webhooks::WebhooksGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhooksGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     post,
     path = "/webhooks",
-    request_body = generated::webhooks::WebhooksPOSTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::webhooks::WebhooksPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_webhooks(
-    Json(request): Json<generated::webhooks::WebhooksPOSTRequest>,
-) -> Json<generated::webhooks::WebhooksPOSTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhooksPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3057,14 +3042,14 @@ pub async fn post_webhooks(
         ("webhookId" = String, Path, description = "webhookId")
     ),
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_webhooks_webhook_id(
     AxumPath(webhookId): AxumPath<String>,
-) -> Json<generated::webhooks::WebhookIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3073,17 +3058,17 @@ pub async fn get_webhooks_webhook_id(
     params(
         ("webhookId" = String, Path, description = "webhookId")
     ),
-    request_body = generated::webhooks::WebhookIdPUTRequest,
+    request_body = serde_json::Value,
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdPUTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn put_webhooks_webhook_id(
     AxumPath(webhookId): AxumPath<String>,
-    Json(request): Json<generated::webhooks::WebhookIdPUTRequest>,
-) -> Json<generated::webhooks::WebhookIdPUTResponse> {
+    Json(request): Json<serde_json::Value>,
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdPUTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3093,14 +3078,14 @@ pub async fn put_webhooks_webhook_id(
         ("webhookId" = String, Path, description = "webhookId")
     ),
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdDELETEResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn delete_webhooks_webhook_id(
     AxumPath(webhookId): AxumPath<String>,
-) -> Json<generated::webhooks::WebhookIdDELETEResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdDELETEResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3110,14 +3095,14 @@ pub async fn delete_webhooks_webhook_id(
         ("webhookId" = String, Path, description = "webhookId")
     ),
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdEventsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_webhooks_webhook_id_events(
     AxumPath(webhookId): AxumPath<String>,
-) -> Json<generated::webhooks::WebhookIdEventsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdEventsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3128,14 +3113,14 @@ pub async fn get_webhooks_webhook_id_events(
         ("webhookEventId" = String, Path, description = "webhookEventId")
     ),
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdEventsWebhookEventIdGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_webhooks_webhook_id_events_webhook_event_id(
     AxumPath((webhookId, webhookEventId)): AxumPath<(String, String)>,
-) -> Json<generated::webhooks::WebhookIdEventsWebhookEventIdGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdEventsWebhookEventIdGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3145,27 +3130,27 @@ pub async fn get_webhooks_webhook_id_events_webhook_event_id(
         ("webhookId" = String, Path, description = "webhookId")
     ),
     responses(
-        (status = 200, body = generated::webhooks::WebhookIdPingPOSTResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_webhooks_webhook_id_ping(
     AxumPath(webhookId): AxumPath<String>,
-) -> Json<generated::webhooks::WebhookIdPingPOSTResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::webhooks::WebhookIdPingPOSTResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
     get,
     path = "/yields",
     responses(
-        (status = 200, body = generated::yields::YieldsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_yields(
-) -> Json<generated::yields::YieldsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::yields::YieldsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3207,14 +3192,14 @@ pub async fn get_yields_yield_id(
         ("yieldId" = String, Path, description = "yieldId")
     ),
     responses(
-        (status = 200, body = generated::yields::YieldIdActionsGETResponse)
+        (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn get_yields_yield_id_actions(
     AxumPath(yieldId): AxumPath<String>,
-) -> Json<generated::yields::YieldIdActionsGETResponse> {
+) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
-    Json(generated::yields::YieldIdActionsGETResponse::default())
+    Json(serde_json::json!({}))
 }
 
 #[utoipa::path(
@@ -3223,14 +3208,14 @@ pub async fn get_yields_yield_id_actions(
     params(
         ("yieldId" = String, Path, description = "yieldId")
     ),
-    request_body = generated::yields::YieldIdActionsPOSTRequest,
+    request_body = serde_json::Value,
     responses(
         (status = 200, body = serde_json::Value)
     )
 )]
 pub async fn post_yields_yield_id_actions(
     AxumPath(yieldId): AxumPath<String>,
-    Json(request): Json<generated::yields::YieldIdActionsPOSTRequest>,
+    Json(request): Json<serde_json::Value>,
 ) -> Json<serde_json::Value> {
     // TODO: Replace with actual implementation
     Json(serde_json::json!({}))

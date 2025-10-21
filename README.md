@@ -30,13 +30,17 @@ dfns_gen/                    (workspace root)
 ### 1. Generate Types
 
 ```bash
+# From workspace root (dfns_gen/)
+cargo run -p dfns-gen
+
+# OR from dfns-gen directory
 cd dfns-gen
 cargo run
 ```
 
 This fetches the DFNS OpenAPI spec and generates:
-- Types in `../dfns-client/src/generated.rs`
-- API server in `../dfns-client/src/generated_api.rs`
+- Types in `dfns-client/src/generated.rs`
+- API server in `dfns-client/src/generated_api.rs`
 
 ### 2. Use the Client
 
